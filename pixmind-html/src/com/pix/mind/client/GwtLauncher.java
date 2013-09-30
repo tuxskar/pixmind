@@ -1,9 +1,9 @@
 package com.pix.mind.client;
 
-import com.pix.mind.PixMindGame;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+import com.pix.mind.PixMindGame;
 
 public class GwtLauncher extends GwtApplication {
 	@Override

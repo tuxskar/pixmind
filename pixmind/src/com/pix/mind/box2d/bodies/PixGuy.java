@@ -61,10 +61,18 @@ public class PixGuy {
 	
 	public void setActualPosition() {
 //		body.position.set(this.posX, this.posY);
+		this.posY = body.getTransform().getPosition().y; 
 		body.setTransform(this.posX, this.posY, 0);
 		controller.movements();
 	}
-
+//	public void setActualPosition() { 
+//		// body.position.set(this.posX, this.posY);
+//		controller.movements();
+//		body.setTransform(this.posX, this.posY, 0); 
+//		
+//	}
+	
+	
 	public void moveLeft(float deltaTime) {
 		this.posX -= PixGuy.SPEED * deltaTime;
 //		body.position.x += 10;
