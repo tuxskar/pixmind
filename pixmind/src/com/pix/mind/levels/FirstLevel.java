@@ -54,6 +54,7 @@ public class FirstLevel implements Screen {
 		world = new World(new Vector2(0, -10), true);
 		debugRenderer = new Box2DDebugRenderer();
 		
+		// comment to be commited
 		float posX = 0, posY = 0, width=1, heigth=0.2f;
 		StaticPlatform sPlatform = new StaticPlatform(world, posX, posY, width, heigth);
 		
