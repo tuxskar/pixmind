@@ -7,16 +7,20 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.pix.mind.PixMindGame;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixGuy {
 	static public final String PIX_ID = "pixguy";
+	public static float PixWidth = 30;	
+	public static float PixHeight = 30;
+	
 	// pixmind main character
 	private float posX, posY;
 	private Body body;
 	static final float SPEED = 1;
 	public PixGuyController controller;
-
+	
 	public PixGuy(World world, float posX, float posY, float width, float height) {
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();
@@ -37,7 +41,7 @@ public class PixGuy {
 		// port and 20 high
 		// (setAsBox takes half-width and half-height as arguments)
 		// groundBox.setAsBox(camera.viewportWidth, 10.0f);
-		groundBox.setAsBox(width, height);
+		groundBox.setAsBox(width/2, height/2);
 		// Create a fixture definition to apply our shape to
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = groundBox;
@@ -50,9 +54,19 @@ public class PixGuy {
 		
 		// Clean up after ourselves
 		groundBox.dispose();
+		PixGuy.PixHeight = height * PixMindGame.BOX_TO_WORLD;
+		PixGuy.PixWidth = width * PixMindGame.BOX_TO_WORLD;
 
 	}
 	
+	public float getPosX() {
+		return posX * PixMindGame.BOX_TO_WORLD - PixGuy.PixWidth/2;
+	}
+
+	public float getPosY() {
+		return posY * PixMindGame.BOX_TO_WORLD - PixGuy.PixHeight/2;
+	}
+
 	public void setController(PixGuyController controller){
 		this.controller = controller;
 	}
@@ -67,6 +81,7 @@ public class PixGuy {
 		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
 		body.setTransform(this.posX, this.posY, 0);
+		System.out.println(this.posX + " en pixguy y: " + this.posY);
 	}
 	
 	
