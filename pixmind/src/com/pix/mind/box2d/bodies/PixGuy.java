@@ -3,12 +3,14 @@ package com.pix.mind.box2d.bodies;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixGuy {
+	static public final String PIX_ID = "pixguy";
 	// pixmind main character
 	private float posX, posY;
 	private Body body;
@@ -41,9 +43,11 @@ public class PixGuy {
 		fixtureDef.shape = groundBox;
 		fixtureDef.density = 0.5f;
 		fixtureDef.friction = 0.4f;
-		fixtureDef.restitution = 0.5f; // Make it bounce a little bit
+		//fixtureDef.restitution = 0.5f; // Make it bounce a little bit
 		// Create our fixture and attach it to the body
-		body.createFixture(fixtureDef);
+		Fixture fixture = body.createFixture(fixtureDef);
+		fixture.setUserData(PixGuy.PIX_ID);
+		
 		// Clean up after ourselves
 		groundBox.dispose();
 
@@ -60,22 +64,14 @@ public class PixGuy {
 	}
 	
 	public void setActualPosition() {
-//		body.position.set(this.posX, this.posY);
+		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
 		body.setTransform(this.posX, this.posY, 0);
-		controller.movements();
 	}
-//	public void setActualPosition() { 
-//		// body.position.set(this.posX, this.posY);
-//		controller.movements();
-//		body.setTransform(this.posX, this.posY, 0); 
-//		
-//	}
 	
 	
 	public void moveLeft(float deltaTime) {
 		this.posX -= PixGuy.SPEED * deltaTime;
-//		body.position.x += 10;
 	}
 
 	public void moveRight(float deltaTime) {

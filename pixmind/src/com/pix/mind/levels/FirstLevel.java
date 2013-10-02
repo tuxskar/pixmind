@@ -6,6 +6,11 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pix.mind.PixMindGame;
@@ -57,6 +62,7 @@ public class FirstLevel implements Screen {
 		// comment to be commited
 		float posX = 0, posY = 0, width=1, heigth=0.2f;
 		StaticPlatform sPlatform = new StaticPlatform(world, posX, posY, width, heigth);
+		StaticPlatform s2Platform = new StaticPlatform(world, posX+1, posY+1, width, heigth);
 		
 		Stage stage = new Stage();
 		
@@ -67,6 +73,43 @@ public class FirstLevel implements Screen {
 		pixGuy = new PixGuy(world, posX, posY, width, heigth);
 		PixGuyController controller = new PixGuyController(pixGuy);
 		pixGuy.setController(controller);
+		world.setContactListener(new ContactListener(){
+
+			@Override
+			public void beginContact(Contact contact) {
+				// TODO Auto-generated method stub
+				Fixture fixGuy;
+				Fixture fixPlatform;
+				if (contact.getFixtureA().getUserData().equals(PixGuy.PIX_ID)){
+					fixGuy = contact.getFixtureA();
+					//fixPlatform = contact.getFixtureB();
+				}else{
+					//fixPlatform = contact.getFixtureA();
+					fixGuy = contact.getFixtureB();
+				}
+				fixGuy.getBody().setLinearVelocity(0, 0);
+				fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.1f), fixGuy.getBody().getWorldCenter(), true);
+			}
+
+			@Override
+			public void endContact(Contact contact) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void preSolve(Contact contact, Manifold oldManifold) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void postSolve(Contact contact, ContactImpulse impulse) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 	}
 
 	@Override

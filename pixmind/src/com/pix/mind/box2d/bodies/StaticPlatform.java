@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 public class StaticPlatform {
-	
+	static public final String PLATFORM_ID = "staticPlatform";
 	public StaticPlatform(World world, float posX, float posY, float width, float height){
 			// Create our body definition
 			BodyDef groundBodyDef =new BodyDef();  
@@ -33,6 +33,7 @@ public class StaticPlatform {
 			fixtureDef.restitution = 0.6f; // Make it bounce a little bit
 			// Create our fixture and attach it to the body
 			Fixture fixture = groundBody.createFixture(fixtureDef);
+			fixture.setUserData(StaticPlatform.PLATFORM_ID);
 			// Clean up after ourselves
 			groundBox.dispose();
 	}
