@@ -1,0 +1,6 @@
+*.class
+*/bin
+*.mp3
+.metadata
+*.jpg
+*.png
