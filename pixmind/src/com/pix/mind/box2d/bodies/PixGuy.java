@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.pix.mind.PixMindGame;
+import com.pix.mind.controllers.AccController;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixGuy {
@@ -19,6 +20,7 @@ public class PixGuy {
 	private float posX, posY;
 	private Body body;
 	static final float SPEED = 1;
+//	public PixGuyController controller;
 	public PixGuyController controller;
 	
 	public PixGuy(World world, float posX, float posY, float width, float height) {
