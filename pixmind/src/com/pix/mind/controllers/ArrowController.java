@@ -44,6 +44,7 @@ public class ArrowController extends PixGuyController {
 					this.pixGuy.moveRight(Gdx.graphics.getDeltaTime());
 				}
 			}
+//			Gdx.input.
 		}
 	}
 }

@@ -29,6 +29,7 @@ public class FirstLevel implements Screen {
 	private PixMindGame game;
 	private Image pixGuySkin;
 	private Stage stage;
+	private Stage stageGui;
 	
 	public FirstLevel(PixMindGame game){
 		this.game = game;
@@ -42,8 +43,15 @@ public class FirstLevel implements Screen {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
 		debugRenderer.render(world, camera.combined);	
-		stage.draw();	
-
+		stage.draw();
+		stageGui.draw();
+//		stage.getCamera().translate(pixGuy.getPosX() / PixMindGame.BOX_TO_WORLD, pixGuy.getPosY() / PixMindGame.BOX_TO_WORLD, 0);
+//		camera.translate(pixGuy.getPosX() / PixMindGame.BOX_TO_WORLD, pixGuy.getPosY() / PixMindGame.BOX_TO_WORLD);
+		stage.getCamera().position.x = pixGuy.getPosX();
+		stage.getCamera().position.y = pixGuy.getPosY();
+		camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
+		camera.position.y = pixGuy.getPosY() * PixMindGame.WORLD_TO_BOX;
+		camera.update();
 		world.step(delta, 6, 2);
 		pixGuy.setActualPosition();
 		stage.act();
@@ -74,13 +82,15 @@ public class FirstLevel implements Screen {
 		StaticPlatform sPlatform = new StaticPlatform(world, posX, posY, width, heigth);
 		StaticPlatform s2Platform = new StaticPlatform(world, posX+1, posY+1, width, heigth);
 		StaticPlatform s3Platform = new StaticPlatform(world, posX+3, posY, width, heigth);
+		StaticPlatform s4Platform = new StaticPlatform(world, posX-5, posY-1, width+100, heigth);
 		
 		width = 0.2f;
 		heigth = 0.2f;
 		// main character initialization
 		pixGuy = new PixGuy(world, posX+2, posY+3, width, heigth);
 		stage = new Stage(w, h, true);
-		PixGuyController controller = new ArrowController(pixGuy, stage);
+		stageGui = new Stage(w, h, true);
+		PixGuyController controller = new ArrowController(pixGuy, stageGui);
 		pixGuy.setController(controller);
 		pixGuySkin = new PixGuyActor(pixGuy);
 		stage.addActor(pixGuySkin);
