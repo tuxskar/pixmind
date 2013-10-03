@@ -13,6 +13,8 @@ public class PixGuyActor extends Image {
 		this.pixGuy = pixGuy;
 		this.setSize(pixGuy.PixWidth, pixGuy.PixHeight);
 		this.setPosition(pixGuy.getPosX(), pixGuy.getPosY());
+//		this.setColor(Color.RED);
+		this.setColor(100, 100, 30, 1f);
 //		this.setBounds(-pixGuy.PixWidth/2, -pixGuy.PixHeight/2, pixGuy.PixWidth, pixGuy.PixHeight);
 	}
 

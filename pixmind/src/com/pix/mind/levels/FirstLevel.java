@@ -18,7 +18,7 @@ import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.box2d.bodies.PixGuy;
 import com.pix.mind.box2d.bodies.StaticPlatform;
-import com.pix.mind.controllers.AccController;
+import com.pix.mind.controllers.ArrowController;
 import com.pix.mind.controllers.PixGuyController;
 
 public class FirstLevel implements Screen {
@@ -78,10 +78,10 @@ public class FirstLevel implements Screen {
 		heigth = 0.2f;
 		// main character initialization
 		pixGuy = new PixGuy(world, posX+2, posY+3, width, heigth);
-		PixGuyController controller = new AccController(pixGuy);
+		stage = new Stage(w, h, true);
+		PixGuyController controller = new ArrowController(pixGuy, stage);
 		pixGuy.setController(controller);
 		pixGuySkin = new PixGuyActor(pixGuy);
-		stage = new Stage(w, h, true);
 		stage.addActor(pixGuySkin);
 		camera.update();
 		
