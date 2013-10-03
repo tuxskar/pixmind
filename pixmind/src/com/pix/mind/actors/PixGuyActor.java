@@ -23,6 +23,6 @@ public class PixGuyActor extends Image {
 		// TODO Auto-generated method stub
 		super.act(delta);
 		this.setPosition(pixGuy.getPosX(), pixGuy.getPosY());
-		System.out.println(pixGuy.getPosX() + " y: " + pixGuy.getPosY());
+//		System.out.println(pixGuy.getPosX() + " y: " + pixGuy.getPosY());
 	}
 }

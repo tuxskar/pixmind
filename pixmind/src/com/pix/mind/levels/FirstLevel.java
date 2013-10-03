@@ -73,6 +73,7 @@ public class FirstLevel implements Screen {
 		float posX = 2f, posY = 2f, width=1, heigth=0.2f;
 		StaticPlatform sPlatform = new StaticPlatform(world, posX, posY, width, heigth);
 		StaticPlatform s2Platform = new StaticPlatform(world, posX+1, posY+1, width, heigth);
+		StaticPlatform s3Platform = new StaticPlatform(world, posX+3, posY, width, heigth);
 		
 		width = 0.2f;
 		heigth = 0.2f;

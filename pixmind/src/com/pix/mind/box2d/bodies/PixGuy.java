@@ -83,7 +83,7 @@ public class PixGuy {
 		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
 		body.setTransform(this.posX, this.posY, 0);
-		System.out.println(this.posX + " en pixguy y: " + this.posY);
+//		System.out.println(this.posX + " en pixguy y: " + this.posY);
 	}
 	
 	
