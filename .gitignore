@@ -2,8 +2,6 @@
 */bin
 *.mp3
 .metadata
-*.jpg
-*project
 *classpath
-*properties
 *BuildConfig*
+*.project
