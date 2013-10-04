@@ -4,3 +4,6 @@
 .metadata
 *.jpg
 *project
+*classpath
+*properties
+*BuildConfig*
