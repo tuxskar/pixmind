@@ -7,9 +7,15 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.pix.mind.PixMindGame;
 
 public class StaticPlatform {
 	static public final String PLATFORM_ID = "staticPlatform";
+	public float PlatformWidth = 10;	
+	public float PlatformHeight = 2;
+	public float posX = 0;
+	public float posY = 0;
+	
 	public StaticPlatform(World world, float posX, float posY, float width, float height){
 			// Create our body definition
 			BodyDef groundBodyDef =new BodyDef();  
@@ -36,5 +42,25 @@ public class StaticPlatform {
 			fixture.setUserData(StaticPlatform.PLATFORM_ID);
 			// Clean up after ourselves
 			groundBox.dispose();
+			PlatformWidth = width;
+			PlatformHeight = height;
+			this.posX = posX;
+			this.posY = posY;
+	}
+
+	public float getPosX() {
+		return posX * PixMindGame.BOX_TO_WORLD - PlatformWidth * PixMindGame.BOX_TO_WORLD;
+	}
+
+	public float getPosY() {
+		return posY * PixMindGame.BOX_TO_WORLD - PlatformHeight * PixMindGame.BOX_TO_WORLD;
+	}
+
+	public float getPlatformWidth() {
+		return PlatformWidth;
+	}
+
+	public float getPlatformHeight() {
+		return PlatformHeight;
 	}
 }

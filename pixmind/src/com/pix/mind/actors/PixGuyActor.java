@@ -9,13 +9,11 @@ import com.pix.mind.box2d.bodies.PixGuy;
 public class PixGuyActor extends Image {
 	private PixGuy pixGuy;
 	public PixGuyActor(PixGuy pixGuy){
-		super(new Texture(Gdx.files.internal("data/textures/OneBlackPixel.png")));
+		super(new Texture(Gdx.files.internal("data/textures/pixel.png")));
 		this.pixGuy = pixGuy;
 		this.setSize(pixGuy.PixWidth, pixGuy.PixHeight);
 		this.setPosition(pixGuy.getPosX(), pixGuy.getPosY());
-//		this.setColor(Color.RED);
-		this.setColor(100, 100, 30, 1f);
-//		this.setBounds(-pixGuy.PixWidth/2, -pixGuy.PixHeight/2, pixGuy.PixWidth, pixGuy.PixHeight);
+		this.setColor(0, 0, 0.5f,1);
 	}
 
 	@Override
@@ -23,6 +21,5 @@ public class PixGuyActor extends Image {
 		// TODO Auto-generated method stub
 		super.act(delta);
 		this.setPosition(pixGuy.getPosX(), pixGuy.getPosY());
-//		System.out.println(pixGuy.getPosX() + " y: " + pixGuy.getPosY());
 	}
 }

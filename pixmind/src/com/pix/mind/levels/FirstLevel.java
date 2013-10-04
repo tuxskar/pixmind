@@ -2,6 +2,7 @@ package com.pix.mind.levels;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PixGuyActor;
+import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.PixGuy;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.controllers.ArrowController;
@@ -45,8 +47,6 @@ public class FirstLevel implements Screen {
 		debugRenderer.render(world, camera.combined);	
 		stage.draw();
 		stageGui.draw();
-//		stage.getCamera().translate(pixGuy.getPosX() / PixMindGame.BOX_TO_WORLD, pixGuy.getPosY() / PixMindGame.BOX_TO_WORLD, 0);
-//		camera.translate(pixGuy.getPosX() / PixMindGame.BOX_TO_WORLD, pixGuy.getPosY() / PixMindGame.BOX_TO_WORLD);
 		stage.getCamera().position.x = pixGuy.getPosX();
 		stage.getCamera().position.y = pixGuy.getPosY();
 		camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
@@ -78,11 +78,17 @@ public class FirstLevel implements Screen {
 
 		
 		// comment to be commited
-		float posX = 2f, posY = 2f, width=1, heigth=0.2f;
+		float posX = 2f, posY = 2f, width=1f, heigth=0.2f;
 		StaticPlatform sPlatform = new StaticPlatform(world, posX, posY, width, heigth);
 		StaticPlatform s2Platform = new StaticPlatform(world, posX+1, posY+1, width, heigth);
 		StaticPlatform s3Platform = new StaticPlatform(world, posX+3, posY, width, heigth);
-		StaticPlatform s4Platform = new StaticPlatform(world, posX-5, posY-1, width+100, heigth);
+		StaticPlatform s4Platform = new StaticPlatform(world, posX, posY-1, width+100, heigth);
+
+		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform, Color.RED, true);
+		StaticPlatformActor s2Skin = new StaticPlatformActor(s2Platform, Color.BLUE, false);
+		StaticPlatformActor s3Skin = new StaticPlatformActor(s3Platform, Color.GREEN, true);
+		StaticPlatformActor s4Skin = new StaticPlatformActor(s4Platform, Color.BLACK, false);
+		
 		
 		width = 0.2f;
 		heigth = 0.2f;
@@ -94,6 +100,10 @@ public class FirstLevel implements Screen {
 		pixGuy.setController(controller);
 		pixGuySkin = new PixGuyActor(pixGuy);
 		stage.addActor(pixGuySkin);
+		stage.addActor(s1Skin);
+		stage.addActor(s2Skin);
+		stage.addActor(s3Skin);
+		stage.addActor(s4Skin);
 		camera.update();
 		
 		world.setContactListener(new ContactListener(){

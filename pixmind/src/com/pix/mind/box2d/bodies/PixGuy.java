@@ -20,7 +20,6 @@ public class PixGuy {
 	private float posX, posY;
 	private Body body;
 	static final float SPEED = 1;
-//	public PixGuyController controller;
 	public PixGuyController controller;
 	
 	public PixGuy(World world, float posX, float posY, float width, float height) {
@@ -76,14 +75,12 @@ public class PixGuy {
 	public void setPosition(float posX, float posY) {
 		this.posX = posX;
 		this.posY = posY;
-//		setActualPosition();
 	}
 	
 	public void setActualPosition() {
 		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
 		body.setTransform(this.posX, this.posY, 0);
-//		System.out.println(this.posX + " en pixguy y: " + this.posY);
 	}
 	
 	
