@@ -97,11 +97,11 @@ public class FirstLevel implements Screen {
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform,
 				Color.RED, true);
 		StaticPlatformActor s2Skin = new StaticPlatformActor(s2Platform,
-				Color.BLUE, false);
+				Color.BLUE, true);
 		StaticPlatformActor s3Skin = new StaticPlatformActor(s3Platform,
-				Color.GREEN, true);
+				Color.GREEN, false);
 		StaticPlatformActor s4Skin = new StaticPlatformActor(s4Platform,
-				Color.BLACK, false);
+				Color.BLACK, true);
 
 		PlatformActivatorActor a1Skin = new PlatformActivatorActor(pActivator,
 				Color.RED, true);
