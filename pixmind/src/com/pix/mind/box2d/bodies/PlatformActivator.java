@@ -47,11 +47,11 @@ public class PlatformActivator {
 	}
 
 	public float getPosX() {
-		return posX * PixMindGame.BOX_TO_WORLD - ActivatorRadius * PixMindGame.BOX_TO_WORLD;
+		return posX * PixMindGame.BOX_TO_WORLD;
 	}
 
 	public float getPosY() {
-		return posY * PixMindGame.BOX_TO_WORLD - ActivatorRadius * PixMindGame.BOX_TO_WORLD;
+		return posY * PixMindGame.BOX_TO_WORLD ;
 	}
 
 	public float getActivatorRadius() {

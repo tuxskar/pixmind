@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PixGuyActor;
+import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.PixGuy;
 import com.pix.mind.box2d.bodies.PlatformActivator;
@@ -88,13 +89,15 @@ public class FirstLevel implements Screen {
 		StaticPlatform s3Platform = new StaticPlatform(world, posX+3, posY, width, heigth);
 		StaticPlatform s4Platform = new StaticPlatform(world, posX, posY-1, width+100, heigth);
 
-		PlatformActivator activator1 = new PlatformActivator(world, 2,4,  0.2f);
+		PlatformActivator pActivator = new PlatformActivator(world, 2,4,  0.2f);
 		
 		
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform, Color.RED, true);
 		StaticPlatformActor s2Skin = new StaticPlatformActor(s2Platform, Color.BLUE, false);
 		StaticPlatformActor s3Skin = new StaticPlatformActor(s3Platform, Color.GREEN, true);
 		StaticPlatformActor s4Skin = new StaticPlatformActor(s4Platform, Color.BLACK, false);
+		
+		PlatformActivatorActor a1Skin = new PlatformActivatorActor(pActivator, Color.RED, true);
 		
 		
 		width = 0.2f;
@@ -111,6 +114,8 @@ public class FirstLevel implements Screen {
 		stage.addActor(s2Skin);
 		stage.addActor(s3Skin);
 		stage.addActor(s4Skin);
+		
+		stage.addActor(a1Skin);
 		camera.update();
 		
 		world.setContactListener(new ContactListener(){
