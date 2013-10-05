@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.pix.mind.PixMindGame;
 
 public class PlatformActivator {
-	static public final String PLATFORM_ID = "platformActivator";
+	static public final String ACTIVATOR_ID = "platformActivator";
 	public float ActivatorRadius = 1;
 	public float posX = 0;
 	public float posY = 0;
@@ -36,9 +36,10 @@ public class PlatformActivator {
 			fixtureDef.density = 0.5f; 
 			fixtureDef.friction = 0.4f;
 			fixtureDef.restitution = 0.6f; // Make it bounce a little bit
+			fixtureDef.isSensor = true; //dont collide phisically but register collide information
 			// Create our fixture and attach it to the body
 			Fixture fixture = groundBody.createFixture(fixtureDef);
-			fixture.setUserData(StaticPlatform.PLATFORM_ID);
+			fixture.setUserData(ACTIVATOR_ID);
 			// Clean up after ourselves
 			groundBox.dispose();
 			ActivatorRadius = radius;
