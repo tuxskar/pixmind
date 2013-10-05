@@ -19,6 +19,7 @@ import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.PixGuy;
+import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.controllers.ArrowController;
 import com.pix.mind.controllers.PixGuyController;
@@ -87,6 +88,9 @@ public class FirstLevel implements Screen {
 		StaticPlatform s3Platform = new StaticPlatform(world, posX+3, posY, width, heigth);
 		StaticPlatform s4Platform = new StaticPlatform(world, posX, posY-1, width+100, heigth);
 
+		PlatformActivator activator1 = new PlatformActivator(world, 2,4,  0.2f);
+		
+		
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform, Color.RED, true);
 		StaticPlatformActor s2Skin = new StaticPlatformActor(s2Platform, Color.BLUE, false);
 		StaticPlatformActor s3Skin = new StaticPlatformActor(s3Platform, Color.GREEN, true);
