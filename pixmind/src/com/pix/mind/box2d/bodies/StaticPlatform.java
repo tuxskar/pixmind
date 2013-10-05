@@ -15,7 +15,7 @@ public class StaticPlatform {
 	public float PlatformHeight = 2;
 	public float posX = 0;
 	public float posY = 0;
-	
+	public Fixture fixture;
 	public StaticPlatform(World world, float posX, float posY, float width, float height){
 			// Create our body definition
 			BodyDef groundBodyDef =new BodyDef();  
@@ -38,8 +38,8 @@ public class StaticPlatform {
 			fixtureDef.friction = 0.4f;
 			fixtureDef.restitution = 0.6f; // Make it bounce a little bit
 			// Create our fixture and attach it to the body
-			Fixture fixture = groundBody.createFixture(fixtureDef);
-			fixture.setUserData(StaticPlatform.PLATFORM_ID);
+			fixture = groundBody.createFixture(fixtureDef);
+			fixture.setUserData(PLATFORM_ID);
 			// Clean up after ourselves
 			groundBox.dispose();
 			PlatformWidth = width;
