@@ -91,7 +91,7 @@ public class FirstLevel implements Screen {
 				width, heigth);
 		StaticPlatform s4Platform = new StaticPlatform(world, posX, posY - 1,
 				width + 100, heigth);
-
+ //s
 		PlatformActivator pActivator = new PlatformActivator(world, 2, 4, 0.2f);
 
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform,
