@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.pix.mind.PixMindGame;
 import com.pix.mind.box2d.bodies.PixGuy;
 
 public class ArrowController extends PixGuyController {
@@ -34,11 +35,11 @@ public class ArrowController extends PixGuyController {
 		if (Gdx.input.isTouched()) {
 			System.out.println("x: " + Gdx.input.getX() + " y: "
 					+ Gdx.input.getY());
-			if (Gdx.input.getY() > stage.getHeight() * 3 / 4) {
-				if (Gdx.input.getX() < stage.getWidth() / 6) {
+			if (Gdx.input.getY() >  PixMindGame.h * 3 / 4) {
+				if (Gdx.input.getX() <  PixMindGame.w / 6) {
 					pixGuy.moveLeft(Gdx.graphics.getDeltaTime());
 				}
-				if (Gdx.input.getX() > stage.getWidth() - stage.getWidth() / 6) {
+				if (Gdx.input.getX() >  PixMindGame.w - PixMindGame.w / 6) {
 					this.pixGuy.moveRight(Gdx.graphics.getDeltaTime());
 				}
 			}

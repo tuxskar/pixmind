@@ -66,11 +66,14 @@ public class FirstLevel implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-
-		camera = new OrthographicCamera(w * PixMindGame.WORLD_TO_BOX, h * PixMindGame.WORLD_TO_BOX);
-		camera.translate(w/2 * PixMindGame.WORLD_TO_BOX, h/2 * PixMindGame.WORLD_TO_BOX);
+		//float w = Gdx.graphics.getWidth();
+		//float h = Gdx.graphics.getHeight();
+		
+	
+		
+		
+		camera = new OrthographicCamera(PixMindGame.w * PixMindGame.WORLD_TO_BOX, PixMindGame.h * PixMindGame.WORLD_TO_BOX);
+		camera.translate(PixMindGame.w/2 * PixMindGame.WORLD_TO_BOX, PixMindGame.h/2 * PixMindGame.WORLD_TO_BOX);
 		// Box2d code
 		world = new World(new Vector2(0, -10), true);
 		debugRenderer = new Box2DDebugRenderer();
@@ -94,8 +97,8 @@ public class FirstLevel implements Screen {
 		heigth = 0.2f;
 		// main character initialization
 		pixGuy = new PixGuy(world, posX+2, posY+3, width, heigth);
-		stage = new Stage(w, h, true);
-		stageGui = new Stage(w, h, true);
+		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
+		stageGui = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 		PixGuyController controller = new ArrowController(pixGuy, stageGui);
 		pixGuy.setController(controller);
 		pixGuySkin = new PixGuyActor(pixGuy);
