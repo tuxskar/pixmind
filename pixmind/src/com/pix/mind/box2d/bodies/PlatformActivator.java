@@ -11,7 +11,7 @@ import com.pix.mind.PixMindGame;
 
 public class PlatformActivator {
 	static public final String ACTIVATOR_ID = "platformActivator";
-	public float ActivatorRadius = 1;
+	public float radius = 1;
 	public float posX = 0;
 	public float posY = 0;
 	
@@ -42,7 +42,7 @@ public class PlatformActivator {
 			fixture.setUserData(ACTIVATOR_ID);
 			// Clean up after ourselves
 			groundBox.dispose();
-			ActivatorRadius = radius;
+			this.radius = radius;
 			this.posX = posX;
 			this.posY = posY;
 	}
@@ -55,8 +55,8 @@ public class PlatformActivator {
 		return posY * PixMindGame.BOX_TO_WORLD ;
 	}
 
-	public float getActivatorRadius() {
-		return ActivatorRadius;
+	public float getRadius() {
+		return radius;
 	}
 
 	

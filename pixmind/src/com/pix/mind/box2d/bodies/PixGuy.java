@@ -8,13 +8,12 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.pix.mind.PixMindGame;
-import com.pix.mind.controllers.AccController;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixGuy {
 	static public final String PIX_ID = "pixguy";
-	public static float PixWidth = 30;	
-	public static float PixHeight = 30;
+	public float pixWidth = 30;	
+	public float pixHeight = 30;
 	
 	// pixmind main character
 	private float posX, posY;
@@ -55,17 +54,17 @@ public class PixGuy {
 		
 		// Clean up after ourselves
 		groundBox.dispose();
-		PixGuy.PixHeight = height * PixMindGame.BOX_TO_WORLD;
-		PixGuy.PixWidth = width * PixMindGame.BOX_TO_WORLD;
+		this.pixHeight = height * PixMindGame.BOX_TO_WORLD;
+		this.pixWidth = width * PixMindGame.BOX_TO_WORLD;
 
 	}
 	
 	public float getPosX() {
-		return posX * PixMindGame.BOX_TO_WORLD - PixGuy.PixWidth/2;
+		return posX * PixMindGame.BOX_TO_WORLD - this.pixWidth/2;
 	}
 
 	public float getPosY() {
-		return posY * PixMindGame.BOX_TO_WORLD - PixGuy.PixHeight/2;
+		return posY * PixMindGame.BOX_TO_WORLD - this.pixHeight/2;
 	}
 
 	public void setController(PixGuyController controller){
