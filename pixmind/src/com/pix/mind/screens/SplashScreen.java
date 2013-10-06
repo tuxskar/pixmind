@@ -16,8 +16,7 @@ public class SplashScreen implements  Screen{
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 	if (game.getAssetManager().update()) {
-			
-		//game.getAssetManager().get("data/textureatlas/todo.pack", TextureAtlas.class)));
+	
 		game.setSkin(new Skin(game.getAssetManager().get(
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
 		game.changeLevel(game.getFirstLevel());
