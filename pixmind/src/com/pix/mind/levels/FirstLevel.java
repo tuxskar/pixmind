@@ -143,12 +143,12 @@ public class FirstLevel implements Screen {
 				}
 				//get fixture Platform
 				if (contact.getFixtureA().getUserData()
-						.equals(StaticPlatform.PLATFORM_ID)
+						instanceof StaticPlatformActor
 						|| contact.getFixtureB().getUserData()
-								.equals(StaticPlatform.PLATFORM_ID)) {
+								instanceof StaticPlatformActor ) {
 		
 					if (contact.getFixtureA().getUserData()
-							.equals(StaticPlatform.PLATFORM_ID)) {
+							instanceof StaticPlatformActor) {
 						fixPlatform = contact.getFixtureA();
 					
 					} else {
@@ -161,21 +161,25 @@ public class FirstLevel implements Screen {
 				
 				//get fixture PlatformActivator
 				if (contact.getFixtureA().getUserData()
-						.equals(PlatformActivator.ACTIVATOR_ID)
+						instanceof PlatformActivatorActor
 						|| contact.getFixtureB().getUserData()
-								.equals(PlatformActivator.ACTIVATOR_ID)) {
+								instanceof PlatformActivatorActor) {
 		
 					if (contact.getFixtureA().getUserData()
-							.equals(PlatformActivator.ACTIVATOR_ID)) {
+							instanceof PlatformActivatorActor) {
 						fixActivator = contact.getFixtureA();
 					
 					} else {
 						
 						fixActivator = contact.getFixtureB();
 					}
+					
 				}
 				
-				
+				if(fixActivator!=null){
+					PlatformActivatorActor platformActivator = (PlatformActivatorActor)fixActivator.getUserData();
+					platformActivator.setActive(false);
+				}
 				
 		
 				//jump only if collide with a platform and its not sensor
