@@ -1,5 +1,7 @@
 package com.pix.mind.levels;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -34,7 +36,9 @@ public class FirstLevel implements Screen {
 	private Image pixGuySkin;
 	private Stage stage;
 	private Stage stageGui;
-
+	private ArrayList<StaticPlatformActor> platformList; 
+	private ArrayList<PlatformActivatorActor> activatorList; 
+	
 	public FirstLevel(PixMindGame game) {
 		this.game = game;
 
@@ -81,6 +85,10 @@ public class FirstLevel implements Screen {
 	
 		debugRenderer = new Box2DDebugRenderer();
 
+		
+		platformList = new ArrayList<StaticPlatformActor>();
+		activatorList = new ArrayList<PlatformActivatorActor>();
+		
 		// comment to be commited
 		float posX = 2f, posY = 2f, width = 1f, heigth = 0.2f;
 		StaticPlatform sPlatform = new StaticPlatform(world, posX, posY, width,
@@ -93,6 +101,8 @@ public class FirstLevel implements Screen {
 				width + 100, heigth);
  //s
 		PlatformActivator pActivator = new PlatformActivator(world, 2, 4, 0.2f);
+		PlatformActivator p2Activator = new PlatformActivator(world, 6, 3, 0.2f);
+		PlatformActivator p3Activator= new PlatformActivator(world, 0, 2, 0.2f);
 
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform,
 				Color.RED, true);
@@ -102,10 +112,23 @@ public class FirstLevel implements Screen {
 				Color.GREEN, false);
 		StaticPlatformActor s4Skin = new StaticPlatformActor(s4Platform,
 				Color.BLACK, true);
+	
+		platformList.add(s1Skin);
+		platformList.add(s2Skin);
+		platformList.add(s3Skin);
+		platformList.add(s4Skin);
 
 		PlatformActivatorActor a1Skin = new PlatformActivatorActor(pActivator,
 				Color.RED, true);
+		PlatformActivatorActor a2Skin = new PlatformActivatorActor(p2Activator,
+				Color.RED, true);
+		PlatformActivatorActor a3Skin = new PlatformActivatorActor(p3Activator,
+				Color.GREEN, false);
 
+		activatorList.add(a1Skin);
+		activatorList.add(a2Skin);
+		activatorList.add(a3Skin);
+		
 		width = 0.2f;
 		heigth = 0.2f;
 		// main character initialization
@@ -123,6 +146,8 @@ public class FirstLevel implements Screen {
 		stage.addActor(s4Skin);
 
 		stage.addActor(a1Skin);
+		stage.addActor(a2Skin);
+		stage.addActor(a3Skin);
 		camera.update();
 
 		world.setContactListener(new ContactListener() {
@@ -141,6 +166,7 @@ public class FirstLevel implements Screen {
 					// fixPlatform = contact.getFixtureA();
 					fixGuy = contact.getFixtureB();
 				}
+				
 				//get fixture Platform
 				if (contact.getFixtureA().getUserData()
 						instanceof StaticPlatformActor
@@ -176,9 +202,34 @@ public class FirstLevel implements Screen {
 					
 				}
 				
+				
+				//collision with a Activator and it is active
 				if(fixActivator!=null){
-					PlatformActivatorActor platformActivator = (PlatformActivatorActor)fixActivator.getUserData();
-					platformActivator.setActive(false);
+					PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator.getUserData();
+					if(platformActivatorActor.isActive()){
+						//platformActivatorActor.setActive(false);
+						//get all platform of the same color and  change state 
+						for(StaticPlatformActor sp : platformList){
+							if(platformActivatorActor.color.equals(sp.color))
+							sp.setActive(false);
+						}
+						//get all activator of the same color and change state 
+						for(PlatformActivatorActor sp : activatorList){
+							if(platformActivatorActor.color.equals(sp.color))
+							sp.setActive(false);
+						}
+					}else{
+						//platformActivatorActor.setActive(true);
+						//get all platform of the same color and  change state  
+						for(StaticPlatformActor sp : platformList){
+							if(platformActivatorActor.color.equals(sp.color))
+							sp.setActive(true);
+						}	
+						for(PlatformActivatorActor sp : activatorList){
+							if(platformActivatorActor.color.equals(sp.color))
+							sp.setActive(true);
+						}
+					}				
 				}
 				
 		

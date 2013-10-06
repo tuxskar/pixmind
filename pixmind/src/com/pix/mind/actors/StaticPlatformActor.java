@@ -8,7 +8,7 @@ import com.pix.mind.box2d.bodies.StaticPlatform;
 
 public class StaticPlatformActor extends Image {
 	StaticPlatform staticPlatform;
-	Color color;
+	public Color color;
 	boolean active;
 	public StaticPlatformActor(StaticPlatform platform, Color color,
 			boolean active) {

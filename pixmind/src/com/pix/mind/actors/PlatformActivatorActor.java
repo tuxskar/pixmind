@@ -13,7 +13,7 @@ public class PlatformActivatorActor extends Image {
 	private PlatformActivator platformActivator;
 	private boolean active = true;
 	private float radius;
-	Color color;
+	public Color color;
 	
 	public PlatformActivatorActor(PlatformActivator activator, Color color, boolean active){
 		super(PixMindGame.getSkin().getDrawable("circle"));
@@ -40,11 +40,11 @@ public class PlatformActivatorActor extends Image {
 
 	public void setActive(boolean active) {
 		if (active) {
-			platformActivator.fixture.setSensor(false);
+			
 			this.setColor(color.r, color.g, color.b, 1);
 			this.active = true;
 		} else {
-			platformActivator.fixture.setSensor(true);
+			
 			this.setColor(color.r, color.g, color.b, 0.2f);
 			this.active = false;
 		}
