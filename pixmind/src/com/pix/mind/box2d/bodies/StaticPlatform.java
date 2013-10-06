@@ -39,7 +39,7 @@ public class StaticPlatform {
 			fixtureDef.restitution = 0.6f; // Make it bounce a little bit
 			// Create our fixture and attach it to the body
 			fixture = groundBody.createFixture(fixtureDef);
-			fixture.setUserData(PLATFORM_ID);
+			//fixture.setUserData(PLATFORM_ID);
 			// Clean up after ourselves
 			groundBox.dispose();
 			PlatformWidth = width;

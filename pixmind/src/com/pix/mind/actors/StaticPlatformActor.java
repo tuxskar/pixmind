@@ -16,6 +16,7 @@ public class StaticPlatformActor extends Image {
 		
 		
 		staticPlatform = platform;
+		staticPlatform.fixture.setUserData(this);
 		this.setSize(staticPlatform.PlatformWidth * PixMindGame.BOX_TO_WORLD
 				* 2, staticPlatform.PlatformHeight * PixMindGame.BOX_TO_WORLD
 				* 2);
