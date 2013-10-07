@@ -1,5 +1,6 @@
 package com.pix.mind.box2d.bodies;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -11,10 +12,10 @@ import com.pix.mind.PixMindGame;
 
 public class PlatformActivator {
 	static public final String ACTIVATOR_ID = "platformActivator";
-	public float ActivatorRadius = 1;
+	public float radius = 1;
 	public float posX = 0;
 	public float posY = 0;
-	
+	public Fixture fixture;
 	public PlatformActivator(World world, float posX, float posY, float radius){
 			// Create our body definition
 			BodyDef groundBodyDef =new BodyDef();  
@@ -38,13 +39,14 @@ public class PlatformActivator {
 			fixtureDef.restitution = 0.6f; // Make it bounce a little bit
 			fixtureDef.isSensor = true; //dont collide phisically but register collide information
 			// Create our fixture and attach it to the body
-			Fixture fixture = groundBody.createFixture(fixtureDef);
-			fixture.setUserData(ACTIVATOR_ID);
+			fixture = groundBody.createFixture(fixtureDef);
+			//fixture.setUserData(ACTIVATOR_ID);
 			// Clean up after ourselves
 			groundBox.dispose();
-			ActivatorRadius = radius;
+			this.radius = radius;
 			this.posX = posX;
 			this.posY = posY;
+			
 	}
 
 	public float getPosX() {
@@ -55,8 +57,8 @@ public class PlatformActivator {
 		return posY * PixMindGame.BOX_TO_WORLD ;
 	}
 
-	public float getActivatorRadius() {
-		return ActivatorRadius;
+	public float getRadius() {
+		return radius;
 	}
 
 	
