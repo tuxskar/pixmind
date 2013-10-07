@@ -35,7 +35,7 @@ public class PixGuy {
 
 		// Create our body in the world using our body definition
 		body = world.createBody(bodyDef);
-	
+
 		// Create a polygon shape
 		PolygonShape groundBox = new PolygonShape();
 		// Set the polygon shape as a box which is twice the size of our view
