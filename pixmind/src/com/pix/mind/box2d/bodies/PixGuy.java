@@ -18,7 +18,7 @@ public class PixGuy {
 	
 	// pixmind main character
 	private float posX, posY;
-	private Body body;
+	public  Body body;
 	static final float SPEED = 1;
 	public PixGuyController controller;
 	
@@ -46,8 +46,8 @@ public class PixGuy {
 		// Create a fixture definition to apply our shape to
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = groundBox;
-		fixtureDef.density = 0.5f;
-		fixtureDef.friction = 0.4f;
+		fixtureDef.density = 1f;
+		//fixtureDef.friction = 0.4f;
 		//fixtureDef.restitution = 0.5f; // Make it bounce a little bit
 		// Create our fixture and attach it to the body
 		Fixture fixture = body.createFixture(fixtureDef);
@@ -80,21 +80,33 @@ public class PixGuy {
 	public void setActualPosition() {
 		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
+		this.posX = body.getTransform().getPosition().x;
+		if(body.getLinearVelocity().x >1){
+			body.setLinearVelocity(1, body.getLinearVelocity().y);
+		}
+		if(body.getLinearVelocity().x <-1){
+			body.setLinearVelocity(-1, body.getLinearVelocity().y);
+		}
+		
+		
 		body.setTransform(this.posX, this.posY, 0);
+		//System.out.println(body.getLinearVelocity().x + " " + body.getLinearVelocity().y);
+	
 	}
 	
 	
 	public void moveLeft(float deltaTime) {
 	
-		body.applyForce(new Vector2(-0.1f, 0),
+		body.applyForce(new Vector2(-1f, 0),
 				body.getWorldCenter(), true);
-		this.posX = body.getTransform().getPosition().x;
+		
+		
 	}
 
 	public void moveRight(float deltaTime) {
-		body.applyForce(new Vector2(0.1f, 0),
+		body.applyForce(new Vector2(1f, 0),
 				body.getWorldCenter(), true);
-		this.posX = body.getTransform().getPosition().x;
+	
 	
 	}
 }

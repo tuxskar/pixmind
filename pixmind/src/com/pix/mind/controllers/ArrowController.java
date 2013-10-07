@@ -1,16 +1,18 @@
 package com.pix.mind.controllers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.box2d.bodies.PixGuy;
 
 public class ArrowController extends PixGuyController {
 	private Stage stage;
-
-	public ArrowController(PixGuy pixGuy, Stage stage) {
+	boolean ultimo;
+	public ArrowController(final PixGuy pixGuy, final Stage stage) {
 		super(pixGuy);
 		this.stage = stage;
 		Drawable arrowTexture =	 PixMindGame.getSkin().getDrawable("leftArrow");
@@ -29,22 +31,35 @@ public class ArrowController extends PixGuyController {
 				arrowHeight / 10);
 		this.stage.addActor(leftArrow);
 		this.stage.addActor(rightArrow);
+		
 	}
 
 	@Override
 	public void movements() {
+		
+		
 		if (Gdx.input.isTouched()) {
-			System.out.println("x: " + Gdx.input.getX() + " y: "
-					+ Gdx.input.getY());
+			System.out.println("touch");
+		//	System.out.println("x: " + Gdx.input.getX() + " y: "
+	//				+ Gdx.input.getY());
 			if (Gdx.input.getY() >  stage.getHeight() * 3 / 4) {
-				if (Gdx.input.getX() <  stage.getWidth() / 6) {
+				if (Gdx.input.getX() <  stage.getWidth() / 6 ) {
+				
 					pixGuy.moveLeft(Gdx.graphics.getDeltaTime());
+					
 				}
 				if (Gdx.input.getX() >  stage.getWidth() - stage.getWidth() / 6) {
-					this.pixGuy.moveRight(Gdx.graphics.getDeltaTime());
+					
+					pixGuy.moveRight(Gdx.graphics.getDeltaTime());
+					
 				}
 			}
-			// Gdx.input.
+			
+		}else{//if it is not touched, set horizontal velocity to 0 to eliminate inercy.
+			
+			pixGuy.body.setLinearVelocity(0,pixGuy.body.getLinearVelocity().y);
+			
 		}
+		
 	}
 }
