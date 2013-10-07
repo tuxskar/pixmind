@@ -260,6 +260,7 @@ public class FirstLevel implements Screen {
 				//only jump if bottom position of pixguy is equal or above of top position of the platform
 					
 					//opoppo
+				
 					StaticPlatformActor platformActor =  (StaticPlatformActor) fixPlatform.getUserData();
 					
 					float topPosPlatform = fixPlatform.getBody().getPosition().y + platformActor.getHeight()*PixMindGame.WORLD_TO_BOX/2;
