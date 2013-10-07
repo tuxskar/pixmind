@@ -38,10 +38,10 @@ public class FirstLevel implements Screen {
 	private Stage stageGui;
 	private ArrayList<StaticPlatformActor> platformList; 
 	private ArrayList<PlatformActivatorActor> activatorList; 
+	public String levelTitle = "First Level";
 	
 	public FirstLevel(PixMindGame game) {
 		this.game = game;
-
 	}
 
 	@Override
