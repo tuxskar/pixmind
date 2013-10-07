@@ -27,7 +27,7 @@ public class PlatformActivatorActor extends Image {
 		
 		platformActivator.fixture.setUserData(this);
 		if (!active){
-			this.setColor(color.r, color.g, color.b, 0.1f);	
+			this.setColor(color.r, color.g, color.b, 0.2f);	
 			this.active = false;
 		}
 		
