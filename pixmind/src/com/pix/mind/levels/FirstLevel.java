@@ -90,38 +90,48 @@ public class FirstLevel implements Screen {
 		activatorList = new ArrayList<PlatformActivatorActor>();
 		
 		// comment to be commited
-		float posX = 2f, posY = 2f, width = 1f, heigth = 0.2f;
-		StaticPlatform sPlatform = new StaticPlatform(world, posX, posY, width,
-				heigth);
-		StaticPlatform s2Platform = new StaticPlatform(world, posX + 1,
-				posY + 1, width, heigth);
-		StaticPlatform s3Platform = new StaticPlatform(world, posX + 3, posY,
-				width, heigth);
-		StaticPlatform s4Platform = new StaticPlatform(world, posX, posY - 1,
-				width + 100, heigth);
+		//float posX = 2f, posY = 2f, width = 1f, heigth = 0.2f;
+		StaticPlatform sPlatform = new StaticPlatform(world, 8,5, 1,0.1f);
+		StaticPlatform s2Platform = new StaticPlatform(world,3, 2,1,0.1f);
+		StaticPlatform s3Platform = new StaticPlatform(world, 5, 3,1,0.1f);
+		StaticPlatform s4Platform = new StaticPlatform(world, 6,4,1,0.1f);
+		StaticPlatform s5Platform = new StaticPlatform(world, 1,1,1,0.1f);
+		StaticPlatform s6Platform = new StaticPlatform(world, 2,3,1,0.1f);
+		StaticPlatform s7Platform = new StaticPlatform(world, 1,4,1,0.1f);
+
+		
  //s
-		PlatformActivator pActivator = new PlatformActivator(world, 2, 4, 0.2f);
-		PlatformActivator p2Activator = new PlatformActivator(world, 6, 3, 0.2f);
-		PlatformActivator p3Activator= new PlatformActivator(world, 0, 2, 0.2f);
+		PlatformActivator pActivator = new PlatformActivator(world, 0, 5, 0.1f);
+		PlatformActivator p2Activator = new PlatformActivator(world, 8, 6, 0.1f);
+		PlatformActivator p3Activator= new PlatformActivator(world, 0, 2, 0.1f);
 
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform,
-				Color.RED, true);
+				Color.RED, false);
 		StaticPlatformActor s2Skin = new StaticPlatformActor(s2Platform,
 				Color.BLUE, true);
 		StaticPlatformActor s3Skin = new StaticPlatformActor(s3Platform,
 				Color.GREEN, false);
 		StaticPlatformActor s4Skin = new StaticPlatformActor(s4Platform,
 				Color.BLACK, true);
+		StaticPlatformActor s5Skin = new StaticPlatformActor(s5Platform,
+				Color.BLACK, true);
+		StaticPlatformActor s6Skin = new StaticPlatformActor(s6Platform,
+				Color.BLACK, true);
+		StaticPlatformActor s7Skin = new StaticPlatformActor(s7Platform,
+				Color.BLACK, true);
 	
 		platformList.add(s1Skin);
 		platformList.add(s2Skin);
 		platformList.add(s3Skin);
 		platformList.add(s4Skin);
+		platformList.add(s5Skin);
+		platformList.add(s6Skin);
+		platformList.add(s7Skin);
 
 		PlatformActivatorActor a1Skin = new PlatformActivatorActor(pActivator,
-				Color.RED, true);
+				Color.RED, false);
 		PlatformActivatorActor a2Skin = new PlatformActivatorActor(p2Activator,
-				Color.RED, true);
+				Color.BLACK, true);
 		PlatformActivatorActor a3Skin = new PlatformActivatorActor(p3Activator,
 				Color.GREEN, false);
 
@@ -129,10 +139,9 @@ public class FirstLevel implements Screen {
 		activatorList.add(a2Skin);
 		activatorList.add(a3Skin);
 		
-		width = 0.2f;
-		heigth = 0.2f;
+	
 		// main character initialization
-		pixGuy = new PixGuy(world, posX + 2, posY + 3, width, heigth);
+		pixGuy = new PixGuy(world, 4,4, 0.2f, 0.2f);
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		stageGui = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
 				true);
@@ -144,6 +153,9 @@ public class FirstLevel implements Screen {
 		stage.addActor(s2Skin);
 		stage.addActor(s3Skin);
 		stage.addActor(s4Skin);
+		stage.addActor(s5Skin);
+		stage.addActor(s6Skin);
+		stage.addActor(s7Skin);
 
 		stage.addActor(a1Skin);
 		stage.addActor(a2Skin);
@@ -203,12 +215,17 @@ public class FirstLevel implements Screen {
 				}
 				
 				
-				//collision with a Activator and it is active
+				//collision with a Activator
 				if(fixActivator!=null){
 					PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator.getUserData();
 					if(platformActivatorActor.isActive()){
-						//platformActivatorActor.setActive(false);
-						//get all platform of the same color and  change state 
+						//if activator is black go to next level
+						if(platformActivatorActor.color.equals(Color.BLACK)){
+							game.changeLevel(game.getSecondLevel());
+						}
+							
+						//get all platform of the same color and  change state
+						
 						for(StaticPlatformActor sp : platformList){
 							if(platformActivatorActor.color.equals(sp.color))
 							sp.setActive(false);
