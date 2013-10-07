@@ -258,9 +258,16 @@ public class FirstLevel implements Screen {
 				//jump only if collide with a platform and its not sensor
 				if(fixPlatform!=null && !fixPlatform.isSensor()){
 				//only jump if bottom position of pixguy is equal or above of top position of the platform
-					System.out.println(fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX);
-					System.out.println(fixPlatform.getBody().getPosition().y);
-					if(fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX >fixPlatform.getBody().getPosition().y)
+					
+					
+					StaticPlatformActor platformActor =  (StaticPlatformActor) fixPlatform.getUserData();
+					
+					float topPosPlatform = fixPlatform.getBody().getPosition().y + platformActor.getHeight()*PixMindGame.WORLD_TO_BOX/2;
+					float bottomPosGuy = fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX/2;
+
+					System.out.println(topPosPlatform);
+					System.out.println(bottomPosGuy);
+					if(bottomPosGuy>=topPosPlatform)
 					{
 					fixGuy.getBody().setLinearVelocity(0, 0);
 					fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.1f),

@@ -1,5 +1,6 @@
 package com.pix.mind.box2d.bodies;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -34,7 +35,7 @@ public class PixGuy {
 
 		// Create our body in the world using our body definition
 		body = world.createBody(bodyDef);
-
+	
 		// Create a polygon shape
 		PolygonShape groundBox = new PolygonShape();
 		// Set the polygon shape as a box which is twice the size of our view
@@ -84,10 +85,16 @@ public class PixGuy {
 	
 	
 	public void moveLeft(float deltaTime) {
-		this.posX -= PixGuy.SPEED * deltaTime;
+	
+		body.applyForce(new Vector2(-0.1f, 0),
+				body.getWorldCenter(), true);
+		this.posX = body.getTransform().getPosition().x;
 	}
 
 	public void moveRight(float deltaTime) {
-		this.posX += PixGuy.SPEED * deltaTime;
+		body.applyForce(new Vector2(0.1f, 0),
+				body.getWorldCenter(), true);
+		this.posX = body.getTransform().getPosition().x;
+	
 	}
 }
