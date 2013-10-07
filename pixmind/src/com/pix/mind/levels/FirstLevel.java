@@ -258,13 +258,12 @@ public class FirstLevel implements Screen {
 				//jump only if collide with a platform and its not sensor
 				if(fixPlatform!=null && !fixPlatform.isSensor()){
 				//only jump if bottom position of pixguy is equal or above of top position of the platform
-				//	System.out.println(System.out.println(fixGuy.getBody().getPosition().y););
+					System.out.println(fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX);
 					System.out.println(fixPlatform.getBody().getPosition().y);
-					if((fixGuy.getBody().getPosition().y)>fixPlatform.getBody().getPosition().y){
+					if(fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX >fixPlatform.getBody().getPosition().y)
 					fixGuy.getBody().setLinearVelocity(0, 0);
 					fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.1f),
 					fixGuy.getBody().getWorldCenter(), true);
-					}
 				}
 			}
 

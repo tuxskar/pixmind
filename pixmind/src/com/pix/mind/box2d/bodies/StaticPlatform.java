@@ -36,7 +36,7 @@ public class StaticPlatform {
 			fixtureDef.shape = groundBox;
 			fixtureDef.density = 0.5f; 
 			fixtureDef.friction = 0.4f;
-			fixtureDef.restitution = 0.6f; // Make it bounce a little bit
+			//fixtureDef.restitution = 0.6f; // Make it bounce a little bit
 			// Create our fixture and attach it to the body
 			fixture = groundBody.createFixture(fixtureDef);
 			//fixture.setUserData(PLATFORM_ID);
