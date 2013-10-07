@@ -261,9 +261,11 @@ public class FirstLevel implements Screen {
 					System.out.println(fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX);
 					System.out.println(fixPlatform.getBody().getPosition().y);
 					if(fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX >fixPlatform.getBody().getPosition().y)
+					{
 					fixGuy.getBody().setLinearVelocity(0, 0);
 					fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.1f),
 					fixGuy.getBody().getWorldCenter(), true);
+					}
 				}
 			}
 
