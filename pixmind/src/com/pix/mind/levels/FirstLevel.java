@@ -97,13 +97,14 @@ public class FirstLevel implements Screen {
 		StaticPlatform s4Platform = new StaticPlatform(world, 6,4,1,0.1f);
 		StaticPlatform s5Platform = new StaticPlatform(world, 1,1,1,0.1f);
 		StaticPlatform s6Platform = new StaticPlatform(world, 2,3,1,0.1f);
-		StaticPlatform s7Platform = new StaticPlatform(world, 1,4,1,0.1f);
+		StaticPlatform s7Platform = new StaticPlatform(world, 1.5f,4,1,0.1f);
 
 		
  //s
 		PlatformActivator pActivator = new PlatformActivator(world, 0, 5, 0.1f);
 		PlatformActivator p2Activator = new PlatformActivator(world, 8, 6, 0.1f);
 		PlatformActivator p3Activator= new PlatformActivator(world, 0, 2, 0.1f);
+		PlatformActivator p4Activator= new PlatformActivator(world, 2, 5, 0.1f);
 
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform,
 				Color.RED, false);
@@ -114,7 +115,7 @@ public class FirstLevel implements Screen {
 		StaticPlatformActor s4Skin = new StaticPlatformActor(s4Platform,
 				Color.BLACK, true);
 		StaticPlatformActor s5Skin = new StaticPlatformActor(s5Platform,
-				Color.BLACK, true);
+				Color.RED, false);
 		StaticPlatformActor s6Skin = new StaticPlatformActor(s6Platform,
 				Color.BLACK, true);
 		StaticPlatformActor s7Skin = new StaticPlatformActor(s7Platform,
@@ -134,10 +135,13 @@ public class FirstLevel implements Screen {
 				Color.BLACK, true);
 		PlatformActivatorActor a3Skin = new PlatformActivatorActor(p3Activator,
 				Color.GREEN, false);
+		PlatformActivatorActor a4Skin = new PlatformActivatorActor(p4Activator,
+				Color.BLUE, true);
 
 		activatorList.add(a1Skin);
 		activatorList.add(a2Skin);
 		activatorList.add(a3Skin);
+		activatorList.add(a4Skin);
 		
 	
 		// main character initialization
@@ -160,6 +164,7 @@ public class FirstLevel implements Screen {
 		stage.addActor(a1Skin);
 		stage.addActor(a2Skin);
 		stage.addActor(a3Skin);
+		stage.addActor(a4Skin);
 		camera.update();
 
 		world.setContactListener(new ContactListener() {
