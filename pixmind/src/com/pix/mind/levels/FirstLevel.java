@@ -50,7 +50,7 @@ public class FirstLevel implements Screen {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-		debugRenderer.render(world, camera.combined);
+	//	debugRenderer.render(world, camera.combined);
 		stage.draw();
 		stageGui.draw();
 		stage.getCamera().position.x = pixGuy.getPosX();
@@ -257,9 +257,14 @@ public class FirstLevel implements Screen {
 		
 				//jump only if collide with a platform and its not sensor
 				if(fixPlatform!=null && !fixPlatform.isSensor()){
-				fixGuy.getBody().setLinearVelocity(0, 0);
-				fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.1f),
-						fixGuy.getBody().getWorldCenter(), true);
+				//only jump if bottom position of pixguy is equal or above of top position of the platform
+				//	System.out.println(System.out.println(fixGuy.getBody().getPosition().y););
+					System.out.println(fixPlatform.getBody().getPosition().y);
+					if((fixGuy.getBody().getPosition().y)>fixPlatform.getBody().getPosition().y){
+					fixGuy.getBody().setLinearVelocity(0, 0);
+					fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.1f),
+					fixGuy.getBody().getWorldCenter(), true);
+					}
 				}
 			}
 

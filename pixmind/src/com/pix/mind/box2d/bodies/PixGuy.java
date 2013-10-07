@@ -12,8 +12,8 @@ import com.pix.mind.controllers.PixGuyController;
 
 public class PixGuy {
 	static public final String PIX_ID = "pixguy";
-	public float pixWidth = 30;	
-	public float pixHeight = 30;
+	public static float pixWidth = 30;	
+	public static float pixHeight = 30;
 	
 	// pixmind main character
 	private float posX, posY;
