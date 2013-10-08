@@ -19,8 +19,8 @@ public class ArrowController extends PixGuyController {
 		
 		Image leftArrow = new Image(arrowTexture);
 		Image rightArrow = new Image(arrowTexture);
-		float arrowWidth = PixMindGame.getSkin().getAtlas().findRegion("leftArrow").originalWidth;
-		float arrowHeight =PixMindGame.getSkin().getAtlas().findRegion("leftArrow").originalHeight;
+		float arrowWidth = 60;
+		float arrowHeight = 60;
 		leftArrow.setSize(arrowWidth, arrowHeight);
 		rightArrow.setSize(arrowWidth, arrowHeight);
 		rightArrow.setOrigin(arrowWidth / 2, arrowHeight/2);
