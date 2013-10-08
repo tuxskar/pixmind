@@ -7,7 +7,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
@@ -15,7 +17,9 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PixGuyActor;
@@ -39,6 +43,15 @@ public class FirstLevel implements Screen {
 	private ArrayList<StaticPlatformActor> platformList; 
 	private ArrayList<PlatformActivatorActor> activatorList; 
 	public String levelTitle = "First Level";
+	private PixGuyController controller;
+	
+	private boolean mapActive= false;
+	private boolean showingMap = false;
+	private boolean hidingMap = false;
+	// adjust this value to show the entire Level
+	// the zoom is pointing to 0,0 stage coordinate
+	public float zoom = 0.3f;  
+		
 	
 	public FirstLevel(PixMindGame game) {
 		this.game = game;
@@ -53,14 +66,21 @@ public class FirstLevel implements Screen {
 	//	debugRenderer.render(world, camera.combined);
 		stage.draw();
 		stageGui.draw();
+		
+		if(!mapActive){			
+		
 		stage.getCamera().position.x = pixGuy.getPosX();
-		stage.getCamera().position.y = pixGuy.getPosY();
+		stage.getCamera().position.y = pixGuy.getPosY();		
 		camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
-		camera.position.y = pixGuy.getPosY() * PixMindGame.WORLD_TO_BOX;
+		camera.position.y = pixGuy.getPosY() * PixMindGame.WORLD_TO_BOX;		
 		camera.update();
 		world.step(delta, 6, 2);
 		pixGuy.setActualPosition();
+		
+		
+		}
 		stage.act();
+		
 	}
 
 	@Override
@@ -152,10 +172,33 @@ public class FirstLevel implements Screen {
 		pixGuy = new PixGuy(world, 4,4, 0.2f, 0.2f);
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		stageGui = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
-				true);
+				true){
+
+					@Override
+					public boolean touchDown(int screenX, int screenY,
+							int pointer, int button) {
+						// TODO Auto-generated method stub
+						
+						if(screenY<100 && screenX<100 && !mapActive){
+							
+							showMap();
+							return true;
+						}
+						if(mapActive){
+							
+							hideMap();
+							return true;
+						}
+					
+						return true;
+						
+					}
+			
+		};
 		
+		Gdx.input.setInputProcessor(stageGui);
 		
-		PixGuyController controller = new ArrowController(pixGuy, stageGui);
+		controller = new ArrowController(pixGuy, stageGui);
 		pixGuy.setController(controller);
 		pixGuySkin = new PixGuyActor(pixGuy);
 		stage.addActor(pixGuySkin);
@@ -304,6 +347,60 @@ public class FirstLevel implements Screen {
 			}
 
 		});
+	}
+
+	
+	protected void hideMap() {
+		// TODO Auto-generated method stub
+		if(showingMap==false && hidingMap == false){
+			System.out.println("hiding MAP");
+		hidingMap = true;
+		
+		OrthographicCamera orthoCam = (OrthographicCamera) stage.getCamera();
+		orthoCam.position.x = pixGuySkin.getX();
+		orthoCam.position.y = pixGuySkin.getY();		
+		Action finalAction = new Action(){
+
+			@Override
+			public boolean act(float delta) {
+				// TODO Auto-generated method stub
+				mapActive = false;
+				hidingMap = false;
+				controller.setActive(true);
+				return true;
+			}
+			
+		};
+		
+		
+		stage.addAction(Actions.sequence(Actions.scaleTo(1f, 1f, 3), finalAction));
+		}
+		
+	}
+	
+	
+	protected void showMap() {
+		System.out.println("showing MAP");
+		mapActive = true;
+		showingMap = true;
+		controller.setActive(false);
+		OrthographicCamera orthoCam = (OrthographicCamera) stage.getCamera();
+		orthoCam.position.x = PixMindGame.w/2;
+		orthoCam.position.y = PixMindGame.h/2;	
+		
+		Action finalAction = new Action(){
+
+			@Override
+			public boolean act(float delta) {
+				// TODO Auto-generated method stub
+				showingMap = false;
+				System.out.println("final action show");
+				return true;
+			}			
+		};		
+		
+		stage.addAction(Actions.sequence(Actions.scaleTo(0.3f, 0.3f, 2,Interpolation.pow4),finalAction));	
+		
 	}
 
 	@Override
