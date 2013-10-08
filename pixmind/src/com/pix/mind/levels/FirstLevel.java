@@ -50,7 +50,7 @@ public class FirstLevel implements Screen {
 	private boolean hidingMap = false;
 	// adjust this value to show the entire Level
 	// the zoom is pointing to 0,0 stage coordinate
-	public float zoom = 0.3f;  
+	public float zoom = 0.5f;  
 		
 	
 	public FirstLevel(PixMindGame game) {
@@ -399,7 +399,7 @@ public class FirstLevel implements Screen {
 			}			
 		};		
 		
-		stage.addAction(Actions.sequence(Actions.scaleTo(0.3f, 0.3f, 2,Interpolation.pow4),finalAction));	
+		stage.addAction(Actions.sequence(Actions.scaleTo(zoom, zoom, 2,Interpolation.pow4),finalAction));	
 		
 	}
 
