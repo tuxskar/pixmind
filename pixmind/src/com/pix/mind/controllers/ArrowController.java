@@ -11,7 +11,7 @@ import com.pix.mind.box2d.bodies.PixGuy;
 
 public class ArrowController extends PixGuyController {
 	private Stage stage;
-	boolean ultimo;
+	
 	public ArrowController(final PixGuy pixGuy, final Stage stage) {
 		super(pixGuy);
 		this.stage = stage;
@@ -37,29 +37,24 @@ public class ArrowController extends PixGuyController {
 	@Override
 	public void movements() {
 		
-		
-		if (Gdx.input.isTouched()) {
+		if(isActive()){
 			
-		//	System.out.println("x: " + Gdx.input.getX() + " y: "
-	//				+ Gdx.input.getY());
+		if (Gdx.input.isTouched()) {	
 			if (Gdx.input.getY() >  stage.getHeight() * 3 / 4) {
-				if (Gdx.input.getX() <  stage.getWidth() / 6 ) {
-				
-					pixGuy.moveLeft(Gdx.graphics.getDeltaTime());
-					
+				if (Gdx.input.getX() <  stage.getWidth() / 6 ) {				
+					pixGuy.moveLeft(Gdx.graphics.getDeltaTime());					
 				}
-				if (Gdx.input.getX() >  stage.getWidth() - stage.getWidth() / 6) {
-					
-					pixGuy.moveRight(Gdx.graphics.getDeltaTime());
-					
+				if (Gdx.input.getX() >  stage.getWidth() - stage.getWidth() / 6) {					
+					pixGuy.moveRight(Gdx.graphics.getDeltaTime());					
 				}
-			}
-			
-		}else{//if it is not touched, set horizontal velocity to 0 to eliminate inercy.
-			
-			pixGuy.body.setLinearVelocity(0,pixGuy.body.getLinearVelocity().y);
-			
+			}			
+		}else{//if it is not touched, set horizontal velocity to 0 to eliminate inercy.			
+			pixGuy.body.setLinearVelocity(0,pixGuy.body.getLinearVelocity().y);			
+		}
 		}
 		
+		
 	}
+
+	
 }
