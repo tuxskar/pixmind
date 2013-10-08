@@ -20,12 +20,16 @@ public class PixMindGame extends Game {
 	public static final float BOX_TO_WORLD = 100f;
 	public static float h = 480; 		
 	public static float w = 800;
+	public static float fromRealScreenToFixedScreenWidth;
+	public static float fromRealScreenToFixedScreenHeight;
 	private AssetManager assetManager;
 	private static Skin skin;
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();
+		fromRealScreenToFixedScreenHeight = Gdx.graphics.getHeight() / PixMindGame.h;
+		fromRealScreenToFixedScreenWidth = Gdx.graphics.getWidth() / PixMindGame.w;
 		assetManager = new AssetManager();
 		firstLevel = new FirstLevel(this);
 		secondLevel = new SecondLevel(this);
