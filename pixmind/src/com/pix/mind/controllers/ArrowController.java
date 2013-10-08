@@ -39,7 +39,7 @@ public class ArrowController extends PixGuyController {
 		
 		
 		if (Gdx.input.isTouched()) {
-			System.out.println("touch");
+			
 		//	System.out.println("x: " + Gdx.input.getX() + " y: "
 	//				+ Gdx.input.getY());
 			if (Gdx.input.getY() >  stage.getHeight() * 3 / 4) {
