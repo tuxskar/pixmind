@@ -226,7 +226,8 @@ public class FirstLevel implements Screen {
 					if(platformActivatorActor.isActive()){
 						//if activator is black go to next level
 						if(platformActivatorActor.color.equals(Color.BLACK)){
-							game.changeLevel(game.getSecondLevel());
+//							game.changeLevel(game.getSecondLevel());
+							game.changeLevel(game.getFirstLevel());
 						}
 							
 						//get all platform of the same color and  change state

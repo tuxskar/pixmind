@@ -17,7 +17,6 @@ public class SecondLevel implements Screen{
 		// TODO Auto-generated method stub
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
 	}
 
 	@Override

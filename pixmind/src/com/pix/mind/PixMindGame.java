@@ -7,11 +7,13 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.SecondLevel;
+import com.pix.mind.screens.InterLevelScreen;
 import com.pix.mind.screens.SplashScreen;
 
 public class PixMindGame extends Game {
 	private FirstLevel firstLevel;
 	private SecondLevel secondLevel;
+	private InterLevelScreen interLevel;
 	
 	private SplashScreen splashScreen;
 	public static final float WORLD_TO_BOX = 0.01f;
@@ -28,7 +30,7 @@ public class PixMindGame extends Game {
 		firstLevel = new FirstLevel(this);
 		secondLevel = new SecondLevel(this);
 		splashScreen = new SplashScreen(this);
-		changeLevel(getSplashScreen());
+		this.setScreen(getSplashScreen());
 	}
 	
 	public FirstLevel getFirstLevel() {
@@ -41,7 +43,8 @@ public class PixMindGame extends Game {
 	}
 
 	public void changeLevel(Screen screen){
-		this.setScreen(screen);
+		interLevel = new InterLevelScreen(screen, this);
+		this.setScreen(interLevel);
 	}
 
 	public AssetManager getAssetManager() {
