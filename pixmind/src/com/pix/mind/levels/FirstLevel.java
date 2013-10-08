@@ -50,7 +50,7 @@ public class FirstLevel implements Screen {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-		debugRenderer.render(world, camera.combined);
+	//	debugRenderer.render(world, camera.combined);
 		stage.draw();
 		stageGui.draw();
 		stage.getCamera().position.x = pixGuy.getPosX();
@@ -98,6 +98,7 @@ public class FirstLevel implements Screen {
 		StaticPlatform s5Platform = new StaticPlatform(world, 1,1,1,0.1f);
 		StaticPlatform s6Platform = new StaticPlatform(world, 2,3,1,0.1f);
 		StaticPlatform s7Platform = new StaticPlatform(world, 1.5f,4,1,0.1f);
+		StaticPlatform s8Platform = new StaticPlatform(world, -15f,0,30,0.1f);
 
 		
  //s
@@ -120,6 +121,8 @@ public class FirstLevel implements Screen {
 				Color.BLACK, true);
 		StaticPlatformActor s7Skin = new StaticPlatformActor(s7Platform,
 				Color.BLACK, true);
+		StaticPlatformActor s8Skin = new StaticPlatformActor(s8Platform,
+				Color.BLACK, true);
 	
 		platformList.add(s1Skin);
 		platformList.add(s2Skin);
@@ -128,7 +131,8 @@ public class FirstLevel implements Screen {
 		platformList.add(s5Skin);
 		platformList.add(s6Skin);
 		platformList.add(s7Skin);
-
+		platformList.add(s8Skin);
+		
 		PlatformActivatorActor a1Skin = new PlatformActivatorActor(pActivator,
 				Color.RED, false);
 		PlatformActivatorActor a2Skin = new PlatformActivatorActor(p2Activator,
@@ -149,6 +153,8 @@ public class FirstLevel implements Screen {
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		stageGui = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
 				true);
+		
+		
 		PixGuyController controller = new ArrowController(pixGuy, stageGui);
 		pixGuy.setController(controller);
 		pixGuySkin = new PixGuyActor(pixGuy);
@@ -160,7 +166,8 @@ public class FirstLevel implements Screen {
 		stage.addActor(s5Skin);
 		stage.addActor(s6Skin);
 		stage.addActor(s7Skin);
-
+		stage.addActor(s8Skin);
+		
 		stage.addActor(a1Skin);
 		stage.addActor(a2Skin);
 		stage.addActor(a3Skin);
@@ -258,9 +265,23 @@ public class FirstLevel implements Screen {
 		
 				//jump only if collide with a platform and its not sensor
 				if(fixPlatform!=null && !fixPlatform.isSensor()){
-				fixGuy.getBody().setLinearVelocity(0, 0);
-				fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.1f),
-						fixGuy.getBody().getWorldCenter(), true);
+				//only jump if bottom position of pixguy is equal or above of top position of the platform
+					
+					//opoppo
+				
+					StaticPlatformActor platformActor =  (StaticPlatformActor) fixPlatform.getUserData();
+					
+					float topPosPlatform = fixPlatform.getBody().getPosition().y + platformActor.getHeight()*PixMindGame.WORLD_TO_BOX/2;
+					float bottomPosGuy = fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX/2;
+
+				//	System.out.println(topPosPlatform);
+					//System.out.println(bottomPosGuy);
+					if(bottomPosGuy>=topPosPlatform)
+					{
+					fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x , 0);
+					fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.2f),
+					fixGuy.getBody().getWorldCenter(), true);
+					}
 				}
 			}
 
