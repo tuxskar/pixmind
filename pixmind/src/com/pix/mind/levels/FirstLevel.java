@@ -179,7 +179,7 @@ public class FirstLevel implements Screen {
 							int pointer, int button) {
 						// TODO Auto-generated method stub
 						
-						if(screenY<100 && screenX<100 && !mapActive){
+						if(screenY/PixMindGame.fromRealScreenToFixedScreenWidth<100 && screenX/PixMindGame.fromRealScreenToFixedScreenHeight<100 && !mapActive){
 							
 							showMap();
 							return true;
