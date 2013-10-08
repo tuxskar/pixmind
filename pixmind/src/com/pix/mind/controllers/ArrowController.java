@@ -31,7 +31,7 @@ public class ArrowController extends PixGuyController {
 				arrowHeight / 10);
 		this.stage.addActor(leftArrow);
 		this.stage.addActor(rightArrow);
-		
+	
 	}
 
 	@Override
@@ -40,11 +40,12 @@ public class ArrowController extends PixGuyController {
 		if(isActive()){
 			
 		if (Gdx.input.isTouched()) {	
-			if (Gdx.input.getY() >  stage.getHeight() * 3 / 4) {
-				if (Gdx.input.getX() <  stage.getWidth() / 6 ) {				
+		//	System.out.println(Gdx.input.getY()/fromScreenToFixedScreenWidth + " " + Gdx.input.getX()/fromScreenToFixedScreenHeight );
+			if (Gdx.input.getY()/PixMindGame.fromRealScreenToFixedScreenWidth > PixMindGame.h-100) {
+				if (Gdx.input.getX()/PixMindGame.fromRealScreenToFixedScreenHeight <  100 ) {				
 					pixGuy.moveLeft(Gdx.graphics.getDeltaTime());					
 				}
-				if (Gdx.input.getX() >  stage.getWidth() - stage.getWidth() / 6) {					
+				if (Gdx.input.getX()/PixMindGame.fromRealScreenToFixedScreenHeight >  PixMindGame.w-100) {					
 					pixGuy.moveRight(Gdx.graphics.getDeltaTime());					
 				}
 			}			
