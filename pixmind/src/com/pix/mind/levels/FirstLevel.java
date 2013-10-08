@@ -171,7 +171,7 @@ public class FirstLevel implements Screen {
 		// main character initialization
 		pixGuy = new PixGuy(world, 4,4, 0.2f, 0.2f);
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
-		stageGui = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
+		stageGui = new Stage(PixMindGame.w, PixMindGame.h,
 				true){
 
 					@Override
@@ -205,7 +205,7 @@ public class FirstLevel implements Screen {
 		zoomInActor = new Image (PixMindGame.getSkin().getDrawable("zoomin"));
 		zoomOutActor = new Image (PixMindGame.getSkin().getDrawable("zoomout"));
 		zoomInActor.setSize(60, 60);
-		zoomInActor.setPosition(0+zoomMargin, PixMindGame.h - zoomInActor.getHeight()-zoomMargin);
+		zoomInActor.setPosition(0+zoomMargin,PixMindGame.h -  zoomInActor.getHeight()-zoomMargin);
 		zoomOutActor.setSize(60, 60);
 		zoomOutActor.setPosition(0+zoomMargin, PixMindGame.h - zoomInActor.getHeight()-zoomMargin);
 		
@@ -390,7 +390,7 @@ public class FirstLevel implements Screen {
 		};
 		
 		
-		stage.addAction(Actions.sequence(Actions.scaleTo(1f, 1f, 3), finalAction));
+		stage.addAction(Actions.sequence(Actions.scaleTo(1f, 1f, 2,Interpolation.pow4), finalAction));
 		}
 		
 	}
