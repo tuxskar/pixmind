@@ -1,8 +1,22 @@
 
 PixmindTextureAtlas.png
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
+zoomin
+  rotate: false
+  xy: 1, 103
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+zoomout
+  rotate: false
+  xy: 131, 103
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
 box
   rotate: false
   xy: 1, 1
@@ -12,14 +26,14 @@ box
   index: -1
 circle
   rotate: false
-  xy: 103, 1
+  xy: 261, 131
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 leftArrow
   rotate: false
-  xy: 205, 37
+  xy: 103, 37
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

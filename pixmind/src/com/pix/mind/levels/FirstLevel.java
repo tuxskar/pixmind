@@ -43,11 +43,11 @@ public class FirstLevel implements Screen {
 	private ArrayList<StaticPlatformActor> platformList; 
 	private ArrayList<PlatformActivatorActor> activatorList; 
 	public String levelTitle = "First Level";
-	private PixGuyController controller;
-	
+	private PixGuyController controller;	
 	private boolean mapActive= false;
 	private boolean showingMap = false;
 	private boolean hidingMap = false;
+	Image zoomInActor, zoomOutActor;
 	// adjust this value to show the entire Level
 	// the zoom is pointing to 0,0 stage coordinate
 	public float zoom = 0.5f;  
@@ -201,6 +201,21 @@ public class FirstLevel implements Screen {
 		controller = new ArrowController(pixGuy, stageGui);
 		pixGuy.setController(controller);
 		pixGuySkin = new PixGuyActor(pixGuy);
+		float zoomMargin = 10;
+		zoomInActor = new Image (PixMindGame.getSkin().getDrawable("zoomin"));
+		zoomOutActor = new Image (PixMindGame.getSkin().getDrawable("zoomout"));
+		zoomInActor.setSize(60, 60);
+		zoomInActor.setPosition(0+zoomMargin, PixMindGame.h - zoomInActor.getHeight()-zoomMargin);
+		zoomOutActor.setSize(60, 60);
+		zoomOutActor.setPosition(0+zoomMargin, PixMindGame.h - zoomInActor.getHeight()-zoomMargin);
+		
+		stageGui.addActor(zoomInActor);
+		
+		
+		
+		
+		
+		
 		stage.addActor(pixGuySkin);
 		stage.addActor(s1Skin);
 		stage.addActor(s2Skin);
@@ -367,6 +382,8 @@ public class FirstLevel implements Screen {
 				mapActive = false;
 				hidingMap = false;
 				controller.setActive(true);
+				zoomOutActor.remove();
+				stageGui.addActor(zoomInActor);
 				return true;
 			}
 			
@@ -395,12 +412,12 @@ public class FirstLevel implements Screen {
 				// TODO Auto-generated method stub
 				showingMap = false;
 				System.out.println("final action show");
+				zoomInActor.remove();
+				stageGui.addActor(zoomOutActor);
 				return true;
 			}			
 		};		
-		
 		stage.addAction(Actions.sequence(Actions.scaleTo(zoom, zoom, 2,Interpolation.pow4),finalAction));	
-		
 	}
 
 	@Override
@@ -423,7 +440,7 @@ public class FirstLevel implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		
 
 	}
 
