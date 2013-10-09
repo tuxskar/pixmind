@@ -47,12 +47,16 @@ public class FirstLevel implements Screen {
 	private boolean mapActive= false;
 	private boolean showingMap = false;
 	private boolean hidingMap = false;
-	Image zoomInActor, zoomOutActor;
+	private Image zoomInActor, zoomOutActor;
+
 	// adjust this value to show the entire Level
 	// the zoom is pointing to 0,0 stage coordinate
 	public float zoom = 0.5f;  
 		
-	
+	//smooth camera following
+	private float lastPlatformHeight = 210;
+	private float MaxPixGuyHeight =210;
+	protected float anteriorHeight=210;
 	public FirstLevel(PixMindGame game) {
 		this.game = game;
 	}
@@ -67,13 +71,42 @@ public class FirstLevel implements Screen {
 		stage.draw();
 		stageGui.draw();
 		
-		if(!mapActive){			
+		MaxPixGuyHeight = Math.max(MaxPixGuyHeight, pixGuy.getPosY());
 		
-		stage.getCamera().position.x = pixGuy.getPosX();
-		stage.getCamera().position.y = pixGuy.getPosY();		
-		camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
-		camera.position.y = pixGuy.getPosY() * PixMindGame.WORLD_TO_BOX;		
-		camera.update();
+		if(!mapActive){	
+			
+		
+		
+		if(lastPlatformHeight>pixGuy.getPosY()){
+			
+				lastPlatformHeight = pixGuy.getPosY();
+				MaxPixGuyHeight = lastPlatformHeight;
+				stage.getCamera().position.x = pixGuy.getPosX();
+				stage.getCamera().position.y = lastPlatformHeight;		
+				camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
+				camera.position.y = lastPlatformHeight * PixMindGame.WORLD_TO_BOX;		
+				camera.update();
+				
+				
+		}else{
+	
+			if(lastPlatformHeight>anteriorHeight){
+			anteriorHeight += 3f;
+			if(anteriorHeight>=lastPlatformHeight){
+				anteriorHeight = lastPlatformHeight;
+			}
+			}
+			
+			System.out.println(anteriorHeight + " " +lastPlatformHeight);
+			
+			stage.getCamera().position.x = pixGuy.getPosX();
+			stage.getCamera().position.y =anteriorHeight;		
+			camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
+			camera.position.y = anteriorHeight * PixMindGame.WORLD_TO_BOX;		
+			camera.update();
+		}
+		
+		
 		world.step(delta, 6, 2);
 		pixGuy.setActualPosition();
 		
@@ -101,7 +134,7 @@ public class FirstLevel implements Screen {
 		camera.translate(PixMindGame.w / 2 * PixMindGame.WORLD_TO_BOX,
 				PixMindGame.h / 2 * PixMindGame.WORLD_TO_BOX);
 		// Box2d code
-		world = new World(new Vector2(0, -10), true);
+		world = new World(new Vector2(0, -10f), true);
 	
 		debugRenderer = new Box2DDebugRenderer();
 
@@ -325,17 +358,23 @@ public class FirstLevel implements Screen {
 				if(fixPlatform!=null && !fixPlatform.isSensor()){
 				//only jump if bottom position of pixguy is equal or above of top position of the platform
 					
+					StaticPlatformActor platformActor =  (StaticPlatformActor) fixPlatform.getUserData();					
 					//opoppo
-				
-					StaticPlatformActor platformActor =  (StaticPlatformActor) fixPlatform.getUserData();
 					
 					float topPosPlatform = fixPlatform.getBody().getPosition().y + platformActor.getHeight()*PixMindGame.WORLD_TO_BOX/2;
 					float bottomPosGuy = fixGuy.getBody().getPosition().y-PixGuy.pixHeight*PixMindGame.WORLD_TO_BOX/2;
 
 				//	System.out.println(topPosPlatform);
 					//System.out.println(bottomPosGuy);
-					if(bottomPosGuy>=topPosPlatform)
+					if(bottomPosGuy>=topPosPlatform )
 					{
+					//if(anteriorHeight>lastPlatformHeight)
+					
+					anteriorHeight = lastPlatformHeight;
+					lastPlatformHeight = (fixPlatform.getBody().getPosition().y+ platformActor.getHeight()*PixMindGame.WORLD_TO_BOX/2)*PixMindGame.BOX_TO_WORLD;						
+					if(lastPlatformHeight<	anteriorHeight ){
+						anteriorHeight = lastPlatformHeight;
+					}
 					fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x , 0);
 					fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.2f),
 					fixGuy.getBody().getWorldCenter(), true);
