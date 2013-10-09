@@ -54,8 +54,12 @@ public class FirstLevel implements Screen {
 	public float zoom = 0.5f;  
 		
 	//smooth camera following
+	//this point is the first platform + its half height
 	private float lastPlatformHeight = 210;
 	protected float anteriorHeight=210;
+	
+	
+	private boolean colliding = false;
 	public FirstLevel(PixMindGame game) {
 		this.game = game;
 	}
@@ -70,6 +74,15 @@ public class FirstLevel implements Screen {
 		stage.draw();
 		stageGui.draw();
 		
+		System.out.println(colliding + " " +pixGuy.body.getLinearVelocity().y);
+		
+		
+		if(pixGuy.body.getLinearVelocity().y > 0){
+			pixGuy.body.getFixtureList().get(0).setSensor(true);
+		}else{
+			if(!colliding)
+			pixGuy.body.getFixtureList().get(0).setSensor(false);
+		}
 			
 		if(!mapActive){	
 			
@@ -94,8 +107,6 @@ public class FirstLevel implements Screen {
 			}
 			}
 			
-			System.out.println(anteriorHeight + " " +lastPlatformHeight);
-			
 			stage.getCamera().position.x = pixGuy.getPosX();
 			stage.getCamera().position.y =anteriorHeight;		
 			camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
@@ -103,14 +114,14 @@ public class FirstLevel implements Screen {
 			camera.update();
 		}
 		
-		
 		world.step(delta, 6, 2);
+		
+		
 		pixGuy.setActualPosition();
-		
-		
+	
 		}
 		stage.act();
-		
+	
 	}
 
 	@Override
@@ -141,13 +152,13 @@ public class FirstLevel implements Screen {
 		
 		// comment to be commited
 		//float posX = 2f, posY = 2f, width = 1f, heigth = 0.2f;
-		StaticPlatform sPlatform = new StaticPlatform(world, 8,5, 1,0.1f);
+		StaticPlatform sPlatform = new StaticPlatform(world, 8,5,1f,0.1f);
 		StaticPlatform s2Platform = new StaticPlatform(world,3, 2,1,0.1f);
 		StaticPlatform s3Platform = new StaticPlatform(world, 5, 3,1,0.1f);
 		StaticPlatform s4Platform = new StaticPlatform(world, 6,4,1,0.1f);
-		StaticPlatform s5Platform = new StaticPlatform(world, 1,1,1,0.1f);
+		StaticPlatform s5Platform = new StaticPlatform(world, 1,1f,1,0.1f);
 		StaticPlatform s6Platform = new StaticPlatform(world, 2,3,1,0.1f);
-		StaticPlatform s7Platform = new StaticPlatform(world, 1.5f,4,1,0.1f);
+		StaticPlatform s7Platform = new StaticPlatform(world, 1.5f,4.2f,1,0.1f);
 		StaticPlatform s8Platform = new StaticPlatform(world, -15f,0,30,0.1f);
 
 		
@@ -239,12 +250,7 @@ public class FirstLevel implements Screen {
 		zoomOutActor.setSize(60, 60);
 		zoomOutActor.setPosition(0+zoomMargin, PixMindGame.h - zoomInActor.getHeight()-zoomMargin);
 		
-		stageGui.addActor(zoomInActor);
-		
-		
-		
-		
-		
+		stageGui.addActor(zoomInActor);		
 		
 		stage.addActor(pixGuySkin);
 		stage.addActor(s1Skin);
@@ -264,6 +270,9 @@ public class FirstLevel implements Screen {
 
 		world.setContactListener(new ContactListener() {
 
+			
+			
+			
 			@Override
 			public void beginContact(Contact contact) {
 				// TODO Auto-generated method stub
@@ -377,12 +386,14 @@ public class FirstLevel implements Screen {
 					fixGuy.getBody().getWorldCenter(), true);
 					}
 				}
+			System.out.println("contanto");
+				colliding = true ;
 			}
 
 			@Override
 			public void endContact(Contact contact) {
 				// TODO Auto-generated method stub
-
+				colliding= false;
 			}
 
 			@Override
