@@ -217,7 +217,7 @@ public class FirstLevel implements Screen {
 							showMap();
 							return true;
 						}
-						if(mapActive){
+						if(screenY/PixMindGame.fromRealScreenToFixedScreenWidth<100 && screenX/PixMindGame.fromRealScreenToFixedScreenHeight<100 && mapActive ){
 							
 							hideMap();
 							return true;
