@@ -55,7 +55,6 @@ public class FirstLevel implements Screen {
 		
 	//smooth camera following
 	private float lastPlatformHeight = 210;
-	private float MaxPixGuyHeight =210;
 	protected float anteriorHeight=210;
 	public FirstLevel(PixMindGame game) {
 		this.game = game;
@@ -71,8 +70,7 @@ public class FirstLevel implements Screen {
 		stage.draw();
 		stageGui.draw();
 		
-		MaxPixGuyHeight = Math.max(MaxPixGuyHeight, pixGuy.getPosY());
-		
+			
 		if(!mapActive){	
 			
 		
@@ -80,7 +78,6 @@ public class FirstLevel implements Screen {
 		if(lastPlatformHeight>pixGuy.getPosY()){
 			
 				lastPlatformHeight = pixGuy.getPosY();
-				MaxPixGuyHeight = lastPlatformHeight;
 				stage.getCamera().position.x = pixGuy.getPosX();
 				stage.getCamera().position.y = lastPlatformHeight;		
 				camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
