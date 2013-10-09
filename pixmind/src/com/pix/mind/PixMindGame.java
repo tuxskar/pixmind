@@ -25,8 +25,8 @@ public class PixMindGame extends Game {
 		// TODO Auto-generated method stub
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();
 		assetManager = new AssetManager();
-		firstLevel = new FirstLevel(this);
-		secondLevel = new SecondLevel(this);
+		firstLevel = new FirstLevel(this, 2, 5);
+		secondLevel = new SecondLevel(this, 2, 5);
 		splashScreen = new SplashScreen(this);
 		changeLevel(getSplashScreen());
 	}
