@@ -159,8 +159,8 @@ public class FirstLevel implements Screen {
 		StaticPlatform s5Platform = new StaticPlatform(world, 1,1f,1,0.1f);
 		StaticPlatform s6Platform = new StaticPlatform(world, 2,3,1,0.1f);
 		StaticPlatform s7Platform = new StaticPlatform(world, 1.5f,4.2f,1,0.1f);
-		StaticPlatform s8Platform = new StaticPlatform(world, -15f,0,30,0.1f);
-
+		StaticPlatform s8Platform = new StaticPlatform(world, -15f,0,30,0.1f);		
+		
 		
  //s
 		PlatformActivator pActivator = new PlatformActivator(world, 0, 5, 0.1f);
