@@ -412,7 +412,7 @@ public class FirstLevel implements Screen {
 		
 		OrthographicCamera orthoCam = (OrthographicCamera) stage.getCamera();
 		orthoCam.position.x = pixGuySkin.getX();
-		orthoCam.position.y = pixGuySkin.getY();		
+		orthoCam.position.y = lastPlatformHeight;		
 		Action finalAction = new Action(){
 
 			@Override
