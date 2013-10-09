@@ -21,14 +21,14 @@ public class ArrowController extends PixGuyController {
 		Image rightArrow = new Image(arrowTexture);
 		float arrowWidth = 60;
 		float arrowHeight = 60;
+		float zoomMargin = 10;
 		leftArrow.setSize(arrowWidth, arrowHeight);
 		rightArrow.setSize(arrowWidth, arrowHeight);
 		rightArrow.setOrigin(arrowWidth / 2, arrowHeight/2);
 		rightArrow.rotate(180);
-		leftArrow.setPosition(arrowWidth / 10, arrowHeight / 10);
-		rightArrow.setPosition(
-				stage.getWidth() - arrowWidth / 10 - arrowWidth,
-				arrowHeight / 10);
+		leftArrow.setPosition(zoomMargin, zoomMargin);
+		rightArrow.setPosition(stage.getWidth() - zoomMargin - arrowWidth,
+				zoomMargin);
 		this.stage.addActor(leftArrow);
 		this.stage.addActor(rightArrow);
 	
