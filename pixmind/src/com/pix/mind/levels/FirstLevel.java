@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
@@ -22,6 +21,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
+import com.pix.mind.actors.ActiveColor;
+import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
@@ -266,6 +267,14 @@ public class FirstLevel implements Screen {
 		stage.addActor(a2Skin);
 		stage.addActor(a3Skin);
 		stage.addActor(a4Skin);
+		
+		// Active colors
+		int nColors = 3;
+		ActiveColors actColors = new ActiveColors(stageGui, nColors);
+		for(ActiveColor actColor : actColors.colors){
+			stageGui.addActor(actColor);
+		}
+		
 		camera.update();
 
 		world.setContactListener(new ContactListener() {
