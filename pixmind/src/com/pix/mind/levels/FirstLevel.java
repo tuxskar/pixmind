@@ -276,7 +276,6 @@ public class FirstLevel implements Screen {
 		
 		groupStage.setOrigin( levelSizeWidth/2, levelSizeHeight/2);
 		
-		
 		groupStage.addActor(pixGuySkin);
 		groupStage.addActor(s1Skin);
 		groupStage.addActor(s2Skin);
@@ -456,16 +455,7 @@ public class FirstLevel implements Screen {
 		// TODO Auto-generated method stub
 		if(showingMap==false && hidingMap == false){
 			System.out.println("hiding MAP");
-		hidingMap = true;
-		
-		OrthographicCamera orthoCam = (OrthographicCamera) stage.getCamera();
-	
-		//orthoCam.position.x = pixGuySkin.getX();
-		//orthoCam.position.y = lastPlatformHeight;		
-		
-		//groupStage.setOrigin( pixGuySkin.getX(), lastPlatformHeight);
-		//groupStage.setOrigin( levelSizeWidth/2, levelSizeHeight/2);
-			
+		hidingMap = true;			
 		Action finalAction = new Action(){
 
 			@Override
@@ -494,11 +484,6 @@ public class FirstLevel implements Screen {
 		mapActive = true;
 		showingMap = true;
 		controller.setActive(false);
-		OrthographicCamera orthoCam = (OrthographicCamera) stage.getCamera();
-		orthoCam.position.x = pixGuySkin.getX();
-		orthoCam.position.y = lastPlatformHeight;
-	//	groupStage.setOrigin( pixGuySkin.getX(),lastPlatformHeight);
-		groupStage.setOrigin( levelSizeWidth/2, levelSizeHeight/2);
 		Action finalAction = new Action(){
 
 			@Override
