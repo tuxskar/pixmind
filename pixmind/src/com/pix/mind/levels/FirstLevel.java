@@ -43,6 +43,7 @@ public class FirstLevel implements Screen {
 	private Stage stageGui;
 	private ArrayList<StaticPlatformActor> platformList; 
 	private ArrayList<PlatformActivatorActor> activatorList; 
+	private ActiveColors actColors;
 	public String levelTitle = "First Level";
 	private PixGuyController controller;	
 	private boolean mapActive= false;
@@ -270,14 +271,11 @@ public class FirstLevel implements Screen {
 		
 		// Active colors
 		int nColors = 3;
-		ActiveColors actColors = new ActiveColors(stageGui, nColors);
+		actColors = new ActiveColors(stageGui, nColors);
 		for(ActiveColor actColor : actColors.colors){
 			stageGui.addActor(actColor);
 		}
 		actColors.newActive(Color.BLUE);
-		actColors.newActive(Color.GREEN);
-		actColors.newActive(Color.RED);
-		actColors.deActivate(Color.BLUE);
 		
 		camera.update();
 
@@ -355,8 +353,10 @@ public class FirstLevel implements Screen {
 						}
 						//get all activator of the same color and change state 
 						for(PlatformActivatorActor sp : activatorList){
-							if(platformActivatorActor.color.equals(sp.color))
+							if(platformActivatorActor.color.equals(sp.color)){
 							sp.setActive(false);
+							actColors.deActivate(sp.color);
+							}
 						}
 					}else{
 						//platformActivatorActor.setActive(true);
@@ -366,8 +366,10 @@ public class FirstLevel implements Screen {
 							sp.setActive(true);
 						}	
 						for(PlatformActivatorActor sp : activatorList){
-							if(platformActivatorActor.color.equals(sp.color))
-							sp.setActive(true);
+							if(platformActivatorActor.color.equals(sp.color)){
+								sp.setActive(true);	
+								actColors.newActive(sp.color);
+							}
 						}
 					}				
 				}
