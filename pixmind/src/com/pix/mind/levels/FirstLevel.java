@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
@@ -22,6 +21,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
+import com.pix.mind.actors.ActiveColor;
+import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
@@ -42,6 +43,7 @@ public class FirstLevel implements Screen {
 	private Stage stageGui;
 	private ArrayList<StaticPlatformActor> platformList; 
 	private ArrayList<PlatformActivatorActor> activatorList; 
+	private ActiveColors actColors;
 	public String levelTitle = "First Level";
 	private PixGuyController controller;	
 	private boolean mapActive= false;
@@ -266,6 +268,15 @@ public class FirstLevel implements Screen {
 		stage.addActor(a2Skin);
 		stage.addActor(a3Skin);
 		stage.addActor(a4Skin);
+		
+		// Active colors
+		int nColors = 3;
+		actColors = new ActiveColors(stageGui, nColors);
+		for(ActiveColor actColor : actColors.colors){
+			stageGui.addActor(actColor);
+		}
+		actColors.newActive(Color.BLUE);
+		
 		camera.update();
 
 		world.setContactListener(new ContactListener() {
@@ -342,8 +353,10 @@ public class FirstLevel implements Screen {
 						}
 						//get all activator of the same color and change state 
 						for(PlatformActivatorActor sp : activatorList){
-							if(platformActivatorActor.color.equals(sp.color))
+							if(platformActivatorActor.color.equals(sp.color)){
 							sp.setActive(false);
+							actColors.deActivate(sp.color);
+							}
 						}
 					}else{
 						//platformActivatorActor.setActive(true);
@@ -353,8 +366,10 @@ public class FirstLevel implements Screen {
 							sp.setActive(true);
 						}	
 						for(PlatformActivatorActor sp : activatorList){
-							if(platformActivatorActor.color.equals(sp.color))
-							sp.setActive(true);
+							if(platformActivatorActor.color.equals(sp.color)){
+								sp.setActive(true);	
+								actColors.newActive(sp.color);
+							}
 						}
 					}				
 				}
