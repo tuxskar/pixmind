@@ -17,9 +17,11 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColor;
 import com.pix.mind.actors.ActiveColors;
@@ -76,7 +78,7 @@ public class FirstLevel implements Screen {
 		stage.draw();
 		stageGui.draw();
 		
-		System.out.println(colliding + " " +pixGuy.body.getLinearVelocity().y);
+	//	System.out.println(colliding + " " +pixGuy.body.getLinearVelocity().y);
 		
 		
 		if(pixGuy.body.getLinearVelocity().y > 0){
@@ -215,29 +217,29 @@ public class FirstLevel implements Screen {
 		pixGuy = new PixGuy(world, 4,4, 0.2f, 0.2f);
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		stageGui = new Stage(PixMindGame.w, PixMindGame.h,
-				true){
+				true);
+		stageGui.addListener(new ActorGestureListener(){
 
-					@Override
-					public boolean touchDown(int screenX, int screenY,
-							int pointer, int button) {
-						// TODO Auto-generated method stub
-						
-						if(screenY/PixMindGame.fromRealScreenToFixedScreenWidth<100 && screenX/PixMindGame.fromRealScreenToFixedScreenHeight<100 && !mapActive){
-							
-							showMap();
-							return true;
-						}
-						if(screenY/PixMindGame.fromRealScreenToFixedScreenWidth<100 && screenX/PixMindGame.fromRealScreenToFixedScreenHeight<100 && mapActive ){
-							
-							hideMap();
-							return true;
-						}
+			@Override
+			public void touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				System.out.println("x " + x + " y " + y);
+				if(x<100 && y > 380 && !mapActive){
 					
-						return true;
-						
-					}
+					showMap();
+					
+				}
+				if(x<100 && y > 380  && mapActive ){
+					
+					hideMap();
+					
+				}			
+				
+			}
 			
-		};
+			
+			
+		});
 		
 		Gdx.input.setInputProcessor(stageGui);
 		
