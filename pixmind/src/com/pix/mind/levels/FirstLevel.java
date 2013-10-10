@@ -274,6 +274,9 @@ public class FirstLevel implements Screen {
 		for(ActiveColor actColor : actColors.colors){
 			stageGui.addActor(actColor);
 		}
+
+		actColors.newActive(Color.BLUE);
+		actColors.newActive(Color.PINK);
 		
 		camera.update();
 
