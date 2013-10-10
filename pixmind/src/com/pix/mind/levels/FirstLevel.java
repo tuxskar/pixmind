@@ -17,6 +17,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -52,11 +53,20 @@ public class FirstLevel implements Screen {
 	private boolean showingMap = false;
 	private boolean hidingMap = false;
 	private Image zoomInActor, zoomOutActor;
-
+	private Group groupStage;
 	// adjust this value to show the entire Level
 	// the zoom is pointing to 0,0 stage coordinate
-	public float zoom = 0.5f;  
-		
+	
+	
+	//needed for the camera to point to the center when zoom in
+	//aspect ratio and levelSize needs to be 1.3 ALWAYS(minimum resolution device)
+	public float levelSizeHeight =1000;
+	public float levelSizeWidth = 1333;
+
+	
+	public float zoom =PixMindGame.h/ levelSizeHeight;  
+	
+	
 	//smooth camera following
 	//this point is the first platform + its half height
 	private float lastPlatformHeight = 210;
@@ -125,7 +135,7 @@ public class FirstLevel implements Screen {
 	
 		}
 		stage.act();
-	
+	System.out.println(groupStage.getX()+  " - " +groupStage.getY()+ " zoom " + groupStage.getScaleX());
 	}
 
 	@Override
@@ -171,6 +181,7 @@ public class FirstLevel implements Screen {
 		PlatformActivator p2Activator = new PlatformActivator(world, 8, 6, 0.1f);
 		PlatformActivator p3Activator= new PlatformActivator(world, 0, 2, 0.1f);
 		PlatformActivator p4Activator= new PlatformActivator(world, 2, 5, 0.1f);
+		PlatformActivator p5Activator= new PlatformActivator(world, levelSizeWidth*PixMindGame.WORLD_TO_BOX,levelSizeHeight*PixMindGame.WORLD_TO_BOX, 0.1f);
 
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform,
 				Color.RED, false);
@@ -206,16 +217,20 @@ public class FirstLevel implements Screen {
 				Color.GREEN, false);
 		PlatformActivatorActor a4Skin = new PlatformActivatorActor(p4Activator,
 				Color.BLUE, true);
+		PlatformActivatorActor a5Skin = new PlatformActivatorActor(p5Activator,
+				Color.BLUE, true);
 
 		activatorList.add(a1Skin);
 		activatorList.add(a2Skin);
 		activatorList.add(a3Skin);
 		activatorList.add(a4Skin);
+		activatorList.add(a5Skin);
 		
 	
 		// main character initialization
 		pixGuy = new PixGuy(world, 4,4, 0.2f, 0.2f);
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
+		
 		stageGui = new Stage(PixMindGame.w, PixMindGame.h,
 				true);
 		stageGui.addListener(new ActorGestureListener(){
@@ -256,21 +271,29 @@ public class FirstLevel implements Screen {
 		
 		stageGui.addActor(zoomInActor);		
 		
-		stage.addActor(pixGuySkin);
-		stage.addActor(s1Skin);
-		stage.addActor(s2Skin);
-		stage.addActor(s3Skin);
-		stage.addActor(s4Skin);
-		stage.addActor(s5Skin);
-		stage.addActor(s6Skin);
-		stage.addActor(s7Skin);
-		stage.addActor(s8Skin);
+		groupStage = new Group();
+	
 		
-		stage.addActor(a1Skin);
-		stage.addActor(a2Skin);
-		stage.addActor(a3Skin);
-		stage.addActor(a4Skin);
+		groupStage.setOrigin( levelSizeWidth/2, levelSizeHeight/2);
 		
+		
+		groupStage.addActor(pixGuySkin);
+		groupStage.addActor(s1Skin);
+		groupStage.addActor(s2Skin);
+		groupStage.addActor(s3Skin);
+		groupStage.addActor(s4Skin);
+		groupStage.addActor(s5Skin);
+		groupStage.addActor(s6Skin);
+		groupStage.addActor(s7Skin);
+		groupStage.addActor(s8Skin);
+		
+		groupStage.addActor(a1Skin);
+		groupStage.addActor(a2Skin);
+		groupStage.addActor(a3Skin);
+		groupStage.addActor(a4Skin);
+		groupStage.addActor(a5Skin);
+		
+		stage.addActor(groupStage);
 		// Active colors
 		int nColors = 3;
 		actColors = new ActiveColors(stageGui, nColors);
@@ -436,8 +459,13 @@ public class FirstLevel implements Screen {
 		hidingMap = true;
 		
 		OrthographicCamera orthoCam = (OrthographicCamera) stage.getCamera();
-		orthoCam.position.x = pixGuySkin.getX();
-		orthoCam.position.y = lastPlatformHeight;		
+	
+		//orthoCam.position.x = pixGuySkin.getX();
+		//orthoCam.position.y = lastPlatformHeight;		
+		
+		//groupStage.setOrigin( pixGuySkin.getX(), lastPlatformHeight);
+		//groupStage.setOrigin( levelSizeWidth/2, levelSizeHeight/2);
+			
 		Action finalAction = new Action(){
 
 			@Override
@@ -453,8 +481,9 @@ public class FirstLevel implements Screen {
 			
 		};
 		
-		
-		stage.addAction(Actions.sequence(Actions.scaleTo(1f, 1f, 2,Interpolation.pow4), finalAction));
+		groupStage.addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(1, 1, 1,Interpolation.pow4), Actions.moveTo( 0,0, 1,Interpolation.pow4)),finalAction));	
+			
+			
 		}
 		
 	}
@@ -466,22 +495,28 @@ public class FirstLevel implements Screen {
 		showingMap = true;
 		controller.setActive(false);
 		OrthographicCamera orthoCam = (OrthographicCamera) stage.getCamera();
-		orthoCam.position.x = PixMindGame.w/2;
-		orthoCam.position.y = PixMindGame.h/2;	
-		
+		orthoCam.position.x = pixGuySkin.getX();
+		orthoCam.position.y = lastPlatformHeight;
+	//	groupStage.setOrigin( pixGuySkin.getX(),lastPlatformHeight);
+		groupStage.setOrigin( levelSizeWidth/2, levelSizeHeight/2);
 		Action finalAction = new Action(){
 
 			@Override
 			public boolean act(float delta) {
 				// TODO Auto-generated method stub
-				showingMap = false;
+				showingMap = false;	
 				System.out.println("final action show");
 				zoomInActor.remove();
 				stageGui.addActor(zoomOutActor);
 				return true;
 			}			
 		};		
-		stage.addAction(Actions.sequence(Actions.scaleTo(zoom, zoom, 2,Interpolation.pow4),finalAction));	
+		
+		groupStage.addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(zoom, zoom, 1,Interpolation.pow4), Actions.moveTo( -((levelSizeWidth/2)- pixGuySkin.getX()),  -((levelSizeHeight/2)- lastPlatformHeight), 1,Interpolation.pow4)),finalAction));	
+	
+		
+		
+	
 	}
 
 	@Override
