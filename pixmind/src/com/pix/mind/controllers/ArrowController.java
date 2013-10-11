@@ -1,4 +1,4 @@
-package com.pix.mind.controllers;
+ package com.pix.mind.controllers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -9,42 +9,51 @@ import com.pix.mind.box2d.bodies.PixGuy;
 
 public class ArrowController extends PixGuyController {
 	private Stage stage;
-
-	public ArrowController(PixGuy pixGuy, Stage stage) {
+	
+	public ArrowController(final PixGuy pixGuy, final Stage stage) {
 		super(pixGuy);
 		this.stage = stage;
 		Drawable arrowTexture =	 PixMindGame.getSkin().getDrawable("leftArrow");
 		
 		Image leftArrow = new Image(arrowTexture);
 		Image rightArrow = new Image(arrowTexture);
-		float arrowWidth = PixMindGame.getSkin().getAtlas().findRegion("leftArrow").originalWidth;
-		float arrowHeight =PixMindGame.getSkin().getAtlas().findRegion("leftArrow").originalHeight;
+		float arrowWidth = 60;
+		float arrowHeight = 60;
+		float zoomMargin = 10;
 		leftArrow.setSize(arrowWidth, arrowHeight);
 		rightArrow.setSize(arrowWidth, arrowHeight);
 		rightArrow.setOrigin(arrowWidth / 2, arrowHeight/2);
 		rightArrow.rotate(180);
-		leftArrow.setPosition(arrowWidth / 10, arrowHeight / 10);
-		rightArrow.setPosition(
-				stage.getWidth() - arrowWidth / 10 - arrowWidth,
-				arrowHeight / 10);
+		leftArrow.setPosition(zoomMargin, zoomMargin);
+		rightArrow.setPosition(stage.getWidth() - zoomMargin - arrowWidth,
+				zoomMargin);
 		this.stage.addActor(leftArrow);
 		this.stage.addActor(rightArrow);
+	
 	}
 
 	@Override
 	public void movements() {
-		if (Gdx.input.isTouched()) {
-			System.out.println("x: " + Gdx.input.getX() + " y: "
-					+ Gdx.input.getY());
-			if (Gdx.input.getY() >  stage.getHeight() * 3 / 4) {
-				if (Gdx.input.getX() <  stage.getWidth() / 6) {
-					pixGuy.moveLeft(Gdx.graphics.getDeltaTime());
+		
+		if(isActive()){
+			
+		if (Gdx.input.isTouched()) {	
+		//	System.out.println(Gdx.input.getY()/fromScreenToFixedScreenWidth + " " + Gdx.input.getX()/fromScreenToFixedScreenHeight );
+			if (Gdx.input.getY()/PixMindGame.fromRealScreenToFixedScreenWidth > PixMindGame.h-100) {
+				if (Gdx.input.getX()/PixMindGame.fromRealScreenToFixedScreenHeight <  100 ) {				
+					pixGuy.moveLeft(Gdx.graphics.getDeltaTime());					
 				}
-				if (Gdx.input.getX() >  stage.getWidth() - stage.getWidth() / 6) {
-					this.pixGuy.moveRight(Gdx.graphics.getDeltaTime());
+				if (Gdx.input.getX()/PixMindGame.fromRealScreenToFixedScreenHeight >  PixMindGame.w-100) {					
+					pixGuy.moveRight(Gdx.graphics.getDeltaTime());					
 				}
-			}
-			// Gdx.input.
+			}			
+		}else{//if it is not touched, set horizontal velocity to 0 to eliminate inercy.			
+			pixGuy.body.setLinearVelocity(0,pixGuy.body.getLinearVelocity().y);			
 		}
+		}
+		
+		
 	}
+
+	
 }

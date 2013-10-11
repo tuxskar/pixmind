@@ -10,16 +10,18 @@ public class SplashScreen implements  Screen{
 	public SplashScreen(PixMindGame game) {
 		// TODO Auto-generated constructor stub
 		this.game = game;
+
 	}
 
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-	if (game.getAssetManager().update()) {
 	
-		game.setSkin(new Skin(game.getAssetManager().get(
+		if (game.getAssetManager().update()) {
+	
+			game.setSkin(new Skin(game.getAssetManager().get(
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
-		game.changeLevel(game.getFirstLevel());
+			game.setScreen(game.getFirstLevel());
 		}
 	}
 
@@ -33,6 +35,7 @@ public class SplashScreen implements  Screen{
 	public void show() {
 		// TODO Auto-generated method stub
 		game.getAssetManager().load("data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class);
+		
 
 	}
 

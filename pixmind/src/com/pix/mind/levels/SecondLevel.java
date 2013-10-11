@@ -27,7 +27,6 @@ public class SecondLevel extends PixGuyLevel{
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 		super.render(delta);
-
 	}
 
 	@Override
@@ -40,11 +39,11 @@ public class SecondLevel extends PixGuyLevel{
 	public void show() {
 		// TODO Auto-generated method stub
 		
-		// main character initialization
-		pixGuy = new PixGuy(world, 4, 4, 0.2f, 0.2f);
-		PixGuyController controller = new ArrowController(pixGuy, stageGui);
-		pixGuy.setController(controller);
-		pixGuySkin = new PixGuyActor(pixGuy);
+//		// main character initialization
+//		pixGuy = new PixGuy(world, 4, 4, 0.2f, 0.2f);
+//		PixGuyController controller = new ArrowController(pixGuy, stageGui);
+//		pixGuy.setController(controller);
+//		pixGuySkin = new PixGuyActor(pixGuy);
 				
 		//////////////////
 		// LEVEL DESIGN //
@@ -108,20 +107,20 @@ public class SecondLevel extends PixGuyLevel{
 		activatorList.add(a4Skin);
 
 		// adding actors
-		stage.addActor(pixGuySkin);
-
-		stage.addActor(s1Skin);
-		stage.addActor(s2Skin);
-		stage.addActor(s3Skin);
-		stage.addActor(s4Skin);
-		stage.addActor(s5Skin);
-		stage.addActor(s6Skin);
-		stage.addActor(s7Skin);
-
-		stage.addActor(a1Skin);
-		stage.addActor(a2Skin);
-		stage.addActor(a3Skin);
-		stage.addActor(a4Skin);
+//		stage.addActor(pixGuySkin);
+//
+//		stage.addActor(s1Skin);
+//		stage.addActor(s2Skin);
+//		stage.addActor(s3Skin);
+//		stage.addActor(s4Skin);
+//		stage.addActor(s5Skin);
+//		stage.addActor(s6Skin);
+//		stage.addActor(s7Skin);
+//
+//		stage.addActor(a1Skin);
+//		stage.addActor(a2Skin);
+//		stage.addActor(a3Skin);
+//		stage.addActor(a4Skin);
 		 
         ////////////////////////////////////////////////////////////////////////////////////////
 		

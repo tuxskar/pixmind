@@ -2,11 +2,10 @@ package com.pix.mind.levels;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
@@ -15,7 +14,6 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
@@ -29,14 +27,24 @@ public abstract class PixGuyLevel implements Screen {
 	PixGuy pixGuy;
 	Box2DDebugRenderer debugRenderer;
 	PixMindGame game;
-	Stage stage;
-	Stage stageGui;
+	
 	ArrayList<StaticPlatformActor> platformList;
 	ArrayList<PlatformActivatorActor> activatorList;
 	// how many differents platform colors the level has
 	int maxColors;
 	// how many differents platform colors player can use
 	int maxColorsInUse;
+	
+	// adjust this value to show the entire Level
+	// the zoom is pointing to 0,0 stage coordinate
+	float zoom = 0.5f;
+
+	//smooth camera following
+	//this point is the first platform + its half height
+	float lastPlatformHeight = 210;
+	float anteriorHeight = 210;
+	boolean colliding = false;
+	
 	
 	public PixGuyLevel(PixMindGame game, int maxColors, int maxColorsInUse){
 		this.game = game;
@@ -47,10 +55,6 @@ public abstract class PixGuyLevel implements Screen {
 		world = new World(new Vector2(0, -10), true);
 
 		debugRenderer = new Box2DDebugRenderer();
-
-		// creating the stage and stageGui
-		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
-		stageGui = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 		
 		// creating the camera and positioning it
 		camera = new OrthographicCamera(
@@ -64,7 +68,9 @@ public abstract class PixGuyLevel implements Screen {
 		// creating platforms and activators lists
 		platformList = new ArrayList<StaticPlatformActor>();
 		activatorList = new ArrayList<PlatformActivatorActor>();
+
 	}
+	
 	
 	public void collisions(){
 		// colissions and reactions
@@ -149,10 +155,41 @@ public abstract class PixGuyLevel implements Screen {
 
 				// jump only if collide with a platform and its not sensor
 				if (fixPlatform != null && !fixPlatform.isSensor()) {
-					fixGuy.getBody().setLinearVelocity(0, 0);
-					fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.1f),
-							fixGuy.getBody().getWorldCenter(), true);
+					// only jump if bottom position of pixguy is equal or above
+					// of top position of the platform
+
+					StaticPlatformActor platformActor = (StaticPlatformActor) fixPlatform
+							.getUserData();
+					// opoppo
+
+					float topPosPlatform = fixPlatform.getBody().getPosition().y
+							+ platformActor.getHeight()
+							* PixMindGame.WORLD_TO_BOX / 2;
+					float bottomPosGuy = fixGuy.getBody().getPosition().y
+							- PixGuy.pixHeight * PixMindGame.WORLD_TO_BOX / 2;
+
+					// System.out.println(topPosPlatform);
+					// System.out.println(bottomPosGuy);
+					if (bottomPosGuy >= topPosPlatform) {
+						//if(anteriorHeight>lastPlatformHeight)
+
+						anteriorHeight = lastPlatformHeight;
+						lastPlatformHeight = (fixPlatform.getBody()
+								.getPosition().y + platformActor.getHeight()
+								* PixMindGame.WORLD_TO_BOX / 2)
+								* PixMindGame.BOX_TO_WORLD;
+						if (lastPlatformHeight < anteriorHeight) {
+							anteriorHeight = lastPlatformHeight;
+						}
+						fixGuy.getBody().setLinearVelocity(
+								fixGuy.getBody().getLinearVelocity().x, 0);
+						fixGuy.getBody().applyLinearImpulse(
+								new Vector2(0, 0.2f),
+								fixGuy.getBody().getWorldCenter(), true);
+					}
 				}
+				System.out.println("contanto");
+				colliding = true;
 			}
 
 			@Override
@@ -175,24 +212,12 @@ public abstract class PixGuyLevel implements Screen {
 
 		});
 	}
+	
 
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
-		debugRenderer.render(world, camera.combined);
-		stage.draw();
-		stageGui.draw();
-		stage.getCamera().position.x = pixGuy.getPosX();
-		stage.getCamera().position.y = pixGuy.getPosY();
-		camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
-		camera.position.y = pixGuy.getPosY() * PixMindGame.WORLD_TO_BOX;
-		camera.update();
-		world.step(delta, 6, 2);
-		pixGuy.setActualPosition();
-		stage.act();
+		
 	}
 
 	@Override

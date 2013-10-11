@@ -1,5 +1,6 @@
 package com.pix.mind.box2d.bodies;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -12,12 +13,12 @@ import com.pix.mind.controllers.PixGuyController;
 
 public class PixGuy {
 	static public final String PIX_ID = "pixguy";
-	public float pixWidth = 30;	
-	public float pixHeight = 30;
+	public static float pixWidth = 30;	
+	public static float pixHeight = 30;
 	
 	// pixmind main character
 	private float posX, posY;
-	private Body body;
+	public  Body body;
 	static final float SPEED = 1;
 	public PixGuyController controller;
 	
@@ -45,8 +46,8 @@ public class PixGuy {
 		// Create a fixture definition to apply our shape to
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = groundBox;
-		fixtureDef.density = 0.5f;
-		fixtureDef.friction = 0.4f;
+		fixtureDef.density = 1f;
+		//fixtureDef.friction = 0.4f;
 		//fixtureDef.restitution = 0.5f; // Make it bounce a little bit
 		// Create our fixture and attach it to the body
 		Fixture fixture = body.createFixture(fixtureDef);
@@ -79,15 +80,33 @@ public class PixGuy {
 	public void setActualPosition() {
 		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
+		this.posX = body.getTransform().getPosition().x;
+		if(body.getLinearVelocity().x >1){
+			body.setLinearVelocity(1, body.getLinearVelocity().y);
+		}
+		if(body.getLinearVelocity().x <-1){
+			body.setLinearVelocity(-1, body.getLinearVelocity().y);
+		}
+		
+		
 		body.setTransform(this.posX, this.posY, 0);
+		//System.out.println(body.getLinearVelocity().x + " " + body.getLinearVelocity().y);
+	
 	}
 	
 	
 	public void moveLeft(float deltaTime) {
-		this.posX -= PixGuy.SPEED * deltaTime;
+	
+		body.applyForce(new Vector2(-1f, 0),
+				body.getWorldCenter(), true);
+		
+		
 	}
 
 	public void moveRight(float deltaTime) {
-		this.posX += PixGuy.SPEED * deltaTime;
+		body.applyForce(new Vector2(1f, 0),
+				body.getWorldCenter(), true);
+	
+	
 	}
 }
