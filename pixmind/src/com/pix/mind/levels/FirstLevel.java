@@ -7,22 +7,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.ContactImpulse;
-import com.badlogic.gdx.physics.box2d.ContactListener;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColor;
 import com.pix.mind.actors.ActiveColors;
@@ -36,24 +23,23 @@ import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.controllers.ArrowController;
 import com.pix.mind.controllers.PixGuyController;
+import com.pix.mind.world.PixMindScene2D;
+import com.pix.mind.world.PixMindWorldRenderer;
 
 public class FirstLevel implements Screen {
 	private OrthographicCamera camera;
 	private World world;
 	private PixGuy pixGuy;
-	private Box2DDebugRenderer debugRenderer;
 	private PixMindGame game;
-	private Image pixGuySkin;
-	private Stage stage;
-	private Stage stageGui;
+	private Image pixGuySkin;	
 	private ArrayList<StaticPlatformActor> platformList;
 	private ArrayList<PlatformActivatorActor> activatorList;
 	private ActiveColors actColors;
 	public String levelTitle = "First Level";
 	private PixGuyController controller;
-	private Group groupStage;
 	private Box2DWorldContactListener contactListener;
 	private MapZoom mapZoom;
+	private PixMindWorldRenderer worldRenderer;
 	// adjust this value to show the entire Level
 	// the zoom is pointing to 0,0 stage coordinate
 
@@ -62,8 +48,8 @@ public class FirstLevel implements Screen {
 	// device)
 	public float levelSizeHeight = 1000;
 	public float levelSizeWidth = 1333;
-	public float zoom = PixMindGame.h / levelSizeHeight;
 
+	private PixMindScene2D scene2D;
 	// smooth camera following
 	// this point is the first platform + its half height
 
@@ -77,52 +63,8 @@ public class FirstLevel implements Screen {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-		// debugRenderer.render(world, camera.combined);
-		stage.draw();
-		stageGui.draw();
-
-		if (pixGuy.body.getLinearVelocity().y > 0) {
-			pixGuy.body.getFixtureList().get(0).setSensor(true);
-		} else {
-			if (!contactListener.isColliding())
-				pixGuy.body.getFixtureList().get(0).setSensor(false);
-		}
-
-		if (!mapZoom.isMapActive()) {
-			if (contactListener.getLastPlatformHeight() > pixGuy.getPosY()) {
-
-				contactListener.setLastPlatformHeight(pixGuy.getPosY());
-				stage.getCamera().position.x = pixGuy.getPosX();
-				stage.getCamera().position.y = contactListener
-						.getLastPlatformHeight();
-				camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
-				camera.position.y = contactListener.getLastPlatformHeight()
-						* PixMindGame.WORLD_TO_BOX;
-				camera.update();
-
-			} else {
-				if (contactListener.getLastPlatformHeight() > contactListener
-						.getAnteriorHeight()) {
-					contactListener.setAnteriorHeight(contactListener
-							.getAnteriorHeight() + 3);
-					if (contactListener.getAnteriorHeight() >= contactListener
-							.getLastPlatformHeight()) {
-						contactListener.setAnteriorHeight(contactListener
-								.getLastPlatformHeight());
-					}
-				}
-				stage.getCamera().position.x = pixGuy.getPosX();
-				stage.getCamera().position.y = contactListener
-						.getAnteriorHeight();
-				camera.position.x = pixGuy.getPosX() * PixMindGame.WORLD_TO_BOX;
-				camera.position.y = contactListener.getAnteriorHeight()
-						* PixMindGame.WORLD_TO_BOX;
-				camera.update();
-			}
-			world.step(delta, 6, 2);
-			pixGuy.setActualPosition();
-		}
-		stage.act();		
+		worldRenderer.render(delta);
+		
 	}
 
 	@Override
@@ -136,33 +78,27 @@ public class FirstLevel implements Screen {
 		
 		/** SCENE 2D SETUP **/ 	 
 
-		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
-		stageGui = new Stage(PixMindGame.w, PixMindGame.h, true);		
-		Gdx.input.setInputProcessor(stageGui);
-		groupStage = new Group();
-		groupStage.setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
+		scene2D = new PixMindScene2D(levelSizeWidth, levelSizeHeight);
+		
+	
+	
 		
 		/** BOX2D SETTINGS **/
 		
-		//set up camera for the debugRenderer		
-		camera = new OrthographicCamera(PixMindGame.w
-				* PixMindGame.WORLD_TO_BOX, PixMindGame.h
-				* PixMindGame.WORLD_TO_BOX);		
-		camera.translate(PixMindGame.w / 2 * PixMindGame.WORLD_TO_BOX,
-				PixMindGame.h / 2 * PixMindGame.WORLD_TO_BOX);
+	
 		
 		// Box2d code
 		world = new World(new Vector2(0, -10f), true);
-		debugRenderer = new Box2DDebugRenderer();
+	
 		
 		/** COMBINING BOX2D WITH SCENE2D **/
 		
 		// main character initialization
 		pixGuy = new PixGuy(world, 4, 4, 0.2f, 0.2f);
 		pixGuySkin = new PixGuyActor(pixGuy);
-		controller = new ArrowController(pixGuy, stageGui);
+		controller = new ArrowController(pixGuy, scene2D.getStageGui());
 		pixGuy.setController(controller);
-		groupStage.addActor(pixGuySkin);
+		scene2D.getGroupStage().addActor(pixGuySkin);
 		
 		//platform Actors and Activator Actors List
 		platformList = new ArrayList<StaticPlatformActor>();
@@ -200,14 +136,14 @@ public class FirstLevel implements Screen {
 		
 		//Add platforms to Stage
 		
-		groupStage.addActor(s1Skin);
-		groupStage.addActor(s2Skin);
-		groupStage.addActor(s3Skin);
-		groupStage.addActor(s4Skin);
-		groupStage.addActor(s5Skin);
-		groupStage.addActor(s6Skin);
-		groupStage.addActor(s7Skin);
-		groupStage.addActor(s8Skin);
+		scene2D.getGroupStage().addActor(s1Skin);
+		scene2D.getGroupStage().addActor(s2Skin);
+		scene2D.getGroupStage().addActor(s3Skin);
+		scene2D.getGroupStage().addActor(s4Skin);
+		scene2D.getGroupStage().addActor(s5Skin);
+		scene2D.getGroupStage().addActor(s6Skin);
+		scene2D.getGroupStage().addActor(s7Skin);
+		scene2D.getGroupStage().addActor(s8Skin);
 		
 		//Add to platform list
 		
@@ -248,11 +184,11 @@ public class FirstLevel implements Screen {
 		
 		//Add activators to Stage
 		
-		groupStage.addActor(a1Skin);
-		groupStage.addActor(a2Skin);
-		groupStage.addActor(a3Skin);
-		groupStage.addActor(a4Skin);
-		groupStage.addActor(a5Skin);
+		scene2D.getGroupStage().addActor(a1Skin);
+		scene2D.getGroupStage().addActor(a2Skin);
+		scene2D.getGroupStage().addActor(a3Skin);
+		scene2D.getGroupStage().addActor(a4Skin);
+		scene2D.getGroupStage().addActor(a5Skin);
 		
 		//Add to activator list
 		
@@ -265,26 +201,25 @@ public class FirstLevel implements Screen {
 		
 		// add to stage the group of actors
 		
-		stage.addActor(groupStage);
+		scene2D.getStage().addActor(scene2D.getGroupStage());
 
 		// Active colors
 		
 		int nColors = 3;
-		actColors = new ActiveColors(stageGui, nColors);
+		actColors = new ActiveColors(scene2D.getStageGui(), nColors);
 		for (ActiveColor actColor : actColors.colors) {
-			stageGui.addActor(actColor);
+			scene2D.getStageGui().addActor(actColor);
 		}
 		actColors.newActive(Color.BLUE);
-
-		camera.update();
 
 		contactListener = new Box2DWorldContactListener(game, platformList,
 				activatorList, actColors, 210, 210);
 		world.setContactListener(contactListener);
 		
-		mapZoom = new MapZoom(stageGui, controller, groupStage,
-				contactListener, levelSizeWidth, levelSizeHeight, zoom,
-				pixGuySkin);
+		mapZoom = new MapZoom(scene2D.getStageGui(), controller, scene2D.getGroupStage(),
+				contactListener, levelSizeWidth, levelSizeHeight, pixGuySkin);
+		
+	 worldRenderer = new PixMindWorldRenderer(scene2D, pixGuy, contactListener, mapZoom, world);
 
 	}
 

@@ -24,9 +24,9 @@ public class MapZoom {
 	private Box2DWorldContactListener contactListener;
 	private float levelSizeWidth;
 	private float levelSizeHeight;
-	private float zoom;
+	public float zoom = PixMindGame.h / levelSizeHeight;
 	private Image pixGuySkin;
-	public MapZoom(Stage stageGUI, PixGuyController controller, Group groupStage, Box2DWorldContactListener contactListener, float levelSizeWidth,  float levelSizeHeight, float zoom, Image pixGuySkin){
+	public MapZoom(Stage stageGUI, PixGuyController controller, Group groupStage, Box2DWorldContactListener contactListener, float levelSizeWidth,  float levelSizeHeight, Image pixGuySkin){
 		
 		this.stageGUI = stageGUI;
 		this.stageGUI.addListener(new ActorGestureListener(){
