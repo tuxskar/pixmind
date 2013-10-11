@@ -23,7 +23,7 @@ import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.controllers.ArrowController;
 import com.pix.mind.controllers.PixGuyController;
-import com.pix.mind.world.PixMindScene2D;
+import com.pix.mind.world.PixMindScene2DInitialization;
 import com.pix.mind.world.PixMindWorldRenderer;
 
 public class FirstLevel implements Screen {
@@ -49,7 +49,7 @@ public class FirstLevel implements Screen {
 	public float levelSizeHeight = 1000;
 	public float levelSizeWidth = 1333;
 
-	private PixMindScene2D scene2D;
+	private PixMindScene2DInitialization scene2D;
 	// smooth camera following
 	// this point is the first platform + its half height
 
@@ -76,9 +76,10 @@ public class FirstLevel implements Screen {
 	@Override
 	public void show() {
 		
-		/** SCENE 2D SETUP **/ 	 
-
-		scene2D = new PixMindScene2D(levelSizeWidth, levelSizeHeight);
+	
+		// Scene2D initialization
+		
+		scene2D = new PixMindScene2DInitialization(levelSizeWidth, levelSizeHeight);
 		
 	
 	

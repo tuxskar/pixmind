@@ -10,7 +10,7 @@ import com.pix.mind.box2d.bodies.PixGuy;
 
 public class PixMindWorldRenderer {
 
-	private PixMindScene2D scene2D;
+	private PixMindScene2DInitialization scene2D;
 	private PixGuy pixGuy;
 	private Box2DWorldContactListener contactListener;
 	private MapZoom mapZoom;
@@ -18,7 +18,7 @@ public class PixMindWorldRenderer {
 	World world;
 	private Box2DDebugRenderer debugRenderer;
 	
-	public PixMindWorldRenderer( PixMindScene2D scene2D, PixGuy pixGuy,Box2DWorldContactListener contactListener,  MapZoom mapZoom, World world){
+	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixGuy pixGuy,Box2DWorldContactListener contactListener,  MapZoom mapZoom, World world){
 		this.scene2D = scene2D;
 		this.pixGuy = pixGuy;
 		this.contactListener = contactListener;

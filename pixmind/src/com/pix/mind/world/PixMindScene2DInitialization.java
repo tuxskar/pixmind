@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.pix.mind.PixMindGame;
 
-public class PixMindScene2D {
+public class PixMindScene2DInitialization {
 	
 	private Stage stage;
 	private Stage stageGui;
@@ -13,7 +13,7 @@ public class PixMindScene2D {
 	float levelSizeWidth;
 	float levelSizeHeight;
 	
-	public PixMindScene2D(float levelSizeWidth , float levelSizeHeight) {
+	public PixMindScene2DInitialization(float levelSizeWidth , float levelSizeHeight) {
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		stageGui = new Stage(PixMindGame.w, PixMindGame.h, true);		
 		Gdx.input.setInputProcessor(stageGui);
