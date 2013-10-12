@@ -2,29 +2,25 @@ package com.pix.mind.world;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
-import com.pix.mind.actors.PixGuyActor;
+import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
-import com.pix.mind.box2d.bodies.PixGuy;
-import com.pix.mind.controllers.ArrowController;
-import com.pix.mind.controllers.PixGuyController;
 
 public class PixMindBox2DInitialization {
 	private OrthographicCamera camera;
 	private World world;
 	private Box2DWorldContactListener contactListener;
-	
+	private ActiveColors actColors;
 	private PixMindPixGuyInitialization pixGuy;
 	 ArrayList<StaticPlatformActor> platformList;
 	 ArrayList<PlatformActivatorActor> activatorList;
 	
-	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game){
+	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game, int nColors){
 	/** BOX2D SETTINGS **/
 		
 		//set up camera for the debugRenderer		
@@ -44,13 +40,18 @@ public class PixMindBox2DInitialization {
 		platformList = new ArrayList<StaticPlatformActor>();
 		activatorList = new ArrayList<PlatformActivatorActor>();
 		
-		contactListener = new Box2DWorldContactListener(game, this);
+		actColors = new ActiveColors(scene2D.getStageGui(), nColors);
+		
+		contactListener = new Box2DWorldContactListener(game, this, actColors);
 		
 
 		this.getWorld().setContactListener(contactListener);
 	}
 
-
+	
+	public void addActivatedColor(Color color){
+		actColors.newActive(color);
+	}
 	public OrthographicCamera getCamera() {
 		return camera;
 	}

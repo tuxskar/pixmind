@@ -1,26 +1,16 @@
 package com.pix.mind.levels;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
-import com.pix.mind.actors.ActiveColor;
-import com.pix.mind.actors.ActiveColors;
-import com.pix.mind.actors.MapZoom;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
-import com.pix.mind.box2d.bodies.PixGuy;
 import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
-import com.pix.mind.controllers.PixGuyController;
-import com.pix.mind.world.Box2DWorldContactListener;
 import com.pix.mind.world.PixMindBox2DInitialization;
 import com.pix.mind.world.PixMindGuiInitialization;
-import com.pix.mind.world.PixMindPixGuyInitialization;
 import com.pix.mind.world.PixMindScene2DInitialization;
 import com.pix.mind.world.PixMindWorldRenderer;
 
@@ -80,39 +70,24 @@ public class FirstLevel implements Screen {
 		//max number of active colors
 		
 		int nColors = 3;
-		
-		
-		
-		
-		
-		
+
 		//Scene 2D initialization
-		
 		scene2D = new PixMindScene2DInitialization();			
 		scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
 				
-		//World initialization
-		
-		box2D = new PixMindBox2DInitialization (scene2D, game);
+		//World initialization 
+		box2D = new PixMindBox2DInitialization (scene2D, game, nColors);
 		
 		box2D.setCameraBeginsY(cameraBeginsY);		
 		box2D.setPixGuyPosition(pixGuyBeginsX, pixGuyBeginsY);
 		box2D.getContactListener().setNextLevel(new FirstLevel(game));
-	
+		box2D.addActivatedColor(Color.BLUE);
+		
 		//gui initialization
-		
 		gui = new PixMindGuiInitialization(scene2D, box2D);
-				
-			
-		
-		
-		
-		
+
 		//platform Actors and Activator Actors List
 	
-		
-
-		
 		//Creating All Static Platforms
 		
 		//Box2D platforms
