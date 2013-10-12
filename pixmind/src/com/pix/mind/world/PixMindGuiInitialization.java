@@ -8,15 +8,14 @@ import com.pix.mind.actors.MapZoom;
 public class PixMindGuiInitialization {
 	
 	ActiveColors actColors;
-	
-	
-	public PixMindGuiInitialization(PixMindScene2DInitialization scene2D, int nColors){
+	int nColors;
+	PixMindScene2DInitialization  scene2D;
+	private MapZoom mapZoom;
+	 
+	public PixMindGuiInitialization(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D) {
 		
-		actColors = new ActiveColors(scene2D.getStageGui(), nColors);
-		for (ActiveColor actColor : actColors.colors) {
-			scene2D.getStageGui().addActor(actColor);
-		}
-		actColors.newActive(Color.BLUE);
+		this.scene2D= scene2D;		
+		mapZoom = new MapZoom(box2D);
 		
 	}
 
@@ -26,6 +25,23 @@ public class PixMindGuiInitialization {
 
 	public void setActColors(ActiveColors actColors) {
 		this.actColors = actColors;
+	}
+	
+	public void setMaxColorGui(int nColors){
+		actColors = new ActiveColors(scene2D.getStageGui(), nColors);
+		for (ActiveColor actColor : actColors.colors) {
+			scene2D.getStageGui().addActor(actColor);
+		}
+		actColors.newActive(Color.BLUE);
+		this.nColors =nColors; 
+	}
+
+	public MapZoom getMapZoom() {
+		return mapZoom;
+	}
+
+	public void setMapZoom(MapZoom mapZoom) {
+		this.mapZoom = mapZoom;
 	}
 	
 	

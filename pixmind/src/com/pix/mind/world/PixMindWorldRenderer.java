@@ -17,11 +17,11 @@ public class PixMindWorldRenderer {
 	World world;
 	private Box2DDebugRenderer debugRenderer;
 	
-	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D,  MapZoom mapZoom){
+	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D,  PixMindGuiInitialization gui){
 		this.scene2D = scene2D;
 		this.pixGuy = box2D.getPixGuy().getPixGuy();
 		this.contactListener = box2D.getContactListener();
-		this.mapZoom = mapZoom;
+		this.mapZoom = gui.getMapZoom();
 		this.world = box2D.getWorld();
 		
 		//set up camera for the debugRenderer		

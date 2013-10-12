@@ -10,28 +10,29 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.controllers.PixGuyController;
+import com.pix.mind.levels.LevelGenerator;
 import com.pix.mind.world.Box2DWorldContactListener;
 import com.pix.mind.world.PixMindBox2DInitialization;
 import com.pix.mind.world.PixMindScene2DInitialization;
 
 public class MapZoom {
 	
-	private Stage stageGUI;
+	
 	private boolean mapActive= false;
 	private boolean showingMap = false;
 	private boolean hidingMap = false;
 	private Image zoomInActor, zoomOutActor;
 	private PixGuyController controller;
-	private Group groupStage;
+
 	private Box2DWorldContactListener contactListener;
 	private float levelSizeWidth;
 	private float levelSizeHeight;
-	public float zoom;
+	
 	private Image pixGuySkin;
-	public MapZoom(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D){
+	public MapZoom(PixMindBox2DInitialization box2D){
 		
-		this.stageGUI = scene2D.getStageGui();
-		this.stageGUI.addListener(new ActorGestureListener(){
+		
+		LevelGenerator.getScene2D().getStageGui().addListener(new ActorGestureListener(){
 
 			@Override
 			public void touchDown(InputEvent event, float x, float y,
@@ -60,18 +61,19 @@ public class MapZoom {
 		zoomInActor.setPosition(0+zoomMargin,PixMindGame.h -  zoomInActor.getHeight()-zoomMargin);
 		zoomOutActor.setSize(60, 60);
 		zoomOutActor.setPosition(0+zoomMargin, PixMindGame.h - zoomInActor.getHeight()-zoomMargin);
-		this.stageGUI.addActor(zoomInActor);		
+		LevelGenerator.getScene2D().getStageGui().addActor(zoomInActor);		
 		this.controller  = box2D.getPixGuy().getController();
-		this.groupStage = scene2D.getGroupStage();
+	
 		this.contactListener = box2D.getContactListener();
-		setLevelSize(scene2D.getLevelSizeWidth(), scene2D.getLevelSizeHeight());
-		zoom = PixMindGame.h / levelSizeHeight;
+		//setLevelSize(LevelGenerator.getScene2D().getLevelSizeWidth(), LevelGenerator.getScene2D().getLevelSizeHeight());
+		
+		
 		this.pixGuySkin = box2D.getPixGuy().getPixGuySkin();
 		
 	}
 	
 	protected void showMap() {
-		System.out.println("showing MAP");
+		
 		mapActive = true;
 		showingMap = true;
 		controller.setActive(false);
@@ -83,22 +85,23 @@ public class MapZoom {
 				showingMap = false;	
 				System.out.println("final action show");
 				zoomInActor.remove();
-				stageGUI.addActor(zoomOutActor);
+				LevelGenerator.getScene2D().getStageGui().addActor(zoomOutActor);
 				return true;
 			}			
 		};		
-		
-	groupStage.addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(zoom, zoom, 1,Interpolation.pow4), Actions.moveTo( -((levelSizeWidth/2)- pixGuySkin.getX()),  -((levelSizeHeight/2)- contactListener.getLastPlatformHeight()), 1,Interpolation.pow4)),finalAction));	
+		 LevelGenerator.getScene2D().getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(PixMindGame.h /LevelGenerator.getScene2D().getLevelSizeHeight(), PixMindGame.h /LevelGenerator.getScene2D().getLevelSizeHeight(), 1,Interpolation.pow4), Actions.moveTo( -((LevelGenerator.getScene2D().getLevelSizeWidth()/2)- pixGuySkin.getX()),  -((LevelGenerator.getScene2D().getLevelSizeHeight()/2)- contactListener.getLastPlatformHeight()), 1,Interpolation.pow4)),finalAction));	
 	
 		
 		
+		 System.out.println("chamo2 " +LevelGenerator.getScene2D().getLevelSizeWidth()/2+ " " +pixGuySkin.getX() + " "+(LevelGenerator.getScene2D().getLevelSizeHeight()/2) + " "+contactListener.getLastPlatformHeight() );
+			
 	
 	}
 	
 	protected void hideMap() {
 		// TODO Auto-generated method stub
 		if(showingMap==false && hidingMap == false){
-			System.out.println("hiding MAP");
+			
 		hidingMap = true;			
 		Action finalAction = new Action(){
 
@@ -109,13 +112,13 @@ public class MapZoom {
 				hidingMap = false;
 				controller.setActive(true);
 				zoomOutActor.remove();
-				stageGUI.addActor(zoomInActor);
+				LevelGenerator.getScene2D().getStageGui().addActor(zoomInActor);
 				return true;
 			}
 			
 		};
 		
-		groupStage.addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(1, 1, 1,Interpolation.pow4), Actions.moveTo( 0,0, 1,Interpolation.pow4)),finalAction));	
+		 LevelGenerator.getScene2D().getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(1, 1, 1,Interpolation.pow4), Actions.moveTo( 0,0, 1,Interpolation.pow4)),finalAction));	
 			
 			
 		}
@@ -128,7 +131,7 @@ public class MapZoom {
 	public void setLevelSize(float levelSizeWidth, float levelSizeHeight){
 		this.levelSizeWidth = levelSizeWidth;
 		this.levelSizeHeight = levelSizeHeight;		
-		groupStage.setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
+		 LevelGenerator.getScene2D().getGroupStage().setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
 	}
 	
 	

@@ -24,7 +24,7 @@ public class PixMindBox2DInitialization {
 	 ArrayList<StaticPlatformActor> platformList;
 	 ArrayList<PlatformActivatorActor> activatorList;
 	
-	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game, PixMindGuiInitialization gui, float cameraBeginsY){
+	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game){
 	/** BOX2D SETTINGS **/
 		
 		//set up camera for the debugRenderer		
@@ -44,7 +44,7 @@ public class PixMindBox2DInitialization {
 		platformList = new ArrayList<StaticPlatformActor>();
 		activatorList = new ArrayList<PlatformActivatorActor>();
 		
-		contactListener = new Box2DWorldContactListener(game, this, gui, cameraBeginsY, cameraBeginsY);
+		contactListener = new Box2DWorldContactListener(game, this);
 		
 
 		this.getWorld().setContactListener(contactListener);
@@ -116,6 +116,13 @@ public class PixMindBox2DInitialization {
 
 	public void setContactListener(Box2DWorldContactListener contactListener) {
 		this.contactListener = contactListener;
+	}
+	
+	public void setCameraBeginsY(float cameraBeginsY){
+		contactListener.setLastPlatformHeight(cameraBeginsY);
+		contactListener.setAnteriorHeight(cameraBeginsY);
+		
+		
 	}
 
 	

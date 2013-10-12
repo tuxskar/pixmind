@@ -30,7 +30,7 @@ public class FirstLevel implements Screen {
 
 	private PixMindGame game;
 	public String levelTitle = "First Level";
-	private MapZoom mapZoom;
+	
 	private PixMindWorldRenderer worldRenderer;
 	private PixMindScene2DInitialization scene2D;
 	private PixMindBox2DInitialization box2D;
@@ -91,17 +91,21 @@ public class FirstLevel implements Screen {
 		scene2D = new PixMindScene2DInitialization();			
 		scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
 				
-		//gui initialization
-		
-		gui = new PixMindGuiInitialization(scene2D, nColors);
-		
 		//World initialization
 		
-		box2D = new PixMindBox2DInitialization (scene2D, game, gui, cameraBeginsY);		
-		box2D.setPixGuyPosition(pixGuyBeginsX, pixGuyBeginsY);
-	
+		box2D = new PixMindBox2DInitialization (scene2D, game);
 		
-		mapZoom = new MapZoom(scene2D, box2D);
+		box2D.setCameraBeginsY(cameraBeginsY);		
+		box2D.setPixGuyPosition(pixGuyBeginsX, pixGuyBeginsY);
+		box2D.getContactListener().setNextLevel(new FirstLevel(game));
+	
+		//gui initialization
+		
+		gui = new PixMindGuiInitialization(scene2D, box2D);
+				
+			
+		
+		
 		
 		
 		//platform Actors and Activator Actors List
@@ -210,7 +214,7 @@ public class FirstLevel implements Screen {
 		
 		
 		
-		worldRenderer = new PixMindWorldRenderer(scene2D,  box2D, mapZoom);
+		worldRenderer = new PixMindWorldRenderer(scene2D,  box2D, gui);
 
 	}
 

@@ -2,6 +2,7 @@ package com.pix.mind.world;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
@@ -23,15 +24,14 @@ public class Box2DWorldContactListener implements ContactListener{
 	private ActiveColors actColors;
 	private float lastPlatformHeight;
 	private float anteriorHeight;
+	private Screen nextLevel;
 	
-	
-	public Box2DWorldContactListener(PixMindGame game,  PixMindBox2DInitialization box2D,  PixMindGuiInitialization gui,float lastPlatformHeight, float anteriorHeight){
+	public Box2DWorldContactListener(PixMindGame game,  PixMindBox2DInitialization box2D){
 		this.game = game;
 		this.platformList = box2D.getPlatformList();
 		this.activatorList = box2D.getActivatorList();
-		this.actColors = gui.getActColors();
-		this.lastPlatformHeight = lastPlatformHeight;
-		this.anteriorHeight = anteriorHeight;
+		
+		
 	}
 	@Override
 	public void beginContact(Contact contact) {
@@ -91,7 +91,7 @@ public class Box2DWorldContactListener implements ContactListener{
 				//if activator is black go to next level
 				if(platformActivatorActor.color.equals(Color.BLACK)){
 //					game.changeLevel(game.getSecondLevel());
-					game.changeLevel(game.getFirstLevel());
+					game.changeLevel(nextLevel);
 				}
 					
 				//get all platform of the same color and  change state
@@ -104,7 +104,7 @@ public class Box2DWorldContactListener implements ContactListener{
 				for(PlatformActivatorActor sp : activatorList){
 					if(platformActivatorActor.color.equals(sp.color)){
 					sp.setActive(false);
-					actColors.deActivate(sp.color);
+				//	actColors.deActivate(sp.color);
 					}
 				}
 			}else{
@@ -117,7 +117,7 @@ public class Box2DWorldContactListener implements ContactListener{
 				for(PlatformActivatorActor sp : activatorList){
 					if(platformActivatorActor.color.equals(sp.color)){
 						sp.setActive(true);	
-						actColors.newActive(sp.color);
+					//	actColors.newActive(sp.color);
 					}
 				}
 			}				
@@ -185,6 +185,12 @@ public class Box2DWorldContactListener implements ContactListener{
 	}
 	public void setAnteriorHeight(float anteriorHeight) {
 		this.anteriorHeight = anteriorHeight;
+	}
+	public Screen getNextLevel() {
+		return nextLevel;
+	}
+	public void setNextLevel(Screen nextLevel) {
+		this.nextLevel = nextLevel;
 	}
 
 
