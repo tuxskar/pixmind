@@ -28,7 +28,7 @@ public class MapZoom {
 	private float levelSizeHeight;
 	public float zoom;
 	private Image pixGuySkin;
-	public MapZoom(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D, Box2DWorldContactListener contactListener, float levelSizeWidth,  float levelSizeHeight){
+	public MapZoom(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D){
 		
 		this.stageGUI = scene2D.getStageGui();
 		this.stageGUI.addListener(new ActorGestureListener(){
@@ -63,9 +63,8 @@ public class MapZoom {
 		this.stageGUI.addActor(zoomInActor);		
 		this.controller  = box2D.getPixGuy().getController();
 		this.groupStage = scene2D.getGroupStage();
-		this.contactListener = contactListener;
-		this.levelSizeWidth = levelSizeWidth;
-		this.levelSizeHeight = levelSizeHeight;
+		this.contactListener = box2D.getContactListener();
+		setLevelSize(scene2D.getLevelSizeWidth(), scene2D.getLevelSizeHeight());
 		zoom = PixMindGame.h / levelSizeHeight;
 		this.pixGuySkin = box2D.getPixGuy().getPixGuySkin();
 		
@@ -125,6 +124,11 @@ public class MapZoom {
 
 	public boolean isMapActive() {
 		return mapActive;
+	}
+	public void setLevelSize(float levelSizeWidth, float levelSizeHeight){
+		this.levelSizeWidth = levelSizeWidth;
+		this.levelSizeHeight = levelSizeHeight;		
+		groupStage.setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
 	}
 	
 	

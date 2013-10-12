@@ -17,10 +17,10 @@ public class PixMindWorldRenderer {
 	World world;
 	private Box2DDebugRenderer debugRenderer;
 	
-	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D ,Box2DWorldContactListener contactListener,  MapZoom mapZoom){
+	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D,  MapZoom mapZoom){
 		this.scene2D = scene2D;
 		this.pixGuy = box2D.getPixGuy().getPixGuy();
-		this.contactListener = contactListener;
+		this.contactListener = box2D.getContactListener();
 		this.mapZoom = mapZoom;
 		this.world = box2D.getWorld();
 		

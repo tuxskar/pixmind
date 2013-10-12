@@ -8,7 +8,7 @@ import com.pix.mind.actors.MapZoom;
 public class PixMindGuiInitialization {
 	
 	ActiveColors actColors;
-	private MapZoom mapZoom;
+	
 	
 	public PixMindGuiInitialization(PixMindScene2DInitialization scene2D, int nColors){
 		
@@ -27,6 +27,8 @@ public class PixMindGuiInitialization {
 	public void setActColors(ActiveColors actColors) {
 		this.actColors = actColors;
 	}
+	
+	
 	
 	
 

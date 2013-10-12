@@ -30,8 +30,6 @@ public class FirstLevel implements Screen {
 
 	private PixMindGame game;
 	public String levelTitle = "First Level";
-	
-
 	private MapZoom mapZoom;
 	private PixMindWorldRenderer worldRenderer;
 	private PixMindScene2DInitialization scene2D;
@@ -102,6 +100,9 @@ public class FirstLevel implements Screen {
 		box2D = new PixMindBox2DInitialization (scene2D, game, gui, cameraBeginsY);		
 		box2D.setPixGuyPosition(pixGuyBeginsX, pixGuyBeginsY);
 	
+		
+		mapZoom = new MapZoom(scene2D, box2D);
+		
 		
 		//platform Actors and Activator Actors List
 	
@@ -207,9 +208,9 @@ public class FirstLevel implements Screen {
 
 		// Active colors		
 		
-		mapZoom = new MapZoom(scene2D, box2D,box2D.getContactListener(), levelSizeWidth, levelSizeHeight);
 		
-		worldRenderer = new PixMindWorldRenderer(scene2D,  box2D, box2D.getContactListener(), mapZoom);
+		
+		worldRenderer = new PixMindWorldRenderer(scene2D,  box2D, mapZoom);
 
 	}
 
