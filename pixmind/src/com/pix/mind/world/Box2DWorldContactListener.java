@@ -26,13 +26,13 @@ public class Box2DWorldContactListener implements ContactListener{
 	private float anteriorHeight;
 	private Screen nextLevel;
 	
-	public Box2DWorldContactListener(PixMindGame game,  PixMindBox2DInitialization box2D){
+	public Box2DWorldContactListener(PixMindGame game,  PixMindBox2DInitialization box2D, ActiveColors actColors){
 		this.game = game;
 		this.platformList = box2D.getPlatformList();
 		this.activatorList = box2D.getActivatorList();
-		
-		
+		this.actColors = actColors;
 	}
+	
 	@Override
 	public void beginContact(Contact contact) {
 		// TODO Auto-generated method stub
@@ -104,7 +104,8 @@ public class Box2DWorldContactListener implements ContactListener{
 				for(PlatformActivatorActor sp : activatorList){
 					if(platformActivatorActor.color.equals(sp.color)){
 					sp.setActive(false);
-				//	actColors.deActivate(sp.color);
+					actColors.deActivate(sp.color);
+					System.out.println("Deactivating the color: "+sp.color);
 					}
 				}
 			}else{
@@ -117,7 +118,8 @@ public class Box2DWorldContactListener implements ContactListener{
 				for(PlatformActivatorActor sp : activatorList){
 					if(platformActivatorActor.color.equals(sp.color)){
 						sp.setActive(true);	
-					//	actColors.newActive(sp.color);
+						actColors.newActive(sp.color);
+						System.out.println("Activating the color: "+sp.color);
 					}
 				}
 			}				
