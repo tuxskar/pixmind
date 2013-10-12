@@ -9,8 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.pix.mind.PixMindGame;
-import com.pix.mind.box2d.Box2DWorldContactListener;
 import com.pix.mind.controllers.PixGuyController;
+import com.pix.mind.world.Box2DWorldContactListener;
+import com.pix.mind.world.PixMindBox2DInitialization;
+import com.pix.mind.world.PixMindScene2DInitialization;
 
 public class MapZoom {
 	
@@ -24,11 +26,11 @@ public class MapZoom {
 	private Box2DWorldContactListener contactListener;
 	private float levelSizeWidth;
 	private float levelSizeHeight;
-	public float zoom = PixMindGame.h / levelSizeHeight;
+	public float zoom;
 	private Image pixGuySkin;
-	public MapZoom(Stage stageGUI, PixGuyController controller, Group groupStage, Box2DWorldContactListener contactListener, float levelSizeWidth,  float levelSizeHeight, Image pixGuySkin){
+	public MapZoom(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D, Box2DWorldContactListener contactListener, float levelSizeWidth,  float levelSizeHeight){
 		
-		this.stageGUI = stageGUI;
+		this.stageGUI = scene2D.getStageGui();
 		this.stageGUI.addListener(new ActorGestureListener(){
 
 			@Override
@@ -59,13 +61,14 @@ public class MapZoom {
 		zoomOutActor.setSize(60, 60);
 		zoomOutActor.setPosition(0+zoomMargin, PixMindGame.h - zoomInActor.getHeight()-zoomMargin);
 		this.stageGUI.addActor(zoomInActor);		
-		this.controller  = controller;
-		this.groupStage = groupStage;
+		this.controller  = box2D.getPixGuy().getController();
+		this.groupStage = scene2D.getGroupStage();
 		this.contactListener = contactListener;
 		this.levelSizeWidth = levelSizeWidth;
 		this.levelSizeHeight = levelSizeHeight;
-		this.zoom =zoom;
-		this.pixGuySkin = pixGuySkin;
+		zoom = PixMindGame.h / levelSizeHeight;
+		this.pixGuySkin = box2D.getPixGuy().getPixGuySkin();
+		
 	}
 	
 	protected void showMap() {

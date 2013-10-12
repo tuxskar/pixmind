@@ -5,7 +5,6 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.MapZoom;
-import com.pix.mind.box2d.Box2DWorldContactListener;
 import com.pix.mind.box2d.bodies.PixGuy;
 
 public class PixMindWorldRenderer {
@@ -18,12 +17,12 @@ public class PixMindWorldRenderer {
 	World world;
 	private Box2DDebugRenderer debugRenderer;
 	
-	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixGuy pixGuy,Box2DWorldContactListener contactListener,  MapZoom mapZoom, World world){
+	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D ,Box2DWorldContactListener contactListener,  MapZoom mapZoom){
 		this.scene2D = scene2D;
-		this.pixGuy = pixGuy;
+		this.pixGuy = box2D.getPixGuy().getPixGuy();
 		this.contactListener = contactListener;
 		this.mapZoom = mapZoom;
-		this.world = world;
+		this.world = box2D.getWorld();
 		
 		//set up camera for the debugRenderer		
 		camera = new OrthographicCamera(PixMindGame.w
@@ -79,8 +78,8 @@ public class PixMindWorldRenderer {
 						* PixMindGame.WORLD_TO_BOX;
 				camera.update();
 			}
-			world.step(delta, 6, 2);
-			pixGuy.setActualPosition();
+			world.step(delta, 6, 2);		
+			pixGuy.setActualPosition();			
 		}
 		scene2D.getStage().act();	
 	}

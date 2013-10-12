@@ -1,4 +1,4 @@
-package com.pix.mind.box2d;
+package com.pix.mind.world;
 
 import java.util.ArrayList;
 
@@ -25,11 +25,11 @@ public class Box2DWorldContactListener implements ContactListener{
 	private float anteriorHeight;
 	
 	
-	public Box2DWorldContactListener(PixMindGame game, ArrayList<StaticPlatformActor> platformList, ArrayList<PlatformActivatorActor> activatorList,  ActiveColors actColors,float lastPlatformHeight, float anteriorHeight){
+	public Box2DWorldContactListener(PixMindGame game,  PixMindBox2DInitialization box2D,  PixMindGuiInitialization gui,float lastPlatformHeight, float anteriorHeight){
 		this.game = game;
-		this.platformList = platformList;
-		this.activatorList = activatorList;
-		this.actColors = actColors;
+		this.platformList = box2D.getPlatformList();
+		this.activatorList = box2D.getActivatorList();
+		this.actColors = gui.getActColors();
 		this.lastPlatformHeight = lastPlatformHeight;
 		this.anteriorHeight = anteriorHeight;
 	}
@@ -150,7 +150,7 @@ public class Box2DWorldContactListener implements ContactListener{
 			fixGuy.getBody().getWorldCenter(), true);
 			}
 		}
-	System.out.println("contanto");
+	
 		colliding = true ;
 	}
 
