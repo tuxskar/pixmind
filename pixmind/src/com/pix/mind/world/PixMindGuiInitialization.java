@@ -15,7 +15,7 @@ public class PixMindGuiInitialization {
 	public PixMindGuiInitialization(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D) {
 		
 		this.scene2D= scene2D;		
-		mapZoom = new MapZoom(box2D);
+		mapZoom = new MapZoom( box2D,scene2D);
 		
 	}
 

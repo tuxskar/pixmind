@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.controllers.PixGuyController;
-import com.pix.mind.levels.LevelGenerator;
 import com.pix.mind.world.Box2DWorldContactListener;
 import com.pix.mind.world.PixMindBox2DInitialization;
 import com.pix.mind.world.PixMindScene2DInitialization;
@@ -29,10 +28,11 @@ public class MapZoom {
 	private float levelSizeHeight;
 	
 	private Image pixGuySkin;
-	public MapZoom(PixMindBox2DInitialization box2D){
+	private PixMindScene2DInitialization scene2D;
+	public MapZoom(PixMindBox2DInitialization box2D, PixMindScene2DInitialization scene2D){
 		
 		
-		LevelGenerator.getScene2D().getStageGui().addListener(new ActorGestureListener(){
+		scene2D.getStageGui().addListener(new ActorGestureListener(){
 
 			@Override
 			public void touchDown(InputEvent event, float x, float y,
@@ -61,9 +61,9 @@ public class MapZoom {
 		zoomInActor.setPosition(0+zoomMargin,PixMindGame.h -  zoomInActor.getHeight()-zoomMargin);
 		zoomOutActor.setSize(60, 60);
 		zoomOutActor.setPosition(0+zoomMargin, PixMindGame.h - zoomInActor.getHeight()-zoomMargin);
-		LevelGenerator.getScene2D().getStageGui().addActor(zoomInActor);		
+		scene2D.getStageGui().addActor(zoomInActor);		
 		this.controller  = box2D.getPixGuy().getController();
-	
+	this.scene2D = scene2D;
 		this.contactListener = box2D.getContactListener();
 		//setLevelSize(LevelGenerator.getScene2D().getLevelSizeWidth(), LevelGenerator.getScene2D().getLevelSizeHeight());
 		
@@ -85,15 +85,15 @@ public class MapZoom {
 				showingMap = false;	
 				System.out.println("final action show");
 				zoomInActor.remove();
-				LevelGenerator.getScene2D().getStageGui().addActor(zoomOutActor);
+				scene2D.getStageGui().addActor(zoomOutActor);
 				return true;
 			}			
 		};		
-		 LevelGenerator.getScene2D().getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(PixMindGame.h /LevelGenerator.getScene2D().getLevelSizeHeight(), PixMindGame.h /LevelGenerator.getScene2D().getLevelSizeHeight(), 1,Interpolation.pow4), Actions.moveTo( -((LevelGenerator.getScene2D().getLevelSizeWidth()/2)- pixGuySkin.getX()),  -((LevelGenerator.getScene2D().getLevelSizeHeight()/2)- contactListener.getLastPlatformHeight()), 1,Interpolation.pow4)),finalAction));	
+		scene2D.getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(PixMindGame.h /scene2D.getLevelSizeHeight(), PixMindGame.h /scene2D.getLevelSizeHeight(), 1,Interpolation.pow4), Actions.moveTo( -((scene2D.getLevelSizeWidth()/2)- pixGuySkin.getX()),  -((scene2D.getLevelSizeHeight()/2)- contactListener.getLastPlatformHeight()), 1,Interpolation.pow4)),finalAction));	
 	
 		
 		
-		 System.out.println("chamo2 " +LevelGenerator.getScene2D().getLevelSizeWidth()/2+ " " +pixGuySkin.getX() + " "+(LevelGenerator.getScene2D().getLevelSizeHeight()/2) + " "+contactListener.getLastPlatformHeight() );
+		 System.out.println("chamo2 " +scene2D.getLevelSizeWidth()/2+ " " +pixGuySkin.getX() + " "+(scene2D.getLevelSizeHeight()/2) + " "+contactListener.getLastPlatformHeight() );
 			
 	
 	}
@@ -112,13 +112,13 @@ public class MapZoom {
 				hidingMap = false;
 				controller.setActive(true);
 				zoomOutActor.remove();
-				LevelGenerator.getScene2D().getStageGui().addActor(zoomInActor);
+				scene2D.getStageGui().addActor(zoomInActor);
 				return true;
 			}
 			
 		};
 		
-		 LevelGenerator.getScene2D().getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(1, 1, 1,Interpolation.pow4), Actions.moveTo( 0,0, 1,Interpolation.pow4)),finalAction));	
+		 scene2D.getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(1, 1, 1,Interpolation.pow4), Actions.moveTo( 0,0, 1,Interpolation.pow4)),finalAction));	
 			
 			
 		}
@@ -131,7 +131,7 @@ public class MapZoom {
 	public void setLevelSize(float levelSizeWidth, float levelSizeHeight){
 		this.levelSizeWidth = levelSizeWidth;
 		this.levelSizeHeight = levelSizeHeight;		
-		 LevelGenerator.getScene2D().getGroupStage().setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
+		scene2D.getGroupStage().setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
 	}
 	
 	

@@ -6,7 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
-import com.pix.mind.levels.FirstLevelGenerated;
+
 import com.pix.mind.levels.SecondLevel;
 import com.pix.mind.screens.InterLevelScreen;
 import com.pix.mind.screens.SplashScreen;
