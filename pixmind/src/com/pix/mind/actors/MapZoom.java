@@ -89,7 +89,7 @@ public class MapZoom {
 				return true;
 			}			
 		};		
-		scene2D.getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(PixMindGame.h /scene2D.getLevelSizeHeight(), PixMindGame.h /scene2D.getLevelSizeHeight(), 1,Interpolation.pow4), Actions.moveTo( -((scene2D.getLevelSizeWidth()/2)- pixGuySkin.getX()),  -((scene2D.getLevelSizeHeight()/2)- contactListener.getLastPlatformHeight()), 1,Interpolation.pow4)),finalAction));	
+		scene2D.getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(PixMindGame.h /scene2D.getLevelSizeHeight(), PixMindGame.h /scene2D.getLevelSizeHeight(), 1,Interpolation.sine), Actions.moveTo( -((scene2D.getLevelSizeWidth()/2)- pixGuySkin.getX()),  -((scene2D.getLevelSizeHeight()/2)- contactListener.getLastPlatformHeight()), 1,Interpolation.sine)),finalAction));	
 	
 		
 		
