@@ -35,7 +35,7 @@ public class PixMindWorldRenderer {
 	
 	
 	public void render(float delta){
-		debugRenderer.render(world, camera.combined);
+		//debugRenderer.render(world, camera.combined);
 		scene2D.getStage().draw();
 		scene2D.getStageGui().draw();
 		

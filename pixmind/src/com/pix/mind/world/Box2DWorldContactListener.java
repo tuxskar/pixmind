@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PixGuyActor;
@@ -151,6 +153,14 @@ public class Box2DWorldContactListener implements ContactListener{
 			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x , 0);
 			fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.2f),
 			fixGuy.getBody().getWorldCenter(), true);
+			//animation
+			
+			
+			PixGuyActor pixguyActor = (PixGuyActor)fixGuy.getUserData();
+			if(pixguyActor.getActions().size !=0)
+			pixguyActor.removeAction(pixguyActor.getActions().get(0));
+			Interpolation interpolation = Interpolation.linear;
+			pixguyActor.addAction(Actions.sequence(Actions.scaleTo(1.2f,0.8f,0.25f, interpolation),Actions.scaleTo(1f,1f,0.25f,interpolation), Actions.scaleTo(0.8f,1.2f,0.25f, interpolation), Actions.scaleTo(1,1,0.25f, interpolation)));
 			}
 			
 		}
