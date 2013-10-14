@@ -28,6 +28,9 @@ public class LevelOne extends PixMindLevel {
 	public void show() {
 		// TODO Auto-generated method stub
 			
+		super.show();
+		super.setNextLevel(game.getLevelOne());
+		
 			//CREANDO EL NIVEL
 			
 			//platform Actors and Activator Actors List
@@ -120,17 +123,11 @@ public class LevelOne extends PixMindLevel {
 			box2D.getActivatorList().add(a3Skin);
 			box2D.getActivatorList().add(a4Skin);
 			
-
-			
-			
-			
 			// add to stage the group of actors
 			
 			
 
 			// Active colors		
-			
-			super.setNextLevel(0);
 			
 			worldRenderer = new PixMindWorldRenderer(scene2D,  box2D, gui);
 

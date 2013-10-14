@@ -16,10 +16,9 @@ import com.pix.mind.screens.InterLevelScreen;
 import com.pix.mind.screens.SplashScreen;
 
 public class PixMindGame extends Game {
-//	private LevelOne levelOne;
-//	private FirstLevel firstLevel;
-//	private SecondLevel secondLevel;
-	private ArrayList<PixMindLevel> levels;
+	private LevelOne levelOne;
+	private FirstLevel firstLevel;
+	private SecondLevel secondLevel;
 	private InterLevelScreen interLevel;
 	private SplashScreen splashScreen;
 	public static final float WORLD_TO_BOX = 0.01f;
@@ -33,19 +32,13 @@ public class PixMindGame extends Game {
 	public void create() {
 		// TODO Auto-generated method stub
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
-		levels = new ArrayList<PixMindLevel>();
 		assetManager = new AssetManager();
-		//levelOne = new LevelOne(this);
-		//firstLevel = new FirstLevel(this);		
-		//secondLevel = new SecondLevel(this);
+		levelOne = new LevelOne(this);
+		firstLevel = new FirstLevel(this);		
+		secondLevel = new SecondLevel(this);
 		splashScreen = new SplashScreen(this);
 		this.setScreen(getSplashScreen());
 	}
-	
-//	public FirstLevel getFirstLevel() {
-//		return firstLevel;
-//	}
-	
 	
 	public SplashScreen getSplashScreen() {
 		return splashScreen;
@@ -68,22 +61,12 @@ public class PixMindGame extends Game {
 		PixMindGame.skin = skin;
 	}
 
-//	public SecondLevel getSecondLevel() {
-//		return secondLevel;
-//	}
-	
-	public void createLevel(PixMindLevel newlevel){
-		levels.add(newlevel);
-		
+	public SecondLevel getSecondLevel() {
+		return secondLevel;
 	}
 	
-	public PixMindLevel getLevel(int levelNumber){
-		return levels.get(levelNumber);
-		
-	}
-	
-	public void destroyLevel(int levelNumber){
-		levels.remove(0);
+	public LevelOne getLevelOne() {
+		return levelOne;
 	}
 	
 	

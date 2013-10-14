@@ -10,7 +10,7 @@ import com.pix.mind.world.PixMindGuiInitialization;
 import com.pix.mind.world.PixMindScene2DInitialization;
 import com.pix.mind.world.PixMindWorldRenderer;
 
-public abstract class PixMindLevel implements Screen {
+public class PixMindLevel implements Screen {
 	
 	// VARIABLES COMUNES A TODOS LOS NIVELES ///////////
 	PixMindGame game;
@@ -18,45 +18,33 @@ public abstract class PixMindLevel implements Screen {
 	PixMindScene2DInitialization scene2D;
 	PixMindBox2DInitialization box2D;
 	PixMindGuiInitialization gui;
-	int nextLevel;
-//	int nMaxColors;
-//	int nActiveColors;
-//	// variables of the screen
+	int nActiveColors;
+	// variables of the screen
 
-//	// aspect ratio and levelSize needs to be 1.3 ALWAYS
-//	// (to support minimum resolution device)
-//
-//	float levelSizeHeight = 1000;
-//	float levelSizeWidth = 1333;
-//
-//	// this point must be the first platform contact + its half height
-//	float cameraBeginsY = 210;
-//
-//	// point of start of pixGuy in meters...
-//
-//	float pixGuyBeginsX = 4;
-//	float pixGuyBeginsY = 4;
+	// aspect ratio and levelSize needs to be 1.3 ALWAYS
+	// (to support minimum resolution device)
+
+	float levelSizeHeight = 1000;
+	float levelSizeWidth = 1333;
+
+	// this point must be the first platform contact + its half height
+	float cameraBeginsY = 210;
+
+	// point of start of pixGuy in meters...
+
+	float pixGuyBeginsX = 4;
+	float pixGuyBeginsY = 4;
 	////////////////////////////////////////////////////
-	
-	public PixMindLevel(PixMindGame game, float levelSizeWidth, float levelSizeHeight, float cameraBeginsY, float pixGuyBeginsX, float pixGuyBeginsY, int nActiveColors){
-		
+
+	public PixMindLevel(PixMindGame game, float levelSizeWidth, float levelSizeHeight, float cameraBeginsY, float pixGuyBeginsX, float pixGuyBeginsY, int nActiveColors) {
 		super();
 		this.game = game;
-		
-		scene2D = new PixMindScene2DInitialization();
-		scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
-		
-		box2D = new PixMindBox2DInitialization (scene2D, game, nActiveColors);
-		box2D.setCameraBeginsY(cameraBeginsY);		
-		box2D.setPixGuyPosition(pixGuyBeginsX, pixGuyBeginsY);
-//		box2D.getContactListener().setNextLevel(new LevelOne(game));
-		box2D.addActivatedColor(Color.BLUE);
-		
-		gui = new PixMindGuiInitialization(scene2D, box2D);
-		
-		
-
-		
+		this.nActiveColors = nActiveColors;
+		this.levelSizeHeight = levelSizeHeight;
+		this.levelSizeWidth = levelSizeWidth;
+		this.cameraBeginsY = cameraBeginsY;
+		this.pixGuyBeginsX = pixGuyBeginsX;
+		this.pixGuyBeginsY = pixGuyBeginsY;
 	}
 
 	@Override
@@ -75,7 +63,20 @@ public abstract class PixMindLevel implements Screen {
 	}
 
 	@Override
-	public abstract void show();
+	public void show(){
+		
+		scene2D = new PixMindScene2DInitialization();
+		scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
+		
+		box2D = new PixMindBox2DInitialization (scene2D, game, nActiveColors);
+		box2D.setCameraBeginsY(cameraBeginsY);		
+		box2D.setPixGuyPosition(pixGuyBeginsX, pixGuyBeginsY);
+//		box2D.getContactListener().setNextLevel(new LevelOne(game));
+		box2D.addActivatedColor(Color.BLUE);
+		
+		gui = new PixMindGuiInitialization(scene2D, box2D);
+		
+	}
 
 	@Override
 	public void hide() {
@@ -103,9 +104,8 @@ public abstract class PixMindLevel implements Screen {
 	
 	// GETTERS & SETTERS
 	
-	public void setNextLevel(int nextLevel){
-		this.nextLevel = nextLevel;
-		box2D.getContactListener().setNextLevel(game.getLevel(nextLevel));
+	public void setNextLevel(PixMindLevel nextLevel){
+		box2D.getContactListener().setNextLevel(nextLevel);
 	}
 
 }
