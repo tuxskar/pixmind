@@ -17,6 +17,7 @@ public class PixGuyActor extends Image {
 		this.setSize(pixGuy.pixWidth, pixGuy.pixHeight);
 		this.setPosition(pixGuy.getPosX(), pixGuy.getPosY());
 		this.setColor(0, 0, 0,1);
+		pixGuy.fixture.setUserData(this);
 	}
 
 	@Override

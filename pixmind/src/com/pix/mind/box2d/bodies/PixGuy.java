@@ -12,7 +12,7 @@ import com.pix.mind.PixMindGame;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixGuy {
-	static public final String PIX_ID = "pixguy";
+//	static public final String PIX_ID = "pixguy";
 	public static float pixWidth = 30;	
 	public static float pixHeight = 30;
 	
@@ -21,7 +21,7 @@ public class PixGuy {
 	public  Body body;
 	static final float SPEED = 1;
 	public PixGuyController controller;
-	
+	public Fixture fixture ;
 	public PixGuy(World world, float width, float height) {
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();
@@ -50,8 +50,8 @@ public class PixGuy {
 		//fixtureDef.friction = 0.4f;
 		//fixtureDef.restitution = 0.5f; // Make it bounce a little bit
 		// Create our fixture and attach it to the body
-		Fixture fixture = body.createFixture(fixtureDef);
-		fixture.setUserData(PixGuy.PIX_ID);
+		fixture = body.createFixture(fixtureDef);
+		//fixture.setUserData(PixGuy.PIX_ID);
 		
 		// Clean up after ourselves
 		groundBox.dispose();

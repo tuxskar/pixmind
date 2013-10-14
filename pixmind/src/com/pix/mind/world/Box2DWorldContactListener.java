@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColors;
+import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.PixGuy;
@@ -40,7 +41,7 @@ public class Box2DWorldContactListener implements ContactListener{
 		Fixture fixPlatform = null;
 		Fixture fixActivator = null;
 		//get fixture fixguy
-		if (contact.getFixtureA().getUserData().equals(PixGuy.PIX_ID)) {
+		if (contact.getFixtureA().getUserData() instanceof PixGuyActor) {
 			fixGuy = contact.getFixtureA();
 			// fixPlatform = contact.getFixtureB();
 		} else {
@@ -151,6 +152,7 @@ public class Box2DWorldContactListener implements ContactListener{
 			fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.2f),
 			fixGuy.getBody().getWorldCenter(), true);
 			}
+			
 		}
 	
 		colliding = true ;
