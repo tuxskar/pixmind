@@ -151,7 +151,7 @@ public class Box2DWorldContactListener implements ContactListener{
 				anteriorHeight = lastPlatformHeight;
 			}
 			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x , 0);
-			fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.2f),
+			fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.65f),
 			fixGuy.getBody().getWorldCenter(), true);
 			//animation
 			

@@ -81,10 +81,10 @@ public class PixGuy {
 		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
 		this.posX = body.getTransform().getPosition().x;
-		if(body.getLinearVelocity().x >1){
+		if(body.getLinearVelocity().x >2){
 			body.setLinearVelocity(1, body.getLinearVelocity().y);
 		}
-		if(body.getLinearVelocity().x <-1){
+		if(body.getLinearVelocity().x <-2){
 			body.setLinearVelocity(-1, body.getLinearVelocity().y);
 		}
 		
