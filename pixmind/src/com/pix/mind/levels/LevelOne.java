@@ -125,8 +125,11 @@ public class LevelOne extends PixMindLevel {
 			
 			// add to stage the group of actors
 			
+			//make this to bring pixguy to the front if you make 12 elements
+			//platforms and activator this number must be 13
+			//put a high vaulue if you are not sure.
+			box2D.getPixGuy().getPixGuySkin().setZIndex(200);
 			
-
 			// Active colors		
 			
 			worldRenderer = new PixMindWorldRenderer(scene2D,  box2D, gui);
