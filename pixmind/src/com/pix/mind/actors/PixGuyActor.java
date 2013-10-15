@@ -9,14 +9,14 @@ public class PixGuyActor extends Image {
 	private PixGuy pixGuy;
 	public PixGuyActor(PixGuy pixGuy){
 		
-		super( PixMindGame.getSkin().getDrawable("box"));
+		super( PixMindGame.getSkin().getDrawable("pixguy"));
 	
 		//Texture r = PixMindGame.getSkin().getRegion("box").getTexture();
 		
 		this.pixGuy = pixGuy;
 		this.setSize(pixGuy.pixWidth, pixGuy.pixHeight);
 		this.setPosition(pixGuy.getPosX(), pixGuy.getPosY());
-		this.setColor(0, 0, 0,1);
+		//this.setColor(0, 0, 0,1);
 		this.setOrigin(pixGuy.pixWidth/2,pixGuy.pixHeight/2);
 		pixGuy.fixture.setUserData(this);
 	}
