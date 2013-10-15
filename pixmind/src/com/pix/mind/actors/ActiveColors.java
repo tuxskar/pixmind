@@ -14,6 +14,7 @@ public class ActiveColors {
 		colors = new ArrayList<ActiveColor>(nColors);
 		for (int i = 1; i <= nColors; i++) {
 			ActiveColor actColor = new ActiveColor(Color.CLEAR);
+			guiStage.addActor(actColor);
 			actColor.setPosition(PixMindGame.w - actColor.getWidth() * i
 					- COLORMARGIN * i, PixMindGame.h - actColor.getHeight()
 					- COLORMARGIN);

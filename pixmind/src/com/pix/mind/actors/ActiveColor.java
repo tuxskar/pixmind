@@ -16,7 +16,6 @@ public class ActiveColor extends Image {
 	
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
-		// TODO Auto-generated method stub
 		super.draw(batch, parentAlpha);
 	
 	}

@@ -1,46 +1,44 @@
 package com.pix.mind;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
+import com.pix.mind.levels.LevelOne;
+import com.pix.mind.levels.PixMindLevel;
+
 import com.pix.mind.levels.SecondLevel;
 import com.pix.mind.screens.InterLevelScreen;
 import com.pix.mind.screens.SplashScreen;
 
 public class PixMindGame extends Game {
+	private LevelOne levelOne;
 	private FirstLevel firstLevel;
 	private SecondLevel secondLevel;
 	private InterLevelScreen interLevel;
-	
 	private SplashScreen splashScreen;
 	public static final float WORLD_TO_BOX = 0.01f;
 	public static final float BOX_TO_WORLD = 100f;
 	public static float h = 480; 		
 	public static float w = 800;
-	public static float fromRealScreenToFixedScreenWidth;
-	public static float fromRealScreenToFixedScreenHeight;
+
 	private AssetManager assetManager;
 	private static Skin skin;
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub
-		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();
-		fromRealScreenToFixedScreenHeight = Gdx.graphics.getHeight() / PixMindGame.h;
-		fromRealScreenToFixedScreenWidth = Gdx.graphics.getWidth() / PixMindGame.w;
+		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
 		assetManager = new AssetManager();
-		firstLevel = new FirstLevel(this);
+		levelOne = new LevelOne(this);
+		firstLevel = new FirstLevel(this);		
 		secondLevel = new SecondLevel(this);
 		splashScreen = new SplashScreen(this);
 		this.setScreen(getSplashScreen());
 	}
-	
-	public FirstLevel getFirstLevel() {
-		return firstLevel;
-	}
-	
 	
 	public SplashScreen getSplashScreen() {
 		return splashScreen;
@@ -65,6 +63,10 @@ public class PixMindGame extends Game {
 
 	public SecondLevel getSecondLevel() {
 		return secondLevel;
+	}
+	
+	public LevelOne getLevelOne() {
+		return levelOne;
 	}
 	
 	

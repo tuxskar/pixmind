@@ -4,6 +4,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.PixMindGame;
+import com.pix.mind.levels.FirstLevel;
+import com.pix.mind.levels.LevelOne;
 
 public class SplashScreen implements  Screen{
 	private PixMindGame game;
@@ -15,12 +17,13 @@ public class SplashScreen implements  Screen{
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-	
 		if (game.getAssetManager().update()) {
 	
-		game.setSkin(new Skin(game.getAssetManager().get(
+			game.setSkin(new Skin(game.getAssetManager().get(
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
-		game.setScreen(game.getFirstLevel());
+			
+			game.setScreen(game.getLevelOne());
+			//game.setScreen(new FirstLevel(game));
 		}
 	}
 

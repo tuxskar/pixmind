@@ -22,7 +22,7 @@ public class PixGuy {
 	static final float SPEED = 1;
 	public PixGuyController controller;
 	
-	public PixGuy(World world, float posX, float posY, float width, float height) {
+	public PixGuy(World world, float width, float height) {
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();
 		bodyDef.fixedRotation = true;
@@ -108,5 +108,10 @@ public class PixGuy {
 				body.getWorldCenter(), true);
 	
 	
+	}
+	
+	public void setPixGuyPosition(float pixGuyBeginsX, float pixGuyBeginsY){
+		setPosition(pixGuyBeginsX, pixGuyBeginsY);
+		body.setTransform(pixGuyBeginsX, pixGuyBeginsY,0);
 	}
 }
