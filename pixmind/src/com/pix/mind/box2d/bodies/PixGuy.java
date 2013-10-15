@@ -19,7 +19,7 @@ public class PixGuy {
 	// pixmind main character
 	private float posX, posY;
 	public  Body body;
-	static final float SPEED = 1;
+	static final float SPEED = 1.5f;
 	public PixGuyController controller;
 	public Fixture fixture ;
 	public PixGuy(World world, float width, float height) {
@@ -81,12 +81,12 @@ public class PixGuy {
 		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
 		this.posX = body.getTransform().getPosition().x;
-		if(body.getLinearVelocity().x >2){
-			body.setLinearVelocity(1, body.getLinearVelocity().y);
-		}
-		if(body.getLinearVelocity().x <-2){
-			body.setLinearVelocity(-1, body.getLinearVelocity().y);
-		}
+		//if(body.getLinearVelocity().x >1){
+		//	body.setLinearVelocity(1, body.getLinearVelocity().y);
+	//	}
+		//if(body.getLinearVelocity().x <-1){
+	//		body.setLinearVelocity(-1, body.getLinearVelocity().y);
+	//	}
 		
 		
 		body.setTransform(this.posX, this.posY, 0);
@@ -97,16 +97,17 @@ public class PixGuy {
 	
 	public void moveLeft(float deltaTime) {
 	
-		body.applyForce(new Vector2(-1f, 0),
-				body.getWorldCenter(), true);
-		
+	//body.applyForce(new Vector2(-1f, 0),
+	//			body.getWorldCenter(), true);
+		body.setLinearVelocity(-SPEED,body.getLinearVelocity().y);
+
 		
 	}
 
 	public void moveRight(float deltaTime) {
-		body.applyForce(new Vector2(1f, 0),
-				body.getWorldCenter(), true);
-	
+	//	body.applyForce(new Vector2(1f, 0),
+		//		body.getWorldCenter(), true);
+	body.setLinearVelocity(SPEED,body.getLinearVelocity().y);
 	
 	}
 	
