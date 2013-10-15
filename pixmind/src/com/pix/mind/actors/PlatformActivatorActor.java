@@ -16,7 +16,7 @@ public class PlatformActivatorActor extends Image {
 	public Color color;
 	
 	public PlatformActivatorActor(PlatformActivator activator, Color color, boolean active){
-		super(PixMindGame.getSkin().getDrawable("circle"));
+		super(PixMindGame.getSkin().getDrawable("candy"));
 		
 		platformActivator = activator;
 		this.radius = platformActivator.getRadius()*PixMindGame.BOX_TO_WORLD;
