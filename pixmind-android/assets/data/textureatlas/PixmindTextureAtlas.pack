@@ -1,61 +1,286 @@
 
 PixmindTextureAtlas.png
 format: RGBA8888
-filter: Linear,Linear
+filter: MipMap,MipMap
 repeat: none
-zoomin
+emptyscreen
   rotate: false
-  xy: 1, 305
-  size: 128, 128
-  orig: 128, 128
+  xy: 1, 535
+  size: 854, 480
+  orig: 854, 480
   offset: 0, 0
   index: -1
-zoomout
+fondoingame
   rotate: false
-  xy: 1, 175
-  size: 128, 128
-  orig: 128, 128
+  xy: 1, 53
+  size: 854, 480
+  orig: 854, 480
   offset: 0, 0
   index: -1
-plataforma
-  rotate: false
-  xy: 131, 383
-  size: 162, 50
-  orig: 162, 50
-  offset: 0, 0
-  index: -1
-box
-  rotate: false
-  xy: 1, 73
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-circle
-  rotate: false
-  xy: 131, 281
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-pixguy
+accelerometer
   rotate: false
   xy: 1, 1
-  size: 70, 70
-  orig: 70, 70
+  size: 250, 50
+  orig: 250, 50
   offset: 0, 0
   index: -1
-leftArrow
+touch
   rotate: false
-  xy: 131, 215
+  xy: 253, 1
+  size: 250, 50
+  orig: 250, 50
+  offset: 0, 0
+  index: -1
+platform1
+  rotate: false
+  xy: 505, 31
+  size: 200, 20
+  orig: 200, 20
+  offset: 0, 0
+  index: -1
+platform2
+  rotate: false
+  xy: 505, 9
+  size: 200, 20
+  orig: 200, 20
+  offset: 0, 0
+  index: -1
+musicoff
+  rotate: false
+  xy: 857, 965
+  size: 150, 50
+  orig: 150, 50
+  offset: 0, 0
+  index: -1
+musicon
+  rotate: false
+  xy: 857, 913
+  size: 150, 50
+  orig: 150, 50
+  offset: 0, 0
+  index: -1
+nextlevel
+  rotate: false
+  xy: 857, 881
+  size: 150, 30
+  orig: 150, 30
+  offset: 0, 0
+  index: -1
+platform3
+  rotate: false
+  xy: 707, 31
+  size: 200, 20
+  orig: 200, 20
+  offset: 0, 0
+  index: -1
+platform4
+  rotate: false
+  xy: 707, 9
+  size: 200, 20
+  orig: 200, 20
+  offset: 0, 0
+  index: -1
+icecream
+  rotate: false
+  xy: 857, 799
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy1
+  rotate: false
+  xy: 857, 717
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy2
+  rotate: false
+  xy: 857, 635
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy3
+  rotate: false
+  xy: 857, 553
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy4
+  rotate: false
+  xy: 857, 471
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy5
+  rotate: false
+  xy: 857, 389
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy6
+  rotate: false
+  xy: 857, 307
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy7
+  rotate: false
+  xy: 857, 225
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy8
+  rotate: false
+  xy: 857, 143
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy9
+  rotate: false
+  xy: 857, 61
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: false
+  xy: 939, 815
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-candy
+lock
   rotate: false
-  xy: 295, 393
-  size: 60, 40
-  orig: 60, 40
+  xy: 939, 749
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+zoomin
+  rotate: false
+  xy: 939, 683
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+zoomout
+  rotate: false
+  xy: 939, 617
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+candy1
+  rotate: false
+  xy: 939, 555
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+candy2
+  rotate: false
+  xy: 939, 493
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+candy3
+  rotate: false
+  xy: 939, 431
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+candy4
+  rotate: false
+  xy: 939, 369
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+candy5
+  rotate: false
+  xy: 939, 307
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+exit
+  rotate: false
+  xy: 939, 275
+  size: 70, 30
+  orig: 70, 30
+  offset: 0, 0
+  index: -1
+
+PixmindTextureAtlas2.png
+format: RGBA8888
+filter: MipMap,MipMap
+repeat: none
+levelpicker1
+  rotate: false
+  xy: 1, 527
+  size: 854, 480
+  orig: 854, 480
+  offset: 0, 0
+  index: -1
+levelpicker2
+  rotate: false
+  xy: 1, 45
+  size: 854, 480
+  orig: 854, 480
+  offset: 0, 0
+  index: -1
+platform5
+  rotate: false
+  xy: 1, 23
+  size: 200, 20
+  orig: 200, 20
+  offset: 0, 0
+  index: -1
+platformfixed
+  rotate: false
+  xy: 1, 1
+  size: 200, 20
+  orig: 200, 20
+  offset: 0, 0
+  index: -1
+
+PixmindTextureAtlas3.png
+format: RGBA8888
+filter: MipMap,MipMap
+repeat: none
+mainmenuimage
+  rotate: false
+  xy: 1, 483
+  size: 854, 480
+  orig: 854, 480
+  offset: 0, 0
+  index: -1
+splash screen
+  rotate: false
+  xy: 1, 1
+  size: 854, 480
+  orig: 854, 480
+  offset: 0, 0
+  index: -1
+
+PixmindTextureAtlas4.png
+format: RGBA8888
+filter: MipMap,MipMap
+repeat: none
+interlevel
+  rotate: false
+  xy: 1, 1
+  size: 300, 300
+  orig: 300, 300
   offset: 0, 0
   index: -1

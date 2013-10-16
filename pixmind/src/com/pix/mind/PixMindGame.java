@@ -27,8 +27,7 @@ public class PixMindGame extends Game {
 	public static final float BOX_TO_WORLD = 100f;
 	public static float h = 480; 		
 	public static float w = 800;
-
-	private AssetManager assetManager;
+	private AssetManager assetManager;	
 	private static Skin skin;
 	@Override
 	public void create() {
