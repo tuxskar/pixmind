@@ -5,7 +5,10 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pix.mind.PixMindGame;
+import com.pix.mind.box2d.bodies.PixGuy;
 
 public class InterLevelScreen implements Screen {
 	private Screen NextScreen;
@@ -18,11 +21,12 @@ public class InterLevelScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
+		
 		BitmapFont font = new BitmapFont(Gdx.files.internal("data/fonts/calibri.fnt"),Gdx.files.internal("data/fonts/calibri.png"),false);
 		font.setColor(Color.BLUE);
 		SpriteBatch batch = new SpriteBatch();
 		batch.begin();
-		font.draw(batch, "Congratullation You have pass this level", 10, game.h/2);
+		font.draw(batch, "Congratulation You have pass this level", 15, game.h/2);
 		batch.end();
         if(Gdx.input.justTouched())
             game.setScreen(getNextScreen());

@@ -13,9 +13,11 @@ import com.pix.mind.levels.PixMindLevel;
 
 import com.pix.mind.levels.SecondLevel;
 import com.pix.mind.screens.InterLevelScreen;
+import com.pix.mind.screens.MainMenuScreen;
 import com.pix.mind.screens.SplashScreen;
 
 public class PixMindGame extends Game {
+	private MainMenuScreen mainMenu;
 	private LevelOne levelOne;
 	private FirstLevel firstLevel;
 	private SecondLevel secondLevel;
@@ -33,11 +35,13 @@ public class PixMindGame extends Game {
 		// TODO Auto-generated method stub
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
 		assetManager = new AssetManager();
+		mainMenu = new MainMenuScreen(this);
 		levelOne = new LevelOne(this);
-		firstLevel = new FirstLevel(this);		
-		secondLevel = new SecondLevel(this);
+//		firstLevel = new FirstLevel(this);		
+//		secondLevel = new SecondLevel(this);
 		splashScreen = new SplashScreen(this);
-		this.setScreen(getSplashScreen());
+		this.setScreen(getMainMenuScreen());
+//		this.setScreen(getSplashScreen());
 	}
 	
 	public SplashScreen getSplashScreen() {
@@ -67,6 +71,10 @@ public class PixMindGame extends Game {
 	
 	public LevelOne getLevelOne() {
 		return levelOne;
+	}
+	
+	public MainMenuScreen getMainMenuScreen() {
+		return mainMenu;
 	}
 	
 	

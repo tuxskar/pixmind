@@ -23,7 +23,6 @@ public class SplashScreen implements  Screen{
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
 			
 			game.setScreen(game.getLevelOne());
-			//game.setScreen(new FirstLevel(game));
 		}
 	}
 
