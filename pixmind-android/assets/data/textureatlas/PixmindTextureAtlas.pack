@@ -5,36 +5,57 @@ filter: Linear,Linear
 repeat: none
 zoomin
   rotate: false
-  xy: 1, 103
+  xy: 1, 305
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 zoomout
   rotate: false
-  xy: 131, 103
+  xy: 1, 175
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
+plataforma
+  rotate: false
+  xy: 131, 383
+  size: 162, 50
+  orig: 162, 50
+  offset: 0, 0
+  index: -1
 box
   rotate: false
-  xy: 1, 1
+  xy: 1, 73
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 circle
   rotate: false
-  xy: 261, 131
+  xy: 131, 281
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
+pixguy
+  rotate: false
+  xy: 1, 1
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
 leftArrow
   rotate: false
-  xy: 103, 37
+  xy: 131, 215
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+candy
+  rotate: false
+  xy: 295, 393
+  size: 60, 40
+  orig: 60, 40
   offset: 0, 0
   index: -1

@@ -91,12 +91,19 @@ public class LevelOne extends PixMindLevel {
 			
 			//Box2D Activator
 			
+
 			PlatformActivator pActivator = new PlatformActivator(box2D.getWorld(), 0, 5, 0.1f);
 			PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(), 8, 6, 0.1f);
 			PlatformActivator p3Activator = new PlatformActivator(box2D.getWorld(), 0, 2, 0.1f);
 			PlatformActivator p4Activator = new PlatformActivator(box2D.getWorld(), 2, 5, 0.1f);
 			//--//
 			PlatformActivator p5Activator = new PlatformActivator(box2D.getWorld(), 1, 2, 0.1f);
+
+//			PlatformActivator pActivator = new PlatformActivator(box2D.getWorld(), 0, 5, 0.2f);
+//			PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(), 8, 6, 0.2f);
+//			PlatformActivator p3Activator = new PlatformActivator(box2D.getWorld(), 0, 2, 0.2f);
+//			PlatformActivator p4Activator = new PlatformActivator(box2D.getWorld(), 2, 5, 0.2f);
+
 			
 			
 			//Actor Activator

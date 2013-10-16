@@ -15,7 +15,7 @@ public class PixMindPixGuyInitialization {
 	public PixMindPixGuyInitialization(PixMindScene2DInitialization scene2D,
 			PixMindBox2DInitialization box2D) {
 		// main character initialization
-		pixGuy = new PixGuy(box2D.getWorld(), 0.2f, 0.2f);
+		pixGuy = new PixGuy(box2D.getWorld(), 0.35f, 0.35f);
 		pixGuySkin = new PixGuyActor(pixGuy);
 		controller = new ArrowController(pixGuy, scene2D.getStageGui());
 		pixGuy.setController(controller);
