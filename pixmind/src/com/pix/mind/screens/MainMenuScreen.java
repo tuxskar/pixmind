@@ -21,8 +21,8 @@ public class MainMenuScreen implements Screen {
 		super();
 		this.game = game;
 		//Loading textures
-		playImage = new Texture(Gdx.files.internal("data/images/playImage.png"));
-		backGroundImage = new Texture(Gdx.files.internal("data/images/smbBack.jpg"));
+	//	playImage = new Texture(Gdx.files.internal("data/images/playImage.png"));
+	//	backGroundImage = new Texture(game.getSkin().getDrawable("").);
 		//Creating batch
 		batch = new SpriteBatch();
 		//Creating camera
@@ -46,8 +46,8 @@ public class MainMenuScreen implements Screen {
 		
 		batch.begin();
 		
-		batch.draw(backGroundImage, 0, 0);
-		batch.draw(playImage, game.w / 8, game.h / 4);
+	//	batch.draw(backGroundImage, 0, 0);
+	//	batch.draw(playImage, game.w / 8, game.h / 4);
 		
 		batch.end();
 		
@@ -69,7 +69,7 @@ public class MainMenuScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		
+		game.setScreen(game.getSplashScreen());
 	}
 
 	@Override
