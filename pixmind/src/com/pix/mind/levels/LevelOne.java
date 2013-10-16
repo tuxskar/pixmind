@@ -17,7 +17,7 @@ public class LevelOne extends PixMindLevel {
 	
 
 	public LevelOne(PixMindGame game) {
-		super(game, 1333, 1000, 210, 4, 4, 3);
+		super(game, 1333, 1000, 210, 4, 4, 2);
 		this.game = game;
 		
 		
@@ -95,6 +95,8 @@ public class LevelOne extends PixMindLevel {
 			PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(), 8, 6, 0.1f);
 			PlatformActivator p3Activator = new PlatformActivator(box2D.getWorld(), 0, 2, 0.1f);
 			PlatformActivator p4Activator = new PlatformActivator(box2D.getWorld(), 2, 5, 0.1f);
+			//--//
+			PlatformActivator p5Activator = new PlatformActivator(box2D.getWorld(), 1, 2, 0.1f);
 			
 			
 			//Actor Activator
@@ -107,6 +109,9 @@ public class LevelOne extends PixMindLevel {
 					Color.GREEN, false);
 			PlatformActivatorActor a4Skin = new PlatformActivatorActor(p4Activator,
 					Color.BLUE, true);
+			//--//
+			PlatformActivatorActor a5Skin = new PlatformActivatorActor(p5Activator,
+					Color.BLUE, true);
 		
 			//Add activators to Stage
 			
@@ -114,6 +119,8 @@ public class LevelOne extends PixMindLevel {
 			scene2D.getGroupStage().addActor(a2Skin);
 			scene2D.getGroupStage().addActor(a3Skin);
 			scene2D.getGroupStage().addActor(a4Skin);
+			//--//
+			scene2D.getGroupStage().addActor(a5Skin);
 			
 			
 			//Add to activator list
@@ -122,6 +129,8 @@ public class LevelOne extends PixMindLevel {
 			box2D.getActivatorList().add(a2Skin);
 			box2D.getActivatorList().add(a3Skin);
 			box2D.getActivatorList().add(a4Skin);
+			//--//
+			box2D.getActivatorList().add(a5Skin);
 			
 			// add to stage the group of actors
 			
