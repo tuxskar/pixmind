@@ -151,6 +151,9 @@ public class FirstLevel implements Screen {
 		PlatformActivator p4Activator = new PlatformActivator(box2D.getWorld(), 2, 5, 0.1f);
 		
 		
+		PlatformActivator p5Activator = new PlatformActivator(box2D.getWorld(), 2.5f, 6, 0.1f);
+		
+		
 		//Actor Activator
 		
 		PlatformActivatorActor a1Skin = new PlatformActivatorActor(pActivator,
@@ -161,6 +164,10 @@ public class FirstLevel implements Screen {
 				Color.GREEN, false);
 		PlatformActivatorActor a4Skin = new PlatformActivatorActor(p4Activator,
 				Color.BLUE, true);
+		
+		
+		PlatformActivatorActor a5Skin = new PlatformActivatorActor(p5Activator,
+				Color.BLUE, true);
 	
 		//Add activators to Stage
 		
@@ -169,6 +176,8 @@ public class FirstLevel implements Screen {
 		scene2D.getGroupStage().addActor(a3Skin);
 		scene2D.getGroupStage().addActor(a4Skin);
 		
+		scene2D.getGroupStage().addActor(a5Skin);
+		
 		
 		//Add to activator list
 		
@@ -176,6 +185,8 @@ public class FirstLevel implements Screen {
 		box2D.getActivatorList().add(a2Skin);
 		box2D.getActivatorList().add(a3Skin);
 		box2D.getActivatorList().add(a4Skin);
+		
+		box2D.getActivatorList().add(a5Skin);
 		
 
 		
