@@ -3,6 +3,7 @@ package com.pix.mind.world;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.MapZoom;
 import com.pix.mind.box2d.bodies.PixGuy;
@@ -14,12 +15,13 @@ public class PixMindWorldRenderer {
 	private Box2DWorldContactListener contactListener;
 	private MapZoom mapZoom;
 	private OrthographicCamera camera;
+	private Image pixGuySkin;
 	World world;
 	private Box2DDebugRenderer debugRenderer;
-	
 	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D,  PixMindGuiInitialization gui){
 		this.scene2D = scene2D;
 		this.pixGuy = box2D.getPixGuy().getPixGuy();
+		this.pixGuySkin = box2D.getPixGuy().getPixGuySkin();
 		this.contactListener = box2D.getContactListener();
 		this.mapZoom = gui.getMapZoom();
 		this.world = box2D.getWorld();
@@ -79,7 +81,39 @@ public class PixMindWorldRenderer {
 				camera.update();
 			}
 			world.step(delta, 6, 2);		
-			pixGuy.setActualPosition();			
+			pixGuy.setActualPosition();		
+			
+			//eyes of pixguy
+			if(pixGuy.body.getLinearVelocity().x>0f){
+				
+				if(pixGuy.body.getLinearVelocity().y<1f && pixGuy.body.getLinearVelocity().y>-1f )
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy6"));
+				else if(pixGuy.body.getLinearVelocity().y<0f)
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy9"));
+				else if(pixGuy.body.getLinearVelocity().y>0f)
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy3"));
+					
+				
+				
+				
+			}else if (pixGuy.body.getLinearVelocity().x<0f){
+				if(pixGuy.body.getLinearVelocity().y<1f && pixGuy.body.getLinearVelocity().y>-1f )
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy4"));
+				else if(pixGuy.body.getLinearVelocity().y<0f)
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy7"));
+				else if(pixGuy.body.getLinearVelocity().y>0f)
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy1"));
+					
+			}else if (pixGuy.body.getLinearVelocity().x==0){
+				if(pixGuy.body.getLinearVelocity().y<1f && pixGuy.body.getLinearVelocity().y>-1f )
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy5"));
+				else if(pixGuy.body.getLinearVelocity().y<0f)
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy8"));
+				else if(pixGuy.body.getLinearVelocity().y>0f)
+					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy2"));
+					
+			}
+			System.out.println(pixGuy.body.getLinearVelocity().y);
 		}
 		scene2D.getStage().act();	
 	}

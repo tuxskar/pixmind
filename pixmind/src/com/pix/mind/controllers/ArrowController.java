@@ -94,6 +94,7 @@ public class ArrowController extends PixGuyController {
 
 			if (movingLeft) {
 				pixGuy.moveLeft(Gdx.graphics.getDeltaTime());
+				
 			}
 			if (movingRight) {
 				pixGuy.moveRight(Gdx.graphics.getDeltaTime());
