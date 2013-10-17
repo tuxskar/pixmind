@@ -112,7 +112,10 @@ public class PixMindLevel implements Screen {
 	// GETTERS & SETTERS
 	
 	public void setNextLevel(PixMindLevel nextLevel){
-		box2D.getContactListener().setNextLevel(nextLevel);
+		gui.getMenuInGame().setNextLevelScreen(nextLevel);
+	}
+	public void setActiveLevel(PixMindLevel activeLevel){
+		gui.getMenuInGame().setActiveLevelScreen(activeLevel);
 	}
 
 }

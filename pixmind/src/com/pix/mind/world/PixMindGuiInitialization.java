@@ -13,8 +13,8 @@ public class PixMindGuiInitialization {
 	int nColors;
 	PixMindScene2DInitialization  scene2D;
 	private MapZoom mapZoom;
-	 private MenuInGame menuInGame;
-	 private PixMindGame  game;
+	private MenuInGame menuInGame;
+	private PixMindGame  game;
 	public PixMindGuiInitialization(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D, PixMindGame game) {
 		
 		this.scene2D= scene2D;		

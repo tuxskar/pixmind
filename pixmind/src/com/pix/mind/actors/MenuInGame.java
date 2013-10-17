@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.pix.mind.PixMindGame;
+import com.pix.mind.levels.PixMindLevel;
 
 public class MenuInGame extends Group {	
 	Image nextLevel1;
@@ -13,6 +14,8 @@ public class MenuInGame extends Group {
 	Image interLevel;
 	Stage stageGui;
 	boolean active = false;
+	PixMindLevel activeLevelScreen;
+	PixMindLevel nextLevelScreen;
 	PixMindGame game;
 	public MenuInGame(Stage stageGui, final PixMindGame game){
 		super();
@@ -41,11 +44,11 @@ public class MenuInGame extends Group {
 					game.setScreen(game.getMainMenuScreen());
 				}
 				if(x >150 && x<300){
-					game.setScreen(game.getLevelOne());
+					game.setScreen(getActiveLevelScreen());
 				}
 				}
 				if(y <100 && y>0 && x> 70 && x< 230){
-					game.setScreen(game.getLevelOne());
+					game.setScreen(getNextLevelScreen());
 				}
 				
 			}
@@ -76,6 +79,18 @@ public class MenuInGame extends Group {
 	}
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	public PixMindLevel getActiveLevelScreen() {
+		return activeLevelScreen;
+	}
+	public void setActiveLevelScreen(PixMindLevel activeLevelScreen) {
+		this.activeLevelScreen = activeLevelScreen;
+	}
+	public PixMindLevel getNextLevelScreen() {
+		return nextLevelScreen;
+	}
+	public void setNextLevelScreen(PixMindLevel nextLevelScreen) {
+		this.nextLevelScreen = nextLevelScreen;
 	}
 	
 
