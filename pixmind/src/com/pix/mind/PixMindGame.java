@@ -38,8 +38,8 @@ public class PixMindGame extends Game {
 		mainMenu = new MainMenuScreen(this);
 		levelOne = new LevelOne(this);
 		splashScreen = new SplashScreen(this);
-		this.setScreen(getMainMenuScreen());
-//		this.setScreen(getSplashScreen());
+//		this.setScreen(getMainMenuScreen());
+		this.setScreen(getSplashScreen());
 	}
 	
 	public SplashScreen getSplashScreen() {
