@@ -32,9 +32,7 @@ public class SplashScreen implements  Screen{
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false,PixMindGame.w, PixMindGame.h);
 		batch.setProjectionMatrix(camera.combined);*/
-		
-		//640 480
-		//854-w
+	
 	}
 
 	@Override
@@ -87,6 +85,7 @@ public class SplashScreen implements  Screen{
 		
 		stageSplash = new Stage(PixMindGame.w, PixMindGame.h, true);
 		Image splash = new Image(splashSkin.getDrawable("splash screen"));
+		
 		splash.setPosition(-(854-PixMindGame.w)/2, 0);
 		stageSplash.addActor(splash);
 	}
@@ -112,7 +111,9 @@ public class SplashScreen implements  Screen{
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		assetManagerSplash.dispose();		
+		assetManagerSplash.dispose();	
+		splashSkin.dispose();
+		stageSplash.dispose();
 	  
 		
 	}
