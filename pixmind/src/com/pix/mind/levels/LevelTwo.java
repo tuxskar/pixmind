@@ -16,7 +16,7 @@ public class LevelTwo extends PixMindLevel{
 	PixMindGame game;
 	private static final int nActiveColors = 3;
 	public LevelTwo(PixMindGame game) {
-		super(game, 1333, 1000, 210, 4, 4, nActiveColors);
+		super(game, 640, 480, 210, 4, 4, nActiveColors);
 		this.game = game;
 
 		// TODO Auto-generated constructor stub
@@ -50,8 +50,8 @@ public class LevelTwo extends PixMindLevel{
 				1, 0.1f);
 		StaticPlatform s7Platform = new StaticPlatform(box2D.getWorld(), 1.5f,
 				4.2f, 1, 0.1f);
-		StaticPlatform s8Platform = new StaticPlatform(box2D.getWorld(), -5, 0,
-				35, 0.1f);
+		StaticPlatform s8Platform = new StaticPlatform(box2D.getWorld(), 0, 0,
+				1, 0.1f);
 
 		// Actor Platforms
 		StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform,

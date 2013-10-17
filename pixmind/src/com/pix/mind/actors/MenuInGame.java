@@ -65,6 +65,7 @@ public class MenuInGame extends Group {
 		
 	}
 	public Group showLose(){
+		active = true;
 		stageGui.addActor(this);
 		nextLevel.remove();
 		return this;

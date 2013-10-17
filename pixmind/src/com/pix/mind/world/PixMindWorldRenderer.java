@@ -122,7 +122,11 @@ public class PixMindWorldRenderer {
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy2"));
 					
 			}
-		//	System.out.println(pixGuy.body.getLinearVelocity().y);
+			//death of pixguy
+			if(pixGuy.body.getPosition().y <0 ){
+				menuInGame.showLose();
+			}
+			
 		
 		}
 		scene2D.getStage().act();
