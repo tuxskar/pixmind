@@ -83,7 +83,7 @@ public class FirstLevel implements Screen {
 		box2D.addActivatedColor(Color.BLUE);
 		
 		//gui initialization
-		gui = new PixMindGuiInitialization(scene2D, box2D);
+		gui = new PixMindGuiInitialization(scene2D, box2D, game);
 
 		//platform Actors and Activator Actors List
 	

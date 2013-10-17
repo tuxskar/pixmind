@@ -47,10 +47,7 @@ public class PixMindGame extends Game {
 		return splashScreen;
 	}
 
-	public void changeLevel(Screen screen){
-		interLevel = new InterLevelScreen(screen, this);
-		this.setScreen(interLevel);
-	}
+	
 
 	public AssetManager getAssetManager() {
 		return assetManager;
