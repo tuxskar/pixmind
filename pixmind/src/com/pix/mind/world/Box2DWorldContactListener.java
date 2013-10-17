@@ -29,6 +29,7 @@ public class Box2DWorldContactListener implements ContactListener {
 	private float anteriorHeight;
 	private Screen nextLevel;
 	private int maxColors;
+	private PixMindGuiInitialization gui;
 
 	public Box2DWorldContactListener(PixMindGame game,
 			PixMindBox2DInitialization box2D, ActiveColors actColors) {
@@ -80,23 +81,17 @@ public class Box2DWorldContactListener implements ContactListener {
 			}
 
 		}
-
-		// collision with a Activator
-		if (fixActivator != null) {
-			int nActivatedColors = actColors.getNActivesColors();
-			System.out.println("Inicio Activated: " + nActivatedColors
-					+ " MaxColors: " + maxColors);
-			PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator
-					.getUserData();
-			if (platformActivatorActor.isActive()) {
-				// Deactivate the color because it is already active and it
-				// should deactivate it on touch
-				// if activator is black go to next level
-				if (platformActivatorActor.color.equals(Color.BLACK)) {
-					// game.changeLevel(game.getSecondLevel());
-					// making the level change to the next level (but first,
-					// game transition to an InterLevelScreen)
-					game.changeLevel(nextLevel);
+		
+		//collision with a Activator
+		if(fixActivator!=null){
+			PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator.getUserData();
+			if(platformActivatorActor.isActive()){
+				//if activator is black go to next level
+				if(platformActivatorActor.color.equals(Color.BLACK)){
+//					game.changeLevel(game.getSecondLevel());
+					//making the level change to the next level (but first, game transition to an InterLevelScreen)
+					//game.changeLevel(nextLevel);
+					gui.getMenuInGame().showWin();
 				}
 
 				// get all platform of the same color and change state
@@ -250,4 +245,11 @@ public class Box2DWorldContactListener implements ContactListener {
 		this.nextLevel = nextLevel;
 	}
 
+	public PixMindGuiInitialization getGui() {
+		return gui;
+	}
+
+	public void setGui(PixMindGuiInitialization gui) {
+		this.gui = gui;
+	}
 }
