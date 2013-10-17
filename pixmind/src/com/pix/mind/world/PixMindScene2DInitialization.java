@@ -3,6 +3,7 @@ package com.pix.mind.world;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 
 public class PixMindScene2DInitialization {
@@ -13,13 +14,32 @@ public class PixMindScene2DInitialization {
 	float levelSizeWidth;
 	float levelSizeHeight;
 	
-	public PixMindScene2DInitialization() {
+	public PixMindScene2DInitialization(float levelSizeWidth, float levelSizeHeight) {
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		stageGui = new Stage(PixMindGame.w, PixMindGame.h, true);		
 		Gdx.input.setInputProcessor(stageGui);
 		groupStage = new Group();
 		groupStage.setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);		
 		stage.addActor(groupStage);
+		this.levelSizeWidth = levelSizeWidth;
+		this.levelSizeHeight = levelSizeHeight;
+		int timesWidth = 1 + 1 + Math.round(this.levelSizeWidth / 854);
+		int timesHeight = 1 + 1 + Math.round(this.levelSizeHeight / 480);
+
+		int beginWidth = -854;
+		int beginHeight = -480;
+		for (int i = 0; i < timesHeight; i++) {
+			for (int j = 0; j < timesWidth; j++) {
+				Image im = new Image(PixMindGame.getSkin().getDrawable("fondoingame"));
+				getGroupStage().addActor(im);
+				im.setPosition(beginWidth, beginHeight);
+				beginWidth += 854;
+				System.out.println( beginWidth);
+			}
+			beginWidth = -854;
+			beginHeight +=480;
+		}
+	
 	}
 
 	public Stage getStage() {
@@ -62,12 +82,6 @@ public class PixMindScene2DInitialization {
 		this.levelSizeHeight = levelSizeHeight;
 	}
 	
-	//used for set the level size;
-	public void setLevelSize(float levelSizeWidth, float levelSizeHeight){
-		this.levelSizeWidth = levelSizeWidth;
-		this.levelSizeHeight = levelSizeHeight;		
-		groupStage.setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
-	}
 	
 	
 	

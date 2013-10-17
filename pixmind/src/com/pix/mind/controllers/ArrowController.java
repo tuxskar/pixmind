@@ -17,7 +17,7 @@ public class ArrowController extends PixGuyController {
 	public ArrowController(final PixGuy pixGuy, final Stage stage) {
 		super(pixGuy);
 		this.stage = stage;
-		Drawable arrowTexture = PixMindGame.getSkin().getDrawable("leftArrow");
+		Drawable arrowTexture = PixMindGame.getSkin().getDrawable("arrow");
 
 		Image leftArrow = new Image(arrowTexture);
 		Image rightArrow = new Image(arrowTexture);
@@ -94,6 +94,7 @@ public class ArrowController extends PixGuyController {
 
 			if (movingLeft) {
 				pixGuy.moveLeft(Gdx.graphics.getDeltaTime());
+				
 			}
 			if (movingRight) {
 				pixGuy.moveRight(Gdx.graphics.getDeltaTime());

@@ -4,14 +4,17 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColors;
+import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.PixGuy;
@@ -41,7 +44,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		Fixture fixPlatform = null;
 		Fixture fixActivator = null;
 		// get fixture fixguy
-		if (contact.getFixtureA().getUserData().equals(PixGuy.PIX_ID)) {
+		if (contact.getFixtureA().getUserData() instanceof PixGuyActor) {
 			fixGuy = contact.getFixtureA();
 			// fixPlatform = contact.getFixtureB();
 		} else {
@@ -84,6 +87,8 @@ public class Box2DWorldContactListener implements ContactListener {
 				// if activator is black go to next level
 				if (platformActivatorActor.color.equals(Color.BLACK)) {
 					// game.changeLevel(game.getSecondLevel());
+					// making the level change to the next level (but first,
+					// game transition to an InterLevelScreen)
 					game.changeLevel(nextLevel);
 				}
 
@@ -141,17 +146,22 @@ public class Box2DWorldContactListener implements ContactListener {
 				// if(anteriorHeight>lastPlatformHeight)
 
 				anteriorHeight = lastPlatformHeight;
-				lastPlatformHeight = (fixPlatform.getBody().getPosition().y + platformActor
-						.getHeight() * PixMindGame.WORLD_TO_BOX / 2)
-						* PixMindGame.BOX_TO_WORLD;
-				if (lastPlatformHeight < anteriorHeight) {
-					anteriorHeight = lastPlatformHeight;
-				}
-				fixGuy.getBody().setLinearVelocity(
-						fixGuy.getBody().getLinearVelocity().x, 0);
-				fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.2f),
-						fixGuy.getBody().getWorldCenter(), true);
 			}
+			fixGuy.getBody().setLinearVelocity(
+					fixGuy.getBody().getLinearVelocity().x, 0);
+			fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.65f),
+					fixGuy.getBody().getWorldCenter(), true);
+			// animation
+
+			PixGuyActor pixguyActor = (PixGuyActor) fixGuy.getUserData();
+			if (pixguyActor.getActions().size != 0)
+				pixguyActor.removeAction(pixguyActor.getActions().get(0));
+			Interpolation interpolation = Interpolation.linear;
+			pixguyActor.addAction(Actions.sequence(
+					Actions.scaleTo(1.2f, 0.8f, 0.25f, interpolation),
+					Actions.scaleTo(1f, 1f, 0.25f, interpolation),
+					Actions.scaleTo(0.8f, 1.2f, 0.25f, interpolation),
+					Actions.scaleTo(1, 1, 0.25f, interpolation)));
 		}
 
 		colliding = true;

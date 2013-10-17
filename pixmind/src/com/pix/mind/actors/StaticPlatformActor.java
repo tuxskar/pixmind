@@ -12,7 +12,7 @@ public class StaticPlatformActor extends Image {
 	boolean active;
 	public StaticPlatformActor(StaticPlatform platform, Color color,
 			boolean active) {
-		super( PixMindGame.getSkin().getDrawable("box"));
+		super( PixMindGame.getSkin().getDrawable("platform1"));
 		
 		
 		staticPlatform = platform;

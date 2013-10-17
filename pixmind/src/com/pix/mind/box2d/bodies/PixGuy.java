@@ -12,16 +12,16 @@ import com.pix.mind.PixMindGame;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixGuy {
-	static public final String PIX_ID = "pixguy";
+//	static public final String PIX_ID = "pixguy";
 	public static float pixWidth = 30;	
 	public static float pixHeight = 30;
 	
 	// pixmind main character
 	private float posX, posY;
 	public  Body body;
-	static final float SPEED = 1;
+	static final float SPEED = 1.5f;
 	public PixGuyController controller;
-	
+	public Fixture fixture ;
 	public PixGuy(World world, float width, float height) {
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();
@@ -50,8 +50,8 @@ public class PixGuy {
 		//fixtureDef.friction = 0.4f;
 		//fixtureDef.restitution = 0.5f; // Make it bounce a little bit
 		// Create our fixture and attach it to the body
-		Fixture fixture = body.createFixture(fixtureDef);
-		fixture.setUserData(PixGuy.PIX_ID);
+		fixture = body.createFixture(fixtureDef);
+		//fixture.setUserData(PixGuy.PIX_ID);
 		
 		// Clean up after ourselves
 		groundBox.dispose();
@@ -81,12 +81,12 @@ public class PixGuy {
 		controller.movements();
 		this.posY = body.getTransform().getPosition().y; 
 		this.posX = body.getTransform().getPosition().x;
-		if(body.getLinearVelocity().x >1){
-			body.setLinearVelocity(1, body.getLinearVelocity().y);
-		}
-		if(body.getLinearVelocity().x <-1){
-			body.setLinearVelocity(-1, body.getLinearVelocity().y);
-		}
+		//if(body.getLinearVelocity().x >1){
+		//	body.setLinearVelocity(1, body.getLinearVelocity().y);
+	//	}
+		//if(body.getLinearVelocity().x <-1){
+	//		body.setLinearVelocity(-1, body.getLinearVelocity().y);
+	//	}
 		
 		
 		body.setTransform(this.posX, this.posY, 0);
@@ -97,16 +97,17 @@ public class PixGuy {
 	
 	public void moveLeft(float deltaTime) {
 	
-		body.applyForce(new Vector2(-1f, 0),
-				body.getWorldCenter(), true);
-		
+	//body.applyForce(new Vector2(-1f, 0),
+	//			body.getWorldCenter(), true);
+		body.setLinearVelocity(-SPEED,body.getLinearVelocity().y);
+
 		
 	}
 
 	public void moveRight(float deltaTime) {
-		body.applyForce(new Vector2(1f, 0),
-				body.getWorldCenter(), true);
-	
+	//	body.applyForce(new Vector2(1f, 0),
+		//		body.getWorldCenter(), true);
+	body.setLinearVelocity(SPEED,body.getLinearVelocity().y);
 	
 	}
 	
