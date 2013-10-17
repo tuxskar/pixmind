@@ -1,7 +1,7 @@
 
 PixmindTextureAtlas.png
 format: RGBA8888
-filter: MipMap,MipMap
+filter: Linear,Linear
 repeat: none
 emptyscreen
   rotate: false
@@ -223,7 +223,7 @@ exit
 
 PixmindTextureAtlas2.png
 format: RGBA8888
-filter: MipMap,MipMap
+filter: Linear,Linear
 repeat: none
 levelpicker1
   rotate: false
@@ -256,7 +256,7 @@ platformfixed
 
 PixmindTextureAtlas3.png
 format: RGBA8888
-filter: MipMap,MipMap
+filter: Linear,Linear
 repeat: none
 mainmenuimage
   rotate: false
@@ -275,7 +275,7 @@ splash screen
 
 PixmindTextureAtlas4.png
 format: RGBA8888
-filter: MipMap,MipMap
+filter: Linear,Linear
 repeat: none
 interlevel
   rotate: false
