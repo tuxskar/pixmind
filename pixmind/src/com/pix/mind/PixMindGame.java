@@ -12,7 +12,6 @@ import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.LevelOne;
 import com.pix.mind.levels.LevelThree;
 import com.pix.mind.levels.LevelTwo;
-import com.pix.mind.levels.PixMindLevel;
 import com.pix.mind.levels.SecondLevel;
 import com.pix.mind.screens.MainMenuScreen;
 import com.pix.mind.screens.SplashScreen;
