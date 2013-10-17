@@ -76,7 +76,6 @@ public class PixMindLevel implements Screen {
 		box2D.setCameraBeginsY(cameraBeginsY);		
 		box2D.setPixGuyPosition(pixGuyBeginsX, pixGuyBeginsY);
 //		box2D.getContactListener().setNextLevel(new LevelOne(game));
-		box2D.addActivatedColor(Color.BLUE);
 		
 		gui = new PixMindGuiInitialization(scene2D, box2D, game);
 		
