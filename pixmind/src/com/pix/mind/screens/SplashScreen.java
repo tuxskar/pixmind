@@ -1,6 +1,9 @@
 package com.pix.mind.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.PixMindGame;
@@ -9,9 +12,11 @@ import com.pix.mind.levels.LevelOne;
 
 public class SplashScreen implements  Screen{
 	private PixMindGame game;
+	
 	public SplashScreen(PixMindGame game) {
 		// TODO Auto-generated constructor stub
 		this.game = game;
+		
 	}
 
 	@Override

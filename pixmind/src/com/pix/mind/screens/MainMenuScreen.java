@@ -12,10 +12,11 @@ import com.pix.mind.PixMindGame;
 public class MainMenuScreen implements Screen {
 	
 	private PixMindGame game;
-	Texture playImage, backGroundImage;
 	SpriteBatch batch;
 	OrthographicCamera camera;
-	Music mainMenuMusic;
+	public Music mainMenuMusic;
+	public Texture playImage, backGroundImage;
+
 	
 	public MainMenuScreen(PixMindGame game) {
 		super();

@@ -37,8 +37,6 @@ public class PixMindGame extends Game {
 		assetManager = new AssetManager();
 		mainMenu = new MainMenuScreen(this);
 		levelOne = new LevelOne(this);
-//		firstLevel = new FirstLevel(this);		
-//		secondLevel = new SecondLevel(this);
 		splashScreen = new SplashScreen(this);
 		this.setScreen(getMainMenuScreen());
 //		this.setScreen(getSplashScreen());
