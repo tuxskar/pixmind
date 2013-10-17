@@ -13,7 +13,6 @@ import com.pix.mind.levels.LevelThree;
 import com.pix.mind.levels.LevelTwo;
 import com.pix.mind.levels.PixMindLevel;
 import com.pix.mind.levels.SecondLevel;
-import com.pix.mind.screens.InterLevelScreen;
 import com.pix.mind.screens.MainMenuScreen;
 import com.pix.mind.screens.SplashScreen;
 
@@ -24,7 +23,6 @@ public class PixMindGame extends Game {
 	private LevelThree levelThree;
 	private FirstLevel firstLevel;
 	private SecondLevel secondLevel;
-	private InterLevelScreen interLevel;
 	private SplashScreen splashScreen;
 	public static final float WORLD_TO_BOX = 0.01f;
 	public static final float BOX_TO_WORLD = 100f;
@@ -49,9 +47,8 @@ public class PixMindGame extends Game {
 	}
 	
 
-	public void changeLevel(Screen screen){
-		interLevel = new InterLevelScreen(screen, this);
-		this.setScreen(interLevel);
+	public void changeLevel(Screen screen){	
+		this.setScreen(screen);
 	}
 	
 	// GETTERs & SETTERs
