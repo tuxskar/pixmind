@@ -9,6 +9,7 @@ import com.pix.mind.PixMindGame;
 public class ActiveColors {
 	public ArrayList<ActiveColor> colors;
 	private final static int COLORMARGIN = 10;
+	private int nActivated;
 
 	public ActiveColors(Stage guiStage, int nColors) {
 		colors = new ArrayList<ActiveColor>(nColors);
@@ -19,6 +20,7 @@ public class ActiveColors {
 					- COLORMARGIN * i, PixMindGame.h - actColor.getHeight()
 					- COLORMARGIN);
 			colors.add(actColor);
+			nActivated = 0;
 		}
 	}
 
@@ -27,6 +29,7 @@ public class ActiveColors {
 			colors.get(i).setColor(colors.get(i - 1).getColor());
 		}
 		colors.get(0).setColor(color);
+		nActivated++;
 	}
 
 	public int alreadyActive(Color color) {
@@ -45,6 +48,22 @@ public class ActiveColors {
 				colors.get(i).setColor(colors.get(i+1).getColor());
 			}
 			colors.get(colors.size()-1).setColor(Color.CLEAR);
+			nActivated--;
 		}
+	}
+	
+	public int getMaxColors(){
+		return colors.size();
+	}
+	
+	public Color deActivateOlderColors(){
+		Color color = colors.get(colors.size()-1).getColor().cpy();
+		colors.get(colors.size()-1).setColor(Color.CLEAR);
+		nActivated--;
+		return color;
+	}
+	
+	public int getNActivesColors(){
+		return nActivated;
 	}
 }

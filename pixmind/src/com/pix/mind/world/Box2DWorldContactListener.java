@@ -28,6 +28,7 @@ public class Box2DWorldContactListener implements ContactListener {
 	private float lastPlatformHeight;
 	private float anteriorHeight;
 	private Screen nextLevel;
+	private int maxColors;
 
 	public Box2DWorldContactListener(PixMindGame game,
 			PixMindBox2DInitialization box2D, ActiveColors actColors) {
@@ -35,6 +36,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		this.platformList = box2D.getPlatformList();
 		this.activatorList = box2D.getActivatorList();
 		this.actColors = actColors;
+		maxColors = this.actColors.getMaxColors();
 	}
 
 	@Override
@@ -81,9 +83,14 @@ public class Box2DWorldContactListener implements ContactListener {
 
 		// collision with a Activator
 		if (fixActivator != null) {
+			int nActivatedColors = actColors.getNActivesColors();
+			System.out.println("Inicio Activated: " + nActivatedColors
+					+ " MaxColors: " + maxColors);
 			PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator
 					.getUserData();
 			if (platformActivatorActor.isActive()) {
+				// Deactivate the color because it is already active and it
+				// should deactivate it on touch
 				// if activator is black go to next level
 				if (platformActivatorActor.color.equals(Color.BLACK)) {
 					// game.changeLevel(game.getSecondLevel());
@@ -93,7 +100,6 @@ public class Box2DWorldContactListener implements ContactListener {
 				}
 
 				// get all platform of the same color and change state
-
 				for (StaticPlatformActor sp : platformList) {
 					if (platformActivatorActor.color.equals(sp.color))
 						sp.setActive(false);
@@ -108,8 +114,28 @@ public class Box2DWorldContactListener implements ContactListener {
 					}
 				}
 			} else {
+				// It should activate the platforms and activators taking care
+				// about the activator maximum number
 				// platformActivatorActor.setActive(true);
 				// get all platform of the same color and change state
+				if (nActivatedColors >= maxColors) {
+					// deactivate the older color
+					Color toDeactivate = actColors.deActivateOlderColors();
+					// get all platform of the same color and change state
+					for (StaticPlatformActor sp : platformList) {
+						if (toDeactivate.equals(sp.color))
+							sp.setActive(false);
+					}
+					// get all activator of the same color and change state
+					for (PlatformActivatorActor sp : activatorList) {
+						if (toDeactivate.equals(sp.color)) {
+							sp.setActive(false);
+							System.out.println("Deactivating the color: "
+									+ sp.color);
+						}
+					}
+					System.out.println("estoy dentro");
+				}
 				for (StaticPlatformActor sp : platformList) {
 					if (platformActivatorActor.color.equals(sp.color))
 						sp.setActive(true);
@@ -123,7 +149,11 @@ public class Box2DWorldContactListener implements ContactListener {
 						System.out.println("Activating the color: " + sp.color);
 					}
 				}
+
 			}
+			nActivatedColors = actColors.getNActivesColors();
+			System.out.println("final Activated: " + nActivatedColors
+					+ " MaxColors: " + maxColors);
 		}
 
 		// jump only if collide with a platform and its not sensor
@@ -146,22 +176,29 @@ public class Box2DWorldContactListener implements ContactListener {
 				// if(anteriorHeight>lastPlatformHeight)
 
 				anteriorHeight = lastPlatformHeight;
-			}
-			fixGuy.getBody().setLinearVelocity(
-					fixGuy.getBody().getLinearVelocity().x, 0);
-			fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.65f),
-					fixGuy.getBody().getWorldCenter(), true);
-			// animation
+				lastPlatformHeight = (fixPlatform.getBody().getPosition().y + platformActor
+						.getHeight() * PixMindGame.WORLD_TO_BOX / 2)
+						* PixMindGame.BOX_TO_WORLD;
+				if (lastPlatformHeight < anteriorHeight) {
+					anteriorHeight = lastPlatformHeight;
+				}
+				fixGuy.getBody().setLinearVelocity(
+						fixGuy.getBody().getLinearVelocity().x, 0);
+				fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.65f),
+						fixGuy.getBody().getWorldCenter(), true);
+				// animation
 
-			PixGuyActor pixguyActor = (PixGuyActor) fixGuy.getUserData();
-			if (pixguyActor.getActions().size != 0)
-				pixguyActor.removeAction(pixguyActor.getActions().get(0));
-			Interpolation interpolation = Interpolation.linear;
-			pixguyActor.addAction(Actions.sequence(
-					Actions.scaleTo(1.2f, 0.8f, 0.25f, interpolation),
-					Actions.scaleTo(1f, 1f, 0.25f, interpolation),
-					Actions.scaleTo(0.8f, 1.2f, 0.25f, interpolation),
-					Actions.scaleTo(1, 1, 0.25f, interpolation)));
+				PixGuyActor pixguyActor = (PixGuyActor) fixGuy.getUserData();
+				if (pixguyActor.getActions().size != 0)
+					pixguyActor.removeAction(pixguyActor.getActions().get(0));
+				Interpolation interpolation = Interpolation.linear;
+				pixguyActor.addAction(Actions.sequence(
+						Actions.scaleTo(1.2f, 0.8f, 0.25f, interpolation),
+						Actions.scaleTo(1f, 1f, 0.25f, interpolation),
+						Actions.scaleTo(0.8f, 1.2f, 0.25f, interpolation),
+						Actions.scaleTo(1, 1, 0.25f, interpolation)));
+			}
+
 		}
 
 		colliding = true;

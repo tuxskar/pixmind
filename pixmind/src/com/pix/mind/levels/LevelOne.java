@@ -15,9 +15,9 @@ public class LevelOne extends PixMindLevel {
 
 	public String levelTitle = "LevelOne";
 	PixMindGame game;
-
+	private static final int nActiveColors = 2;
 	public LevelOne(PixMindGame game) {
-		super(game, 1333, 1000, 210, 4, 4, 2);
+		super(game, 1333, 1000, 210, 4, 4, nActiveColors);
 		this.game = game;
 
 		// TODO Auto-generated constructor stub
@@ -143,7 +143,7 @@ public class LevelOne extends PixMindLevel {
 		// Active colors
 
 		// Rendering the game
-
+//		box2D.addActivatedColor(Color.BLUE);
 		worldRenderer = new PixMindWorldRenderer(scene2D, box2D, gui);
 
 		
