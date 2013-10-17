@@ -1,6 +1,7 @@
 package com.pix.mind.world;
 
 import com.badlogic.gdx.graphics.Color;
+import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColor;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.MapZoom;
@@ -12,13 +13,15 @@ public class PixMindGuiInitialization {
 	int nColors;
 	PixMindScene2DInitialization  scene2D;
 	private MapZoom mapZoom;
-	 private MenuInGame menuInGame;
-	public PixMindGuiInitialization(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D) {
+	private MenuInGame menuInGame;
+	private PixMindGame  game;
+	public PixMindGuiInitialization(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D, PixMindGame game) {
 		
 		this.scene2D= scene2D;		
 		mapZoom = new MapZoom( box2D,scene2D);
-		menuInGame = new MenuInGame(scene2D.getStageGui());
+		menuInGame = new MenuInGame(scene2D.getStageGui(), game);
 		box2D.getContactListener().setGui(this);
+		this.game = game;
 	}
 
 	public ActiveColors getActColors() {

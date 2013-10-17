@@ -92,6 +92,7 @@ public class Box2DWorldContactListener implements ContactListener {
 //					game.changeLevel(game.getSecondLevel());
 					//making the level change to the next level (but first, game transition to an InterLevelScreen)
 					//game.changeLevel(nextLevel);
+					
 					gui.getMenuInGame().showWin();
 				}
 
@@ -179,8 +180,12 @@ public class Box2DWorldContactListener implements ContactListener {
 				}
 				fixGuy.getBody().setLinearVelocity(
 						fixGuy.getBody().getLinearVelocity().x, 0);
+				
+				
 				fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.65f),
 						fixGuy.getBody().getWorldCenter(), true);
+				
+				
 				// animation
 
 				PixGuyActor pixguyActor = (PixGuyActor) fixGuy.getUserData();

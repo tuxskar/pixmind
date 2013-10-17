@@ -1,9 +1,7 @@
 package com.pix.mind.levels;
 
-import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
@@ -28,8 +26,8 @@ public class LevelOne extends PixMindLevel {
 		// TODO Auto-generated method stub
 
 		super.show();
-		super.setNextLevel(game.getLevelOne());
-
+		super.setNextLevel(game.getLevelTwo());
+		super.setActiveLevel(this);
 		// CREANDO EL NIVEL
 
 		// platform Actors and Activator Actors List

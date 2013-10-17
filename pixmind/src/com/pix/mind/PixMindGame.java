@@ -9,8 +9,9 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.LevelOne;
+import com.pix.mind.levels.LevelThree;
+import com.pix.mind.levels.LevelTwo;
 import com.pix.mind.levels.PixMindLevel;
-
 import com.pix.mind.levels.SecondLevel;
 import com.pix.mind.screens.InterLevelScreen;
 import com.pix.mind.screens.MainMenuScreen;
@@ -19,6 +20,8 @@ import com.pix.mind.screens.SplashScreen;
 public class PixMindGame extends Game {
 	private MainMenuScreen mainMenu;
 	private LevelOne levelOne;
+	private LevelTwo levelTwo;
+	private LevelThree levelThree;
 	private FirstLevel firstLevel;
 	private SecondLevel secondLevel;
 	private InterLevelScreen interLevel;
@@ -38,12 +41,13 @@ public class PixMindGame extends Game {
 		assetManager = new AssetManager();
 		mainMenu = new MainMenuScreen(this);
 		levelOne = new LevelOne(this);
+		levelTwo = new LevelTwo(this);
+		levelThree = new LevelThree(this);
 		splashScreen = new SplashScreen(this);
 //		this.setScreen(getMainMenuScreen());
 		this.setScreen(getSplashScreen());
 	}
 	
-
 
 	public void changeLevel(Screen screen){
 		interLevel = new InterLevelScreen(screen, this);
@@ -52,6 +56,7 @@ public class PixMindGame extends Game {
 	
 	// GETTERs & SETTERs
 	
+
 	public AssetManager getAssetManager() {
 		return assetManager;
 	}
@@ -86,6 +91,26 @@ public class PixMindGame extends Game {
 	
 	public MainMenuScreen getMainMenuScreen() {
 		return mainMenu;
+	}
+
+	public LevelTwo getLevelTwo() {
+		return levelTwo;
+	}
+
+	public void setLevelTwo(LevelTwo levelTwo) {
+		this.levelTwo = levelTwo;
+	}
+
+	public void setLevelOne(LevelOne levelOne) {
+		this.levelOne = levelOne;
+	}
+
+	public LevelThree getLevelThree() {
+		return levelThree;
+	}
+
+	public void setLevelThree(LevelThree levelThree) {
+		this.levelThree = levelThree;
 	}
 	
 	

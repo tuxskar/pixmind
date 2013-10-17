@@ -78,7 +78,7 @@ public class PixMindLevel implements Screen {
 //		box2D.getContactListener().setNextLevel(new LevelOne(game));
 		box2D.addActivatedColor(Color.BLUE);
 		
-		gui = new PixMindGuiInitialization(scene2D, box2D);
+		gui = new PixMindGuiInitialization(scene2D, box2D, game);
 		
 	}
 
@@ -109,7 +109,10 @@ public class PixMindLevel implements Screen {
 	// GETTERS & SETTERS
 	
 	public void setNextLevel(PixMindLevel nextLevel){
-		box2D.getContactListener().setNextLevel(nextLevel);
+		gui.getMenuInGame().setNextLevelScreen(nextLevel);
+	}
+	public void setActiveLevel(PixMindLevel activeLevel){
+		gui.getMenuInGame().setActiveLevelScreen(activeLevel);
 	}
 
 }

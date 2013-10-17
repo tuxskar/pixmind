@@ -3,9 +3,11 @@ package com.pix.mind.world;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.MapZoom;
+import com.pix.mind.actors.MenuInGame;
 import com.pix.mind.box2d.bodies.PixGuy;
 
 public class PixMindWorldRenderer {
@@ -17,6 +19,7 @@ public class PixMindWorldRenderer {
 	private OrthographicCamera camera;
 	private Image pixGuySkin;
 	World world;
+	private MenuInGame menuInGame;
 	private Box2DDebugRenderer debugRenderer;
 	public PixMindWorldRenderer( PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D,  PixMindGuiInitialization gui){
 		this.scene2D = scene2D;
@@ -24,6 +27,7 @@ public class PixMindWorldRenderer {
 		this.pixGuySkin = box2D.getPixGuy().getPixGuySkin();
 		this.contactListener = box2D.getContactListener();
 		this.mapZoom = gui.getMapZoom();
+		this.menuInGame = gui.getMenuInGame();
 		this.world = box2D.getWorld();
 		
 		//set up camera for the debugRenderer		
@@ -55,7 +59,7 @@ public class PixMindWorldRenderer {
 				pixGuy.body.getFixtureList().get(0).setSensor(false);
 		}
 
-		if (!mapZoom.isMapActive()) {
+		if (!mapZoom.isMapActive() && !menuInGame.isActive()) {
 			if (contactListener.getLastPlatformHeight() > pixGuy.getPosY()) {
 
 				contactListener.setLastPlatformHeight(pixGuy.getPosY());
@@ -119,8 +123,14 @@ public class PixMindWorldRenderer {
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy2"));
 					
 			}
-		//	System.out.println(pixGuy.body.getLinearVelocity().y);
+			//death of pixguy
+			if(pixGuy.body.getPosition().y <-1 ){
+				menuInGame.showLose();
+			}
+			
 		
+		}else{
+			
 		}
 		scene2D.getStage().act();
 	}
