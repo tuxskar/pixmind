@@ -33,6 +33,12 @@ public class PixMindWorldRenderer {
 		camera.translate(PixMindGame.w / 2 * PixMindGame.WORLD_TO_BOX,
 				PixMindGame.h / 2 * PixMindGame.WORLD_TO_BOX);
 		debugRenderer = new Box2DDebugRenderer();
+		//make this to bring pixguy to the front if you make 12 elements
+		//platforms and activator this number must be 13
+		//put a high vaulue if you are not sure.
+		box2D.getPixGuy().getPixGuySkin().setZIndex(200);
+	
+		
 	}
 	
 	
@@ -86,9 +92,9 @@ public class PixMindWorldRenderer {
 			//eyes of pixguy
 			if(pixGuy.body.getLinearVelocity().x>0f){
 				
-				if(pixGuy.body.getLinearVelocity().y<1f && pixGuy.body.getLinearVelocity().y>-1f )
+				/*if(pixGuy.body.getLinearVelocity().y<2f && pixGuy.body.getLinearVelocity().y>-2f )
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy6"));
-				else if(pixGuy.body.getLinearVelocity().y<0f)
+				else */if(pixGuy.body.getLinearVelocity().y<0f)
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy9"));
 				else if(pixGuy.body.getLinearVelocity().y>0f)
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy3"));
@@ -97,24 +103,25 @@ public class PixMindWorldRenderer {
 				
 				
 			}else if (pixGuy.body.getLinearVelocity().x<0f){
-				if(pixGuy.body.getLinearVelocity().y<1f && pixGuy.body.getLinearVelocity().y>-1f )
+				/*if(pixGuy.body.getLinearVelocity().y<2f && pixGuy.body.getLinearVelocity().y>-2f )
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy4"));
-				else if(pixGuy.body.getLinearVelocity().y<0f)
+				else*/ if(pixGuy.body.getLinearVelocity().y<0f)
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy7"));
 				else if(pixGuy.body.getLinearVelocity().y>0f)
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy1"));
 					
 			}else if (pixGuy.body.getLinearVelocity().x==0){
-				if(pixGuy.body.getLinearVelocity().y<1f && pixGuy.body.getLinearVelocity().y>-1f )
+				/*if(pixGuy.body.getLinearVelocity().y<2f && pixGuy.body.getLinearVelocity().y>-2f )
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy5"));
-				else if(pixGuy.body.getLinearVelocity().y<0f)
+				else*/ if(pixGuy.body.getLinearVelocity().y<0f)
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy8"));
 				else if(pixGuy.body.getLinearVelocity().y>0f)
 					pixGuySkin.setDrawable(PixMindGame.getSkin().getDrawable("pixguy2"));
 					
 			}
-			System.out.println(pixGuy.body.getLinearVelocity().y);
+		//	System.out.println(pixGuy.body.getLinearVelocity().y);
+		
 		}
-		scene2D.getStage().act();	
+		scene2D.getStage().act();
 	}
 }
