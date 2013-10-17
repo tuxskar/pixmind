@@ -96,6 +96,7 @@ public class Box2DWorldContactListener implements ContactListener{
 //					game.changeLevel(game.getSecondLevel());
 					//making the level change to the next level (but first, game transition to an InterLevelScreen)
 					//game.changeLevel(nextLevel);
+					
 					gui.getMenuInGame().showWin();
 				}
 					
