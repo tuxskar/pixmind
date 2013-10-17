@@ -7,32 +7,32 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pix.mind.PixMindGame;
 
 public class MainMenuScreen implements Screen {
 	
 	private PixMindGame game;
-	Texture playImage, backGroundImage;
-	SpriteBatch batch;
 	OrthographicCamera camera;
 	Music mainMenuMusic;
+	Stage MainMenuStage;
+	Image playImageS2D, optionsImageS2D, exitImageS2D, titleImageS2D, backgroundImage;
 	
 	public MainMenuScreen(PixMindGame game) {
 		super();
 		this.game = game;
-		//Loading textures
-	//	playImage = new Texture(Gdx.files.internal("data/images/playImage.png"));
-	//	backGroundImage = new Texture(game.getSkin().getDrawable("").);
-		//Creating batch
-		batch = new SpriteBatch();
-		//Creating camera
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 480);
-		//Loading and playing main menu music loop
-		mainMenuMusic = Gdx.audio.newMusic(Gdx.files.internal("data/music/smlo.mp3"));
-		mainMenuMusic.setLooping(true);
-		mainMenuMusic.setVolume(0.7f);
-		mainMenuMusic.play();
+		MainMenuStage = new Stage(PixMindGame.w, PixMindGame.h, true);
+		Gdx.input.setInputProcessor(MainMenuStage);
+
 	}
 
 	@Override
@@ -41,23 +41,10 @@ public class MainMenuScreen implements Screen {
 		
 		Gdx.gl.glClearColor(1, 1, 1, 1); 
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT); 
-		camera.update();
-		batch.setProjectionMatrix(camera.combined);
 		
-		batch.begin();
-		
-	//	batch.draw(backGroundImage, 0, 0);
-	//	batch.draw(playImage, game.w / 8, game.h / 4);
-		
-		batch.end();
-		
-		if(Gdx.input.justTouched()) {
-			mainMenuMusic.stop();
-			game.setScreen(game.getSplashScreen());
-			
-		}
+		MainMenuStage.draw();
+		MainMenuStage.act();
  
-		
 	}
 
 	@Override
@@ -69,7 +56,64 @@ public class MainMenuScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		game.setScreen(game.getSplashScreen());
+		
+		// creating actors (image)
+		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
+		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play"));
+		optionsImageS2D = new Image(PixMindGame.getSkin().getDrawable("options"));
+		exitImageS2D = new Image(PixMindGame.getSkin().getDrawable("exitmenu"));
+		titleImageS2D = new Image(PixMindGame.getSkin().getDrawable("sweetmind"));
+		
+		
+		// adding actor listeners
+		playImageS2D.addListener(new ActorGestureListener(){
+			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
+	               System.out.println("PLAY TOUCHED");
+	               game.changeLevel(game.getLevelOne());
+	          }
+		});
+		playImageS2D.setTouchable(Touchable.enabled);
+		
+		exitImageS2D.addListener(new ActorGestureListener(){
+			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
+	               System.out.println("EXIT TOUCHED");
+	               Gdx.app.exit();
+	          }
+		});
+		exitImageS2D.setTouchable(Touchable.enabled);
+		
+		
+		// adding actors to the stage
+		MainMenuStage.addActor(backgroundImage);
+		MainMenuStage.addActor(playImageS2D);
+		MainMenuStage.addActor(optionsImageS2D);
+		MainMenuStage.addActor(exitImageS2D);
+		MainMenuStage.addActor(titleImageS2D);
+		
+		
+		// setting sizes, positions, origins
+		playImageS2D.setSize(playImageS2D.getWidth(), playImageS2D.getHeight());
+		playImageS2D.setPosition(320, 240);
+		playImageS2D.setOrigin(playImageS2D.getImageWidth()/2, playImageS2D.getImageHeight()/2);
+		
+		optionsImageS2D.setSize(optionsImageS2D.getWidth(), optionsImageS2D.getHeight());
+		optionsImageS2D.setPosition(320, 140);
+		optionsImageS2D.setOrigin(optionsImageS2D.getImageWidth()/2, optionsImageS2D.getImageHeight()/2);
+		
+		exitImageS2D.setSize(exitImageS2D.getWidth(), exitImageS2D.getHeight());
+		exitImageS2D.setPosition(320, 40);
+		exitImageS2D.setOrigin(exitImageS2D.getImageWidth()/2, exitImageS2D.getImageHeight()/2);
+		
+		titleImageS2D.setSize(titleImageS2D.getWidth(), titleImageS2D.getHeight());
+		titleImageS2D.setPosition(250, 400);
+		titleImageS2D.setOrigin(titleImageS2D.getImageWidth()/2, titleImageS2D.getImageHeight()/2);
+		
+		
+		// Loading and playing main menu music loop
+		mainMenuMusic = Gdx.audio.newMusic(Gdx.files.internal("data/music/smlo.mp3"));
+		mainMenuMusic.setLooping(true);
+		mainMenuMusic.setVolume(0.9f);
+		mainMenuMusic.play();
 	}
 
 	@Override
@@ -93,9 +137,8 @@ public class MainMenuScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		playImage.dispose();
-		backGroundImage.dispose();
-	    batch.dispose();
+//		backGroundImage.dispose();
+//	    batch.dispose();
 	    mainMenuMusic.dispose();
 		
 	}

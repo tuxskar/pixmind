@@ -47,9 +47,6 @@ public class PixMindLevel implements Screen {
 		this.pixGuyBeginsX = pixGuyBeginsX;
 		this.pixGuyBeginsY = pixGuyBeginsY;
 		
-		
-		
-		
 	}
 
 	@Override

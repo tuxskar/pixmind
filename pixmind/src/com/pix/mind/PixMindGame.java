@@ -27,7 +27,9 @@ public class PixMindGame extends Game {
 	public static final float BOX_TO_WORLD = 100f;
 	public static float h = 480; 		
 	public static float w = 800;
-	private AssetManager assetManager;	
+
+	private AssetManager assetManager;
+	private static Skin splashSkin;
 	private static Skin skin;
 	@Override
 	public void create() {
@@ -36,26 +38,26 @@ public class PixMindGame extends Game {
 		assetManager = new AssetManager();
 		mainMenu = new MainMenuScreen(this);
 		levelOne = new LevelOne(this);
-//		firstLevel = new FirstLevel(this);		
-//		secondLevel = new SecondLevel(this);
 		splashScreen = new SplashScreen(this);
-		this.setScreen(getMainMenuScreen());
-//		this.setScreen(getSplashScreen());
+//		this.setScreen(getMainMenuScreen());
+		this.setScreen(getSplashScreen());
 	}
 	
-	public SplashScreen getSplashScreen() {
-		return splashScreen;
-	}
+
 
 	public void changeLevel(Screen screen){
 		interLevel = new InterLevelScreen(screen, this);
 		this.setScreen(interLevel);
 	}
-
+	
+	// GETTERs & SETTERs
+	
 	public AssetManager getAssetManager() {
 		return assetManager;
 	}
 
+	// skin getters & setters
+	
 	public static Skin getSkin() {
 		return skin;
 	}
@@ -63,9 +65,19 @@ public class PixMindGame extends Game {
 	public void setSkin(Skin skin) {
 		PixMindGame.skin = skin;
 	}
+	
+	public static Skin getSplashSkin() {
+		return splashSkin;
+	}
 
-	public SecondLevel getSecondLevel() {
-		return secondLevel;
+	public void setSplashSkin(Skin skin) {
+		PixMindGame.splashSkin = skin;
+	}
+	
+	// levels and other screens getters & setters
+	
+	public SplashScreen getSplashScreen() {
+		return splashScreen;
 	}
 	
 	public LevelOne getLevelOne() {
