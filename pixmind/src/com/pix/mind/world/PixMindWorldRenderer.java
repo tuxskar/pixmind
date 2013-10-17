@@ -123,7 +123,7 @@ public class PixMindWorldRenderer {
 					
 			}
 			//death of pixguy
-			if(pixGuy.body.getPosition().y <0 ){
+			if(pixGuy.body.getPosition().y <-1 ){
 				menuInGame.showLose();
 			}
 			
