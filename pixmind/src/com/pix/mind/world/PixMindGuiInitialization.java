@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.actors.ActiveColor;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.MapZoom;
+import com.pix.mind.actors.MenuInGame;
 
 public class PixMindGuiInitialization {
 	
@@ -11,12 +12,13 @@ public class PixMindGuiInitialization {
 	int nColors;
 	PixMindScene2DInitialization  scene2D;
 	private MapZoom mapZoom;
-	 
+	 private MenuInGame menuInGame;
 	public PixMindGuiInitialization(PixMindScene2DInitialization scene2D, PixMindBox2DInitialization box2D) {
 		
 		this.scene2D= scene2D;		
 		mapZoom = new MapZoom( box2D,scene2D);
-		
+		menuInGame = new MenuInGame(scene2D.getStageGui());
+		box2D.getContactListener().setGui(this);
 	}
 
 	public ActiveColors getActColors() {
@@ -42,6 +44,14 @@ public class PixMindGuiInitialization {
 
 	public void setMapZoom(MapZoom mapZoom) {
 		this.mapZoom = mapZoom;
+	}
+
+	public MenuInGame getMenuInGame() {
+		return menuInGame;
+	}
+
+	public void setMenuInGame(MenuInGame menuInGame) {
+		this.menuInGame = menuInGame;
 	}
 	
 	

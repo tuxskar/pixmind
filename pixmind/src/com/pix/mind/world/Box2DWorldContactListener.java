@@ -28,7 +28,7 @@ public class Box2DWorldContactListener implements ContactListener{
 	private float lastPlatformHeight;
 	private float anteriorHeight;
 	private Screen nextLevel;
-	
+	private PixMindGuiInitialization gui;
 	public Box2DWorldContactListener(PixMindGame game,  PixMindBox2DInitialization box2D, ActiveColors actColors){
 		this.game = game;
 		this.platformList = box2D.getPlatformList();
@@ -95,7 +95,8 @@ public class Box2DWorldContactListener implements ContactListener{
 				if(platformActivatorActor.color.equals(Color.BLACK)){
 //					game.changeLevel(game.getSecondLevel());
 					//making the level change to the next level (but first, game transition to an InterLevelScreen)
-					game.changeLevel(nextLevel);
+					//game.changeLevel(nextLevel);
+					gui.getMenuInGame().showWin();
 				}
 					
 				//get all platform of the same color and  change state
@@ -206,6 +207,14 @@ public class Box2DWorldContactListener implements ContactListener{
 	}
 	public void setNextLevel(Screen nextLevel) {
 		this.nextLevel = nextLevel;
+	}
+
+	public PixMindGuiInitialization getGui() {
+		return gui;
+	}
+
+	public void setGui(PixMindGuiInitialization gui) {
+		this.gui = gui;
 	}
 
 
