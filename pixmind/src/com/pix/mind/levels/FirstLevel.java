@@ -72,8 +72,7 @@ public class FirstLevel implements Screen {
 		int nColors = 3;
 
 		//Scene 2D initialization
-		scene2D = new PixMindScene2DInitialization();			
-		scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
+		scene2D = new PixMindScene2DInitialization(levelSizeWidth, levelSizeHeight);			
 				
 		//World initialization 
 		box2D = new PixMindBox2DInitialization (scene2D, game, nColors);

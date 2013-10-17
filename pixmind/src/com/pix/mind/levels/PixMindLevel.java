@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.world.PixMindBox2DInitialization;
 import com.pix.mind.world.PixMindGuiInitialization;
@@ -45,6 +46,10 @@ public class PixMindLevel implements Screen {
 		this.cameraBeginsY = cameraBeginsY;
 		this.pixGuyBeginsX = pixGuyBeginsX;
 		this.pixGuyBeginsY = pixGuyBeginsY;
+		
+		
+		
+		
 	}
 
 	@Override
@@ -65,8 +70,10 @@ public class PixMindLevel implements Screen {
 	@Override
 	public void show(){
 		
-		scene2D = new PixMindScene2DInitialization();
-		scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
+		scene2D = new PixMindScene2DInitialization(levelSizeWidth, levelSizeHeight);
+	//	scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
+		
+		
 		
 		box2D = new PixMindBox2DInitialization (scene2D, game, nActiveColors);
 		box2D.setCameraBeginsY(cameraBeginsY);		
