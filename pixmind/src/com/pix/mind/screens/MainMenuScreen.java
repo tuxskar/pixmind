@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -22,16 +23,15 @@ import com.pix.mind.PixMindGame;
 public class MainMenuScreen implements Screen {
 	
 	private PixMindGame game;
-	OrthographicCamera camera;
+	//OrthographicCamera camera;
 	//Music mainMenuMusic;
-	Stage MainMenuStage;
+	Stage mainMenuStage;
 	Image playImageS2D, optionsImageS2D, exitImageS2D, titleImageS2D, backgroundImage;
 	
 	public MainMenuScreen(PixMindGame game) {
 		super();
 		this.game = game;
-		MainMenuStage = new Stage(PixMindGame.w, PixMindGame.h, true);
-		Gdx.input.setInputProcessor(MainMenuStage);
+		
 
 	}
 
@@ -42,8 +42,8 @@ public class MainMenuScreen implements Screen {
 		Gdx.gl.glClearColor(1, 1, 1, 1); 
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT); 
 		
-		MainMenuStage.draw();
-		MainMenuStage.act();
+		mainMenuStage.draw();
+		//MainMenuStage.act();
  
 	}
 
@@ -58,6 +58,11 @@ public class MainMenuScreen implements Screen {
 		// TODO Auto-generated method stub
 		
 		// creating actors (image)
+		mainMenuStage = new Stage(PixMindGame.w, PixMindGame.h, true);
+		
+		Gdx.input.setInputProcessor(mainMenuStage);
+		Group menuGroup = new Group(); //to move according to the resolutuion
+		
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
 		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play"));
 		optionsImageS2D = new Image(PixMindGame.getSkin().getDrawable("options"));
@@ -72,7 +77,7 @@ public class MainMenuScreen implements Screen {
 	               game.changeLevel(game.getLevelOne());
 	          }
 		});
-		playImageS2D.setTouchable(Touchable.enabled);
+		//playImageS2D.setTouchable(Touchable.enabled);
 		
 		exitImageS2D.addListener(new ActorGestureListener(){
 			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -80,33 +85,34 @@ public class MainMenuScreen implements Screen {
 	               Gdx.app.exit();
 	          }
 		});
-		exitImageS2D.setTouchable(Touchable.enabled);
+	//	exitImageS2D.setTouchable(Touchable.enabled);
 		
 		
 		// adding actors to the stage
-		MainMenuStage.addActor(backgroundImage);
-		MainMenuStage.addActor(playImageS2D);
-		MainMenuStage.addActor(optionsImageS2D);
-		MainMenuStage.addActor(exitImageS2D);
-		MainMenuStage.addActor(titleImageS2D);
-		
+		menuGroup.addActor(backgroundImage);
+		menuGroup.addActor(playImageS2D);
+		menuGroup.addActor(optionsImageS2D);
+		menuGroup.addActor(exitImageS2D);
+		menuGroup.addActor(titleImageS2D);
+		menuGroup.setPosition(-(854-PixMindGame.w)/2, 0);
+		mainMenuStage.addActor(menuGroup);
 		
 		// setting sizes, positions, origins
-		playImageS2D.setSize(playImageS2D.getWidth(), playImageS2D.getHeight());
+		//playImageS2D.setSize(playImageS2D.getWidth(), playImageS2D.getHeight());
 		playImageS2D.setPosition(320, 240);
-		playImageS2D.setOrigin(playImageS2D.getImageWidth()/2, playImageS2D.getImageHeight()/2);
+		//playImageS2D.setOrigin(playImageS2D.getImageWidth()/2, playImageS2D.getImageHeight()/2);
 		
-		optionsImageS2D.setSize(optionsImageS2D.getWidth(), optionsImageS2D.getHeight());
+		//optionsImageS2D.setSize(optionsImageS2D.getWidth(), optionsImageS2D.getHeight());
 		optionsImageS2D.setPosition(320, 140);
-		optionsImageS2D.setOrigin(optionsImageS2D.getImageWidth()/2, optionsImageS2D.getImageHeight()/2);
+		//optionsImageS2D.setOrigin(optionsImageS2D.getImageWidth()/2, optionsImageS2D.getImageHeight()/2);
 		
-		exitImageS2D.setSize(exitImageS2D.getWidth(), exitImageS2D.getHeight());
+	//	exitImageS2D.setSize(exitImageS2D.getWidth(), exitImageS2D.getHeight());
 		exitImageS2D.setPosition(320, 40);
-		exitImageS2D.setOrigin(exitImageS2D.getImageWidth()/2, exitImageS2D.getImageHeight()/2);
+		//exitImageS2D.setOrigin(exitImageS2D.getImageWidth()/2, exitImageS2D.getImageHeight()/2);
 		
-		titleImageS2D.setSize(titleImageS2D.getWidth(), titleImageS2D.getHeight());
+	//	titleImageS2D.setSize(titleImageS2D.getWidth(), titleImageS2D.getHeight());
 		titleImageS2D.setPosition(250, 400);
-		titleImageS2D.setOrigin(titleImageS2D.getImageWidth()/2, titleImageS2D.getImageHeight()/2);
+		//titleImageS2D.setOrigin(titleImageS2D.getImageWidth()/2, titleImageS2D.getImageHeight()/2);
 		
 		
 		// Loading and playing main menu music loop
