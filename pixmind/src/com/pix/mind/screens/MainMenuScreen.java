@@ -23,7 +23,7 @@ public class MainMenuScreen implements Screen {
 	
 	private PixMindGame game;
 	OrthographicCamera camera;
-	Music mainMenuMusic;
+	//Music mainMenuMusic;
 	Stage MainMenuStage;
 	Image playImageS2D, optionsImageS2D, exitImageS2D, titleImageS2D, backgroundImage;
 	
@@ -110,10 +110,13 @@ public class MainMenuScreen implements Screen {
 		
 		
 		// Loading and playing main menu music loop
-		mainMenuMusic = Gdx.audio.newMusic(Gdx.files.internal("data/music/smlo.mp3"));
+		/*mainMenuMusic = Gdx.audio.newMusic(Gdx.files.internal("data/music/smlo.mp3"));
 		mainMenuMusic.setLooping(true);
 		mainMenuMusic.setVolume(0.9f);
-		mainMenuMusic.play();
+		mainMenuMusic.play();*/
+		PixMindGame.getMusic().setLooping(true);
+		PixMindGame.getMusic().setVolume(0.9f);
+		PixMindGame.getMusic().play();
 	}
 
 	@Override
@@ -139,8 +142,7 @@ public class MainMenuScreen implements Screen {
 		// TODO Auto-generated method stub
 //		backGroundImage.dispose();
 //	    batch.dispose();
-	    mainMenuMusic.dispose();
-		
+	   		
 	}
 
 }
