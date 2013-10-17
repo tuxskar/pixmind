@@ -1,7 +1,7 @@
 
 PixmindTextureAtlas.png
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 emptyscreen
   rotate: false
@@ -209,7 +209,7 @@ candy5
 
 PixmindTextureAtlas2.png
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 interlevel
   rotate: false
