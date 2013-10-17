@@ -23,10 +23,8 @@ public class MenuInGame extends Group {
 		this.game = game;
 		interLevel = new Image(PixMindGame.getSkin().getDrawable("interlevel"));		
 		nextLevel = new Image (PixMindGame.getSkin().getDrawable("nextlevel"));
-		nextLevel1 = new Image (PixMindGame.getSkin().getDrawable("nextlevel"));
-		
 		nextLevel.setPosition(70, 30);
-		nextLevel1.setPosition(0, 140);
+		
 		this.setPosition(PixMindGame.w/2-interLevel.getWidth()/2,PixMindGame.h/2 - interLevel.getHeight()/2);
 		this.addActor(interLevel);
 	
@@ -60,7 +58,6 @@ public class MenuInGame extends Group {
 		active = true;
 		stageGui.addActor(this);
 		addActor(nextLevel);	
-		addActor(nextLevel1);	
 		return this;
 		
 	}

@@ -3,6 +3,7 @@ package com.pix.mind.world;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.MapZoom;
@@ -128,6 +129,8 @@ public class PixMindWorldRenderer {
 			}
 			
 		
+		}else{
+			
 		}
 		scene2D.getStage().act();
 	}
