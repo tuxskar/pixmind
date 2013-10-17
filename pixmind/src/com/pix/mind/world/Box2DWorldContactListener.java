@@ -84,6 +84,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		
 		//collision with a Activator
 		if(fixActivator!=null){
+			int nActivatedColors = actColors.getNActivesColors();
 			PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator.getUserData();
 			if(platformActivatorActor.isActive()){
 				//if activator is black go to next level
@@ -129,7 +130,6 @@ public class Box2DWorldContactListener implements ContactListener {
 									+ sp.color);
 						}
 					}
-					System.out.println("estoy dentro");
 				}
 				for (StaticPlatformActor sp : platformList) {
 					if (platformActivatorActor.color.equals(sp.color))
