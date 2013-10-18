@@ -24,15 +24,18 @@ public class PixMindScene2DInitialization {
 		stage.addActor(groupStage);
 		this.levelSizeWidth = levelSizeWidth;
 		this.levelSizeHeight = levelSizeHeight;
-		int timesWidth = 1 + 1 + Math.round(this.levelSizeWidth / 854);
-		int timesHeight = 1 + 1 + Math.round(this.levelSizeHeight / 480);
-
+		
 		//background dimensions
-		int width = 480;
-		int height = 480;
+		
+		float width = PixMindGame.getSkin().getSprite("fondoingame").getWidth();
+		float height = PixMindGame.getSkin().getSprite("fondoingame").getHeight();
+		
+		
 		//background creation		
-		int beginWidth = -width;
-		int beginHeight = -height;
+		float timesWidth = 1 + 1 + Math.round(this.levelSizeWidth / width);
+		float timesHeight = 1 + 1 + Math.round(this.levelSizeHeight / height);
+		float beginWidth = -width;
+		float beginHeight = -height;
 		for (int i = 0; i < timesHeight; i++) {
 			for (int j = 0; j < timesWidth; j++) {
 				Image im = new Image(PixMindGame.getSkin().getDrawable("fondoingame"));
