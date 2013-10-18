@@ -35,10 +35,10 @@ public class PixMindScene2DInitialization {
 		
 		
 		//background creation		
-		float timesWidth = 1 + 1 + Math.round(this.levelSizeWidth / width);
-		float timesHeight = 1 + 1 + Math.round(this.levelSizeHeight / height);
-		float beginWidth = -width;
-		float beginHeight = -height;
+		float timesWidth = 3 + 1 + Math.round(this.levelSizeWidth / width);
+		float timesHeight = 3 + 1 + Math.round(this.levelSizeHeight / height);
+		float beginWidth = -2*width;
+		float beginHeight = -2*height;
 		for (int i = 0; i < timesHeight; i++) {
 			for (int j = 0; j < timesWidth; j++) {
 				Image im = new Image(PixMindGame.getSkin().getDrawable("fondoingame"));
@@ -47,7 +47,7 @@ public class PixMindScene2DInitialization {
 				beginWidth += width;
 				
 			}
-			beginWidth = -width;
+			beginWidth = -2*width;
 			beginHeight +=height;
 		}
 	

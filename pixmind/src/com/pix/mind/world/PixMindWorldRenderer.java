@@ -1,9 +1,14 @@
 package com.pix.mind.world;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureWrap;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.MapZoom;
 import com.pix.mind.actors.MenuInGame;
@@ -20,7 +25,7 @@ public class PixMindWorldRenderer {
 	private World world;
 	private MenuInGame menuInGame;
 	private Box2DDebugRenderer debugRenderer;
-
+	
 	public PixMindWorldRenderer(PixMindScene2DInitialization scene2D,
 			PixMindBox2DInitialization box2D, PixMindGuiInitialization gui) {
 		this.scene2D = scene2D;
@@ -43,10 +48,19 @@ public class PixMindWorldRenderer {
 		// put a high vaulue if you are not sure.
 		box2D.getPixGuy().getPixGuySkin().setZIndex(200);
 
+		
+
+		 
+
+	
 	}
 
 	public void render(float delta) {
 		// debugRenderer.render(world, camera.combined);
+			
+	
+		
+		
 		scene2D.getStage().draw();
 		scene2D.getStageGui().draw();
 
