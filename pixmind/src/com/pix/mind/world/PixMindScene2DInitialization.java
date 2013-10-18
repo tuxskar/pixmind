@@ -1,6 +1,7 @@
 package com.pix.mind.world;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -25,6 +26,8 @@ public class PixMindScene2DInitialization {
 		this.levelSizeWidth = levelSizeWidth;
 		this.levelSizeHeight = levelSizeHeight;
 		
+		
+	
 		//background dimensions
 		
 		float width = PixMindGame.getSkin().getSprite("fondoingame").getWidth();

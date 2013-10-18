@@ -13,6 +13,8 @@ import com.pix.mind.levels.LevelOne;
 import com.pix.mind.levels.LevelThree;
 import com.pix.mind.levels.LevelTwo;
 import com.pix.mind.levels.SecondLevel;
+import com.pix.mind.screens.LevelSelector1Screen;
+import com.pix.mind.screens.LevelSelector2Screen;
 import com.pix.mind.screens.MainMenuScreen;
 import com.pix.mind.screens.SplashScreen;
 
@@ -24,6 +26,9 @@ public class PixMindGame extends Game {
 	private FirstLevel firstLevel;
 	private SecondLevel secondLevel;
 	private SplashScreen splashScreen;
+	private LevelSelector1Screen levelSelector1Screen;
+	private LevelSelector2Screen levelSelector2Screen;
+	
 	public static final float WORLD_TO_BOX = 0.01f;
 	public static final float BOX_TO_WORLD = 100f;
 	public static float h = 480; 		
@@ -36,13 +41,15 @@ public class PixMindGame extends Game {
 	public void create() {
 		// TODO Auto-generated method stub
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
-		assetManager = new AssetManager();
-	
+		assetManager = new AssetManager();	
 		mainMenu = new MainMenuScreen(this);
 		levelOne = new LevelOne(this);
 		levelTwo = new LevelTwo(this);
 		levelThree = new LevelThree(this);
 		splashScreen = new SplashScreen(this);
+		
+		levelSelector1Screen = new LevelSelector1Screen(this);
+		levelSelector2Screen = new LevelSelector2Screen(this);
 //		this.setScreen(getMainMenuScreen());
 		this.setScreen(getSplashScreen());
 	}
@@ -113,6 +120,26 @@ public class PixMindGame extends Game {
 
 	public static void setMusic(Music music) {
 		PixMindGame.music = music;
+	}
+
+
+	public LevelSelector1Screen getLevelSelector1Screen() {
+		return levelSelector1Screen;
+	}
+
+
+	public void setLevelSelector1Screen(LevelSelector1Screen levelSelector1Screen) {
+		this.levelSelector1Screen = levelSelector1Screen;
+	}
+
+
+	public LevelSelector2Screen getLevelSelector2Screen() {
+		return levelSelector2Screen;
+	}
+
+
+	public void setLevelSelector2Screen(LevelSelector2Screen levelSelector2Screen) {
+		this.levelSelector2Screen = levelSelector2Screen;
 	}
 
 

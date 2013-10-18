@@ -1,7 +1,11 @@
 package com.pix.mind.actors;
 
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
@@ -53,6 +57,21 @@ public class MenuInGame extends Group {
 			
 		};
 		this.addListener(listener);
+		
+		stageGui.addListener(new InputListener(){
+
+			@Override
+			public boolean keyDown(InputEvent event, int keycode) {
+				// TODO Auto-generated method stub
+				
+				if(keycode == Keys.BACK){
+					showLose();
+				}
+				return false;
+			}
+			
+			
+		});
 	}
 	public Group showWin(){
 		active = true;
