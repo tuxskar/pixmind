@@ -18,6 +18,7 @@ public class PixMindScene2DInitialization {
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		stageGui = new Stage(PixMindGame.w, PixMindGame.h, true);		
 		Gdx.input.setInputProcessor(stageGui);
+		Gdx.input.setCatchBackKey(true);
 		groupStage = new Group();
 		groupStage.setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);		
 		stage.addActor(groupStage);
@@ -26,18 +27,22 @@ public class PixMindScene2DInitialization {
 		int timesWidth = 1 + 1 + Math.round(this.levelSizeWidth / 854);
 		int timesHeight = 1 + 1 + Math.round(this.levelSizeHeight / 480);
 
-		int beginWidth = -854;
-		int beginHeight = -480;
+		//background dimensions
+		int width = 480;
+		int height = 480;
+		//background creation		
+		int beginWidth = -width;
+		int beginHeight = -height;
 		for (int i = 0; i < timesHeight; i++) {
 			for (int j = 0; j < timesWidth; j++) {
 				Image im = new Image(PixMindGame.getSkin().getDrawable("fondoingame"));
 				getGroupStage().addActor(im);
 				im.setPosition(beginWidth, beginHeight);
-				beginWidth += 854;
+				beginWidth += width;
 				System.out.println( beginWidth);
 			}
-			beginWidth = -854;
-			beginHeight +=480;
+			beginWidth = -width;
+			beginHeight +=height;
 		}
 	
 	}
