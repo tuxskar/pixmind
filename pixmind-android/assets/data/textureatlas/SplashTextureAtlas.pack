@@ -1,0 +1,12 @@
+
+SplashTextureAtlas.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+splash screen
+  rotate: false
+  xy: 1, 1
+  size: 854, 480
+  orig: 854, 480
+  offset: 0, 0
+  index: -1

@@ -37,7 +37,7 @@ public class MapZoom {
 			@Override
 			public void touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				System.out.println("x " + x + " y " + y);
+				//System.out.println("x " + x + " y " + y);
 				if(x<100 && y > 380 && !mapActive){
 					
 					showMap();
@@ -83,7 +83,7 @@ public class MapZoom {
 			public boolean act(float delta) {
 				// TODO Auto-generated method stub
 				showingMap = false;	
-				System.out.println("final action show");
+			//	System.out.println("final action show");
 				zoomInActor.remove();
 				scene2D.getStageGui().addActor(zoomOutActor);
 				return true;
@@ -93,7 +93,7 @@ public class MapZoom {
 	
 		
 		
-		 System.out.println("chamo2 " +scene2D.getLevelSizeWidth()/2+ " " +pixGuySkin.getX() + " "+(scene2D.getLevelSizeHeight()/2) + " "+contactListener.getLastPlatformHeight() );
+	//	 System.out.println("chamo2 " +scene2D.getLevelSizeWidth()/2+ " " +pixGuySkin.getX() + " "+(scene2D.getLevelSizeHeight()/2) + " "+contactListener.getLastPlatformHeight() );
 			
 	
 	}

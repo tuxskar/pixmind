@@ -17,8 +17,8 @@ public class PixMindBox2DInitialization {
 	private Box2DWorldContactListener contactListener;
 	private ActiveColors actColors;
 	private PixMindPixGuyInitialization pixGuy;
-	 ArrayList<StaticPlatformActor> platformList;
-	 ArrayList<PlatformActivatorActor> activatorList;
+	ArrayList<StaticPlatformActor> platformList;
+	ArrayList<PlatformActivatorActor> activatorList;
 	
 	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game, int nColors){
 	/** BOX2D SETTINGS **/
