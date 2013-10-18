@@ -77,6 +77,7 @@ public class MainMenuScreen implements Screen {
 		playImageS2D.addListener(new ActorGestureListener(){
 			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
 	               System.out.println("PLAY TOUCHED");
+	               PixMindGame.getMenuClick().play(0.3f);
 	               game.changeLevel(game.getLevelSelector1Screen());
 	          }
 		});

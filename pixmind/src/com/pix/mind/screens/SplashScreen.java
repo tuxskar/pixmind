@@ -58,6 +58,8 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setGettingActivator(game.getAssetManager().get("data/sounds/gettingactivator.wav", Sound.class));
 			PixMindGame.setWinning(game.getAssetManager().get("data/sounds/winning.wav", Sound.class));			
 			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
+			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
+			PixMindGame.setMenuClick(game.getAssetManager().get("data/sounds/menuclick.mp3", Sound.class));
 			
 			game.setScreen(game.getMainMenuScreen());
 		}
@@ -92,6 +94,8 @@ public class SplashScreen implements  Screen{
 		game.getAssetManager().load("data/sounds/gettingactivator.wav", Sound.class);
 		game.getAssetManager().load("data/sounds/winning.wav", Sound.class);
 		game.getAssetManager().load("data/sounds/losing.wav", Sound.class);
+		game.getAssetManager().load("data/sounds/menuclick.mp3", Sound.class);
+		
 		
 		
 		stageSplash = new Stage(PixMindGame.w, PixMindGame.h, true);

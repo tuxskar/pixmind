@@ -153,6 +153,7 @@ public class LevelSelector1Screen implements Screen {
 				// TODO Auto-generated method stub
 				
 				if(keycode == Keys.BACK){
+				    PixMindGame.getMenuClick().play(0.3f);
 					game.changeLevel(game.getMainMenuScreen());
 				}
 				return true;
@@ -197,6 +198,7 @@ public class LevelSelector1Screen implements Screen {
 			int button) {
 		// TODO Auto-generated method stub
 		super.touchDown(event, x, y, pointer, button);
+	    PixMindGame.getMenuClick().play(0.3f);
 		game.changeLevel(mapa.get(pantalla));
 		
 	}

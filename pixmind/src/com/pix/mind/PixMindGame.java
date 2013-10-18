@@ -42,6 +42,7 @@ public class PixMindGame extends Game {
 	private static Sound gettingActivator;
 	private static Sound winning;
 	private static Sound losing;
+	private static Sound menuClick;
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub
@@ -185,6 +186,16 @@ public class PixMindGame extends Game {
 
 	public static void setLosing(Sound losing) {
 		PixMindGame.losing = losing;
+	}
+
+
+	public static Sound getMenuClick() {
+		return menuClick;
+	}
+
+
+	public static void setMenuClick(Sound menuClick) {
+		PixMindGame.menuClick = menuClick;
 	}
 
 
