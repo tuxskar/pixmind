@@ -9,16 +9,16 @@ import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
-public class LevelOne extends PixMindLevel {
+public class Level1 extends PixMindLevel {
 
 	public String levelTitle = "LevelOne";
-	public int levelNumber = 1;
+
 	PixMindGame game;
 	private static final int nActiveColors = 2;
-	public LevelOne(PixMindGame game) {
+	public Level1(PixMindGame game) {
 		super(game, 1333, 1000, 210, 4, 4, nActiveColors);
 		this.game = game;
-
+		levelNumber = 1;
 		// TODO Auto-generated constructor stub
 	}
 

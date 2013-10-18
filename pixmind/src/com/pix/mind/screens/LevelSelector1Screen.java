@@ -54,7 +54,8 @@ public class LevelSelector1Screen implements Screen {
 	public void show() {
 		
 		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
-		prefs.getInteger("topLevel", 1);
+		int topLevel = prefs.getInteger("topLevel", 1);
+		System.out.println(topLevel);
 		
 		
 		

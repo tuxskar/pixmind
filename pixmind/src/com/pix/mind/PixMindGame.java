@@ -10,9 +10,9 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
-import com.pix.mind.levels.LevelOne;
-import com.pix.mind.levels.LevelThree;
-import com.pix.mind.levels.LevelTwo;
+import com.pix.mind.levels.Level1;
+import com.pix.mind.levels.Level3;
+import com.pix.mind.levels.Level2;
 import com.pix.mind.levels.SecondLevel;
 import com.pix.mind.screens.LevelSelector1Screen;
 import com.pix.mind.screens.LevelSelector2Screen;
@@ -21,9 +21,9 @@ import com.pix.mind.screens.SplashScreen;
 
 public class PixMindGame extends Game {
 	private MainMenuScreen mainMenu;
-	private LevelOne levelOne;
-	private LevelTwo levelTwo;
-	private LevelThree levelThree;
+	private Level1 levelOne;
+	private Level2 levelTwo;
+	private Level3 levelThree;
 	private FirstLevel firstLevel;
 	private SecondLevel secondLevel;
 	private SplashScreen splashScreen;
@@ -49,9 +49,9 @@ public class PixMindGame extends Game {
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
 		assetManager = new AssetManager();	
 		mainMenu = new MainMenuScreen(this);
-		levelOne = new LevelOne(this);
-		levelTwo = new LevelTwo(this);
-		levelThree = new LevelThree(this);
+		levelOne = new Level1(this);
+		levelTwo = new Level2(this);
+		levelThree = new Level3(this);
 		splashScreen = new SplashScreen(this);
 		
 		levelSelector1Screen = new LevelSelector1Screen(this);
@@ -90,7 +90,7 @@ public class PixMindGame extends Game {
 		return splashScreen;
 	}
 	
-	public LevelOne getLevelOne() {
+	public Level1 getLevelOne() {
 		return levelOne;
 	}
 	
@@ -98,23 +98,23 @@ public class PixMindGame extends Game {
 		return mainMenu;
 	}
 
-	public LevelTwo getLevelTwo() {
+	public Level2 getLevelTwo() {
 		return levelTwo;
 	}
 
-	public void setLevelTwo(LevelTwo levelTwo) {
+	public void setLevelTwo(Level2 levelTwo) {
 		this.levelTwo = levelTwo;
 	}
 
-	public void setLevelOne(LevelOne levelOne) {
+	public void setLevelOne(Level1 levelOne) {
 		this.levelOne = levelOne;
 	}
 
-	public LevelThree getLevelThree() {
+	public Level3 getLevelThree() {
 		return levelThree;
 	}
 
-	public void setLevelThree(LevelThree levelThree) {
+	public void setLevelThree(Level3 levelThree) {
 		this.levelThree = levelThree;
 	}
 

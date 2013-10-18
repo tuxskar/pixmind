@@ -83,8 +83,9 @@ public class MenuInGame extends Group {
 		
 		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
 		int topLevel = prefs.getInteger("topLevel", 1);
-		
+		System.out.println("activw" + activeLevel + " topl " + topLevel);
 		if(topLevel == activeLevel){
+			System.out.println("HOLA KE ASE");
 			prefs.putInteger("topLevel", activeLevel+1);
 			prefs.flush();
 		}
