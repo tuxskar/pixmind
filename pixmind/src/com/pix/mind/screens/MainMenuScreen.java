@@ -61,6 +61,9 @@ public class MainMenuScreen implements Screen {
 		mainMenuStage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		
 		Gdx.input.setInputProcessor(mainMenuStage);
+		
+		Gdx.input.setCatchBackKey(true);
+		
 		Group menuGroup = new Group(); //to move according to the resolutuion
 		
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));

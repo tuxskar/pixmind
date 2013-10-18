@@ -5,12 +5,14 @@ import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -53,6 +55,7 @@ public class LevelSelector1Screen implements Screen {
 		levelStage = new Stage(PixMindGame.w, PixMindGame.h, true);
 
 		Gdx.input.setInputProcessor(levelStage);
+		Gdx.input.setCatchBackKey(true);
 		Group levelGroup = new Group(); // to move according to the resolutuion
 
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable(
@@ -142,6 +145,21 @@ public class LevelSelector1Screen implements Screen {
 		next.setPosition(PixMindGame.w - next.getWidth()-10, 10);
 		levelStage.addActor(next);
 		
+		
+		levelStage.addListener(new InputListener(){
+
+			@Override
+			public boolean keyDown(InputEvent event, int keycode) {
+				// TODO Auto-generated method stub
+				
+				if(keycode == Keys.BACK){
+					game.changeLevel(game.getMainMenuScreen());
+				}
+				return true;
+			}
+			
+			
+		});
 
 	}
 
