@@ -66,7 +66,7 @@ public class MenuInGame extends Group {
 			public boolean keyDown(InputEvent event, int keycode) {
 				// TODO Auto-generated method stub
 				
-				if(keycode == Keys.BACK){
+				if(keycode == Keys.BACK && active){
 					showLose();
 				}
 				return false;
@@ -75,10 +75,14 @@ public class MenuInGame extends Group {
 			
 		});
 	}
-	public Group showWin(){
+	public void showWin(){
+		
+		
+		active = true;
+		stageGui.addActor(this);
+		addActor(nextLevel);	
+		
 		PixMindGame.getWinning().play(0.5f);
-		
-		
 		int activeLevel = getActiveLevelScreen().levelNumber;
 		
 		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
@@ -93,18 +97,16 @@ public class MenuInGame extends Group {
 			prefs.flush();
 		}
 		
-		active = true;
-		stageGui.addActor(this);
-		addActor(nextLevel);	
-		return this;
+		
+		
 		
 	}
-	public Group showLose(){
+	public void showLose(){
 		PixMindGame.getLosing().play(0.5f);
 		active = true;
 		stageGui.addActor(this);
 		nextLevel.remove();
-		return this;
+		
 	}
 	public void removeMenu(){
 		active=false;
