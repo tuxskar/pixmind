@@ -198,7 +198,7 @@ public class LevelSelector2Screen implements Screen{
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+		levelStage.dispose();
 	}
 	
 	class Listener  extends  ActorGestureListener{

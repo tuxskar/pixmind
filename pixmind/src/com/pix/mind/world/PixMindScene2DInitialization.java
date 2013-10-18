@@ -94,7 +94,10 @@ public class PixMindScene2DInitialization {
 	}
 	
 	
-	
+	public void dispose(){
+		stage.dispose();
+		stageGui.dispose();
+	}
 	
 	
 

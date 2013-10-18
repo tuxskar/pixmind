@@ -152,6 +152,7 @@ public class MainMenuScreen implements Screen {
 		// TODO Auto-generated method stub
 //		backGroundImage.dispose();
 //	    batch.dispose();
+		mainMenuStage.dispose();		
 	   		
 	}
 

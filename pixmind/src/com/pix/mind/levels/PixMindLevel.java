@@ -103,6 +103,8 @@ public class PixMindLevel implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+		scene2D.dispose();
+		box2D.getWorld().dispose();
 		
 	}
 	
