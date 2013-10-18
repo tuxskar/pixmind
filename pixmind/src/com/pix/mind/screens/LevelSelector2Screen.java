@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -52,7 +53,12 @@ public class LevelSelector2Screen implements Screen{
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-				levelStage = new Stage(PixMindGame.w, PixMindGame.h, true);
+		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
+		int topLevel = prefs.getInteger("topLevel", 1);
+		System.out.println(topLevel);
+		
+		
+		levelStage = new Stage(PixMindGame.w, PixMindGame.h, true);
 
 				Gdx.input.setInputProcessor(levelStage);
 				Gdx.input.setCatchBackKey(true);
@@ -96,20 +102,30 @@ public class LevelSelector2Screen implements Screen{
 					for (int columna = 1; columna <= 4; columna++) {
 						Image im = new Image(PixMindGame.getSkin().getDrawable(
 								"levelframe"));
-								
+						if(topLevel>=pantalla)		
 						im.addListener(new Listener(pantalla));
-						
 								
 						im.setSize(frameSize, frameSize);
 						posicionFrame.add(horizontalMargin, 0);
 						im.setPosition(posicionFrame.x, posicionFrame.y);
 						levelGroup.addActor(im);
 						posicionFrame.add(frameSize, 0);
-						LabelStyle style = new LabelStyle(font, Color.BLACK) ; 
-						Label label = new Label(String.valueOf(pantalla), style);		
-						label.setTouchable(Touchable.disabled);	
-						label.setPosition(posicionFrame.x-frameSize/2 - label.getWidth()/2, posicionFrame.y);
-						levelGroup.addActor(label);				
+
+
+						if(topLevel<pantalla){
+							im.setColor(im.getColor().r, im.getColor().g, im.getColor().b, 0.3f);
+							Image lock = new Image(PixMindGame.getSkin().getDrawable("lock"));
+							lock.setPosition(posicionFrame.x-frameSize/2 - lock.getWidth()/2, posicionFrame.y+(frameSize-lock.getHeight())/2);
+							levelGroup.addActor(lock);	
+						}else{
+							LabelStyle style = new LabelStyle(font, Color.BLACK) ; 
+							Label label = new Label(String.valueOf(pantalla), style);		
+							label.setTouchable(Touchable.disabled);	
+							label.setPosition(posicionFrame.x-frameSize/2 - label.getWidth()/2, posicionFrame.y+(frameSize-label.getHeight())/2);
+							levelGroup.addActor(label);		
+						
+						}
+						
 						pantalla ++;
 					}
 					posicionFrame.set(107, 480 - (verticalMargin + frameSize)

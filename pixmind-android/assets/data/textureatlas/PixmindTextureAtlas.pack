@@ -17,6 +17,13 @@ levelframe
   orig: 112, 112
   offset: 0, 0
   index: -1
+lock
+  rotate: false
+  xy: 971, 956
+  size: 44, 59
+  orig: 44, 59
+  offset: 0, 0
+  index: -1
 musicoff
   rotate: false
   xy: 857, 851
@@ -129,14 +136,14 @@ pixguy8
   orig: 80, 80
   offset: 0, 0
   index: -1
-lock
+zoomin
   rotate: false
   xy: 785, 403
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-zoomin
+zoomout
   rotate: false
   xy: 785, 337
   size: 64, 64
@@ -157,37 +164,30 @@ nextlevel
   orig: 150, 30
   offset: 0, 0
   index: -1
-zoomout
-  rotate: false
-  xy: 851, 291
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 candy1
   rotate: false
-  xy: 785, 275
+  xy: 851, 295
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 candy2
   rotate: false
-  xy: 917, 295
+  xy: 785, 275
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 candy3
   rotate: false
-  xy: 917, 233
+  xy: 913, 295
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 candy4
   rotate: false
-  xy: 847, 229
+  xy: 847, 233
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
@@ -201,7 +201,7 @@ candy5
   index: -1
 exit
   rotate: false
-  xy: 909, 201
+  xy: 909, 263
   size: 70, 30
   orig: 70, 30
   offset: 0, 0
@@ -215,13 +215,6 @@ play
   index: -1
 exitmenu
   rotate: false
-  xy: 685, 136
-  size: 198, 75
-  orig: 198, 75
-  offset: 0, 0
-  index: -1
-options
-  rotate: false
   xy: 483, 77
   size: 198, 75
   orig: 198, 75
@@ -234,9 +227,16 @@ platform1
   orig: 200, 20
   offset: 0, 0
   index: -1
+options
+  rotate: false
+  xy: 683, 77
+  size: 198, 75
+  orig: 198, 75
+  offset: 0, 0
+  index: -1
 touch
   rotate: false
-  xy: 683, 84
+  xy: 685, 161
   size: 250, 50
   orig: 250, 50
   offset: 0, 0
@@ -250,28 +250,28 @@ platform2
   index: -1
 platform3
   rotate: false
-  xy: 685, 62
+  xy: 685, 55
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
 platform4
   rotate: false
-  xy: 811, 40
+  xy: 811, 33
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
 platform5
   rotate: false
-  xy: 811, 18
+  xy: 609, 11
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
 platformfixed
   rotate: false
-  xy: 609, 11
+  xy: 811, 11
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
