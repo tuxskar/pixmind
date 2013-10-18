@@ -74,6 +74,7 @@ public class MenuInGame extends Group {
 		});
 	}
 	public Group showWin(){
+		PixMindGame.getWinning().play(0.5f);
 		active = true;
 		stageGui.addActor(this);
 		addActor(nextLevel);	
@@ -81,6 +82,7 @@ public class MenuInGame extends Group {
 		
 	}
 	public Group showLose(){
+		PixMindGame.getLosing().play(0.5f);
 		active = true;
 		stageGui.addActor(this);
 		nextLevel.remove();

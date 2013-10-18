@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.LevelOne;
@@ -37,6 +38,10 @@ public class PixMindGame extends Game {
 	private AssetManager assetManager;
 	private static Skin skin;
 	private static Music music;
+	private static Sound boing;
+	private static Sound gettingActivator;
+	private static Sound winning;
+	private static Sound losing;
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub
@@ -140,6 +145,46 @@ public class PixMindGame extends Game {
 
 	public void setLevelSelector2Screen(LevelSelector2Screen levelSelector2Screen) {
 		this.levelSelector2Screen = levelSelector2Screen;
+	}
+
+
+	public static Sound getBoing() {
+		return boing;
+	}
+
+
+	public static void setBoing(Sound boing) {
+		PixMindGame.boing = boing;
+	}
+
+
+	public static Sound getGettingActivator() {
+		return gettingActivator;
+	}
+
+
+	public static void setGettingActivator(Sound gettingActivator) {
+		PixMindGame.gettingActivator = gettingActivator;
+	}
+
+
+	public static Sound getWinning() {
+		return winning;
+	}
+
+
+	public static void setWinning(Sound winning) {
+		PixMindGame.winning = winning;
+	}
+
+
+	public static Sound getLosing() {
+		return losing;
+	}
+
+
+	public static void setLosing(Sound losing) {
+		PixMindGame.losing = losing;
 	}
 
 

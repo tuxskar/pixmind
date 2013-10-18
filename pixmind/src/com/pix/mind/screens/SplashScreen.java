@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -53,6 +54,11 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setSkin(new Skin(game.getAssetManager().get(
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
 			PixMindGame.setMusic(game.getAssetManager().get("data/music/smlo.mp3", Music.class));
+			PixMindGame.setBoing(game.getAssetManager().get("data/sounds/boing.wav", Sound.class));
+			PixMindGame.setGettingActivator(game.getAssetManager().get("data/sounds/gettingactivator.wav", Sound.class));
+			PixMindGame.setWinning(game.getAssetManager().get("data/sounds/winning.wav", Sound.class));			
+			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
+			
 			game.setScreen(game.getMainMenuScreen());
 		}
 		
@@ -82,6 +88,11 @@ public class SplashScreen implements  Screen{
 		// loading game atlas , music, etc...
 		game.getAssetManager().load("data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class);
 		game.getAssetManager().load("data/music/smlo.mp3", Music.class);
+		game.getAssetManager().load("data/sounds/boing.wav", Sound.class);
+		game.getAssetManager().load("data/sounds/gettingactivator.wav", Sound.class);
+		game.getAssetManager().load("data/sounds/winning.wav", Sound.class);
+		game.getAssetManager().load("data/sounds/losing.wav", Sound.class);
+		
 		
 		stageSplash = new Stage(PixMindGame.w, PixMindGame.h, true);
 		Image splash = new Image(splashSkin.getDrawable("splash screen"));
