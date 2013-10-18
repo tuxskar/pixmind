@@ -12,6 +12,7 @@ import com.pix.mind.world.PixMindWorldRenderer;
 public class LevelOne extends PixMindLevel {
 
 	public String levelTitle = "LevelOne";
+	public int levelNumber = 1;
 	PixMindGame game;
 	private static final int nActiveColors = 2;
 	public LevelOne(PixMindGame game) {

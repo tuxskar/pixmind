@@ -19,6 +19,7 @@ public class PixMindLevel implements Screen {
 	PixMindScene2DInitialization scene2D;
 	PixMindBox2DInitialization box2D;
 	PixMindGuiInitialization gui;
+	public int levelNumber;
 	int nActiveColors;
 	// variables of the screen
 

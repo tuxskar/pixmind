@@ -45,7 +45,7 @@ public class PixMindScene2DInitialization {
 				getGroupStage().addActor(im);
 				im.setPosition(beginWidth, beginHeight);
 				beginWidth += width;
-				System.out.println( beginWidth);
+				
 			}
 			beginWidth = -width;
 			beginHeight +=height;

@@ -13,6 +13,7 @@ public class LevelThree extends PixMindLevel {
 	
 
 	public String levelTitle = "LevelTwo";
+	public int levelNumber = 3;
 	PixMindGame game;
 	private static final int nActiveColors = 1;
 	public LevelThree(PixMindGame game) {

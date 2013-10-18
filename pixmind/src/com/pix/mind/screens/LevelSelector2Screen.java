@@ -96,7 +96,7 @@ public class LevelSelector2Screen implements Screen{
 					for (int columna = 1; columna <= 4; columna++) {
 						Image im = new Image(PixMindGame.getSkin().getDrawable(
 								"levelframe"));
-								System.out.println(pantalla);
+								
 						im.addListener(new Listener(pantalla));
 						
 								
@@ -129,6 +129,7 @@ public class LevelSelector2Screen implements Screen{
 							int pointer, int button) {
 						// TODO Auto-generated method stub
 						super.touchDown(event, x, y, pointer, button);
+						  PixMindGame.getMenuClick().play(0.3f);
 						game.changeLevel(game.getLevelSelector1Screen());
 					}
 					
@@ -138,7 +139,7 @@ public class LevelSelector2Screen implements Screen{
 				
 				next.setOrigin(next.getWidth()/2, next.getHeight()/2);
 				//next.rotate(180);
-				System.out.println("width" + PixMindGame.w);
+				
 				next.setPosition(0+10, 10);
 				levelStage.addActor(next);
 				

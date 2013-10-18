@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -51,6 +52,14 @@ public class LevelSelector1Screen implements Screen {
 
 	@Override
 	public void show() {
+		
+		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
+		prefs.getInteger("topLevel", 1);
+		
+		
+		
+		
+		
 		// TODO Auto-generated method stub
 		levelStage = new Stage(PixMindGame.w, PixMindGame.h, true);
 
@@ -96,7 +105,7 @@ public class LevelSelector1Screen implements Screen {
 			for (int columna = 1; columna <= 4; columna++) {
 				Image im = new Image(PixMindGame.getSkin().getDrawable(
 						"levelframe"));
-						System.out.println(pantalla);
+						
 				im.addListener(new Listener(pantalla));
 				
 						
@@ -132,6 +141,7 @@ public class LevelSelector1Screen implements Screen {
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				super.touchDown(event, x, y, pointer, button);
+				  PixMindGame.getMenuClick().play(0.3f);
 				game.changeLevel(game.getLevelSelector2Screen());
 			}
 			
@@ -141,7 +151,7 @@ public class LevelSelector1Screen implements Screen {
 		
 		next.setOrigin(next.getWidth()/2, next.getHeight()/2);
 		next.rotate(180);
-		System.out.println("width" + PixMindGame.w);
+		
 		next.setPosition(PixMindGame.w - next.getWidth()-10, 10);
 		levelStage.addActor(next);
 		

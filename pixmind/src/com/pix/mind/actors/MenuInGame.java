@@ -1,5 +1,7 @@
 package com.pix.mind.actors;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
@@ -75,6 +77,18 @@ public class MenuInGame extends Group {
 	}
 	public Group showWin(){
 		PixMindGame.getWinning().play(0.5f);
+		
+		
+		int activeLevel = getActiveLevelScreen().levelNumber;
+		
+		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
+		int topLevel = prefs.getInteger("topLevel", 1);
+		
+		if(topLevel == activeLevel){
+			prefs.putInteger("topLevel", activeLevel+1);
+			prefs.flush();
+		}
+		
 		active = true;
 		stageGui.addActor(this);
 		addActor(nextLevel);	
