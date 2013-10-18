@@ -9,13 +9,13 @@ import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
-public class Level1 extends PixMindLevel {
+public class Level01 extends PixMindLevel {
 
 	public String levelTitle = "LevelOne";
 
 	PixMindGame game;
 	private static final int nActiveColors = 2;
-	public Level1(PixMindGame game) {
+	public Level01(PixMindGame game) {
 		super(game, 1333, 1000, 210, 4, 4, nActiveColors);
 		this.game = game;
 		levelNumber = 1;

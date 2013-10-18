@@ -8,17 +8,17 @@ import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
-public class Level5 extends PixMindLevel {
+public class Level03 extends PixMindLevel {
 
 	
 
 	public String levelTitle = "LevelTwo";
 	PixMindGame game;
 	private static final int nActiveColors = 1;
-	public Level5(PixMindGame game) {
+	public Level03(PixMindGame game) {
 		super(game,640, 480, 50, 1, 1, nActiveColors);
 		this.game = game;
-		levelNumber = 5;
+		levelNumber = 3;
 		// TODO Auto-generated constructor stub
 	}
 

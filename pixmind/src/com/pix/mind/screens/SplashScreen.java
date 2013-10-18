@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.levels.FirstLevel;
-import com.pix.mind.levels.Level1;
+import com.pix.mind.levels.Level01;
 
 public class SplashScreen implements  Screen{
 	private PixMindGame game;
