@@ -76,18 +76,18 @@ public class LevelSelector1Screen implements Screen {
 		int pantalla = 1; 
 		
 		mapa =  new HashMap<Integer, PixMindLevel>();
-		mapa.put(1, game.getLevelOne());
-		mapa.put(2, game.getLevelTwo());
-		mapa.put(3, game.getLevelThree());
-		mapa.put(4, game.getLevelOne());
-		mapa.put(5, game.getLevelOne());
-		mapa.put(6, game.getLevelOne());
-		mapa.put(7, game.getLevelOne());
-		mapa.put(8, game.getLevelOne());
-		mapa.put(9, game.getLevelOne());
-		mapa.put(10, game.getLevelOne());
-		mapa.put(11, game.getLevelOne());
-		mapa.put(12, game.getLevelOne());
+		mapa.put(1, game.getLevel01());
+		mapa.put(2, game.getLevel02());
+		mapa.put(3, game.getLevel03());
+		mapa.put(4, game.getLevel04());
+		mapa.put(5, game.getLevel05());
+		mapa.put(6, game.getLevel06());
+		mapa.put(7, game.getLevel07());
+		mapa.put(8, game.getLevel08());
+		mapa.put(9, game.getLevel09());
+		mapa.put(10, game.getLevel10());
+		mapa.put(11, game.getLevel11());
+		mapa.put(12, game.getLevel12());
 		
 		
 		BitmapFont font = new BitmapFont();

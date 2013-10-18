@@ -66,18 +66,18 @@ public class LevelSelector2Screen implements Screen{
 				int pantalla = 13; 
 				
 				mapa =  new HashMap<Integer, PixMindLevel>();
-				mapa.put(13, game.getLevelOne());
-				mapa.put(14, game.getLevelTwo());
-				mapa.put(15, game.getLevelThree());
-				mapa.put(16, game.getLevelOne());
-				mapa.put(17, game.getLevelOne());
-				mapa.put(18, game.getLevelOne());
-				mapa.put(19, game.getLevelOne());
-				mapa.put(20, game.getLevelOne());
-				mapa.put(21, game.getLevelOne());
-				mapa.put(22, game.getLevelOne());
-				mapa.put(23, game.getLevelOne());
-				mapa.put(24, game.getLevelOne());
+				mapa.put(13, game.getLevel13());
+				mapa.put(14, game.getLevel14());
+				mapa.put(15, game.getLevel15());
+				mapa.put(16, game.getLevel16());
+				mapa.put(17, game.getLevel17());
+				mapa.put(18, game.getLevel18());
+				mapa.put(19, game.getLevel19());
+				mapa.put(20, game.getLevel20());
+				mapa.put(21, game.getLevel21());
+				mapa.put(22, game.getLevel22());
+				mapa.put(23, game.getLevel23());
+				mapa.put(24, game.getLevel24());
 				
 				
 				BitmapFont font = new BitmapFont();

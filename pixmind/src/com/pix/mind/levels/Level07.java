@@ -27,7 +27,7 @@ public class Level07 extends PixMindLevel {
 		// TODO Auto-generated method stub
 
 		super.show();
-		super.setNextLevel(game.getLevelOne());
+		super.setNextLevel(game.getLevel08());
 		super.setActiveLevel(this);
 		// CREANDO EL NIVEL
 
