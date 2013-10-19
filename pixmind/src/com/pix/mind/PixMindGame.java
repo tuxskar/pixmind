@@ -27,7 +27,7 @@ public class PixMindGame extends Game {
 	private SplashScreen splashScreen;
 	
 	// for to know what controller create for playing the game (when the level is created, its check what controller have to create for pixGuy)
-	private static String infoController = "arrow";
+	private static String infoController = "arr";
 	// for to know if we are playing with music or not, in each level we need to check this for to play or not the music
 	private static String infoMusic = "on";
 	
