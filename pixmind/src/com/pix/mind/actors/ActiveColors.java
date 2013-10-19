@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pix.mind.PixMindGame;
 
 public class ActiveColors {
 	public ArrayList<ActiveColor> colors;
 	private final static int COLORMARGIN = 10;
 	private int nActivated;
-
 	public ActiveColors(Stage guiStage, int nColors) {
 		colors = new ArrayList<ActiveColor>(nColors);
 		for (int i = 1; i <= nColors; i++) {
@@ -26,9 +26,9 @@ public class ActiveColors {
 
 	public void newActive(Color color) {
 		for (int i = colors.size() - 1; i > 0; i--) {
-			colors.get(i).setColor(colors.get(i - 1).getColor());
+			colors.get(i).setDrawable((Drawable) new ActiveColor(colors.get(i - 1).getColor()));
 		}
-		colors.get(0).setColor(color);
+		colors.get(0).setDrawable((Drawable) new ActiveColor(color));
 		nActivated++;
 	}
 
@@ -45,9 +45,9 @@ public class ActiveColors {
 		int indexActivate = alreadyActive(color);
 		if (indexActivate != -1) {
 			for(int i=indexActivate; i<colors.size()-1;i++){
-				colors.get(i).setColor(colors.get(i+1).getColor());
+				colors.get(i).setDrawable(new ActiveColor(colors.get(i+1).getColor()));
 			}
-			colors.get(colors.size()-1).setColor(Color.CLEAR);
+			colors.get(colors.size()-1).setDrawable((Drawable) new ActiveColor(Color.CLEAR));
 			nActivated--;
 		}
 	}
@@ -58,7 +58,7 @@ public class ActiveColors {
 	
 	public Color deActivateOlderColors(){
 		Color color = colors.get(colors.size()-1).getColor().cpy();
-		colors.get(colors.size()-1).setColor(Color.CLEAR);
+		colors.get(colors.size()-1).setDrawable((Drawable) new ActiveColor(Color.CLEAR));
 		nActivated--;
 		return color;
 	}

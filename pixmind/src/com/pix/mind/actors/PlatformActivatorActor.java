@@ -23,11 +23,10 @@ public class PlatformActivatorActor extends Image {
 		this.setPosition(platformActivator.getPosX()-radius, platformActivator.getPosY()-radius);
 		this.setSize(radius*2, radius*2);
 		this.color = color;	
-		this.setColor(color);
 		
 		platformActivator.fixture.setUserData(this);
 		if (!active){
-			this.setColor(color.r, color.g, color.b, 0.2f);	
+			this.setColor(255,255,255, 0.2f);	
 			this.active = false;
 		}
 		
@@ -41,11 +40,11 @@ public class PlatformActivatorActor extends Image {
 	public void setActive(boolean active) {
 		if (active) {
 			
-			this.setColor(color.r, color.g, color.b, 1);
+			this.setColor(255,255,255, 1);
 			this.active = true;
 		} else {
 			
-			this.setColor(color.r, color.g, color.b, 0.2f);
+			this.setColor(255,255,255, 0.2f);
 			this.active = false;
 		}
 	}
