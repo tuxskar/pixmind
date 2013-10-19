@@ -1,6 +1,6 @@
 package com.pix.mind;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -8,11 +8,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.Level01;
-import com.pix.mind.levels.Level03;
 import com.pix.mind.levels.Level02;
+import com.pix.mind.levels.Level03;
 import com.pix.mind.levels.Level04;
 import com.pix.mind.levels.Level05;
 import com.pix.mind.levels.Level06;
@@ -86,6 +88,8 @@ public class PixMindGame extends Game {
 	private static Sound winning;
 	private static Sound losing;
 	private static Sound menuClick;
+	public HashMap<Color,String> candyColorToTexture;
+	
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub
@@ -117,6 +121,12 @@ public class PixMindGame extends Game {
 		level23 = new Level23(this);
 		level24 = new Level24(this);
 		
+		candyColorToTexture = new HashMap<Color, String>();
+		candyColorToTexture.put(Color.BLUE, "bluecandy");
+		candyColorToTexture.put(Color.GREEN, "greencandy");
+		candyColorToTexture.put(Color.MAGENTA, "magentacandy");
+		candyColorToTexture.put(Color.RED, "redcandy");
+		candyColorToTexture.put(Color.YELLOW, "yellowcandy");
 		
 		splashScreen = new SplashScreen(this);
 		
