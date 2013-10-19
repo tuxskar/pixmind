@@ -74,6 +74,7 @@ public class MapZoom {
 	
 	protected void showMap() {
 		
+		
 		mapActive = true;
 		showingMap = true;
 		controller.setActive(false);
@@ -91,6 +92,12 @@ public class MapZoom {
 		};		
 		scene2D.getGroupStage().addAction(Actions.sequence(Actions.parallel(Actions.scaleTo(PixMindGame.h /scene2D.getLevelSizeHeight(), PixMindGame.h /scene2D.getLevelSizeHeight(), 1,Interpolation.sine), Actions.moveTo( -((scene2D.getLevelSizeWidth()/2)- pixGuySkin.getX()),  -((scene2D.getLevelSizeHeight()/2)- contactListener.getLastPlatformHeight()), 1,Interpolation.sine)),finalAction));	
 	
+		//clear animations of pixguy when map begins to show
+		if(pixGuySkin.getActions().size>0){
+		pixGuySkin.removeAction(pixGuySkin.getActions().get(0));
+		pixGuySkin.setScale(1);
+		}
+		
 		
 		
 	//	 System.out.println("chamo2 " +scene2D.getLevelSizeWidth()/2+ " " +pixGuySkin.getX() + " "+(scene2D.getLevelSizeHeight()/2) + " "+contactListener.getLastPlatformHeight() );

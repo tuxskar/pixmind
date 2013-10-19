@@ -19,7 +19,7 @@ public class MenuInGame extends Group {
 	Image nextLevel;
 	Image interLevel;
 	Stage stageGui;
-	boolean active = false;
+	public boolean active = false;
 	PixMindLevel activeLevelScreen;
 	PixMindLevel nextLevelScreen;
 	PixMindGame game;
@@ -66,7 +66,7 @@ public class MenuInGame extends Group {
 			public boolean keyDown(InputEvent event, int keycode) {
 				// TODO Auto-generated method stub
 				
-				if(keycode == Keys.BACK && active){
+				if(keycode == Keys.BACK && !active){
 					showLose();
 				}
 				return false;

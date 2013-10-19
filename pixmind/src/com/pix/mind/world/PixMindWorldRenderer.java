@@ -155,6 +155,7 @@ public class PixMindWorldRenderer {
 		} else {
 
 		}
+		if(!menuInGame.active)
 		scene2D.getStage().act();
 	}
 
