@@ -88,6 +88,7 @@ public class PixMindGame extends Game {
 	private static Sound losing;
 	private static Sound menuClick;
 	public static HashMap<Color,String> candyColorToTexture;
+	public static HashMap<Color,String> platformColorToTexture;
 	
 	@Override
 	public void create() {
@@ -126,7 +127,15 @@ public class PixMindGame extends Game {
 		candyColorToTexture.put(Color.MAGENTA, "magentacandy");
 		candyColorToTexture.put(Color.RED, "redcandy");
 		candyColorToTexture.put(Color.YELLOW, "yellowcandy");
-		candyColorToTexture.put(Color.CLEAR, "bluecandy");
+		candyColorToTexture.put(Color.CLEAR, "bluecandy");		
+
+		platformColorToTexture = new HashMap<Color, String>();
+		platformColorToTexture.put(Color.BLUE, "blueplatform");
+		platformColorToTexture.put(Color.GREEN, "greenplatform");
+		platformColorToTexture.put(Color.MAGENTA, "magentaplatform");
+		platformColorToTexture.put(Color.RED, "redplatform");
+		platformColorToTexture.put(Color.YELLOW, "yellowplatform");
+		platformColorToTexture.put(Color.BLACK, "blackplatform");					
 		
 		splashScreen = new SplashScreen(this);
 		
