@@ -127,7 +127,8 @@ public class PixMindGame extends Game {
 		candyColorToTexture.put(Color.MAGENTA, "magentacandy");
 		candyColorToTexture.put(Color.RED, "redcandy");
 		candyColorToTexture.put(Color.YELLOW, "yellowcandy");
-		candyColorToTexture.put(Color.CLEAR, "bluecandy");		
+		candyColorToTexture.put(Color.CLEAR, "bluecandy");	
+		candyColorToTexture.put(Color.BLACK, "icecream");		
 
 		platformColorToTexture = new HashMap<Color, String>();
 		platformColorToTexture.put(Color.BLUE, "blueplatform");
@@ -143,7 +144,7 @@ public class PixMindGame extends Game {
 		levelSelector2Screen = new LevelSelector2Screen(this);
 //		this.setScreen(getMainMenuScreen());
 		this.setScreen(getSplashScreen());
-//		this.setScreen(this.getLevel01());
+//		this.setScreen(this.firstLevel);
 	}
 	
 
