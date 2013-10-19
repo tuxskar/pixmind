@@ -8,10 +8,10 @@ import com.pix.mind.PixMindGame;
 public class ActiveColor extends Image {
 	
 	public ActiveColor(Color color) {
-		super(PixMindGame.getSkin().getDrawable("redcandy"));
+		super(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));
 		float radius = 20;
 		this.setSize(radius * 2, radius * 2);
-		this.setColor(color);
+//		this.setColor(color);
 	}
 	
 	@Override

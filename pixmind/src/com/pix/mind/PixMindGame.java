@@ -9,7 +9,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.Level01;
@@ -88,7 +87,7 @@ public class PixMindGame extends Game {
 	private static Sound winning;
 	private static Sound losing;
 	private static Sound menuClick;
-	public HashMap<Color,String> candyColorToTexture;
+	public static HashMap<Color,String> candyColorToTexture;
 	
 	@Override
 	public void create() {
@@ -127,6 +126,7 @@ public class PixMindGame extends Game {
 		candyColorToTexture.put(Color.MAGENTA, "magentacandy");
 		candyColorToTexture.put(Color.RED, "redcandy");
 		candyColorToTexture.put(Color.YELLOW, "yellowcandy");
+		candyColorToTexture.put(Color.CLEAR, "bluecandy");
 		
 		splashScreen = new SplashScreen(this);
 		
@@ -134,6 +134,7 @@ public class PixMindGame extends Game {
 		levelSelector2Screen = new LevelSelector2Screen(this);
 //		this.setScreen(getMainMenuScreen());
 		this.setScreen(getSplashScreen());
+//		this.setScreen(this.getLevel01());
 	}
 	
 
