@@ -164,35 +164,35 @@ nextlevel
   orig: 150, 30
   offset: 0, 0
   index: -1
-candy1
+bluecandy
   rotate: false
   xy: 851, 295
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-candy2
+greencandy
   rotate: false
   xy: 785, 275
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-candy3
+magentacandy
   rotate: false
   xy: 913, 295
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-candy4
+redcandy
   rotate: false
   xy: 847, 233
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-candy5
+yellowcandy
   rotate: false
   xy: 785, 213
   size: 60, 60
@@ -220,7 +220,7 @@ exitmenu
   orig: 198, 75
   offset: 0, 0
   index: -1
-platform1
+blackplatform
   rotate: false
   xy: 483, 55
   size: 200, 20
@@ -241,35 +241,35 @@ touch
   orig: 250, 50
   offset: 0, 0
   index: -1
-platform2
+blueplatform
   rotate: false
   xy: 609, 33
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
-platform3
+greenplatform
   rotate: false
   xy: 685, 55
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
-platform4
+magentaplatform
   rotate: false
   xy: 811, 33
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
-platform5
+redplatform
   rotate: false
   xy: 609, 11
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
-platformfixed
+yellowplatform
   rotate: false
   xy: 811, 11
   size: 200, 20
