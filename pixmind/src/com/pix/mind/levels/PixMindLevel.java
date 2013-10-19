@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
+import com.pix.mind.controllers.ArrowController;
+import com.pix.mind.controllers.PixGuyController;
 import com.pix.mind.world.PixMindBox2DInitialization;
 import com.pix.mind.world.PixMindGuiInitialization;
 import com.pix.mind.world.PixMindScene2DInitialization;
@@ -71,7 +73,6 @@ public class PixMindLevel implements Screen {
 	//	scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
 		
 		
-		
 		box2D = new PixMindBox2DInitialization (scene2D, game, nActiveColors);
 		box2D.setCameraBeginsY(cameraBeginsY);		
 		box2D.setPixGuyPosition(pixGuyBeginsX, pixGuyBeginsY);
@@ -106,6 +107,15 @@ public class PixMindLevel implements Screen {
 	}
 	
 	// GETTERS & SETTERS
+	
+	// for to change controller in the options menu
+	public PixGuyController getPixGuyController(){
+		return box2D.getPixGuyController();
+	}
+	
+	public void setPixGuyController(PixGuyController newController){
+		box2D.setPixGuyController(newController);
+	}
 	
 	public void setNextLevel(PixMindLevel nextLevel){
 		gui.getMenuInGame().setNextLevelScreen(nextLevel);

@@ -23,8 +23,6 @@ import com.pix.mind.PixMindGame;
 public class MainMenuScreen implements Screen {
 	
 	private PixMindGame game;
-	//OrthographicCamera camera;
-	//Music mainMenuMusic;
 	Stage mainMenuStage;
 	Image playImageS2D, optionsImageS2D, exitImageS2D, titleImageS2D, backgroundImage;
 	
@@ -39,10 +37,10 @@ public class MainMenuScreen implements Screen {
 		// TODO Auto-generated method stub
 		
 		Gdx.gl.glClearColor(1, 1, 1, 1); 
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT); 
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		// we only need to draw and not to act because we always want to show exactly the same, and anything modify it along the time
 		mainMenuStage.draw();
-		//MainMenuStage.act();
- 
+
 	}
 
 	@Override
@@ -59,7 +57,9 @@ public class MainMenuScreen implements Screen {
 		mainMenuStage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		
 		Gdx.input.setInputProcessor(mainMenuStage);
-		Group menuGroup = new Group(); //to move according to the resolutuion
+		
+		// to move according to the resolutuion, we create a group to put inside all menu elements
+		Group menuGroup = new Group(); 
 		
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
 		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play"));
@@ -75,7 +75,13 @@ public class MainMenuScreen implements Screen {
 	               game.changeLevel(game.getLevelOne());
 	          }
 		});
-		//playImageS2D.setTouchable(Touchable.enabled);
+		
+		optionsImageS2D.addListener(new ActorGestureListener(){
+			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
+	               System.out.println("OPTIONS TOUCHED");
+	               game.changeLevel(game.getOptionsMenuScreen());
+	          }
+		});
 		
 		exitImageS2D.addListener(new ActorGestureListener(){
 			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -83,10 +89,8 @@ public class MainMenuScreen implements Screen {
 	               Gdx.app.exit();
 	          }
 		});
-	//	exitImageS2D.setTouchable(Touchable.enabled);
 		
-		
-		// adding actors to the stage
+		// adding actors to the stage (to an stage group)
 		menuGroup.addActor(backgroundImage);
 		menuGroup.addActor(playImageS2D);
 		menuGroup.addActor(optionsImageS2D);
@@ -95,29 +99,13 @@ public class MainMenuScreen implements Screen {
 		menuGroup.setPosition(-(854-PixMindGame.w)/2, 0);
 		mainMenuStage.addActor(menuGroup);
 		
-		// setting sizes, positions, origins
-		//playImageS2D.setSize(playImageS2D.getWidth(), playImageS2D.getHeight());
+		// setting actors positions
 		playImageS2D.setPosition(320, 240);
-		//playImageS2D.setOrigin(playImageS2D.getImageWidth()/2, playImageS2D.getImageHeight()/2);
-		
-		//optionsImageS2D.setSize(optionsImageS2D.getWidth(), optionsImageS2D.getHeight());
 		optionsImageS2D.setPosition(320, 140);
-		//optionsImageS2D.setOrigin(optionsImageS2D.getImageWidth()/2, optionsImageS2D.getImageHeight()/2);
-		
-	//	exitImageS2D.setSize(exitImageS2D.getWidth(), exitImageS2D.getHeight());
 		exitImageS2D.setPosition(320, 40);
-		//exitImageS2D.setOrigin(exitImageS2D.getImageWidth()/2, exitImageS2D.getImageHeight()/2);
-		
-	//	titleImageS2D.setSize(titleImageS2D.getWidth(), titleImageS2D.getHeight());
 		titleImageS2D.setPosition(250, 400);
-		//titleImageS2D.setOrigin(titleImageS2D.getImageWidth()/2, titleImageS2D.getImageHeight()/2);
 		
-		
-		// Loading and playing main menu music loop
-		/*mainMenuMusic = Gdx.audio.newMusic(Gdx.files.internal("data/music/smlo.mp3"));
-		mainMenuMusic.setLooping(true);
-		mainMenuMusic.setVolume(0.9f);
-		mainMenuMusic.play();*/
+		// loading and playing main menu music loop
 		PixMindGame.getMusic().setLooping(true);
 		PixMindGame.getMusic().setVolume(0.9f);
 		PixMindGame.getMusic().play();

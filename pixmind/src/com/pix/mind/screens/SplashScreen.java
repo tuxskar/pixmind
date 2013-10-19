@@ -20,41 +20,24 @@ import com.pix.mind.levels.LevelOne;
 
 public class SplashScreen implements  Screen{
 	private PixMindGame game;
-//<<<<<<< HEAD
-//	
-//	public SplashScreen(PixMindGame game) {
-//		// TODO Auto-generated constructor stub
-//		this.game = game;
-//		
-//=======
-	// image that is showed while all assets for the game are been loading by the AssetManager
-	//private Texture splashScreenImage;
-//	SpriteBatch batch;
-//	OrthographicCamera camera;
 	private Skin splashSkin;
 	private AssetManager assetManagerSplash;
 	private Stage stageSplash;
+	
 	public SplashScreen(PixMindGame game) {
 		// TODO Auto-generated constructor stub
 		this.game = game;
-		/*batch = new SpriteBatch();
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false,PixMindGame.w, PixMindGame.h);
-		batch.setProjectionMatrix(camera.combined);*/
 
 	}
-
+	
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 
 		Gdx.gl.glClearColor(1, 1, 1, 1); 
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT); 
-		//camera.update();
+
 		stageSplash.draw();
-		/*/batch.begin();
-		batch.draw(splashScreenImage, -((854-PixMindGame.w)/2), 0);
-		batch.end();*/
 		
 		// waiting for it to finish loading the game atlas
 		if (game.getAssetManager().update()) {
@@ -74,22 +57,16 @@ public class SplashScreen implements  Screen{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub	
 		assetManagerSplash = new AssetManager();
 		assetManagerSplash.load("data/textureatlas/SplashTextureAtlas.pack", TextureAtlas.class);
 		assetManagerSplash.finishLoading();
-		//it is equivalent... to the above
-		/*while (!game.getAssetManager().update()){
-			System.out.println("Loading: splash screen atlas");
-		}
-		System.out.println("Ready: splash screen atlas");*/
+
 		splashSkin = new Skin(assetManagerSplash.get("data/textureatlas/SplashTextureAtlas.pack", TextureAtlas.class));
 		
-		//splashScreenImage = splashSkin.getRegion("splash screen").getTexture();
-	
 		// loading game atlas , music, etc...
 		game.getAssetManager().load("data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class);
 		game.getAssetManager().load("data/music/smlo.mp3", Music.class);
@@ -126,7 +103,6 @@ public class SplashScreen implements  Screen{
 		splashSkin.dispose();
 		stageSplash.dispose();
 	  
-		
 	}
 
 }

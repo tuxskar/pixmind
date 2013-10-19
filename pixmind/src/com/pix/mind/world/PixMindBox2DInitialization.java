@@ -10,8 +10,10 @@ import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
+import com.pix.mind.controllers.PixGuyController;
 
 public class PixMindBox2DInitialization {
+	private PixMindGame game;
 	private OrthographicCamera camera;
 	private World world;
 	private Box2DWorldContactListener contactListener;
@@ -22,7 +24,7 @@ public class PixMindBox2DInitialization {
 	
 	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game, int nColors){
 	/** BOX2D SETTINGS **/
-		
+		this.game = game;
 		//set up camera for the debugRenderer		
 		camera = new OrthographicCamera(PixMindGame.w
 				* PixMindGame.WORLD_TO_BOX, PixMindGame.h
@@ -35,7 +37,7 @@ public class PixMindBox2DInitialization {
 	
 		//PixGuyInitialization
 		
-		pixGuy = new PixMindPixGuyInitialization(scene2D, this);
+		pixGuy = new PixMindPixGuyInitialization(scene2D, game, this);
 		
 		platformList = new ArrayList<StaticPlatformActor>();
 		activatorList = new ArrayList<PlatformActivatorActor>();
@@ -56,6 +58,14 @@ public class PixMindBox2DInitialization {
 		return camera;
 	}
 
+	// for to change controller in the option menu
+	public PixGuyController getPixGuyController(){
+		return pixGuy.getController();
+	}
+	
+	public void setPixGuyController(PixGuyController newController){
+		pixGuy.setController(newController);
+	}
 
 	public void setCamera(OrthographicCamera camera) {
 		this.camera = camera;

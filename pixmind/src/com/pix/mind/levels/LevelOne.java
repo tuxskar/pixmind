@@ -144,9 +144,6 @@ public class LevelOne extends PixMindLevel {
 		box2D.addActivatedColor(Color.BLUE);
 		worldRenderer = new PixMindWorldRenderer(scene2D, box2D, gui);
 
-		
-		
-
 	}
 
 	@Override
