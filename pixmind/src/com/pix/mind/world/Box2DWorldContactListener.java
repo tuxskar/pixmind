@@ -3,6 +3,7 @@ package com.pix.mind.world;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
@@ -84,6 +85,8 @@ public class Box2DWorldContactListener implements ContactListener {
 		
 		//collision with a Activator
 		if(fixActivator!=null){
+			
+			
 			int nActivatedColors = actColors.getNActivesColors();
 			PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator.getUserData();
 			if(platformActivatorActor.isActive()){
@@ -115,6 +118,7 @@ public class Box2DWorldContactListener implements ContactListener {
 				// about the activator maximum number
 				// platformActivatorActor.setActive(true);
 				// get all platform of the same color and change state
+				PixMindGame.getGettingActivator().play(0.2f);
 				if (nActivatedColors >= maxColors) {
 					// deactivate the older color
 					Color toDeactivate = actColors.deActivateOlderColors();
@@ -170,7 +174,7 @@ public class Box2DWorldContactListener implements ContactListener {
 			// System.out.println(bottomPosGuy);
 			if (bottomPosGuy >= topPosPlatform) {
 				// if(anteriorHeight>lastPlatformHeight)
-
+				PixMindGame.getBoing().play(0.7f);
 				anteriorHeight = lastPlatformHeight;
 				lastPlatformHeight = (fixPlatform.getBody().getPosition().y + platformActor
 						.getHeight() * PixMindGame.WORLD_TO_BOX / 2)

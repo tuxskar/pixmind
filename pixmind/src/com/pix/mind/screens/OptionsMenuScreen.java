@@ -154,7 +154,7 @@ public class OptionsMenuScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+		optionsMenuStage.dispose();
 	}
 	
 	

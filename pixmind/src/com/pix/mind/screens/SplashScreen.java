@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.levels.FirstLevel;
-import com.pix.mind.levels.LevelOne;
+import com.pix.mind.levels.Level01;
 
 public class SplashScreen implements  Screen{
 	private PixMindGame game;
@@ -46,7 +47,13 @@ public class SplashScreen implements  Screen{
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
 
 			PixMindGame.setMusic(game.getAssetManager().get("data/music/smlo.mp3", Music.class));
-
+			PixMindGame.setBoing(game.getAssetManager().get("data/sounds/boing.wav", Sound.class));
+			PixMindGame.setGettingActivator(game.getAssetManager().get("data/sounds/gettingactivator.wav", Sound.class));
+			PixMindGame.setWinning(game.getAssetManager().get("data/sounds/winning.wav", Sound.class));			
+			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
+			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
+			PixMindGame.setMenuClick(game.getAssetManager().get("data/sounds/menuclick.mp3", Sound.class));
+			
 			game.setScreen(game.getMainMenuScreen());
 		}
 		
@@ -70,6 +77,13 @@ public class SplashScreen implements  Screen{
 		// loading game atlas , music, etc...
 		game.getAssetManager().load("data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class);
 		game.getAssetManager().load("data/music/smlo.mp3", Music.class);
+		game.getAssetManager().load("data/sounds/boing.wav", Sound.class);
+		game.getAssetManager().load("data/sounds/gettingactivator.wav", Sound.class);
+		game.getAssetManager().load("data/sounds/winning.wav", Sound.class);
+		game.getAssetManager().load("data/sounds/losing.wav", Sound.class);
+		game.getAssetManager().load("data/sounds/menuclick.mp3", Sound.class);
+		
+		
 		
 		stageSplash = new Stage(PixMindGame.w, PixMindGame.h, true);
 		Image splash = new Image(splashSkin.getDrawable("splash screen"));

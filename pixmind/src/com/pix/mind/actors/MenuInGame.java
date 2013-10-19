@@ -1,7 +1,13 @@
 package com.pix.mind.actors;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
@@ -13,7 +19,7 @@ public class MenuInGame extends Group {
 	Image nextLevel;
 	Image interLevel;
 	Stage stageGui;
-	boolean active = false;
+	public boolean active = false;
 	PixMindLevel activeLevelScreen;
 	PixMindLevel nextLevelScreen;
 	PixMindGame game;
@@ -53,19 +59,54 @@ public class MenuInGame extends Group {
 			
 		};
 		this.addListener(listener);
+		
+		stageGui.addListener(new InputListener(){
+
+			@Override
+			public boolean keyDown(InputEvent event, int keycode) {
+				// TODO Auto-generated method stub
+				
+				if(keycode == Keys.BACK && !active){
+					showLose();
+				}
+				return false;
+			}
+			
+			
+		});
 	}
-	public Group showWin(){
+	public void showWin(){
+		
+		
 		active = true;
 		stageGui.addActor(this);
 		addActor(nextLevel);	
-		return this;
+		
+		PixMindGame.getWinning().play(0.5f);
+		int activeLevel = getActiveLevelScreen().levelNumber;
+		
+		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
+		int topLevel = prefs.getInteger("topLevel", 1);
+		
+		if(topLevel == activeLevel){
+			System.out.println("HOLA KE ASE");
+			if(topLevel==24)
+				prefs.putInteger("topLevel", activeLevel);
+			else
+				prefs.putInteger("topLevel", activeLevel+1);
+			prefs.flush();
+		}
+		
+		
+		
 		
 	}
-	public Group showLose(){
+	public void showLose(){
+		PixMindGame.getLosing().play(0.5f);
 		active = true;
 		stageGui.addActor(this);
 		nextLevel.remove();
-		return this;
+		
 	}
 	public void removeMenu(){
 		active=false;

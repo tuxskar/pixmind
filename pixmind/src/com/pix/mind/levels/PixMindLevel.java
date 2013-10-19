@@ -21,6 +21,7 @@ public class PixMindLevel implements Screen {
 	PixMindScene2DInitialization scene2D;
 	PixMindBox2DInitialization box2D;
 	PixMindGuiInitialization gui;
+	public int levelNumber;
 	int nActiveColors;
 	// variables of the screen
 
@@ -103,6 +104,8 @@ public class PixMindLevel implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+		scene2D.dispose();
+		box2D.getWorld().dispose();
 		
 	}
 	

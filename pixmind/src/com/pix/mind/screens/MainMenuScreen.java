@@ -58,8 +58,10 @@ public class MainMenuScreen implements Screen {
 		
 		Gdx.input.setInputProcessor(mainMenuStage);
 		
-		// to move according to the resolutuion, we create a group to put inside all menu elements
-		Group menuGroup = new Group(); 
+		// for to catch BACK Android button events
+		Gdx.input.setCatchBackKey(true);
+		//to move according to the resolutuion, we create a group to put inside all menu elements
+		Group menuGroup = new Group(); //to move according to the resolutuion
 		
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
 		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play"));
@@ -72,7 +74,8 @@ public class MainMenuScreen implements Screen {
 		playImageS2D.addListener(new ActorGestureListener(){
 			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
 	               System.out.println("PLAY TOUCHED");
-	               game.changeLevel(game.getLevelOne());
+	               PixMindGame.getMenuClick().play(0.3f);
+	               game.changeLevel(game.getLevelSelector1Screen());
 	          }
 		});
 		
@@ -133,6 +136,7 @@ public class MainMenuScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+		mainMenuStage.dispose();		
 	   		
 	}
 
