@@ -36,6 +36,7 @@ public class OptionsMenuScreen implements Screen {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		optionsMenuStage.draw();
+		
 		optionsMenuStage.act();
 		
 	}
@@ -57,9 +58,17 @@ public class OptionsMenuScreen implements Screen {
 
 		// to move according to the resolutuion, we create a group to put inside all menu elements
 		Group optionsGroup = new Group();
+		
+		if (game.getMusicState().equalsIgnoreCase("on")) 
+			musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicon"));
+		else
+			musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicoff"));
+		
+		if (game.getPixGuyController().equalsIgnoreCase("arr")) 
+			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("touch"));
+		else
+			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer"));
 
-		accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("touch"));
-		musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicon"));
 		backToMainMenuImageS2D = new Image(PixMindGame.getSkin().getDrawable("exit"));
 		backgroundOptionsMenuImage = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
 		
@@ -95,11 +104,13 @@ public class OptionsMenuScreen implements Screen {
 					
 					System.out.println("---> music OFF");
 					musicOnOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("musicoff"));
+					game.setMusicState("off");
 					
 				}else{
 					
 					System.out.println("---> music ON");
 					musicOnOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("musicon"));
+					game.setMusicState("on");
 				}
 				
 			}
@@ -127,9 +138,14 @@ public class OptionsMenuScreen implements Screen {
 		backToMainMenuImageS2D.setPosition(320, 40);
 
 		// loading and playing main menu music loop
-		PixMindGame.getMusic().setLooping(true);
-		PixMindGame.getMusic().setVolume(0.9f);
-		PixMindGame.getMusic().play();
+//		PixMindGame.getMusic().setLooping(true);
+//		PixMindGame.getMusic().setVolume(0.9f);
+//		if (game.getMusicState().equalsIgnoreCase("on")){
+//			PixMindGame.getMusic().play();
+//		}else{
+//			PixMindGame.getMusic().stop();
+//		}
+//		
 		
 	}
 
@@ -154,7 +170,7 @@ public class OptionsMenuScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		optionsMenuStage.dispose();
+	    optionsMenuStage.dispose();
 	}
 	
 	

@@ -143,12 +143,22 @@ public class PixMindGame extends Game {
 	
 	// GETTERs & SETTERs
 	
+	// controller
 	public String getPixGuyController(){
 		return infoController;
 	}
 	
 	public void setPixGuyController(String newController){
 		infoController = newController;
+	}
+	
+	// music
+	public String getMusicState(){
+		return infoMusic;
+	}
+	
+	public void setMusicState(String newMusicState){
+		infoMusic = newMusicState;
 	}
 
 	public AssetManager getAssetManager() {
