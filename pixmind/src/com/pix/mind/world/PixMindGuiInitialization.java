@@ -31,15 +31,6 @@ public class PixMindGuiInitialization {
 	public void setActColors(ActiveColors actColors) {
 		this.actColors = actColors;
 	}
-	
-	public void setMaxColorGui(int nColors){
-		actColors = new ActiveColors(scene2D.getStageGui(), nColors);
-		for (ActiveColor actColor : actColors.colors) {
-			scene2D.getStageGui().addActor(actColor);
-		}
-		actColors.newActive(Color.BLUE);
-		this.nColors =nColors; 
-	}
 
 	public MapZoom getMapZoom() {
 		return mapZoom;

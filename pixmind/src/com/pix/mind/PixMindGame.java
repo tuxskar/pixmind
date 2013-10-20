@@ -127,8 +127,8 @@ public class PixMindGame extends Game {
 		candyColorToTexture.put(Color.MAGENTA, "magentacandy");
 		candyColorToTexture.put(Color.RED, "redcandy");
 		candyColorToTexture.put(Color.YELLOW, "yellowcandy");
-		candyColorToTexture.put(Color.CLEAR, "candyselected");
-//		candyColorToTexture.put(Color.CLEAR, "yellowcandy");	
+//		candyColorToTexture.put(Color.CLEAR, "candyselected");
+		candyColorToTexture.put(Color.CLEAR, "yellowcandy");	
 		candyColorToTexture.put(Color.BLACK, "icecream");		
 
 		platformColorToTexture = new HashMap<Color, String>();
