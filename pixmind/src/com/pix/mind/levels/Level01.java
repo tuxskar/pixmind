@@ -98,15 +98,15 @@ public class Level01 extends PixMindLevel {
 		// Box2D Activator
 
 		PlatformActivator pActivator = new PlatformActivator(box2D.getWorld(),
-				0, 5, 0.2f);
+				0, 5, 0.15f);
 		PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(),
-				8, 6, 0.2f);
+				8, 6, 0.30f);
 		PlatformActivator p3Activator = new PlatformActivator(box2D.getWorld(),
-				0, 2, 0.2f);
+				0, 2, 0.15f);
 		PlatformActivator p4Activator = new PlatformActivator(box2D.getWorld(),
-				2, 5, 0.2f);
+				2, 5, 0.15f);
 		PlatformActivator p5Activator = new PlatformActivator(box2D.getWorld(),
-				1, 2, 0.2f);
+				1, 2, 0.15f);
 
 		// Actor Activator
 
