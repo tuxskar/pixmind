@@ -14,7 +14,7 @@ public class Level01 extends PixMindLevel {
     public String levelTitle = "LevelOne";
 
     PixMindGame game;
-    private static final int nActiveColors = 2;
+    private static final int nActiveColors = 1;
     public Level01(PixMindGame game) {
             super(game, 640, 480, 20, 1.7f, 2, nActiveColors);
             this.game = game;
@@ -38,7 +38,7 @@ public class Level01 extends PixMindLevel {
             // Box2D platforms
             StaticPlatform sPlatform = new StaticPlatform(box2D.getWorld(), 1.7f, 0.1f,
                             1f, 0.1f);
-            StaticPlatform s2Platform = new StaticPlatform(box2D.getWorld(), 4.7f, 1.1f,
+            StaticPlatform s2Platform = new StaticPlatform(box2D.getWorld(), 4.7f, 0.1f,
                             1, 0.1f);
 
             // Actor Platforms
@@ -66,7 +66,7 @@ public class Level01 extends PixMindLevel {
             PlatformActivator pActivator = new PlatformActivator(box2D.getWorld(),
                             0.7f, 1.9f, 0.2f);
             PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(),
-                            5, 2.9f, 0.2f);
+                            5, 1.9f, 0.2f);
 
             // Actor Activator
 
