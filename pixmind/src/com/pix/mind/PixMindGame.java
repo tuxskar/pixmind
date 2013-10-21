@@ -10,6 +10,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.pix.mind.controllers.PixGuyController;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.Level01;
 import com.pix.mind.levels.Level02;
@@ -39,10 +40,17 @@ import com.pix.mind.levels.SecondLevel;
 import com.pix.mind.screens.LevelSelector1Screen;
 import com.pix.mind.screens.LevelSelector2Screen;
 import com.pix.mind.screens.MainMenuScreen;
+import com.pix.mind.screens.OptionsMenuScreen;
 import com.pix.mind.screens.SplashScreen;
 
 public class PixMindGame extends Game {
+	
 	private MainMenuScreen mainMenu;
+	// for to know what controller create for playing the game (when the level is created, its check what controller have to create for pixGuy)
+	private static String infoController = "arr";
+	// for to know if we are playing with music or not, in each level we need to check this for to play or not the music
+	private static String infoMusic = "on";
+
 	private Level01 level01;
 	private Level02 level02;
 	private Level03 level03;
@@ -70,6 +78,7 @@ public class PixMindGame extends Game {
 	
 	private FirstLevel firstLevel;
 	private SecondLevel secondLevel;
+	private OptionsMenuScreen optionsMenu;
 	private SplashScreen splashScreen;
 	private LevelSelector1Screen levelSelector1Screen;
 	private LevelSelector2Screen levelSelector2Screen;
@@ -92,10 +101,10 @@ public class PixMindGame extends Game {
 	
 	@Override
 	public void create() {
-		// TODO Auto-generated method stub
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
 		assetManager = new AssetManager();	
 		mainMenu = new MainMenuScreen(this);
+		
 		level01 = new Level01(this);
 		level02 = new Level02(this);
 		level03 = new Level03(this);
@@ -139,11 +148,12 @@ public class PixMindGame extends Game {
 		platformColorToTexture.put(Color.YELLOW, "yellowplatform");
 		platformColorToTexture.put(Color.BLACK, "blackplatform");					
 		
+		optionsMenu = new OptionsMenuScreen(this);
 		splashScreen = new SplashScreen(this);
 		
 		levelSelector1Screen = new LevelSelector1Screen(this);
 		levelSelector2Screen = new LevelSelector2Screen(this);
-//		this.setScreen(getMainMenuScreen());
+
 		this.setScreen(getSplashScreen());
 	}
 	
@@ -154,6 +164,23 @@ public class PixMindGame extends Game {
 	
 	// GETTERs & SETTERs
 	
+	// controller
+	public String getPixGuyController(){
+		return infoController;
+	}
+	
+	public void setPixGuyController(String newController){
+		infoController = newController;
+	}
+	
+	// music
+	public String getMusicState(){
+		return infoMusic;
+	}
+	
+	public void setMusicState(String newMusicState){
+		infoMusic = newMusicState;
+	}
 
 	public AssetManager getAssetManager() {
 		return assetManager;
@@ -169,23 +196,19 @@ public class PixMindGame extends Game {
 		PixMindGame.skin = skin;
 	}
 	
-	
-	
 	// levels and other screens getters & setters
 	
 	public SplashScreen getSplashScreen() {
 		return splashScreen;
 	}
 	
-	
-	
 	public MainMenuScreen getMainMenuScreen() {
 		return mainMenu;
 	}
-
 	
-	
-	
+	public OptionsMenuScreen getOptionsMenuScreen() {
+		return optionsMenu;
+	}
 
 	public static Music getMusic() {
 		return music;
@@ -506,7 +529,4 @@ public class PixMindGame extends Game {
 		this.level24 = level24;
 	}
 
-
-	
-	
 }
