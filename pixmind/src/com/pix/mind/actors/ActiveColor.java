@@ -14,8 +14,8 @@ public class ActiveColor extends Image{
 	public int position; 
 	public ActiveColor(Color color, Stage stageGui) {
 		super(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));
-        float radius = 20;
-        this.setSize(radius * 2, radius * 2);
+       // float radius = 20;
+       // this.setSize(radius * 2, radius * 2);
     //    this.setColor(color);
         this.c = color;
 //		super(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));

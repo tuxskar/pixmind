@@ -11,12 +11,13 @@ import java.util.TreeMap;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 
 public class ActiveColors {
 
 	private Stage stageGui;
-	
+	private final static int COLORMARGIN = 10;
 	public int nColors;
 	public ArrayList<ActiveColor> activeColorActors;
 
@@ -31,6 +32,16 @@ public class ActiveColors {
 		activeColorActors.add( new ActiveColor(Color.MAGENTA, stageGui));
 		activeColorActors.add( new ActiveColor(Color.RED, stageGui));
 		activeColorActors.add(new ActiveColor(Color.YELLOW, stageGui));	
+		
+		for(int i=1;i<=nColors;i++){
+		Image image = new Image(PixMindGame.getSkin().getDrawable("candyselected"));
+		image.setSize(60, 60);	
+		image.setPosition(PixMindGame.w - activeColorActors.get(0).getWidth()
+				* i - COLORMARGIN *i, PixMindGame.h
+				- activeColorActors.get(0).getHeight()- COLORMARGIN);
+			
+			stageGui.addActor(image);
+		}
 	}
 	
 	public  ActiveColor getActiveColorByColor(Color color){
