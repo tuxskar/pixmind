@@ -14,7 +14,7 @@ public class Level01 extends PixMindLevel {
 	public String levelTitle = "LevelOne";
 
 	PixMindGame game;
-	private static final int nActiveColors = 2;
+	private static final int nActiveColors = 3;
 	public Level01(PixMindGame game) {
 		super(game, 1333, 1000, 210, 4, 4, nActiveColors);
 		this.game = game;
@@ -107,7 +107,8 @@ public class Level01 extends PixMindLevel {
 				2, 5, 0.2f);
 		PlatformActivator p5Activator = new PlatformActivator(box2D.getWorld(),
 				1, 2, 0.2f);
-
+		PlatformActivator p6Activator = new PlatformActivator(box2D.getWorld(),
+				-1, 2, 0.2f);
 		// Actor Activator
 
 		PlatformActivatorActor a1Skin = new PlatformActivatorActor(pActivator,
@@ -120,6 +121,8 @@ public class Level01 extends PixMindLevel {
 				Color.BLUE, true);
 		PlatformActivatorActor a5Skin = new PlatformActivatorActor(p5Activator,
 				Color.BLUE, true);
+		PlatformActivatorActor a6Skin = new PlatformActivatorActor(p6Activator,
+				Color.MAGENTA, false);
 
 		// Add activators to Stage
 
@@ -128,7 +131,7 @@ public class Level01 extends PixMindLevel {
 		scene2D.getGroupStage().addActor(a3Skin);
 		scene2D.getGroupStage().addActor(a4Skin);
 		scene2D.getGroupStage().addActor(a5Skin);
-
+		scene2D.getGroupStage().addActor(a6Skin);
 		// Add to activator list
 
 		box2D.getActivatorList().add(a1Skin);
@@ -136,7 +139,7 @@ public class Level01 extends PixMindLevel {
 		box2D.getActivatorList().add(a3Skin);
 		box2D.getActivatorList().add(a4Skin);
 		box2D.getActivatorList().add(a5Skin);
-
+		box2D.getActivatorList().add(a6Skin);
 		// add to stage the group of actors
 
 		// Active colors
