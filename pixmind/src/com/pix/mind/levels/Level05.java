@@ -3,10 +3,7 @@ package com.pix.mind.levels;
 import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;
-import com.pix.mind.actors.StaticPlatFactory;
 import com.pix.mind.actors.StaticPlatformActor;
-import com.pix.mind.box2d.bodies.PlatformActivator;
-import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
 public class Level05 extends PixMindLevel {
@@ -65,28 +62,14 @@ public class Level05 extends PixMindLevel {
 		}
 
 		// Creating All Activator
+		// Box2D Activator adding to activator list
+		box2D.getActivatorList().add(
+            new PlatformActivatorActor(box2D.getWorld(), 6.5f, 5, Color.BLACK, true));
+		box2D.getActivatorList().add(
+            new PlatformActivatorActor(box2D.getWorld(), 3.5f, 7, Color.BLUE, true));
+		box2D.getActivatorList().add(
+            new PlatformActivatorActor(box2D.getWorld(), 1, 5, Color.YELLOW, false));
 
-		// Box2D Activator
-		float ARad = 0.2f;
-		PlatformActivator p1Activator = new PlatformActivator(box2D.getWorld(),
-				6.5f, 5, ARad);
-		PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(),
-				3.5f, 7, ARad);
-		PlatformActivator p3Activator = new PlatformActivator(box2D.getWorld(),
-				1, 5, ARad);
-
-		// Actor Activator
-		PlatformActivatorActor a1Skin = new PlatformActivatorActor(p1Activator,
-				Color.BLACK, true);
-		PlatformActivatorActor a2Skin = new PlatformActivatorActor(p2Activator,
-				Color.BLUE, true);
-		PlatformActivatorActor a3Skin = new PlatformActivatorActor(p3Activator,
-				Color.YELLOW, false);
-
-		// Add to activator list
-		box2D.getActivatorList().add(a1Skin);
-		box2D.getActivatorList().add(a2Skin);
-		box2D.getActivatorList().add(a3Skin);
 
 		// Add activators to Stage
 		for (PlatformActivatorActor Sskin : box2D.getActivatorList()) {
