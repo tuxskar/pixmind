@@ -1,6 +1,6 @@
 package com.pix.mind;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -8,12 +8,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.controllers.PixGuyController;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.Level01;
-import com.pix.mind.levels.Level03;
 import com.pix.mind.levels.Level02;
+import com.pix.mind.levels.Level03;
 import com.pix.mind.levels.Level04;
 import com.pix.mind.levels.Level05;
 import com.pix.mind.levels.Level06;
@@ -95,9 +96,11 @@ public class PixMindGame extends Game {
 	private static Sound winning;
 	private static Sound losing;
 	private static Sound menuClick;
+	public static HashMap<Color,String> candyColorToTexture;
+	public static HashMap<Color,String> platformColorToTexture;
+	
 	@Override
 	public void create() {
-		// TODO Auto-generated method stub
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
 		assetManager = new AssetManager();	
 		mainMenu = new MainMenuScreen(this);
@@ -126,6 +129,23 @@ public class PixMindGame extends Game {
 		level22 = new Level22(this);
 		level23 = new Level23(this);
 		level24 = new Level24(this);
+		
+		candyColorToTexture = new HashMap<Color, String>();
+		candyColorToTexture.put(Color.BLUE, "bluecandy");
+		candyColorToTexture.put(Color.GREEN, "greencandy");
+		candyColorToTexture.put(Color.MAGENTA, "magentacandy");
+		candyColorToTexture.put(Color.RED, "redcandy");
+		candyColorToTexture.put(Color.YELLOW, "yellowcandy");
+		candyColorToTexture.put(Color.CLEAR, "candyselected");
+		candyColorToTexture.put(Color.BLACK, "icecream");		
+
+		platformColorToTexture = new HashMap<Color, String>();
+		platformColorToTexture.put(Color.BLUE, "blueplatform");
+		platformColorToTexture.put(Color.GREEN, "greenplatform");
+		platformColorToTexture.put(Color.MAGENTA, "magentaplatform");
+		platformColorToTexture.put(Color.RED, "redplatform");
+		platformColorToTexture.put(Color.YELLOW, "yellowplatform");
+		platformColorToTexture.put(Color.BLACK, "blackplatform");					
 		
 		optionsMenu = new OptionsMenuScreen(this);
 		splashScreen = new SplashScreen(this);

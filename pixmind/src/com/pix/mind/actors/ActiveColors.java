@@ -4,66 +4,78 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
 
 public class ActiveColors {
-	public ArrayList<ActiveColor> colors;
+
 	private final static int COLORMARGIN = 10;
-	private int nActivated;
+	public int nColors;
+	public ArrayList<ActiveColor> activeColorActors;
 
-	public ActiveColors(Stage guiStage, int nColors) {
-		colors = new ArrayList<ActiveColor>(nColors);
+	public ActiveColors(Stage stageGui, int nColors) {
+		this.nColors = nColors;
+
+		activeColorActors = new ArrayList<ActiveColor>();
+		activeColorActors.add(new ActiveColor(Color.BLUE, stageGui));
+		activeColorActors.add(new ActiveColor(Color.GREEN, stageGui));
+		activeColorActors.add(new ActiveColor(Color.MAGENTA, stageGui));
+		activeColorActors.add(new ActiveColor(Color.RED, stageGui));
+		activeColorActors.add(new ActiveColor(Color.YELLOW, stageGui));
+
 		for (int i = 1; i <= nColors; i++) {
-			ActiveColor actColor = new ActiveColor(Color.CLEAR);
-			guiStage.addActor(actColor);
-			actColor.setPosition(PixMindGame.w - actColor.getWidth() * i
-					- COLORMARGIN * i, PixMindGame.h - actColor.getHeight()
-					- COLORMARGIN);
-			colors.add(actColor);
-			nActivated = 0;
+			Image image = new Image(PixMindGame.getSkin().getDrawable(
+					PixMindGame.candyColorToTexture.get(Color.CLEAR)));
+			image.setSize(60, 60);
+			image.setPosition(
+					PixMindGame.w - activeColorActors.get(0).getWidth() * i
+							- COLORMARGIN * i, PixMindGame.h
+							- activeColorActors.get(0).getHeight()
+							- COLORMARGIN);
+			stageGui.addActor(image);
 		}
 	}
 
-	public void newActive(Color color) {
-		for (int i = colors.size() - 1; i > 0; i--) {
-			colors.get(i).setColor(colors.get(i - 1).getColor());
-		}
-		colors.get(0).setColor(color);
-		nActivated++;
-	}
-
-	public int alreadyActive(Color color) {
-		for (ActiveColor actColor : colors) {
-			if (actColor.getColor().equals(color)) {
-				return colors.indexOf(actColor);
+	public ActiveColor getActiveColorByColor(Color color) {
+		ActiveColor activeColor = null;
+		for (int i = 0; i < activeColorActors.size(); i++) {
+			if (activeColorActors.get(i).c.equals(color)) {
+				activeColor = activeColorActors.get(i);
+				break;
 			}
 		}
-		return -1;
+		return activeColor;
 	}
 
-	public void deActivate(Color color) {
-		int indexActivate = alreadyActive(color);
-		if (indexActivate != -1) {
-			for(int i=indexActivate; i<colors.size()-1;i++){
-				colors.get(i).setColor(colors.get(i+1).getColor());
-			}
-			colors.get(colors.size()-1).setColor(Color.CLEAR);
-			nActivated--;
+	public void addNewActiveColor(ActiveColor activeColor) {
+		shiftToRightAll();
+		activeColor.moveActorAt(nColors);
+	}
+
+	public void shiftToRightAll() {
+		for (int i = 0; i < activeColorActors.size(); i++) {
+			if (activeColorActors.get(i).position != 0)
+				activeColorActors.get(i).moveActorAt(
+						activeColorActors.get(i).position - 1);
 		}
 	}
-	
-	public int getMaxColors(){
-		return colors.size();
+
+	public void shiftToLeftFrom(int position) {
+		for (int i = 0; i < activeColorActors.size(); i++) {
+			if (activeColorActors.get(i).position != 0
+					&& activeColorActors.get(i).position < position)
+				activeColorActors.get(i).moveActorAt(
+						activeColorActors.get(i).position + 1);
+		}
 	}
-	
-	public Color deActivateOlderColors(){
-		Color color = colors.get(colors.size()-1).getColor().cpy();
-		colors.get(colors.size()-1).setColor(Color.CLEAR);
-		nActivated--;
-		return color;
+
+	public void removeActiveColor(ActiveColor activeColor) {
+		int position = activeColor.position;
+		activeColor.moveActorAt(0);
+		shiftToLeftFrom(position);
 	}
-	
-	public int getNActivesColors(){
-		return nActivated;
+
+	public void showArray() {
+		System.out.println(activeColorActors.toString());
 	}
 }

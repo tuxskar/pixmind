@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.pix.mind.PixMindGame;
+import com.pix.mind.actors.ActiveColor;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.actors.PlatformActivatorActor;
@@ -38,7 +39,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		this.platformList = box2D.getPlatformList();
 		this.activatorList = box2D.getActivatorList();
 		this.actColors = actColors;
-		maxColors = this.actColors.getMaxColors();
+		//maxColors = this.actColors.getMaxColors();
 	}
 
 	@Override
@@ -87,7 +88,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		if(fixActivator!=null){
 			
 			
-			int nActivatedColors = actColors.getNActivesColors();
+			//int nActivatedColors = actColors.getNActivesColors();
 			PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator.getUserData();
 			if(platformActivatorActor.isActive()){
 				//if activator is black go to next level
@@ -97,7 +98,7 @@ public class Box2DWorldContactListener implements ContactListener {
 					//game.changeLevel(nextLevel);
 					
 					gui.getMenuInGame().showWin();
-				}
+				}else{
 
 				// get all platform of the same color and change state
 				for (StaticPlatformActor sp : platformList) {
@@ -108,18 +109,24 @@ public class Box2DWorldContactListener implements ContactListener {
 				for (PlatformActivatorActor sp : activatorList) {
 					if (platformActivatorActor.color.equals(sp.color)) {
 						sp.setActive(false);
-						actColors.deActivate(sp.color);
-						System.out.println("Deactivating the color: "
-								+ sp.color);
+						//actColors.deActivate(sp.color);
+					//	System.out.println("Deactivating the color: "
+						//		+ sp.color);
 					}
 				}
+				
+				
+				actColors.removeActiveColor(actColors.getActiveColorByColor(platformActivatorActor.color));
+				actColors.showArray();
+				}
+				
 			} else {
 				// It should activate the platforms and activators taking care
 				// about the activator maximum number
 				// platformActivatorActor.setActive(true);
 				// get all platform of the same color and change state
 				PixMindGame.getGettingActivator().play(0.2f);
-				if (nActivatedColors >= maxColors) {
+				/*if (nActivatedColors >= maxColors) {
 					// deactivate the older color
 					Color toDeactivate = actColors.deActivateOlderColors();
 					// get all platform of the same color and change state
@@ -135,7 +142,7 @@ public class Box2DWorldContactListener implements ContactListener {
 									+ sp.color);
 						}
 					}
-				}
+				}*/
 				for (StaticPlatformActor sp : platformList) {
 					if (platformActivatorActor.color.equals(sp.color))
 						sp.setActive(true);
@@ -143,17 +150,32 @@ public class Box2DWorldContactListener implements ContactListener {
 				for (PlatformActivatorActor sp : activatorList) {
 					if (platformActivatorActor.color.equals(sp.color)) {
 						sp.setActive(true);
-						if (actColors.alreadyActive(sp.color) == -1) {
+					/*	if (actColors.alreadyActive(sp.color) == -1) {
 							actColors.newActive(sp.color);
-						}
+						}*/
 						System.out.println("Activating the color: " + sp.color);
 					}
 				}
-
+				//add new color
+				actColors.addNewActiveColor(actColors.getActiveColorByColor(platformActivatorActor.color));
+				//remove older color, now with 0 position
+				for(int i = 0 ; i<actColors.activeColorActors.size();i++){
+					if(actColors.activeColorActors.get(i).position ==0){
+						for (PlatformActivatorActor sp : activatorList){
+							if(sp.color.equals(actColors.activeColorActors.get(i).c))
+								sp.setActive(false);
+						}
+						for (StaticPlatformActor sp : platformList) {
+							if(sp.color.equals(actColors.activeColorActors.get(i).c))
+								sp.setActive(false);
+						}
+					}
+				}				
+				actColors.showArray();
 			}
-			nActivatedColors = actColors.getNActivesColors();
+		/*	nActivatedColors = actColors.getNActivesColors();
 			System.out.println("final Activated: " + nActivatedColors
-					+ " MaxColors: " + maxColors);
+					+ " MaxColors: " + maxColors);*/
 		}
 
 		// jump only if collide with a platform and its not sensor

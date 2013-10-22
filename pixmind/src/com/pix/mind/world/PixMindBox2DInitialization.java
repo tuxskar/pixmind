@@ -52,7 +52,7 @@ public class PixMindBox2DInitialization {
 
 	
 	public void addActivatedColor(Color color){
-		actColors.newActive(color);
+		actColors.addNewActiveColor(actColors.getActiveColorByColor(color));
 	}
 	public OrthographicCamera getCamera() {
 		return camera;
