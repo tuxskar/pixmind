@@ -9,11 +9,11 @@ import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
 public class Level05 extends PixMindLevel {
-    public String levelTitle = "LevelTwo";
+    public String levelTitle = "Level05";
     PixMindGame game;
     private static final int nActiveColors = 1;
     public Level05(PixMindGame game) {
-        super(game, 640, 480, 1600, 1, 16, nActiveColors);
+        super(game, 1170, 900, 1600, 1, 10, nActiveColors);
         this.game = game;
         levelNumber = 5;
     }
@@ -25,22 +25,26 @@ public class Level05 extends PixMindLevel {
         super.setNextLevel(game.getLevel06());
         super.setActiveLevel(this);
         // platform Actors and Activator Actors List
-
         // Creating All Static Platforms
-        float wallW = 0.25f;
-        float wallH = 10;
+        float wallW = 0.1f;
+        float wallH = 5;
         float platW = 1f;
         float platH = 0.1f;
 
         // Box2D platforms
         // Walls
-        StaticPlatform s1Plat = new StaticPlatform(box2D.getWorld(), 0, 10, wallW, wallH);
-        StaticPlatform s2Plat = new StaticPlatform(box2D.getWorld(), 4.5f, 15, wallW, wallH);
-        StaticPlatform s3Plat = new StaticPlatform(box2D.getWorld(), 8, 10, wallW, wallH);
+        StaticPlatform s1Plat = new StaticPlatform(box2D.getWorld(), 0, wallH, wallW, wallH);
+        StaticPlatform s2Plat = new StaticPlatform(box2D.getWorld(), 4, wallH+wallH/4, wallW, 3*wallH/4);
+        StaticPlatform s3Plat = new StaticPlatform(box2D.getWorld(), 8, wallH, wallW, wallH);
 
         // Normal StaticPlatforms
-        StaticPlatform s4Plat = new StaticPlatform(box2D.getWorld(), 1.25f, 15, platW, platH);
-        StaticPlatform s5Plat = new StaticPlatform(box2D.getWorld(), 3.25f, 15, platW, platH);
+        StaticPlatform s4Plat = new StaticPlatform(box2D.getWorld(), 1+wallW/2, 6, platW-wallW/2, platH);
+        StaticPlatform s5Plat = new StaticPlatform(box2D.getWorld(), 3-wallW/2, 6, platW-wallW/2, platH);
+        StaticPlatform s6Plat = new StaticPlatform(box2D.getWorld(), 2f, 6, platW-0.2f, platH);
+        StaticPlatform s7Plat = new StaticPlatform(box2D.getWorld(), 4.5f, 4, platW, platH);
+        StaticPlatform s8Plat = new StaticPlatform(box2D.getWorld(), 7f, 5, platW, platH);
+        StaticPlatform s9Plat = new StaticPlatform(box2D.getWorld(), 5f, 6, platW, platH);
+        StaticPlatform s10Plat = new StaticPlatform(box2D.getWorld(), 7f, 7, platW, platH);
 
         // Actor Platforms
         StaticPlatformActor s1Skin = new StaticPlatformActor(s1Plat, Color.BLACK, true);
@@ -48,13 +52,11 @@ public class Level05 extends PixMindLevel {
         StaticPlatformActor s3Skin = new StaticPlatformActor(s3Plat, Color.BLACK, true);
         StaticPlatformActor s4Skin = new StaticPlatformActor(s4Plat, Color.BLACK, true);
         StaticPlatformActor s5Skin = new StaticPlatformActor(s5Plat, Color.BLUE, true);
-
-        // Add platforms to Stage
-        scene2D.getGroupStage().addActor(s1Skin);
-        scene2D.getGroupStage().addActor(s2Skin);
-        scene2D.getGroupStage().addActor(s3Skin);
-        scene2D.getGroupStage().addActor(s4Skin);
-        scene2D.getGroupStage().addActor(s5Skin);
+        StaticPlatformActor s6Skin = new StaticPlatformActor(s6Plat, Color.BLACK, true);
+        StaticPlatformActor s7Skin = new StaticPlatformActor(s7Plat, Color.YELLOW, false);
+        StaticPlatformActor s8Skin = new StaticPlatformActor(s8Plat, Color.BLACK, true);
+        StaticPlatformActor s9Skin = new StaticPlatformActor(s9Plat, Color.BLACK, true);
+        StaticPlatformActor s10Skin = new StaticPlatformActor(s10Plat, Color.BLACK, true);
 
         // Add to platform list
         box2D.getPlatformList().add(s1Skin);
@@ -62,32 +64,43 @@ public class Level05 extends PixMindLevel {
         box2D.getPlatformList().add(s3Skin);
         box2D.getPlatformList().add(s4Skin);
         box2D.getPlatformList().add(s5Skin);
+        box2D.getPlatformList().add(s6Skin);
+        box2D.getPlatformList().add(s7Skin);
+        box2D.getPlatformList().add(s8Skin);
+        box2D.getPlatformList().add(s9Skin);
+        box2D.getPlatformList().add(s10Skin);
+
+        // Add platforms to Stage
+        for(StaticPlatformActor Sskin : box2D.getPlatformList()){
+            scene2D.getGroupStage().addActor(Sskin);
+        }
 
         // Creating All Activator
 
         // Box2D Activator
         float ARad = 0.2f;
         PlatformActivator p1Activator = new PlatformActivator(box2D.getWorld(), 6, 15, ARad);
-        PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(), 3, 16, ARad);
+        PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(), 4, 16, ARad);
+        //PlatformActivator p3Activator = new PlatformActivator(box2D.getWorld(), 1, 7, ARad);
 
         // Actor Activator
         PlatformActivatorActor a1Skin = new PlatformActivatorActor(p1Activator, Color.BLACK, true);
         PlatformActivatorActor a2Skin = new PlatformActivatorActor(p2Activator, Color.BLUE, true);
-
-        // Add activators to Stage
-        scene2D.getGroupStage().addActor(a1Skin);
-        scene2D.getGroupStage().addActor(a2Skin);
+        //PlatformActivatorActor a3Skin = new PlatformActivatorActor(p3Activator, Color.YELLOW, false);
 
         // Add to activator list
         box2D.getActivatorList().add(a1Skin);
         box2D.getActivatorList().add(a2Skin);
+        //box2D.getActivatorList().add(a3Skin);
 
-        // add to stage the group of actors
-
+        // Add activators to Stage
+        for(PlatformActivatorActor Sskin : box2D.getActivatorList()){
+            scene2D.getGroupStage().addActor(Sskin);
+        }
         // Active colors
+        box2D.addActivatedColor(Color.BLUE);
 
         // Rendering the game
-        box2D.addActivatedColor(Color.BLUE);
         worldRenderer = new PixMindWorldRenderer(scene2D, box2D, gui);
     }
 
