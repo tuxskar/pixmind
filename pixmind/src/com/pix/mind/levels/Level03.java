@@ -16,7 +16,7 @@ public class Level03 extends PixMindLevel {
 	PixMindGame game;
 	private static final int nActiveColors = 2;
 	public Level03(PixMindGame game) {
-		super(game,1024, 768, 600, 1.2f, 6.5f, nActiveColors);
+		super(game, 820, 820, 600, 1.2f, 6.5f, nActiveColors);
 		this.game = game;
 		levelNumber = 3;
 		// TODO Auto-generated constructor stub
@@ -38,19 +38,19 @@ public class Level03 extends PixMindLevel {
 		// Box2D platforms
 		
 			// plataforma INIT
-			StaticPlatform sPInit = new StaticPlatform(box2D.getWorld(), 0.5f, 6,
+			StaticPlatform sPInit = new StaticPlatform(box2D.getWorld(), 0.5f, 5.9f,
 					1.0f, 0.1f);
 			
 			// plataforma END
-			StaticPlatform sPEnd = new StaticPlatform(box2D.getWorld(), 6.5f, 6,
+			StaticPlatform sPEnd = new StaticPlatform(box2D.getWorld(), 6.4f, 5.9f,
 					1.0f, 0.1f);
 			
 			// plataforma 1.1 (plataforma de color 1, aparicion 1)
-			StaticPlatform sP11 = new StaticPlatform(box2D.getWorld(), 3.5f, 4.8f,
+			StaticPlatform sP11 = new StaticPlatform(box2D.getWorld(), 3.5f, 4.6f,
 					1.0f, 0.1f);
 			
 			// plataforma 2.1 (plataforma de color 2, aparicion 1)
-			StaticPlatform sP21 = new StaticPlatform(box2D.getWorld(), 3.5f, 3.5f,
+			StaticPlatform sP21 = new StaticPlatform(box2D.getWorld(), 3.5f, 3.4f,
 					3.0f, 0.1f);
 			
 			// plataforma 1.2 (plataforma de color 1, aparicion 2)
@@ -68,13 +68,13 @@ public class Level03 extends PixMindLevel {
 				StaticPlatformActor sPEndSkin = new StaticPlatformActor(sPEnd,
 						Color.BLACK, true);
 				StaticPlatformActor sP11Skin = new StaticPlatformActor(sP11,
-						Color.BLACK, true);
+						Color.GREEN, false);
 				StaticPlatformActor sP21Skin = new StaticPlatformActor(sP21,
-						Color.BLACK, true);
+						Color.RED, false);
 				StaticPlatformActor sP12Skin = new StaticPlatformActor(sP12,
-						Color.BLACK, true);
+						Color.GREEN, false);
 				StaticPlatformActor sP31Skin = new StaticPlatformActor(sP31,
-						Color.BLACK, true);
+						Color.BLUE, false);
 		
 		// Add platforms to Stage
 
@@ -100,30 +100,30 @@ public class Level03 extends PixMindLevel {
 
 			// activador 3.1 (activador de plataforma 3, aparicion 1)
 			PlatformActivator pA31 = new PlatformActivator(box2D.getWorld(),
-						0, 5, 0.2f);
+						3.5f, 5.3f, 0.2f);
 			
 			// activador 2.1 (activador de plataforma 2, aparicion 1)
 			PlatformActivator pA21 = new PlatformActivator(box2D.getWorld(),
-						0, 5, 0.2f);
+						1.6f, 4.1f, 0.2f);
 			
 			// activador 1.1 (activador de plataforma 1, aparicion 1)
 			PlatformActivator pA11 = new PlatformActivator(box2D.getWorld(),
-						0, 5, 0.2f);
+						4.1f, 2.6f, 0.2f);
 			
 			// activador FIN DE FASE 3
 			PlatformActivator pAEnd = new PlatformActivator(box2D.getWorld(),
-					0, 5, 0.2f);
+					6.5f, 6.9f, 0.3f);
 
 
 		// Actor Activator
 				PlatformActivatorActor pA31Skin = new PlatformActivatorActor(pA31,
-						Color.BLUE, true);
+						Color.BLUE, false);
 				PlatformActivatorActor pA21Skin = new PlatformActivatorActor(pA21,
-						Color.RED, true);
+						Color.RED, false);
 				PlatformActivatorActor pA11Skin = new PlatformActivatorActor(pA11,
-						Color.GREEN, true);
+						Color.GREEN, false);
 				PlatformActivatorActor pAEndSkin = new PlatformActivatorActor(pAEnd,
-						Color.BLACK, false);
+						Color.BLACK, true);
 
 		// Add activators to Stage
 
