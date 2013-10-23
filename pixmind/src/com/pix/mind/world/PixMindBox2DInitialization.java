@@ -10,11 +10,9 @@ import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
-import com.pix.mind.actors.StaticWallActor;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixMindBox2DInitialization {
-	private PixMindGame game;
 	private OrthographicCamera camera;
 	private World world;
 	private Box2DWorldContactListener contactListener;
@@ -22,11 +20,9 @@ public class PixMindBox2DInitialization {
 	private PixMindPixGuyInitialization pixGuy;
 	ArrayList<StaticPlatformActor> platformList;
 	ArrayList<PlatformActivatorActor> activatorList;
-	ArrayList<StaticWallActor> wallList;
 	
 	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game, int nColors){
 	/** BOX2D SETTINGS **/
-		this.game = game;
 		//set up camera for the debugRenderer		
 		camera = new OrthographicCamera(PixMindGame.w
 				* PixMindGame.WORLD_TO_BOX, PixMindGame.h
@@ -43,7 +39,6 @@ public class PixMindBox2DInitialization {
 		
 		platformList = new ArrayList<StaticPlatformActor>();
 		activatorList = new ArrayList<PlatformActivatorActor>();
-		wallList = new ArrayList<StaticWallActor>();
 		
 		actColors = new ActiveColors(scene2D.getStageGui(), nColors);
 		
@@ -102,11 +97,6 @@ public class PixMindBox2DInitialization {
 	public ArrayList<StaticPlatformActor> getPlatformList() {
 		return platformList;
 	}
-	
-	public ArrayList<StaticWallActor> getWallList() {
-		return wallList;
-	}
-
 
 	public void setPlatformList(ArrayList<StaticPlatformActor> platformList) {
 		this.platformList = platformList;

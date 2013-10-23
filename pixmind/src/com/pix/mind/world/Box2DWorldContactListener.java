@@ -24,7 +24,6 @@ public class Box2DWorldContactListener implements ContactListener {
 	PixMindGame game;
 	private ArrayList<StaticPlatformActor> platformList;
 	private ArrayList<PlatformActivatorActor> activatorList;
-	private ArrayList<StaticWallActor> wallList;
 	private boolean colliding = false;
 	private boolean walls = false;
 	private ActiveColors actColors;
@@ -36,15 +35,12 @@ public class Box2DWorldContactListener implements ContactListener {
 	public Box2DWorldContactListener(PixMindGame game,
 			PixMindBox2DInitialization box2D, ActiveColors actColors) {
 		initialize(game, box2D, actColors);
-		// maxColors = this.actColors.getMaxColors();
 	}
 
 	public Box2DWorldContactListener(PixMindGame game,
 			PixMindBox2DInitialization box2D, ActiveColors actColors,
 			boolean walls) {
 		this.walls = walls;
-		if (walls)
-			wallList = box2D.getWallList();
 		initialize(game, box2D, actColors);
 	}
 
@@ -91,6 +87,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		if (walls) {
 			if (otherContact.getUserData() instanceof StaticWallActor) {
 				fixWall = otherContact;
+				collisionWithWall(fixWall, fixGuy);
 			}
 		}
 		colliding = true;
@@ -191,6 +188,22 @@ public class Box2DWorldContactListener implements ContactListener {
 		}
 	}
 
+	private void collisionWithWall(Fixture fixWall, Fixture fixGuy) {
+		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
+		float rightWallPos = fixWall.getBody().getPosition().x
+				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
+		float rightPixPos = fixGuy.getBody().getPosition().x
+				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
+		float impulse = 0.65f;
+		PixMindGame.getBoing().play(0.7f);
+		fixGuy.getBody().setLinearVelocity(0, fixGuy.getBody().getLinearVelocity().y);
+		if (rightPixPos - rightWallPos < 0){
+			impulse = -impulse;
+		}
+		fixGuy.getBody().applyLinearImpulse(new Vector2(impulse, 0),
+				fixGuy.getBody().getWorldCenter(), true);
+	}
+	
 	@Override
 	public void endContact(Contact contact) {
 		colliding = false;
