@@ -2,11 +2,8 @@ package com.pix.mind.levels;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pix.mind.PixMindGame;
-import com.pix.mind.controllers.ArrowController;
 import com.pix.mind.controllers.PixGuyController;
 import com.pix.mind.world.PixMindBox2DInitialization;
 import com.pix.mind.world.PixMindGuiInitialization;
