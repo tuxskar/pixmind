@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
+import com.pix.mind.actors.StaticWallActor;
 import com.pix.mind.world.PixMindWorldRenderer;
 
 public class Level05 extends PixMindLevel {
@@ -33,12 +34,15 @@ public class Level05 extends PixMindLevel {
 		// Box2D platforms
 		// Add to platform list
 		// Walls
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 1 + wallW / 2, 6, platW - wallW / 2, platH, Color.BLACK, true));
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 4, wallH + wallH / 4, wallW, 3 * wallH / 4, Color.BLACK, true));
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 8, wallH, wallW, wallH, Color.BLACK, true));
+		scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 0, wallH, wallW, wallH));
+		scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 4, wallH + wallH / 4, wallW, 3 * wallH / 4));
+		scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 8, wallH, wallW, wallH));
+//		box2D.getPlatformList().add(
+//                new StaticPlatformActor(box2D.getWorld(), 1 + wallW / 2, 6, platW - wallW / 2, platH, Color.BLACK, true));
+//		box2D.getPlatformList().add(
+//                new StaticPlatformActor(box2D.getWorld(), 4, wallH + wallH / 4, wallW, 3 * wallH / 4, Color.BLACK, true));
+//		box2D.getPlatformList().add(
+//                new StaticPlatformActor(box2D.getWorld(), 8, wallH, wallW, wallH, Color.BLACK, true));
 
 		// Normal StaticPlatforms
 		box2D.getPlatformList().add(

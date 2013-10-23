@@ -10,22 +10,22 @@ public class StaticWallActor extends Image {
 	StaticWall staticWall;
 
 	public StaticWallActor(StaticWall wall) {
-//		super(PixMindGame.getSkin().getDrawable(
-//				PixMindGame.platformColorToTexture.get(color)));
+		super(PixMindGame.getSkin().getDrawable(
+				PixMindGame.platformColorToTexture.get(Color.BLACK)));
 		staticWall = wall;
 		initialize();
 	}
 
 	public StaticWallActor(World world, float posX, float posY, float width,
-			float height, Color color, boolean active) {
-//		super(PixMindGame.getSkin().getDrawable(
-//				PixMindGame.platformColorToTexture.get(color)));
+			float height) {
+		super(PixMindGame.getSkin().getDrawable(
+				PixMindGame.platformColorToTexture.get(Color.BLACK)));
 		staticWall = new StaticWall(world, posX, posY, width, height);
 		initialize();
 	}
 
 	private void initialize() {
-		setColor(Color.BLACK);
+//		setColor(Color.BLACK);
 		staticWall.fixture.setUserData(this);
 		this.setSize(staticWall.PlatformWidth * PixMindGame.BOX_TO_WORLD * 2,
 				staticWall.PlatformHeight * PixMindGame.BOX_TO_WORLD * 2);

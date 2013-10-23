@@ -194,13 +194,13 @@ public class Box2DWorldContactListener implements ContactListener {
 				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
 		float rightPixPos = fixGuy.getBody().getPosition().x
 				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
-		float impulse = 0.65f;
+		float impulse = 10f;
 		PixMindGame.getBoing().play(0.7f);
-		fixGuy.getBody().setLinearVelocity(0, fixGuy.getBody().getLinearVelocity().y);
-		if (rightPixPos - rightWallPos < 0){
+		fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+		if ((rightPixPos - rightWallPos) < 0){
 			impulse = -impulse;
 		}
-		fixGuy.getBody().applyLinearImpulse(new Vector2(impulse, 0),
+		fixGuy.getBody().applyLinearImpulse(new Vector2(impulse, fixGuy.getBody().getLinearVelocity().y),
 				fixGuy.getBody().getWorldCenter(), true);
 	}
 	
