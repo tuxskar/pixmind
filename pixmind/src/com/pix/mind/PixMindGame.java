@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
@@ -49,6 +50,8 @@ public class PixMindGame extends Game {
 	private static String infoController = "arr";
 	// for to know if we are playing with music or not, in each level we need to check this for to play or not the music
 	private static String infoMusic = "on";
+	
+	public static Preferences oP;
 
 	private Level01 level01;
 	private Level02 level02;
@@ -100,9 +103,21 @@ public class PixMindGame extends Game {
 	
 	@Override
 	public void create() {
+		
+		// setting preferences
+		oP = Gdx.app.getPreferences("OptionsPrefs");
+		
+		boolean musicDefault = oP.getBoolean("mus", true);
+		System.out.println("Music " + musicDefault);
+		
+		boolean accelerometerDefault = oP.getBoolean("acc", false);
+		System.out.println("Accelerometer " + accelerometerDefault);
+		
+		
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
 		assetManager = new AssetManager();	
 		mainMenu = new MainMenuScreen(this);
+		
 		
 		level01 = new Level01(this);
 		level02 = new Level02(this);

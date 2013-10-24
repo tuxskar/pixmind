@@ -89,7 +89,7 @@ public class MenuInGame extends Group {
 		int topLevel = prefs.getInteger("topLevel", 1);
 		
 		if(topLevel == activeLevel){
-			System.out.println("HOLA KE ASE");
+			System.out.println("PREFERENCIAS - NIVEL");
 			if(topLevel==24)
 				prefs.putInteger("topLevel", activeLevel);
 			else

@@ -22,6 +22,7 @@ public class OptionsMenuScreen implements Screen {
 		musicOnOffImageS2D,
 		backToMainMenuImageS2D,
 		backgroundOptionsMenuImage;
+	Preferences oP = Gdx.app.getPreferences("OptionsPrefs");	
 	
 	public OptionsMenuScreen(PixMindGame game) {
 		super();
@@ -60,12 +61,22 @@ public class OptionsMenuScreen implements Screen {
 		// to move according to the resolutuion, we create a group to put inside all menu elements
 		Group optionsGroup = new Group();
 		
-		if (game.getMusicState().equalsIgnoreCase("on")) 
+//		if (game.getMusicState().equalsIgnoreCase("on")) 
+//			musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicon"));
+//		else
+//			musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicoff"));
+//		
+//		if (game.getPixGuyController().equalsIgnoreCase("arr")) 
+//			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("touch"));
+//		else
+//			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer"));
+		
+		if (oP.getBoolean("mus")) 
 			musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicon"));
 		else
 			musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicoff"));
 		
-		if (game.getPixGuyController().equalsIgnoreCase("arr")) 
+		if (!oP.getBoolean("acc")) 
 			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("touch"));
 		else
 			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer"));
@@ -85,6 +96,8 @@ public class OptionsMenuScreen implements Screen {
 					accelerometerOrTouchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("accelerometer"));
 					//cambiar el controlador 
 					game.setPixGuyController("acc");
+					oP.putBoolean("acc", true);
+					oP.flush();
 
 					
 				}else{
@@ -93,6 +106,9 @@ public class OptionsMenuScreen implements Screen {
 					accelerometerOrTouchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("touch"));
 					//cambiar el controlador 
 					game.setPixGuyController("arr");
+					oP.putBoolean("acc", false);
+					oP.flush();
+					
 				}
 			}
 		});
@@ -106,12 +122,16 @@ public class OptionsMenuScreen implements Screen {
 					System.out.println("---> music OFF");
 					musicOnOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("musicoff"));
 					game.setMusicState("off");
+					oP.putBoolean("mus", false);
+					oP.flush();
 					
 				}else{
 					
 					System.out.println("---> music ON");
 					musicOnOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("musicon"));
 					game.setMusicState("on");
+					oP.putBoolean("mus", true);
+					oP.flush();
 				}
 				
 			}
@@ -137,16 +157,7 @@ public class OptionsMenuScreen implements Screen {
 		musicOnOffImageS2D.setPosition(320, 240);
 		accelerometerOrTouchImageS2D.setPosition(320, 140);
 		backToMainMenuImageS2D.setPosition(320, 40);
-
-		// loading and playing main menu music loop
-//		PixMindGame.getMusic().setLooping(true);
-//		PixMindGame.getMusic().setVolume(0.9f);
-//		if (game.getMusicState().equalsIgnoreCase("on")){
-//			PixMindGame.getMusic().play();
-//		}else{
-//			PixMindGame.getMusic().stop();
-//		}
-//		
+	
 		
 	}
 

@@ -1,6 +1,7 @@
 package com.pix.mind.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL10;
@@ -180,11 +181,17 @@ public class MainMenuScreen implements Screen {
 		// loading and playing main menu music loop
 		PixMindGame.getMusic().setLooping(true);
 		PixMindGame.getMusic().setVolume(0.9f);
-		if ( !PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("on") )
+//		if ( !PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("on") )
+//			PixMindGame.getMusic().play();
+//		if ( PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("off") )
+//			PixMindGame.getMusic().stop();
+		
+		Preferences oP = Gdx.app.getPreferences("OptionsPrefs");
+		boolean musicOn = oP.getBoolean("mus");
+		if ( musicOn && !PixMindGame.getMusic().isPlaying() )
 			PixMindGame.getMusic().play();
-		if ( PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("off") )
+		if ( !musicOn && PixMindGame.getMusic().isPlaying() )
 			PixMindGame.getMusic().stop();
-			
 		
 	}
 
