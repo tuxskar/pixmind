@@ -13,7 +13,6 @@ import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixMindBox2DInitialization {
-	private PixMindGame game;
 	private OrthographicCamera camera;
 	private World world;
 	private Box2DWorldContactListener contactListener;
@@ -24,7 +23,6 @@ public class PixMindBox2DInitialization {
 	
 	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game, int nColors){
 	/** BOX2D SETTINGS **/
-		this.game = game;
 		//set up camera for the debugRenderer		
 		camera = new OrthographicCamera(PixMindGame.w
 				* PixMindGame.WORLD_TO_BOX, PixMindGame.h
@@ -99,7 +97,6 @@ public class PixMindBox2DInitialization {
 	public ArrayList<StaticPlatformActor> getPlatformList() {
 		return platformList;
 	}
-
 
 	public void setPlatformList(ArrayList<StaticPlatformActor> platformList) {
 		this.platformList = platformList;

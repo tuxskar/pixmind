@@ -15,20 +15,19 @@ public class StaticPlatformActor extends Image {
 			boolean active) {
 		super(PixMindGame.getSkin().getDrawable(
 				PixMindGame.platformColorToTexture.get(color)));
-
 		staticPlatform = platform;
 		initialize(color, active);
 	}
-	
-	public StaticPlatformActor(World world, float posX, float posY, float width, float height, Color color,
-			boolean active) {
+
+	public StaticPlatformActor(World world, float posX, float posY,
+			float width, float height, Color color, boolean active) {
 		super(PixMindGame.getSkin().getDrawable(
 				PixMindGame.platformColorToTexture.get(color)));
 		staticPlatform = new StaticPlatform(world, posX, posY, width, height);
 		initialize(color, active);
 	}
-	
-	private void initialize(Color color, boolean active){
+
+	private void initialize(Color color, boolean active) {
 		staticPlatform.fixture.setUserData(this);
 		this.setSize(staticPlatform.PlatformWidth * PixMindGame.BOX_TO_WORLD
 				* 2, staticPlatform.PlatformHeight * PixMindGame.BOX_TO_WORLD
@@ -40,7 +39,6 @@ public class StaticPlatformActor extends Image {
 	}
 
 	public void setActive(boolean active) {
-
 		if (active) {
 			staticPlatform.fixture.setSensor(false);
 			this.setColor(255, 255, 255, 1);

@@ -3,7 +3,6 @@ package com.pix.mind.world;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
@@ -14,11 +13,11 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.pix.mind.PixMindGame;
-import com.pix.mind.actors.ActiveColor;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
+import com.pix.mind.actors.StaticWallActor;
 import com.pix.mind.box2d.bodies.PixGuy;
 
 public class Box2DWorldContactListener implements ContactListener {
@@ -26,80 +25,82 @@ public class Box2DWorldContactListener implements ContactListener {
 	private ArrayList<StaticPlatformActor> platformList;
 	private ArrayList<PlatformActivatorActor> activatorList;
 	private boolean colliding = false;
+	private boolean walls = false;
 	private ActiveColors actColors;
 	private float lastPlatformHeight;
 	private float anteriorHeight;
 	private Screen nextLevel;
-	private int maxColors;
 	private PixMindGuiInitialization gui;
 
 	public Box2DWorldContactListener(PixMindGame game,
 			PixMindBox2DInitialization box2D, ActiveColors actColors) {
+		initialize(game, box2D, actColors);
+	}
+
+	public Box2DWorldContactListener(PixMindGame game,
+			PixMindBox2DInitialization box2D, ActiveColors actColors,
+			boolean walls) {
+		this.walls = walls;
+		initialize(game, box2D, actColors);
+	}
+
+	private void initialize(PixMindGame game, PixMindBox2DInitialization box2D,
+			ActiveColors actColors) {
 		this.game = game;
 		this.platformList = box2D.getPlatformList();
 		this.activatorList = box2D.getActivatorList();
 		this.actColors = actColors;
-		//maxColors = this.actColors.getMaxColors();
+
 	}
 
 	@Override
 	public void beginContact(Contact contact) {
-		// TODO Auto-generated method stub
 		Fixture fixGuy = null;
 		Fixture fixPlatform = null;
 		Fixture fixActivator = null;
-		// get fixture fixguy
+		Fixture fixWall = null;
+		Fixture otherContact = null;
+		// get fixture pixguy
 		if (contact.getFixtureA().getUserData() instanceof PixGuyActor) {
 			fixGuy = contact.getFixtureA();
-			// fixPlatform = contact.getFixtureB();
+			otherContact = contact.getFixtureB();
 		} else {
-			// fixPlatform = contact.getFixtureA();
 			fixGuy = contact.getFixtureB();
+			otherContact = contact.getFixtureA();
 		}
 
 		// get fixture Platform
-		if (contact.getFixtureA().getUserData() instanceof StaticPlatformActor
-				|| contact.getFixtureB().getUserData() instanceof StaticPlatformActor) {
-
-			if (contact.getFixtureA().getUserData() instanceof StaticPlatformActor) {
-				fixPlatform = contact.getFixtureA();
-
-			} else {
-
-				fixPlatform = contact.getFixtureB();
+		if (otherContact.getUserData() instanceof StaticPlatformActor) {
+			fixPlatform = otherContact;
+			// jump only if collide with a platform and its not sensor
+			if (!fixPlatform.isSensor()){
+				collisionWithPlatform(fixPlatform, fixGuy);
 			}
-		}
-
+		} else
 		// get fixture PlatformActivator
-		if (contact.getFixtureA().getUserData() instanceof PlatformActivatorActor
-				|| contact.getFixtureB().getUserData() instanceof PlatformActivatorActor) {
-
-			if (contact.getFixtureA().getUserData() instanceof PlatformActivatorActor) {
-				fixActivator = contact.getFixtureA();
-
-			} else {
-
-				fixActivator = contact.getFixtureB();
+		if (otherContact.getUserData() instanceof PlatformActivatorActor) {
+			fixActivator = otherContact;
+			// collision with an Activator
+			collisionWithActivator(fixActivator);
+		} else
+		// get fixture WallActor
+		if (walls) {
+			if (otherContact.getUserData() instanceof StaticWallActor) {
+				fixWall = otherContact;
+				collisionWithWall(fixWall, fixGuy);
 			}
-
 		}
-		
-		//collision with a Activator
-		if(fixActivator!=null){
-			
-			
-			//int nActivatedColors = actColors.getNActivesColors();
-			PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator.getUserData();
-			if(platformActivatorActor.isActive()){
-				//if activator is black go to next level
-				if(platformActivatorActor.color.equals(Color.BLACK)){
-//					game.changeLevel(game.getSecondLevel());
-					//making the level change to the next level (but first, game transition to an InterLevelScreen)
-					//game.changeLevel(nextLevel);
-					
-					gui.getMenuInGame().showWin();
-				}else{
+		colliding = true;
+	}
 
+	private void collisionWithActivator(Fixture fixActivator) {
+		PlatformActivatorActor platformActivatorActor = (PlatformActivatorActor) fixActivator
+				.getUserData();
+		if (platformActivatorActor.isActive()) {
+			// if activator is black go to next level
+			if (platformActivatorActor.color.equals(Color.BLACK)) {
+				gui.getMenuInGame().showWin();
+			} else {
 				// get all platform of the same color and change state
 				for (StaticPlatformActor sp : platformList) {
 					if (platformActivatorActor.color.equals(sp.color))
@@ -109,130 +110,102 @@ public class Box2DWorldContactListener implements ContactListener {
 				for (PlatformActivatorActor sp : activatorList) {
 					if (platformActivatorActor.color.equals(sp.color)) {
 						sp.setActive(false);
-						//actColors.deActivate(sp.color);
-					//	System.out.println("Deactivating the color: "
-						//		+ sp.color);
 					}
 				}
-				
-				
-				actColors.removeActiveColor(actColors.getActiveColorByColor(platformActivatorActor.color));
+				actColors.removeActiveColor(actColors
+						.getActiveColorByColor(platformActivatorActor.color));
 				actColors.showArray();
+			}
+
+		} else {
+			PixMindGame.getGettingActivator().play(0.2f);
+			for (StaticPlatformActor sp : platformList) {
+				if (platformActivatorActor.color.equals(sp.color))
+					sp.setActive(true);
+			}
+			for (PlatformActivatorActor sp : activatorList) {
+				if (platformActivatorActor.color.equals(sp.color)) {
+					sp.setActive(true);
+					// System.out.println("Activating the color: " + sp.color);
 				}
-				
-			} else {
-				// It should activate the platforms and activators taking care
-				// about the activator maximum number
-				// platformActivatorActor.setActive(true);
-				// get all platform of the same color and change state
-				PixMindGame.getGettingActivator().play(0.2f);
-				/*if (nActivatedColors >= maxColors) {
-					// deactivate the older color
-					Color toDeactivate = actColors.deActivateOlderColors();
-					// get all platform of the same color and change state
-					for (StaticPlatformActor sp : platformList) {
-						if (toDeactivate.equals(sp.color))
-							sp.setActive(false);
-					}
-					// get all activator of the same color and change state
+			}
+			// add new color
+			actColors.addNewActiveColor(actColors
+					.getActiveColorByColor(platformActivatorActor.color));
+			// remove older color, now with 0 position
+			for (int i = 0; i < actColors.activeColorActors.size(); i++) {
+				if (actColors.activeColorActors.get(i).position == 0) {
 					for (PlatformActivatorActor sp : activatorList) {
-						if (toDeactivate.equals(sp.color)) {
+						if (sp.color
+								.equals(actColors.activeColorActors.get(i).c))
 							sp.setActive(false);
-							System.out.println("Deactivating the color: "
-									+ sp.color);
-						}
 					}
-				}*/
-				for (StaticPlatformActor sp : platformList) {
-					if (platformActivatorActor.color.equals(sp.color))
-						sp.setActive(true);
-				}
-				for (PlatformActivatorActor sp : activatorList) {
-					if (platformActivatorActor.color.equals(sp.color)) {
-						sp.setActive(true);
-					/*	if (actColors.alreadyActive(sp.color) == -1) {
-							actColors.newActive(sp.color);
-						}*/
-						System.out.println("Activating the color: " + sp.color);
+					for (StaticPlatformActor sp : platformList) {
+						if (sp.color
+								.equals(actColors.activeColorActors.get(i).c))
+							sp.setActive(false);
 					}
 				}
-				//add new color
-				actColors.addNewActiveColor(actColors.getActiveColorByColor(platformActivatorActor.color));
-				//remove older color, now with 0 position
-				for(int i = 0 ; i<actColors.activeColorActors.size();i++){
-					if(actColors.activeColorActors.get(i).position ==0){
-						for (PlatformActivatorActor sp : activatorList){
-							if(sp.color.equals(actColors.activeColorActors.get(i).c))
-								sp.setActive(false);
-						}
-						for (StaticPlatformActor sp : platformList) {
-							if(sp.color.equals(actColors.activeColorActors.get(i).c))
-								sp.setActive(false);
-						}
-					}
-				}				
-				actColors.showArray();
 			}
-		/*	nActivatedColors = actColors.getNActivesColors();
-			System.out.println("final Activated: " + nActivatedColors
-					+ " MaxColors: " + maxColors);*/
 		}
-
-		// jump only if collide with a platform and its not sensor
-		if (fixPlatform != null && !fixPlatform.isSensor()) {
-			// only jump if bottom position of pixguy is equal or above of top
-			// position of the platform
-
-			StaticPlatformActor platformActor = (StaticPlatformActor) fixPlatform
-					.getUserData();
-			// opoppo
-
-			float topPosPlatform = fixPlatform.getBody().getPosition().y
-					+ platformActor.getHeight() * PixMindGame.WORLD_TO_BOX / 2;
-			float bottomPosGuy = fixGuy.getBody().getPosition().y
-					- PixGuy.pixHeight * PixMindGame.WORLD_TO_BOX / 2;
-
-			// System.out.println(topPosPlatform);
-			// System.out.println(bottomPosGuy);
-			if (bottomPosGuy >= topPosPlatform) {
-				// if(anteriorHeight>lastPlatformHeight)
-				PixMindGame.getBoing().play(0.7f);
-				anteriorHeight = lastPlatformHeight;
-				lastPlatformHeight = (fixPlatform.getBody().getPosition().y + platformActor
-						.getHeight() * PixMindGame.WORLD_TO_BOX / 2)
-						* PixMindGame.BOX_TO_WORLD;
-				if (lastPlatformHeight < anteriorHeight) {
-					anteriorHeight = lastPlatformHeight;
-				}
-				fixGuy.getBody().setLinearVelocity(
-						fixGuy.getBody().getLinearVelocity().x, 0);
-				
-				
-				fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.65f),
-						fixGuy.getBody().getWorldCenter(), true);
-				
-				
-				// animation
-
-				PixGuyActor pixguyActor = (PixGuyActor) fixGuy.getUserData();
-				if (pixguyActor.getActions().size != 0)
-					pixguyActor.removeAction(pixguyActor.getActions().get(0));
-				Interpolation interpolation = Interpolation.linear;
-				pixguyActor.addAction(Actions.sequence(
-						Actions.scaleTo(1.2f, 0.8f, 0.25f, interpolation),
-						Actions.scaleTo(1f, 1f, 0.25f, interpolation),
-						Actions.scaleTo(0.8f, 1.2f, 0.25f, interpolation),
-						Actions.scaleTo(1, 1, 0.25f, interpolation)));
-			}
-
-		}
-
-		colliding = true;
 	}
 
+	private void collisionWithPlatform(Fixture fixPlatform, Fixture fixGuy) {
+		// only jump if bottom position of pixguy is equal or above of top
+		// position of the platform
+		StaticPlatformActor platformActor = (StaticPlatformActor) fixPlatform
+				.getUserData();
+		float topPosPlatform = fixPlatform.getBody().getPosition().y
+				+ platformActor.getHeight() * PixMindGame.WORLD_TO_BOX / 2;
+		float bottomPosGuy = fixGuy.getBody().getPosition().y
+				- PixGuy.pixHeight * PixMindGame.WORLD_TO_BOX / 2;
+
+		if (bottomPosGuy >= topPosPlatform) {
+			PixMindGame.getBoing().play(0.7f);
+			anteriorHeight = lastPlatformHeight;
+			lastPlatformHeight = (fixPlatform.getBody().getPosition().y + platformActor
+					.getHeight() * PixMindGame.WORLD_TO_BOX / 2)
+					* PixMindGame.BOX_TO_WORLD;
+			if (lastPlatformHeight < anteriorHeight) {
+				anteriorHeight = lastPlatformHeight;
+			}
+			fixGuy.getBody().setLinearVelocity(
+					fixGuy.getBody().getLinearVelocity().x, 0);
+
+			fixGuy.getBody().applyLinearImpulse(new Vector2(0, 0.65f),
+					fixGuy.getBody().getWorldCenter(), true);
+
+			// animation
+			PixGuyActor pixguyActor = (PixGuyActor) fixGuy.getUserData();
+			if (pixguyActor.getActions().size != 0)
+				pixguyActor.removeAction(pixguyActor.getActions().get(0));
+			Interpolation interpolation = Interpolation.linear;
+			pixguyActor.addAction(Actions.sequence(
+					Actions.scaleTo(1.2f, 0.8f, 0.25f, interpolation),
+					Actions.scaleTo(1f, 1f, 0.25f, interpolation),
+					Actions.scaleTo(0.8f, 1.2f, 0.25f, interpolation),
+					Actions.scaleTo(1, 1, 0.25f, interpolation)));
+		}
+	}
+
+	private void collisionWithWall(Fixture fixWall, Fixture fixGuy) {
+		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
+		float rightWallPos = fixWall.getBody().getPosition().x
+				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
+		float rightPixPos = fixGuy.getBody().getPosition().x
+				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
+		float impulse = 10f;
+		PixMindGame.getBoing().play(0.7f);
+		fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+		if ((rightPixPos - rightWallPos) < 0){
+			impulse = -impulse;
+		}
+		fixGuy.getBody().applyLinearImpulse(new Vector2(impulse, fixGuy.getBody().getLinearVelocity().y),
+				fixGuy.getBody().getWorldCenter(), true);
+	}
+	
 	@Override
 	public void endContact(Contact contact) {
-		// TODO Auto-generated method stub
 		colliding = false;
 	}
 

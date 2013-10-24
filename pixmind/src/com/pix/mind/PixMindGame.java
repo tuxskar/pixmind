@@ -10,7 +10,6 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.pix.mind.controllers.PixGuyController;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.Level01;
 import com.pix.mind.levels.Level02;
