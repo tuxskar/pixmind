@@ -52,16 +52,13 @@ public class LevelSelector1Screen implements Screen {
 
 	@Override
 	public void show() {
+		// TODO Auto-generated method stub
 		
+		// Saving preferences: Levels that player have passed
 		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
 		int topLevel = prefs.getInteger("topLevel", 1);
 		System.out.println(topLevel);
 		
-		
-		
-		
-		
-		// TODO Auto-generated method stub
 		levelStage = new Stage(PixMindGame.w, PixMindGame.h, true);
 
 		Gdx.input.setInputProcessor(levelStage);
