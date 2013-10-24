@@ -20,16 +20,14 @@ public class PixMindPixGuyInitialization {
 		pixGuy = new PixGuy(box2D.getWorld(), 0.35f, 0.35f);
 		pixGuySkin = new PixGuyActor(pixGuy);
 		// setting controller
-		if (game.getPixGuyController().equalsIgnoreCase("acc")){
-			controller = new AccController(pixGuy);
-			
+		if (PixMindGame.infoController){
+			controller = new AccController(pixGuy);			
 		}
-		if (game.getPixGuyController().equalsIgnoreCase("arr")){
-			controller = new ArrowController(pixGuy, scene2D.getStageGui());
-			
+		else{
+			controller = new ArrowController(pixGuy, scene2D.getStageGui());			
 		}
 		
-		pixGuy.setController(controller);
+		pixGuy.setController(controller);	
 		scene2D.getGroupStage().addActor(pixGuySkin);
 		
 	}

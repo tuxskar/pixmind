@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.pix.mind.PixMindGame;
-import com.pix.mind.controllers.AccController;
+
 
 public class OptionsMenuScreen implements Screen {
 	
@@ -18,11 +18,17 @@ public class OptionsMenuScreen implements Screen {
 
 	Stage optionsMenuStage;
 	Image 
-		accelerometerOrTouchImageS2D,
-		musicOnOffImageS2D,
+		accelerometerImageS2D,
+		touchImageS2D,
+		musicOnImageS2D,
+		musicOffImageS2D,
+		fxOnImageS2D,
+		fxOffImageS2D,
 		backToMainMenuImageS2D,
 		backgroundOptionsMenuImage;
+	
 	Preferences oP = Gdx.app.getPreferences("OptionsPrefs");	
+	
 	
 	public OptionsMenuScreen(PixMindGame game) {
 		super();
@@ -71,31 +77,84 @@ public class OptionsMenuScreen implements Screen {
 //		else
 //			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer"));
 		
-		if (oP.getBoolean("mus")) 
-			musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicon"));
-		else
-			musicOnOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("musicoff"));
+		if (oP.getBoolean("mus", true)) {
+			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on selec"));
+			musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off no selec"));
+		}
+		else{
+			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on no selec"));
+		musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off selec"));
+		}
 		
-		if (!oP.getBoolean("acc")) 
-			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("touch"));
-		else
-			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer"));
+		if (oP.getBoolean("acc", false)) {
+			accelerometerImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer selec"));
+			touchImageS2D =  new Image(PixMindGame.getSkin().getDrawable("touch no selec"));
+		}
+		else{			
+			accelerometerImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer no selec"));
+			touchImageS2D =  new Image(PixMindGame.getSkin().getDrawable("touch selec"));
+		}
+		if (oP.getBoolean("fx", true)) {
+			fxOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on selec"));
+			fxOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off no selec"));
+		}
+		else{
+			fxOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on no selec"));
+			fxOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off selec"));
+		}
 
-		backToMainMenuImageS2D = new Image(PixMindGame.getSkin().getDrawable("exit"));
-		backgroundOptionsMenuImage = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
+	
 		
+		backToMainMenuImageS2D = new Image(PixMindGame.getSkin().getDrawable("arrow"));	
+		
+		backgroundOptionsMenuImage = new Image(PixMindGame.getSkin().getDrawable("panel opciones"));
+		backgroundOptionsMenuImage.setPosition(PixMindGame.w/2-backgroundOptionsMenuImage.getWidth()/2-35, 0);
 
-		// adding actor listeners
-		accelerometerOrTouchImageS2D.addListener(new ActorGestureListener() {
+		accelerometerImageS2D.addListener(new ActorGestureListener() {
+			public void touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+			
+				if (!oP.getBoolean("acc")){
+					if(PixMindGame.infoFx)
+						PixMindGame.getMenuClick().play(0.3f);		
+					PixMindGame.infoController = true;
+					accelerometerImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("accelerometer selec"));				
+					touchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("touch no selec"));
+					oP.putBoolean("acc", true);
+					
+					oP.flush();
+				}
+			
+			}			
+		});
+		touchImageS2D.addListener(new ActorGestureListener() {
+			public void touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				
+				if (oP.getBoolean("acc")){
+					if(PixMindGame.infoFx)
+						PixMindGame.getMenuClick().play(0.3f);		
+					PixMindGame.infoController = false;
+					accelerometerImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("accelerometer no selec"));				
+					touchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("touch selec"));
+					oP.putBoolean("acc", false);
+					oP.flush();
+				}
+			
+			}			
+		});
+	
+	/*	// adding actor listeners
+		accelerometerImageS2D.addListener(new ActorGestureListener() {
 			public void touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				System.out.println("ACCELEROMETER/TOUCH CONTROL TOUCHED");
-				if (accelerometerOrTouchImageS2D.getDrawable().equals(PixMindGame.getSkin().getDrawable("touch"))){
+				if (accelerometerImageS2D.getDrawable().equals(PixMindGame.getSkin().getDrawable("touch"))){
 					
 					System.out.println("---> control ACCELEROMETER");
 					accelerometerOrTouchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("accelerometer"));
 					//cambiar el controlador 
-					game.setPixGuyController("acc");
+				//	game.setPixGuyController("acc");
 					oP.putBoolean("acc", true);
 					oP.flush();
 
@@ -105,58 +164,119 @@ public class OptionsMenuScreen implements Screen {
 					System.out.println("---> control TOUCH");
 					accelerometerOrTouchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("touch"));
 					//cambiar el controlador 
-					game.setPixGuyController("arr");
+				//	game.setPixGuyController("arr");
 					oP.putBoolean("acc", false);
 					oP.flush();
 					
 				}
 			}
-		});
+		});*/
 
-		musicOnOffImageS2D.addListener(new ActorGestureListener() {
+		musicOnImageS2D.addListener(new ActorGestureListener() {
 			public void touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				System.out.println("MUSIC ON/OFF TOUCHED");
-				if (musicOnOffImageS2D.getDrawable().equals(PixMindGame.getSkin().getDrawable("musicon"))){
-					
-					System.out.println("---> music OFF");
-					musicOnOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("musicoff"));
-					game.setMusicState("off");
-					oP.putBoolean("mus", false);
-					oP.flush();
-					
-				}else{
-					
+				
+				if (!oP.getBoolean("mus")){				
+					if(PixMindGame.infoFx)
+						PixMindGame.getMenuClick().play(0.3f);		
 					System.out.println("---> music ON");
-					musicOnOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("musicon"));
-					game.setMusicState("on");
+					musicOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on selec"));
+					musicOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off no selec"));
+					
+					PixMindGame.getMusic().play();
+					
+					//game.setMusicState("on");
 					oP.putBoolean("mus", true);
 					oP.flush();
 				}
 				
 			}
 		});
-
+		musicOffImageS2D.addListener(new ActorGestureListener() {
+			public void touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				System.out.println("MUSIC ON/OFF TOUCHED");
+				if (oP.getBoolean("mus")){
+					if(PixMindGame.infoFx)
+						PixMindGame.getMenuClick().play(0.3f);		
+					System.out.println("---> music OFF");
+					musicOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on no selec"));
+					musicOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off selec"));
+					PixMindGame.getMusic().stop();
+					oP.putBoolean("mus", false);
+					oP.flush();
+					
+				}
+				
+			}
+		});
+		fxOnImageS2D.addListener(new ActorGestureListener() {
+			public void touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				System.out.println("MUSIC ON/OFF TOUCHED");
+				if (!oP.getBoolean("fx")){	
+					PixMindGame.infoFx = true;
+					if(PixMindGame.infoFx)
+						PixMindGame.getMenuClick().play(0.3f);					
+					System.out.println("---> music ON");
+					fxOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on selec"));
+					fxOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off no selec"));
+					//game.setMusicState("on");
+					oP.putBoolean("fx", true);
+					oP.flush();
+				}
+				
+			}
+		});
+		fxOffImageS2D.addListener(new ActorGestureListener() {
+			public void touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				System.out.println("MUSIC ON/OFF TOUCHED");
+				if (oP.getBoolean("fx")){
+					
+					PixMindGame.infoFx = false;
+					System.out.println("---> music OFF");
+					fxOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on no selec"));
+					fxOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off selec"));
+				//	game.setMusicState("off");
+					oP.putBoolean("fx", false);
+					oP.flush();
+					
+				}
+				
+			}
+		});
 		backToMainMenuImageS2D.addListener(new ActorGestureListener() {
 			public void touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				System.out.println("BACK TO THE MAIN MENU TOUCHED");
+				if(PixMindGame.infoFx)
+					PixMindGame.getMenuClick().play(0.3f);			
 				game.changeLevel(game.getMainMenuScreen());
 			}
 		});
 
 		// adding actors to the stage (to an stage group)
 		optionsGroup.addActor(backgroundOptionsMenuImage);
-		optionsGroup.addActor(accelerometerOrTouchImageS2D);
-		optionsGroup.addActor(musicOnOffImageS2D);
+		optionsGroup.addActor(accelerometerImageS2D);
+		optionsGroup.addActor(touchImageS2D);
+		optionsGroup.addActor(musicOnImageS2D);
+		optionsGroup.addActor(musicOffImageS2D);
+		optionsGroup.addActor(fxOnImageS2D);
+		optionsGroup.addActor(fxOffImageS2D);
 		optionsGroup.addActor(backToMainMenuImageS2D);
-		optionsGroup.setPosition(-(854 - PixMindGame.w) / 2, 0);
+	//	optionsGroup.setPosition(-(854 - PixMindGame.w) / 2, 0);
 		optionsMenuStage.addActor(optionsGroup);
 
 		// setting actors positions
-		musicOnOffImageS2D.setPosition(320, 240);
-		accelerometerOrTouchImageS2D.setPosition(320, 140);
-		backToMainMenuImageS2D.setPosition(320, 40);
+		musicOnImageS2D.setPosition(-50+PixMindGame.w/2, 250);
+		musicOffImageS2D.setPosition(+10+PixMindGame.w/2, 250);
+		fxOnImageS2D.setPosition(-50+PixMindGame.w/2, 20);
+		fxOffImageS2D.setPosition(+10+PixMindGame.w/2, 20);
+		accelerometerImageS2D.setPosition(-170+PixMindGame.w/2, 130);
+		touchImageS2D.setPosition(PixMindGame.w/2+70, 130);
+		backToMainMenuImageS2D.setPosition(10, 10);
 	
 		
 	}

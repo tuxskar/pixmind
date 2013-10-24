@@ -84,7 +84,8 @@ public class MainMenuScreen implements Screen {
 					int pointer, int button) {
 				if(selected){ 
 				System.out.println("PLAY TOUCHED");
-	               PixMindGame.getMenuClick().play(0.3f);
+				if(PixMindGame.infoFx)
+					PixMindGame.getMenuClick().play(0.3f);		
 	               game.changeLevel(game.getLevelSelector1Screen());
 				}
 			}
@@ -114,7 +115,8 @@ public class MainMenuScreen implements Screen {
 					int pointer, int button) {
 				if(selected){ 
 				System.out.println("PLAY TOUCHED");
-	               PixMindGame.getMenuClick().play(0.3f);
+				if(PixMindGame.infoFx)
+					PixMindGame.getMenuClick().play(0.3f);		
 	               game.changeLevel(game.getOptionsMenuScreen());
 				}
 			}
@@ -144,7 +146,8 @@ public class MainMenuScreen implements Screen {
 					int pointer, int button) {
 				if(selected){ 
 				System.out.println("PLAY TOUCHED");
-	               PixMindGame.getMenuClick().play(0.3f);
+				if(PixMindGame.infoFx)
+					PixMindGame.getMenuClick().play(0.3f);		
 	            Gdx.app.exit();
 				}
 			}
@@ -163,35 +166,39 @@ public class MainMenuScreen implements Screen {
 			
 		});
 		
+		
+		// setting actors positions
+		playImageS2D.setPosition(50, 240);
+		optionsImageS2D.setPosition(50, 140);
+		exitImageS2D.setPosition(50, 40);
+		titleImageS2D.setPosition(250, 400);
+		backgroundImage.setPosition(PixMindGame.w-backgroundImage.getWidth(), 0);
+
+		
 		// adding actors to the stage (to an stage group)
 		menuGroup.addActor(backgroundImage);
 		menuGroup.addActor(playImageS2D);
 		menuGroup.addActor(optionsImageS2D);
 		menuGroup.addActor(exitImageS2D);
 		menuGroup.addActor(titleImageS2D);
-		menuGroup.setPosition(-(854-PixMindGame.w)/2, 0);
-		mainMenuStage.addActor(menuGroup);
-		
-		// setting actors positions
-		playImageS2D.setPosition(160, 240);
-		optionsImageS2D.setPosition(160, 140);
-		exitImageS2D.setPosition(160, 40);
-		titleImageS2D.setPosition(250, 400);
-		backgroundImage.setPosition(854-((854-PixMindGame.w)/2)-backgroundImage.getWidth(), 0);
-		// loading and playing main menu music loop
+		//menuGroup.setPosition(-(854-PixMindGame.w)/2, 0);
+	
+			// loading and playing main menu music loop
 		PixMindGame.getMusic().setLooping(true);
 		PixMindGame.getMusic().setVolume(0.9f);
-//		if ( !PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("on") )
-//			PixMindGame.getMusic().play();
-//		if ( PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("off") )
-//			PixMindGame.getMusic().stop();
+		if (PixMindGame.infoMusic && !PixMindGame.getMusic().isPlaying() )
+			PixMindGame.getMusic().play();
+		/*if ( PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("off") )
+			PixMindGame.getMusic().stop();*/
 		
-		Preferences oP = Gdx.app.getPreferences("OptionsPrefs");
+		/*Preferences oP = Gdx.app.getPreferences("OptionsPrefs");
 		boolean musicOn = oP.getBoolean("mus");
 		if ( musicOn && !PixMindGame.getMusic().isPlaying() )
 			PixMindGame.getMusic().play();
 		if ( !musicOn && PixMindGame.getMusic().isPlaying() )
 			PixMindGame.getMusic().stop();
+		*/
+		mainMenuStage.addActor(menuGroup);
 		
 	}
 

@@ -145,13 +145,15 @@ public class LevelSelector2Screen implements Screen{
 							int pointer, int button) {
 						// TODO Auto-generated method stub
 						super.touchDown(event, x, y, pointer, button);
-						  PixMindGame.getMenuClick().play(0.3f);
+						if(PixMindGame.infoFx)
+							PixMindGame.getMenuClick().play(0.3f);		
 						game.changeLevel(game.getLevelSelector1Screen());
 					}
 					
 					
 					
 				});
+			
 				
 				next.setOrigin(next.getWidth()/2, next.getHeight()/2);
 				//next.rotate(180);
@@ -166,7 +168,8 @@ public class LevelSelector2Screen implements Screen{
 						// TODO Auto-generated method stub
 						
 						if(keycode == Keys.BACK){
-						    PixMindGame.getMenuClick().play(0.3f);
+							if(PixMindGame.infoFx)
+								PixMindGame.getMenuClick().play(0.3f);		
 							game.changeLevel(game.getMainMenuScreen());
 						}
 						return true;
@@ -211,7 +214,8 @@ public class LevelSelector2Screen implements Screen{
 				int button) {
 			// TODO Auto-generated method stub
 			super.touchDown(event, x, y, pointer, button);
-		    PixMindGame.getMenuClick().play(0.3f);
+			if(PixMindGame.infoFx)
+				PixMindGame.getMenuClick().play(0.3f);		
 			game.changeLevel(mapa.get(pantalla));
 			
 		}

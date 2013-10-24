@@ -47,10 +47,11 @@ public class PixMindGame extends Game {
 	
 	private MainMenuScreen mainMenu;
 	// for to know what controller create for playing the game (when the level is created, its check what controller have to create for pixGuy)
-	private static String infoController = "arr";
+	public static boolean infoController = true;
 	// for to know if we are playing with music or not, in each level we need to check this for to play or not the music
-	private static String infoMusic = "on";
-	
+	public static boolean infoMusic = true;
+	public static boolean infoFx = true;
+
 	public static Preferences oP;
 
 	private Level01 level01;
@@ -107,11 +108,9 @@ public class PixMindGame extends Game {
 		// setting preferences
 		oP = Gdx.app.getPreferences("OptionsPrefs");
 		
-		boolean musicDefault = oP.getBoolean("mus", true);
-		System.out.println("Music " + musicDefault);
-		
-		boolean accelerometerDefault = oP.getBoolean("acc", false);
-		System.out.println("Accelerometer " + accelerometerDefault);
+		infoMusic = oP.getBoolean("mus", true);
+		infoController = oP.getBoolean("acc", false);
+		infoFx = oP.getBoolean("fx", true);
 		
 		
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
@@ -178,22 +177,7 @@ public class PixMindGame extends Game {
 	// GETTERs & SETTERs
 	
 	// controller
-	public String getPixGuyController(){
-		return infoController;
-	}
-	
-	public void setPixGuyController(String newController){
-		infoController = newController;
-	}
-	
-	// music
-	public String getMusicState(){
-		return infoMusic;
-	}
-	
-	public void setMusicState(String newMusicState){
-		infoMusic = newMusicState;
-	}
+
 
 	public AssetManager getAssetManager() {
 		return assetManager;

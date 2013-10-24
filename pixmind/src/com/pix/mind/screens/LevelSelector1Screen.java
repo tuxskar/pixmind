@@ -150,7 +150,8 @@ public class LevelSelector1Screen implements Screen {
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				super.touchDown(event, x, y, pointer, button);
-				  PixMindGame.getMenuClick().play(0.3f);
+				if(PixMindGame.infoFx)
+					PixMindGame.getMenuClick().play(0.3f);		
 				game.changeLevel(game.getLevelSelector2Screen());
 			}
 			
@@ -158,11 +159,33 @@ public class LevelSelector1Screen implements Screen {
 			
 		});
 		
+		Image previous = new Image(PixMindGame.getSkin().getDrawable("arrow"));
+		previous.addListener(new ActorGestureListener(){
+
+			@Override
+			public void touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub
+				super.touchDown(event, x, y, pointer, button);
+				if(PixMindGame.infoFx)
+					PixMindGame.getMenuClick().play(0.3f);		
+				game.changeLevel(game.getMainMenuScreen());
+			}
+			
+			
+			
+		});
+		
+		
+		
+		
 		next.setOrigin(next.getWidth()/2, next.getHeight()/2);
 		next.rotate(180);
 		
 		next.setPosition(PixMindGame.w - next.getWidth()-10, 10);
+		previous.setPosition(10,10);
 		levelStage.addActor(next);
+		levelStage.addActor(previous);
 		
 		
 		levelStage.addListener(new InputListener(){
@@ -172,7 +195,8 @@ public class LevelSelector1Screen implements Screen {
 				// TODO Auto-generated method stub
 				
 				if(keycode == Keys.BACK){
-				    PixMindGame.getMenuClick().play(0.3f);
+					if(PixMindGame.infoFx)
+						PixMindGame.getMenuClick().play(0.3f);		
 					game.changeLevel(game.getMainMenuScreen());
 				}
 				return true;
@@ -217,7 +241,8 @@ public class LevelSelector1Screen implements Screen {
 			int button) {
 		// TODO Auto-generated method stub
 		super.touchDown(event, x, y, pointer, button);
-	    PixMindGame.getMenuClick().play(0.3f);
+		if(PixMindGame.infoFx)
+			PixMindGame.getMenuClick().play(0.3f);		
 		game.changeLevel(mapa.get(pantalla));
 		
 	}

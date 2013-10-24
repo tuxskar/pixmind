@@ -118,7 +118,8 @@ public class Box2DWorldContactListener implements ContactListener {
 			}
 
 		} else {
-			PixMindGame.getGettingActivator().play(0.2f);
+			if(PixMindGame.infoFx)				
+				PixMindGame.getGettingActivator().play(0.2f);
 			for (StaticPlatformActor sp : platformList) {
 				if (platformActivatorActor.color.equals(sp.color))
 					sp.setActive(true);
@@ -161,7 +162,8 @@ public class Box2DWorldContactListener implements ContactListener {
 				- PixGuy.pixHeight * PixMindGame.WORLD_TO_BOX / 2;
 
 		if (bottomPosGuy >= topPosPlatform) {
-			PixMindGame.getBoing().play(0.7f);
+			if(PixMindGame.infoFx)			
+				PixMindGame.getBoing().play(0.7f);
 			anteriorHeight = lastPlatformHeight;
 			lastPlatformHeight = (fixPlatform.getBody().getPosition().y + platformActor
 					.getHeight() * PixMindGame.WORLD_TO_BOX / 2)
@@ -195,7 +197,8 @@ public class Box2DWorldContactListener implements ContactListener {
 		float rightPixPos = fixGuy.getBody().getPosition().x
 				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
 		float impulse = 10f;
-		PixMindGame.getBoing().play(0.7f);
+		if(PixMindGame.infoFx)			
+			PixMindGame.getBoing().play(0.7f);
 		fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
 		if ((rightPixPos - rightWallPos) < 0){
 			impulse = -impulse;
