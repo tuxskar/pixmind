@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -63,34 +64,102 @@ public class MainMenuScreen implements Screen {
 		//to move according to the resolutuion, we create a group to put inside all menu elements
 		Group menuGroup = new Group(); //to move according to the resolutuion
 		
-		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
-		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play"));
-		optionsImageS2D = new Image(PixMindGame.getSkin().getDrawable("options"));
-		exitImageS2D = new Image(PixMindGame.getSkin().getDrawable("exitmenu"));
+		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("personaje fondo"));
+		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play no selec"));
+		optionsImageS2D = new Image(PixMindGame.getSkin().getDrawable("options no selec"));
+		exitImageS2D = new Image(PixMindGame.getSkin().getDrawable("exit no selec"));
 		titleImageS2D = new Image(PixMindGame.getSkin().getDrawable("sweetmind"));
 		
 		
 		// adding actor listeners
 		playImageS2D.addListener(new ActorGestureListener(){
-			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
-	               System.out.println("PLAY TOUCHED");
+			boolean selected = true;
+			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {			
+				playImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("play selec"));
+				selected = true;
+	         }
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				if(selected){ 
+				System.out.println("PLAY TOUCHED");
 	               PixMindGame.getMenuClick().play(0.3f);
 	               game.changeLevel(game.getLevelSelector1Screen());
-	          }
+				}
+			}
+	
+			@Override
+			public void pan(InputEvent event, float x, float y, float deltaX,
+					float deltaY) {
+				// TODO Auto-generated method stub
+				   System.out.println("x " + x + " y " + y);
+				   System.out.println("x " + playImageS2D.getWidth() + " y "+ playImageS2D.getHeight());
+				   if(x<0 || x>playImageS2D.getWidth() || y<0 || y>playImageS2D.getHeight()){
+						   playImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("play no selec"));
+					   selected= false;
+					   }						   
+			}
+			
 		});
 		
 		optionsImageS2D.addListener(new ActorGestureListener(){
-			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
-	               System.out.println("OPTIONS TOUCHED");
+			boolean selected = true;
+			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {			
+				optionsImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("options selec"));
+				selected = true;
+	         }
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				if(selected){ 
+				System.out.println("PLAY TOUCHED");
+	               PixMindGame.getMenuClick().play(0.3f);
 	               game.changeLevel(game.getOptionsMenuScreen());
-	          }
+				}
+			}
+	
+			@Override
+			public void pan(InputEvent event, float x, float y, float deltaX,
+					float deltaY) {
+				// TODO Auto-generated method stub
+				   System.out.println("x " + x + " y " + y);
+				   System.out.println("x " + playImageS2D.getWidth() + " y "+ playImageS2D.getHeight());
+				   if(x<0 || x>optionsImageS2D.getWidth() || y<0 || y>optionsImageS2D.getHeight()){
+					   optionsImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("options no selec"));
+					   selected= false;
+					   }						   
+			}
+			
 		});
 		
 		exitImageS2D.addListener(new ActorGestureListener(){
-			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {
-	               System.out.println("EXIT TOUCHED");
-	               Gdx.app.exit();
-	          }
+			boolean selected = true;
+			public void touchDown (InputEvent event, float x, float y, int pointer, int button) {			
+				exitImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("exit selec"));
+				selected = true;
+	         }
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				if(selected){ 
+				System.out.println("PLAY TOUCHED");
+	               PixMindGame.getMenuClick().play(0.3f);
+	            Gdx.app.exit();
+				}
+			}
+	
+			@Override
+			public void pan(InputEvent event, float x, float y, float deltaX,
+					float deltaY) {
+				// TODO Auto-generated method stub
+				   System.out.println("x " + x + " y " + y);
+				   System.out.println("x " + playImageS2D.getWidth() + " y "+ playImageS2D.getHeight());
+				   if(x<0 || x>exitImageS2D.getWidth() || y<0 || y>exitImageS2D.getHeight()){
+					   exitImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("exit no selec"));
+					   selected= false;
+					   }						   
+			}
+			
 		});
 		
 		// adding actors to the stage (to an stage group)
@@ -103,11 +172,11 @@ public class MainMenuScreen implements Screen {
 		mainMenuStage.addActor(menuGroup);
 		
 		// setting actors positions
-		playImageS2D.setPosition(320, 240);
-		optionsImageS2D.setPosition(320, 140);
-		exitImageS2D.setPosition(320, 40);
+		playImageS2D.setPosition(160, 240);
+		optionsImageS2D.setPosition(160, 140);
+		exitImageS2D.setPosition(160, 40);
 		titleImageS2D.setPosition(250, 400);
-		
+		backgroundImage.setPosition(854-((854-PixMindGame.w)/2)-backgroundImage.getWidth(), 0);
 		// loading and playing main menu music loop
 		PixMindGame.getMusic().setLooping(true);
 		PixMindGame.getMusic().setVolume(0.9f);
