@@ -57,7 +57,7 @@ public class LevelSelector1Screen implements Screen {
 		// Saving preferences: Levels that player have passed
 		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
 		int topLevel = prefs.getInteger("topLevel", 1);
-		System.out.println(topLevel);
+		System.out.println("Top Level is "+ topLevel);
 		
 		levelStage = new Stage(PixMindGame.w, PixMindGame.h, true);
 
@@ -207,7 +207,7 @@ public class LevelSelector1Screen implements Screen {
 		levelStage.dispose();
 	}
 	
-	class Listener  extends  ActorGestureListener{
+	class Listener extends ActorGestureListener{
 	int pantalla;
 	public Listener(int pantalla){
 	this.pantalla = pantalla;
