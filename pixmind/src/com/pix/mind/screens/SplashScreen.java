@@ -10,6 +10,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -53,6 +54,7 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
 			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
 			PixMindGame.setMenuClick(game.getAssetManager().get("data/sounds/menuclick.mp3", Sound.class));
+			PixMindGame.setFont(game.getAssetManager().get("data/fonts/sweetmindfont.fnt", BitmapFont.class));
 
             game.setScreen(game.getMainMenuScreen());
 			//game.setScreen(game.getLevel08());
@@ -83,6 +85,8 @@ public class SplashScreen implements  Screen{
 		game.getAssetManager().load("data/sounds/winning.wav", Sound.class);
 		game.getAssetManager().load("data/sounds/losing.wav", Sound.class);
 		game.getAssetManager().load("data/sounds/menuclick.mp3", Sound.class);
+		game.getAssetManager().load("data/fonts/sweetmindfont.fnt", BitmapFont.class);
+		
 		
 		
 		
