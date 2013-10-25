@@ -172,7 +172,7 @@ public class MainMenuScreen implements Screen {
 		playImageS2D.setPosition(50, 240);
 		optionsImageS2D.setPosition(50, 140);
 		exitImageS2D.setPosition(50, 40);
-		titleImageS2D.setPosition((PixMindGame.w/2)-titleImageS2D.getWidth()/2, 400);
+		titleImageS2D.setPosition((PixMindGame.w/2)-titleImageS2D.getWidth()/2, 350);
 		background.setPosition((PixMindGame.w/2)-background.getWidth()/2, 0);
 		backgroundImage.setPosition(PixMindGame.w-backgroundImage.getWidth(), 0);
 
