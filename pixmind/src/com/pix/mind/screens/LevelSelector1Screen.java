@@ -102,7 +102,7 @@ public class LevelSelector1Screen implements Screen {
 		for (int fila = 1; fila <= 3; fila++) {
 			for (int columna = 1; columna <= 4; columna++) {
 				Image im = new Image(PixMindGame.getSkin().getDrawable(
-						"levelframe"));
+						"levelframe" ));
 						
 				if(topLevel>=pantalla)
 				im.addListener(new Listener(pantalla));

@@ -190,7 +190,7 @@ public class MainMenuScreen implements Screen {
 			// loading and playing main menu music loop
 		PixMindGame.getMusic().setLooping(true);
 		PixMindGame.getMusic().setVolume(0.9f);
-		if (PixMindGame.infoMusic && !PixMindGame.getMusic().isPlaying() )
+		if (PixMindGame.infoMusic)
 			PixMindGame.getMusic().play();
 		/*if ( PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("off") )
 			PixMindGame.getMusic().stop();*/

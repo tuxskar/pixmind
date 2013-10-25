@@ -180,7 +180,8 @@ public class OptionsMenuScreen implements Screen {
 				
 				if (!oP.getBoolean("mus")){				
 					if(PixMindGame.infoFx)
-						PixMindGame.getMenuClick().play(0.3f);		
+						PixMindGame.getMenuClick().play(0.3f);	
+					PixMindGame.infoMusic = true;
 					System.out.println("---> music ON");
 					musicOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on selec"));
 					musicOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off no selec"));
@@ -201,6 +202,7 @@ public class OptionsMenuScreen implements Screen {
 				if (oP.getBoolean("mus")){
 					if(PixMindGame.infoFx)
 						PixMindGame.getMenuClick().play(0.3f);		
+					PixMindGame.infoMusic = false;
 					System.out.println("---> music OFF");
 					musicOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on no selec"));
 					musicOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off selec"));
