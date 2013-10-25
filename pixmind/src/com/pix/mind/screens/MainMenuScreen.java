@@ -86,7 +86,8 @@ public class MainMenuScreen implements Screen {
 				System.out.println("PLAY TOUCHED");
 				if(PixMindGame.infoFx)
 					PixMindGame.getMenuClick().play(0.3f);		
-	               game.changeLevel(game.getLevelSelector1Screen());
+//	               game.changeLevel(game.getLevelSelector1Screen());
+	               game.changeLevel(game.getLevel15());
 				}
 			}
 	
