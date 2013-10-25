@@ -45,7 +45,7 @@ public class StaticPlatformActor extends Image {
 			this.active = true;
 		} else {
 			staticPlatform.fixture.setSensor(true);
-			this.setColor(255, 255, 255, 0.2f);
+			this.setColor(255, 255, 255, PixMindGame.delta);
 			this.active = false;
 		}
 	}

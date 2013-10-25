@@ -101,7 +101,7 @@ public class PixMindGame extends Game {
 	private static Sound menuClick;
 	public static HashMap<Color,String> candyColorToTexture;
 	public static HashMap<Color,String> platformColorToTexture;
-	
+	public static float delta = 0.5f;
 	@Override
 	public void create() {
 		

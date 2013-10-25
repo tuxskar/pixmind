@@ -16,6 +16,7 @@ public class PlatformActivatorActor extends Image {
 	private float radius;
 	public Color color;
 	
+	
 	public PlatformActivatorActor(PlatformActivator activator, Color color, boolean active){
 		super(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));
 		platformActivator = activator;
@@ -24,7 +25,7 @@ public class PlatformActivatorActor extends Image {
 	
 	public PlatformActivatorActor(World world, float posX, float posY, Color color, boolean active){
 		super(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));
-		platformActivator = new PlatformActivator(world, posX, posY, 0.2f);
+		platformActivator = new PlatformActivator(world, posX, posY, PixMindGame.delta);
 		initialize(color, active);
 	}
 	
@@ -36,7 +37,7 @@ public class PlatformActivatorActor extends Image {
 		
 		platformActivator.fixture.setUserData(this);
 		if (!active){
-			this.setColor(255,255,255, 0.2f);	
+			this.setColor(255,255,255, PixMindGame.delta);	
 			this.active = false;
 		}
 	}
@@ -52,7 +53,7 @@ public class PlatformActivatorActor extends Image {
 			this.active = true;
 		} else {
 			
-			this.setColor(255,255,255, 0.2f);
+			this.setColor(255,255,255, PixMindGame.delta);
 			this.active = false;
 		}
 	}
