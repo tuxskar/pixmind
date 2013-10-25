@@ -37,12 +37,6 @@ public class Level05 extends PixMindLevel {
 		scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 0, wallH, wallW, wallH));
 		scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 4, wallH + wallH / 4, wallW, 3 * wallH / 4));
 		scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 8, wallH, wallW, wallH));
-//		box2D.getPlatformList().add(
-//                new StaticPlatformActor(box2D.getWorld(), 1 + wallW / 2, 6, platW - wallW / 2, platH, Color.BLACK, true));
-//		box2D.getPlatformList().add(
-//                new StaticPlatformActor(box2D.getWorld(), 4, wallH + wallH / 4, wallW, 3 * wallH / 4, Color.BLACK, true));
-//		box2D.getPlatformList().add(
-//                new StaticPlatformActor(box2D.getWorld(), 8, wallH, wallW, wallH, Color.BLACK, true));
 
 		// Normal StaticPlatforms
 		box2D.getPlatformList().add(
@@ -52,7 +46,7 @@ public class Level05 extends PixMindLevel {
 		box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 2f, 4, platW - 0.2f, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 4f, 1f, platW + 0.4f, platH, Color.YELLOW, false));
+                new StaticPlatformActor(box2D.getWorld(), 4f, 1f, platW + 0.4f, platH, Color.ORANGE, false));
 		box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 7 - wallW / 2, 2, platW, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
@@ -72,7 +66,7 @@ public class Level05 extends PixMindLevel {
 		box2D.getActivatorList().add(
             new PlatformActivatorActor(box2D.getWorld(), 3.5f, 7, Color.BLUE, true));
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 1, 5, Color.YELLOW, false));
+            new PlatformActivatorActor(box2D.getWorld(), 1, 5, Color.ORANGE, false));
 
 
 		// Add activators to Stage

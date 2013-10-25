@@ -35,7 +35,7 @@ public class SplashScreen implements  Screen{
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 
-		Gdx.gl.glClearColor(1, 1, 1, 1); 
+		Gdx.gl.glClearColor(0, 0, 0, 1); 
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT); 
 
 		stageSplash.draw();
@@ -54,7 +54,8 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
 			PixMindGame.setMenuClick(game.getAssetManager().get("data/sounds/menuclick.mp3", Sound.class));
 
-			game.setScreen(game.getMainMenuScreen());
+            game.setScreen(game.getMainMenuScreen());
+			//game.setScreen(game.getLevel08());
 		}
 		
 	}
@@ -86,10 +87,14 @@ public class SplashScreen implements  Screen{
 		
 		
 		stageSplash = new Stage(PixMindGame.w, PixMindGame.h, true);
-		Image splash = new Image(splashSkin.getDrawable("splash screen"));
 		
-		splash.setPosition(-(854-PixMindGame.w)/2, 0);
-		stageSplash.addActor(splash);
+		Image modelsheep = new Image(splashSkin.getDrawable("modelsheep"));	
+		Image g3 = new Image(splashSkin.getDrawable("g3"));		
+		modelsheep.setPosition((PixMindGame.w)/2 - modelsheep.getWidth()/2 -150, 240-modelsheep.getHeight()/2);
+		g3.setPosition((PixMindGame.w)/2 - g3.getWidth()/2 +150, 240-g3.getHeight()/2);
+		
+		stageSplash.addActor(g3);
+		stageSplash.addActor(modelsheep);
 	}
 
 	@Override

@@ -9,7 +9,7 @@ public class PixGuyActor extends Image {
 	private PixGuy pixGuy;
 	public PixGuyActor(PixGuy pixGuy){
 		
-		super( PixMindGame.getSkin().getDrawable("pixguy5"));
+		super( PixMindGame.getSkin().getDrawable("pixguy8"));
 
 		//Texture r = PixMindGame.getSkin().getRegion("box").getTexture();
 		

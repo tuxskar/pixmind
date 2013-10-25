@@ -19,9 +19,9 @@ public class ActiveColors {
 		activeColorActors = new ArrayList<ActiveColor>();
 		activeColorActors.add(new ActiveColor(Color.BLUE, stageGui));
 		activeColorActors.add(new ActiveColor(Color.GREEN, stageGui));
-		activeColorActors.add(new ActiveColor(Color.MAGENTA, stageGui));
+	//	activeColorActors.add(new ActiveColor(Color.MAGENTA, stageGui));
 		activeColorActors.add(new ActiveColor(Color.RED, stageGui));
-		activeColorActors.add(new ActiveColor(Color.YELLOW, stageGui));
+		activeColorActors.add(new ActiveColor(Color.ORANGE, stageGui));
 
 		for (int i = 1; i <= nColors; i++) {
 			Image image = new Image(PixMindGame.getSkin().getDrawable(

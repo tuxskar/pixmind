@@ -26,7 +26,7 @@ public class MainMenuScreen implements Screen {
 	
 	private PixMindGame game;
 	Stage mainMenuStage;
-	Image playImageS2D, optionsImageS2D, exitImageS2D, titleImageS2D, backgroundImage;
+	Image playImageS2D, optionsImageS2D, exitImageS2D, titleImageS2D, backgroundImage, background;
 	
 	public MainMenuScreen(PixMindGame game) {
 		super();
@@ -64,6 +64,7 @@ public class MainMenuScreen implements Screen {
 		Gdx.input.setCatchBackKey(true);
 		//to move according to the resolutuion, we create a group to put inside all menu elements
 		Group menuGroup = new Group(); //to move according to the resolutuion
+		background = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
 		
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("personaje fondo"));
 		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play no selec"));
@@ -172,22 +173,25 @@ public class MainMenuScreen implements Screen {
 		playImageS2D.setPosition(50, 240);
 		optionsImageS2D.setPosition(50, 140);
 		exitImageS2D.setPosition(50, 40);
-		titleImageS2D.setPosition(250, 400);
+		titleImageS2D.setPosition((PixMindGame.w/2)-titleImageS2D.getWidth()/2, 400);
+		background.setPosition((PixMindGame.w/2)-background.getWidth()/2, 0);
 		backgroundImage.setPosition(PixMindGame.w-backgroundImage.getWidth(), 0);
 
 		
 		// adding actors to the stage (to an stage group)
+		menuGroup.addActor(background);
 		menuGroup.addActor(backgroundImage);
 		menuGroup.addActor(playImageS2D);
 		menuGroup.addActor(optionsImageS2D);
 		menuGroup.addActor(exitImageS2D);
 		menuGroup.addActor(titleImageS2D);
+
 		//menuGroup.setPosition(-(854-PixMindGame.w)/2, 0);
 	
 			// loading and playing main menu music loop
 		PixMindGame.getMusic().setLooping(true);
 		PixMindGame.getMusic().setVolume(0.9f);
-		if (PixMindGame.infoMusic && !PixMindGame.getMusic().isPlaying() )
+		if (PixMindGame.infoMusic)
 			PixMindGame.getMusic().play();
 		/*if ( PixMindGame.getMusic().isPlaying() && game.getMusicState().equalsIgnoreCase("off") )
 			PixMindGame.getMusic().stop();*/

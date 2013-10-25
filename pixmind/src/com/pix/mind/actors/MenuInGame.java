@@ -230,7 +230,7 @@ public class MenuInGame extends Group {
 				prefs.putInteger("topLevel", activeLevel);
 			else
 				prefs.putInteger("topLevel", activeLevel+1);
-			prefs.flush();
+			prefs.flush(); 
 		}
 		
 		

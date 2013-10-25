@@ -20,14 +20,14 @@ public class ArrowController extends PixGuyController {
 		Drawable arrowTexture = PixMindGame.getSkin().getDrawable("arrow");
 
 		Image leftArrow = new Image(arrowTexture);
-		Image rightArrow = new Image(arrowTexture);
+		Image rightArrow = new Image(PixMindGame.getSkin().getDrawable("arrow1"));
 		float arrowWidth = 60;
 		float arrowHeight = 60;
 		float zoomMargin = 10;
 		leftArrow.setSize(arrowWidth, arrowHeight);
 		rightArrow.setSize(arrowWidth, arrowHeight);
-		rightArrow.setOrigin(arrowWidth / 2, arrowHeight / 2);
-		rightArrow.rotate(180);
+		//rightArrow.setOrigin(arrowWidth / 2, arrowHeight / 2);
+		//rightArrow.rotate(180);
 		leftArrow.setPosition(zoomMargin, zoomMargin);
 		rightArrow.setPosition(stage.getWidth() - zoomMargin - arrowWidth,
 				zoomMargin);
