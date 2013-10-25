@@ -52,7 +52,7 @@ public class Level05 extends PixMindLevel {
 		box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 2f, 4, platW - 0.2f, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 4f, 1f, platW + 0.4f, platH, Color.YELLOW, false));
+                new StaticPlatformActor(box2D.getWorld(), 4f, 1f, platW + 0.4f, platH, Color.ORANGE, false));
 		box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 7 - wallW / 2, 2, platW, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
@@ -72,7 +72,7 @@ public class Level05 extends PixMindLevel {
 		box2D.getActivatorList().add(
             new PlatformActivatorActor(box2D.getWorld(), 3.5f, 7, Color.BLUE, true));
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 1, 5, Color.YELLOW, false));
+            new PlatformActivatorActor(box2D.getWorld(), 1, 5, Color.ORANGE, false));
 
 
 		// Add activators to Stage

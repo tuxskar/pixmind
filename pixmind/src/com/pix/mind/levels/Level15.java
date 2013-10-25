@@ -67,7 +67,7 @@ public class Level15 extends PixMindLevel {
 		StaticPlatformActor s6Skin = new StaticPlatformActor(s6Platform,
 				Color.BLUE, false);*/
 		StaticPlatformActor s7Skin = new StaticPlatformActor(s7Platform,
-				Color.YELLOW, false);
+				Color.ORANGE, false);
 		StaticPlatformActor s8Skin = new StaticPlatformActor(s8Platform,
 				Color.BLACK, true);
 
@@ -123,7 +123,7 @@ public class Level15 extends PixMindLevel {
 		PlatformActivatorActor a2Skin = new PlatformActivatorActor(p2Activator,
 				Color.BLACK, true);
 		PlatformActivatorActor a5Skin = new PlatformActivatorActor(p5Activator,
-				Color.YELLOW, false);
+				Color.ORANGE, false);
 
 		// Add activators to Stage
 

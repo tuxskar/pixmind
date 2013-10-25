@@ -25,7 +25,8 @@ public class OptionsMenuScreen implements Screen {
 		fxOnImageS2D,
 		fxOffImageS2D,
 		backToMainMenuImageS2D,
-		backgroundOptionsMenuImage;
+		backgroundOptionsMenuImage,
+		background;
 	
 	Preferences oP = Gdx.app.getPreferences("OptionsPrefs");	
 	
@@ -76,7 +77,7 @@ public class OptionsMenuScreen implements Screen {
 //			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("touch"));
 //		else
 //			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer"));
-		
+		background = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
 		if (oP.getBoolean("mus", true)) {
 			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on selec"));
 			musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off no selec"));
@@ -258,6 +259,8 @@ public class OptionsMenuScreen implements Screen {
 		});
 
 		// adding actors to the stage (to an stage group)
+		
+		optionsGroup.addActor(background);
 		optionsGroup.addActor(backgroundOptionsMenuImage);
 		optionsGroup.addActor(accelerometerImageS2D);
 		optionsGroup.addActor(touchImageS2D);
@@ -270,6 +273,7 @@ public class OptionsMenuScreen implements Screen {
 		optionsMenuStage.addActor(optionsGroup);
 
 		// setting actors positions
+		background.setPosition((PixMindGame.w/2)-background.getWidth()/2, 0);
 		musicOnImageS2D.setPosition(-50+PixMindGame.w/2, 250);
 		musicOffImageS2D.setPosition(+10+PixMindGame.w/2, 250);
 		fxOnImageS2D.setPosition(-50+PixMindGame.w/2, 20);
