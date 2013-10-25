@@ -115,6 +115,7 @@ public class LevelSelector2Screen implements Screen{
 						if(topLevel<pantalla){
 							im.setColor(im.getColor().r, im.getColor().g, im.getColor().b, 0.3f);
 							Image lock = new Image(PixMindGame.getSkin().getDrawable("lock"));
+							
 							lock.setPosition(posicionFrame.x-frameSize/2 - lock.getWidth()/2, posicionFrame.y+(frameSize-lock.getHeight())/2);
 							levelGroup.addActor(lock);	
 						}else{

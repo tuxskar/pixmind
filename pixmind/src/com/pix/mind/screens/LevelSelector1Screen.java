@@ -117,6 +117,7 @@ public class LevelSelector1Screen implements Screen {
 				if(topLevel<pantalla){
 					im.setColor(im.getColor().r, im.getColor().g, im.getColor().b, 0.3f);
 					Image lock = new Image(PixMindGame.getSkin().getDrawable("lock"));
+					
 					lock.setPosition(posicionFrame.x-frameSize/2 - lock.getWidth()/2, posicionFrame.y+(frameSize-lock.getHeight())/2);
 					levelGroup.addActor(lock);	
 				}else{
@@ -142,7 +143,7 @@ public class LevelSelector1Screen implements Screen {
 		
 		
 		
-		Image next = new Image(PixMindGame.getSkin().getDrawable("arrow"));
+		Image next = new Image(PixMindGame.getSkin().getDrawable("arrow1"));
 		next.addListener(new ActorGestureListener(){
 
 			@Override
@@ -179,8 +180,8 @@ public class LevelSelector1Screen implements Screen {
 		
 		
 		
-		next.setOrigin(next.getWidth()/2, next.getHeight()/2);
-		next.rotate(180);
+		//next.setOrigin(next.getWidth()/2, next.getHeight()/2);
+	//	next.rotate(180);
 		
 		next.setPosition(PixMindGame.w - next.getWidth()-10, 10);
 		previous.setPosition(10,10);

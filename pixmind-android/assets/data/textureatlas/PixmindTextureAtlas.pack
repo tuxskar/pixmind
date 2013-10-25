@@ -5,184 +5,163 @@ filter: Linear,Linear
 repeat: none
 emptyscreen
   rotate: false
-  xy: 1, 541
+  xy: 1, 540
   size: 854, 480
   orig: 854, 480
   offset: 0, 0
   index: -1
 personaje fondo 1
   rotate: false
-  xy: 857, 823
+  xy: 857, 822
   size: 161, 198
   orig: 161, 198
   offset: 0, 0
   index: -1
+donut
+  rotate: false
+  xy: 857, 681
+  size: 141, 139
+  orig: 141, 139
+  offset: 0, 0
+  index: -1
 exit no selec
   rotate: false
-  xy: 857, 729
+  xy: 857, 587
   size: 159, 92
   orig: 159, 92
   offset: 0, 0
   index: -1
 exit selec
   rotate: false
-  xy: 857, 635
+  xy: 857, 493
   size: 159, 92
   orig: 159, 92
   offset: 0, 0
   index: -1
-musicoff
-  rotate: false
-  xy: 857, 583
-  size: 150, 50
-  orig: 150, 50
-  offset: 0, 0
-  index: -1
-musicon
-  rotate: false
-  xy: 857, 531
-  size: 150, 50
-  orig: 150, 50
-  offset: 0, 0
-  index: -1
 fondoingame
   rotate: false
-  xy: 1, 59
+  xy: 1, 58
   size: 854, 480
   orig: 854, 480
   offset: 0, 0
   index: -1
-retry no selec
+sweetmind
   rotate: false
-  xy: 1, 1
-  size: 98, 56
-  orig: 98, 56
+  xy: 1, 10
+  size: 354, 46
+  orig: 354, 46
   offset: 0, 0
   index: -1
-retry selec
+accelerometer no selec
   rotate: false
-  xy: 101, 1
-  size: 98, 56
-  orig: 98, 56
+  xy: 357, 13
+  size: 220, 43
+  orig: 220, 43
+  offset: 0, 0
+  index: -1
+accelerometer selec
+  rotate: false
+  xy: 579, 13
+  size: 220, 43
+  orig: 220, 43
   offset: 0, 0
   index: -1
 next level no selec
   rotate: false
-  xy: 201, 4
+  xy: 801, 3
   size: 139, 53
   orig: 139, 53
   offset: 0, 0
   index: -1
-next level selec
+candyselected
   rotate: false
-  xy: 342, 4
-  size: 139, 53
-  orig: 139, 53
+  xy: 942, 411
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy1
+  rotate: false
+  xy: 942, 329
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy2
+  rotate: false
+  xy: 942, 247
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy3
+  rotate: false
+  xy: 942, 165
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy7
+  rotate: false
+  xy: 942, 83
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy8
+  rotate: false
+  xy: 942, 1
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy9
+  rotate: false
+  xy: 857, 411
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icecream
+  rotate: false
+  xy: 857, 330
+  size: 75, 79
+  orig: 75, 79
+  offset: 0, 0
+  index: -1
+lock
+  rotate: false
+  xy: 857, 258
+  size: 70, 70
+  orig: 70, 70
   offset: 0, 0
   index: -1
 exit no selec 1
   rotate: false
-  xy: 483, 6
+  xy: 857, 205
   size: 72, 51
   orig: 72, 51
   offset: 0, 0
   index: -1
 exit selec 1
   rotate: false
-  xy: 557, 6
+  xy: 857, 152
   size: 72, 51
   orig: 72, 51
   offset: 0, 0
   index: -1
-sweetmind
+arrow
   rotate: false
-  xy: 631, 11
-  size: 354, 46
-  orig: 354, 46
-  offset: 0, 0
-  index: -1
-nextlevel
-  rotate: false
-  xy: 857, 499
-  size: 150, 30
-  orig: 150, 30
-  offset: 0, 0
-  index: -1
-donut
-  rotate: false
-  xy: 857, 358
-  size: 141, 139
-  orig: 141, 139
-  offset: 0, 0
-  index: -1
-levelframe
-  rotate: false
-  xy: 857, 244
-  size: 112, 112
-  orig: 112, 112
+  xy: 857, 90
+  size: 60, 60
+  orig: 60, 60
   offset: 0, 0
   index: -1
 on no selec
   rotate: false
-  xy: 971, 326
+  xy: 857, 58
   size: 45, 30
   orig: 45, 30
-  offset: 0, 0
-  index: -1
-on selec
-  rotate: false
-  xy: 971, 294
-  size: 45, 30
-  orig: 45, 30
-  offset: 0, 0
-  index: -1
-lock
-  rotate: false
-  xy: 971, 233
-  size: 44, 59
-  orig: 44, 59
-  offset: 0, 0
-  index: -1
-touch no selec
-  rotate: false
-  xy: 857, 196
-  size: 88, 46
-  orig: 88, 46
-  offset: 0, 0
-  index: -1
-icecream
-  rotate: false
-  xy: 947, 152
-  size: 75, 79
-  orig: 75, 79
-  offset: 0, 0
-  index: -1
-touch selec
-  rotate: false
-  xy: 857, 148
-  size: 88, 46
-  orig: 88, 46
-  offset: 0, 0
-  index: -1
-exit
-  rotate: false
-  xy: 947, 120
-  size: 70, 30
-  orig: 70, 30
-  offset: 0, 0
-  index: -1
-candyselected
-  rotate: false
-  xy: 857, 66
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-off no selec
-  rotate: false
-  xy: 939, 76
-  size: 56, 42
-  orig: 56, 42
   offset: 0, 0
   index: -1
 
@@ -192,253 +171,204 @@ filter: Linear,Linear
 repeat: none
 panel opciones
   rotate: false
-  xy: 1, 539
+  xy: 1, 528
   size: 518, 468
   orig: 518, 468
   offset: 0, 0
   index: -1
 personaje fondo
   rotate: false
-  xy: 1, 201
+  xy: 1, 190
   size: 243, 336
   orig: 243, 336
   offset: 0, 0
   index: -1
 options no selec
   rotate: false
-  xy: 521, 915
+  xy: 521, 904
   size: 207, 92
   orig: 207, 92
   offset: 0, 0
   index: -1
 options selec
   rotate: false
-  xy: 1, 107
+  xy: 1, 96
   size: 207, 92
   orig: 207, 92
   offset: 0, 0
   index: -1
-exitmenu
-  rotate: false
-  xy: 246, 462
-  size: 198, 75
-  orig: 198, 75
-  offset: 0, 0
-  index: -1
 options
   rotate: false
-  xy: 521, 838
+  xy: 246, 451
   size: 198, 75
   orig: 198, 75
   offset: 0, 0
   index: -1
 play no selec
   rotate: false
-  xy: 1, 12
+  xy: 521, 809
   size: 174, 93
   orig: 174, 93
   offset: 0, 0
   index: -1
 play selec
   rotate: false
-  xy: 246, 367
+  xy: 1, 1
   size: 174, 93
   orig: 174, 93
   offset: 0, 0
   index: -1
-accelerometer no selec
+levelframe
   rotate: false
-  xy: 730, 964
-  size: 220, 43
-  orig: 220, 43
-  offset: 0, 0
-  index: -1
-accelerometer selec
-  rotate: false
-  xy: 730, 919
-  size: 220, 43
-  orig: 220, 43
+  xy: 246, 337
+  size: 112, 112
+  orig: 112, 112
   offset: 0, 0
   index: -1
 blackplatform
   rotate: false
-  xy: 521, 816
+  xy: 730, 976
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
 blueplatform
   rotate: false
-  xy: 521, 794
+  xy: 730, 954
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
 greenplatform
   rotate: false
-  xy: 521, 772
-  size: 200, 20
-  orig: 200, 20
-  offset: 0, 0
-  index: -1
-magentaplatform
-  rotate: false
-  xy: 521, 750
+  xy: 730, 932
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
 orangeplatform
   rotate: false
-  xy: 521, 728
+  xy: 730, 910
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
 redplatform
   rotate: false
-  xy: 521, 706
+  xy: 730, 888
   size: 200, 20
   orig: 200, 20
   offset: 0, 0
   index: -1
-yellowplatform
+next level selec
   rotate: false
-  xy: 521, 684
-  size: 200, 20
-  orig: 200, 20
+  xy: 521, 754
+  size: 139, 53
+  orig: 139, 53
   offset: 0, 0
   index: -1
-pixguy1
+nextlevel
   rotate: false
-  xy: 246, 285
-  size: 80, 80
-  orig: 80, 80
+  xy: 521, 722
+  size: 150, 30
+  orig: 150, 30
   offset: 0, 0
   index: -1
-pixguy2
+retry no selec
   rotate: false
-  xy: 521, 602
-  size: 80, 80
-  orig: 80, 80
+  xy: 246, 279
+  size: 98, 56
+  orig: 98, 56
   offset: 0, 0
   index: -1
-pixguy3
+retry selec
   rotate: false
-  xy: 246, 203
-  size: 80, 80
-  orig: 80, 80
+  xy: 521, 664
+  size: 98, 56
+  orig: 98, 56
   offset: 0, 0
   index: -1
-pixguy4
+touch no selec
   rotate: false
-  xy: 328, 285
-  size: 80, 80
-  orig: 80, 80
+  xy: 932, 950
+  size: 88, 46
+  orig: 88, 46
   offset: 0, 0
   index: -1
-pixguy5
+touch selec
   rotate: false
-  xy: 603, 602
-  size: 80, 80
-  orig: 80, 80
+  xy: 246, 231
+  size: 88, 46
+  orig: 88, 46
   offset: 0, 0
   index: -1
-pixguy6
+arrow1
   rotate: false
-  xy: 328, 203
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-pixguy7
-  rotate: false
-  xy: 446, 457
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-pixguy8
-  rotate: false
-  xy: 422, 375
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-arrow
-  rotate: false
-  xy: 952, 943
-  size: 64, 64
-  orig: 64, 64
+  xy: 446, 466
+  size: 60, 60
+  orig: 60, 60
   offset: 0, 0
   index: -1
 bluecandy
   rotate: false
-  xy: 521, 540
+  xy: 360, 389
   size: 60, 60
   orig: 60, 60
-  offset: 0, 0
-  index: -1
-pixguy9
-  rotate: false
-  xy: 583, 520
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-zoomin
-  rotate: false
-  xy: 685, 618
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-zoomout
-  rotate: false
-  xy: 210, 135
-  size: 64, 64
-  orig: 64, 64
   offset: 0, 0
   index: -1
 greencandy
   rotate: false
-  xy: 276, 141
-  size: 60, 60
-  orig: 60, 60
-  offset: 0, 0
-  index: -1
-magentacandy
-  rotate: false
-  xy: 338, 141
+  xy: 521, 602
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 orangecandy
   rotate: false
-  xy: 177, 45
+  xy: 932, 888
   size: 60, 60
   orig: 60, 60
-  offset: 0, 0
-  index: -1
-off selec
-  rotate: false
-  xy: 177, 1
-  size: 56, 42
-  orig: 56, 42
   offset: 0, 0
   index: -1
 redcandy
   rotate: false
-  xy: 504, 395
+  xy: 521, 540
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-yellowcandy
+zoomin
   rotate: false
-  xy: 952, 881
+  xy: 360, 327
   size: 60, 60
   orig: 60, 60
+  offset: 0, 0
+  index: -1
+zoomout
+  rotate: false
+  xy: 621, 660
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+off no selec
+  rotate: false
+  xy: 246, 187
+  size: 56, 42
+  orig: 56, 42
+  offset: 0, 0
+  index: -1
+off selec
+  rotate: false
+  xy: 346, 283
+  size: 56, 42
+  orig: 56, 42
+  offset: 0, 0
+  index: -1
+on selec
+  rotate: false
+  xy: 662, 777
+  size: 45, 30
+  orig: 45, 30
   offset: 0, 0
   index: -1
