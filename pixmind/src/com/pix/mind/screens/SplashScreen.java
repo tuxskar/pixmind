@@ -54,7 +54,8 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
 			PixMindGame.setMenuClick(game.getAssetManager().get("data/sounds/menuclick.mp3", Sound.class));
 
-			game.setScreen(game.getMainMenuScreen());
+            game.setScreen(game.getMainMenuScreen());
+			//game.setScreen(game.getLevel08());
 		}
 		
 	}
