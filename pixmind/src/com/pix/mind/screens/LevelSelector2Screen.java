@@ -86,8 +86,8 @@ public class LevelSelector2Screen implements Screen{
 				mapa.put(24, game.getLevel24());
 				
 				
-				BitmapFont font = new BitmapFont();
-				font.setScale(3);
+				BitmapFont font = PixMindGame.getFont();
+				font.setScale(1);
 				// frame must be square...
 				
 				float frameSize = 80;
@@ -119,7 +119,7 @@ public class LevelSelector2Screen implements Screen{
 							lock.setPosition(posicionFrame.x-frameSize/2 - lock.getWidth()/2, posicionFrame.y+(frameSize-lock.getHeight())/2);
 							levelGroup.addActor(lock);	
 						}else{
-							LabelStyle style = new LabelStyle(font, Color.BLACK) ; 
+							LabelStyle style = new LabelStyle(font, Color.WHITE) ; 
 							Label label = new Label(String.valueOf(pantalla), style);		
 							label.setTouchable(Touchable.disabled);	
 							label.setPosition(posicionFrame.x-frameSize/2 - label.getWidth()/2, posicionFrame.y+(frameSize-label.getHeight())/2);

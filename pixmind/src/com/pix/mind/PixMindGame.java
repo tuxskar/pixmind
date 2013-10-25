@@ -10,6 +10,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.pix.mind.levels.FirstLevel;
 import com.pix.mind.levels.Level01;
@@ -99,6 +100,7 @@ public class PixMindGame extends Game {
 	private static Sound winning;
 	private static Sound losing;
 	private static Sound menuClick;
+	private static BitmapFont font;
 	public static HashMap<Color,String> candyColorToTexture;
 	public static HashMap<Color,String> platformColorToTexture;
 	public static float delta = 0.5f;
@@ -524,6 +526,16 @@ public class PixMindGame extends Game {
 
 	public void setLevel24(Level24 level24) {
 		this.level24 = level24;
+	}
+
+
+	public static BitmapFont getFont() {
+		return font;
+	}
+
+
+	public static void setFont(BitmapFont font) {
+		PixMindGame.font = font;
 	}
 
 }
