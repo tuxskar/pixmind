@@ -263,6 +263,7 @@ public class OptionsMenuScreen implements Screen {
 		});
 
 		// adding actors to the stage (to an stage group)
+
 		
 		optionsGroup.addActor(background);
 		optionsGroup.addActor(backgroundOptionsMenuImage);
