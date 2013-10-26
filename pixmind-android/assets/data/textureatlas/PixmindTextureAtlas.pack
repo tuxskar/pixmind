@@ -1,179 +1,187 @@
 
 PixmindTextureAtlas.png
 format: RGBA8888
-filter: Linear,Linear
+filter: MipMap,Linear
 repeat: none
 emptyscreen
   rotate: false
-  xy: 1, 541
+  xy: 2, 539
   size: 854, 480
   orig: 854, 480
   offset: 0, 0
   index: -1
 personaje fondo 1
   rotate: false
-  xy: 857, 823
+  xy: 860, 821
   size: 161, 198
   orig: 161, 198
   offset: 0, 0
   index: -1
 donut
   rotate: false
-  xy: 857, 682
+  xy: 860, 678
   size: 141, 139
   orig: 141, 139
   offset: 0, 0
   index: -1
 exit no selec
   rotate: false
-  xy: 857, 588
+  xy: 860, 582
   size: 159, 92
   orig: 159, 92
   offset: 0, 0
   index: -1
 exit selec
   rotate: false
-  xy: 857, 494
+  xy: 860, 486
   size: 159, 92
   orig: 159, 92
   offset: 0, 0
   index: -1
 fondoingame
   rotate: false
-  xy: 1, 59
+  xy: 2, 55
   size: 854, 480
   orig: 854, 480
   offset: 0, 0
   index: -1
 accelerometer no selec
   rotate: false
-  xy: 1, 14
+  xy: 2, 8
   size: 220, 43
   orig: 220, 43
   offset: 0, 0
   index: -1
 accelerometer selec
   rotate: false
-  xy: 223, 14
+  xy: 226, 8
   size: 220, 43
   orig: 220, 43
   offset: 0, 0
   index: -1
-next level no selec
+blackplatform
   rotate: false
-  xy: 445, 4
-  size: 139, 53
-  orig: 139, 53
+  xy: 450, 31
+  size: 200, 20
+  orig: 200, 20
   offset: 0, 0
   index: -1
-next level selec
+blueplatform
   rotate: false
-  xy: 586, 4
-  size: 139, 53
-  orig: 139, 53
+  xy: 450, 7
+  size: 200, 20
+  orig: 200, 20
   offset: 0, 0
   index: -1
-retry no selec
+greenplatform
   rotate: false
-  xy: 727, 1
-  size: 98, 56
-  orig: 98, 56
+  xy: 654, 31
+  size: 200, 20
+  orig: 200, 20
   offset: 0, 0
   index: -1
-retry selec
+touch no selec
   rotate: false
-  xy: 827, 1
-  size: 98, 56
-  orig: 98, 56
+  xy: 858, 5
+  size: 88, 46
+  orig: 88, 46
   offset: 0, 0
   index: -1
-candyselected
+orangeplatform
   rotate: false
-  xy: 927, 412
-  size: 80, 80
-  orig: 80, 80
+  xy: 654, 7
+  size: 200, 20
+  orig: 200, 20
+  offset: 0, 0
+  index: -1
+frame
+  rotate: false
+  xy: 950, 412
+  size: 70, 70
+  split: 1, 1, 1, 1
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+lock
+  rotate: false
+  xy: 950, 338
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+exit no selec 1
+  rotate: false
+  xy: 950, 283
+  size: 72, 51
+  orig: 72, 51
+  offset: 0, 0
+  index: -1
+exit selec 1
+  rotate: false
+  xy: 950, 228
+  size: 72, 51
+  orig: 72, 51
   offset: 0, 0
   index: -1
 arrow
   rotate: false
-  xy: 857, 432
+  xy: 950, 164
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 arrow1
   rotate: false
-  xy: 857, 370
+  xy: 950, 100
   size: 60, 60
   orig: 60, 60
-  offset: 0, 0
-  index: -1
-pixguy1
-  rotate: false
-  xy: 919, 330
-  size: 80, 80
-  orig: 80, 80
   offset: 0, 0
   index: -1
 bluecandy
   rotate: false
-  xy: 857, 308
+  xy: 950, 36
   size: 60, 60
   orig: 60, 60
+  offset: 0, 0
+  index: -1
+on no selec
+  rotate: false
+  xy: 950, 2
+  size: 45, 30
+  orig: 45, 30
+  offset: 0, 0
+  index: -1
+candyselected
+  rotate: false
+  xy: 860, 402
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+pixguy1
+  rotate: false
+  xy: 860, 318
+  size: 80, 80
+  orig: 80, 80
   offset: 0, 0
   index: -1
 pixguy2
   rotate: false
-  xy: 919, 248
+  xy: 860, 234
   size: 80, 80
   orig: 80, 80
-  offset: 0, 0
-  index: -1
-greencandy
-  rotate: false
-  xy: 857, 246
-  size: 60, 60
-  orig: 60, 60
   offset: 0, 0
   index: -1
 pixguy3
   rotate: false
-  xy: 919, 166
+  xy: 860, 150
   size: 80, 80
   orig: 80, 80
-  offset: 0, 0
-  index: -1
-orangecandy
-  rotate: false
-  xy: 857, 184
-  size: 60, 60
-  orig: 60, 60
-  offset: 0, 0
-  index: -1
-redcandy
-  rotate: false
-  xy: 857, 122
-  size: 60, 60
-  orig: 60, 60
   offset: 0, 0
   index: -1
 pixguy7
   rotate: false
-  xy: 919, 84
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-zoomin
-  rotate: false
-  xy: 857, 60
-  size: 60, 60
-  orig: 60, 60
-  offset: 0, 0
-  index: -1
-pixguy8
-  rotate: false
-  xy: 927, 2
+  xy: 860, 66
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
@@ -181,179 +189,194 @@ pixguy8
 
 PixmindTextureAtlas2.png
 format: RGBA8888
-filter: Linear,Linear
+filter: MipMap,Linear
 repeat: none
 panel opciones
   rotate: false
-  xy: 1, 547
+  xy: 2, 554
   size: 518, 468
   orig: 518, 468
   offset: 0, 0
   index: -1
 personaje fondo
   rotate: false
-  xy: 1, 209
+  xy: 2, 214
   size: 243, 336
   orig: 243, 336
   offset: 0, 0
   index: -1
 sweetmind
   rotate: false
-  xy: 521, 897
+  xy: 524, 904
   size: 248, 118
   orig: 248, 118
   offset: 0, 0
   index: -1
 options no selec
   rotate: false
-  xy: 1, 115
+  xy: 2, 118
   size: 207, 92
   orig: 207, 92
   offset: 0, 0
   index: -1
+levelframe
+  rotate: false
+  xy: 2, 2
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
 options selec
   rotate: false
-  xy: 246, 453
+  xy: 249, 458
   size: 207, 92
   orig: 207, 92
   offset: 0, 0
   index: -1
 play no selec
   rotate: false
-  xy: 521, 802
+  xy: 524, 807
   size: 174, 93
   orig: 174, 93
   offset: 0, 0
   index: -1
 play selec
   rotate: false
-  xy: 771, 922
+  xy: 776, 929
   size: 174, 93
   orig: 174, 93
   offset: 0, 0
   index: -1
-levelframe
-  rotate: false
-  xy: 1, 1
-  size: 112, 112
-  orig: 112, 112
-  offset: 0, 0
-  index: -1
-blackplatform
-  rotate: false
-  xy: 246, 431
-  size: 200, 20
-  orig: 200, 20
-  offset: 0, 0
-  index: -1
-blueplatform
-  rotate: false
-  xy: 246, 409
-  size: 200, 20
-  orig: 200, 20
-  offset: 0, 0
-  index: -1
-greenplatform
-  rotate: false
-  xy: 246, 387
-  size: 200, 20
-  orig: 200, 20
-  offset: 0, 0
-  index: -1
-orangeplatform
-  rotate: false
-  xy: 246, 365
-  size: 200, 20
-  orig: 200, 20
-  offset: 0, 0
-  index: -1
 redplatform
   rotate: false
-  xy: 246, 343
+  xy: 249, 434
   size: 200, 20
   orig: 200, 20
+  offset: 0, 0
+  index: -1
+next level no selec
+  rotate: false
+  xy: 524, 750
+  size: 139, 53
+  orig: 139, 53
+  offset: 0, 0
+  index: -1
+next level selec
+  rotate: false
+  xy: 249, 377
+  size: 139, 53
+  orig: 139, 53
+  offset: 0, 0
+  index: -1
+pixguy8
+  rotate: false
+  xy: 118, 34
+  size: 80, 80
+  orig: 80, 80
   offset: 0, 0
   index: -1
 pixguy9
   rotate: false
-  xy: 521, 720
+  xy: 524, 666
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 icecream
   rotate: false
-  xy: 947, 936
+  xy: 249, 294
   size: 75, 79
   orig: 75, 79
   offset: 0, 0
   index: -1
-lock
+retry no selec
   rotate: false
-  xy: 697, 825
-  size: 70, 70
-  orig: 70, 70
+  xy: 524, 606
+  size: 98, 56
+  orig: 98, 56
   offset: 0, 0
   index: -1
-touch no selec
+retry selec
   rotate: false
-  xy: 115, 67
-  size: 88, 46
-  orig: 88, 46
+  xy: 524, 546
+  size: 98, 56
+  orig: 98, 56
+  offset: 0, 0
+  index: -1
+greencandy
+  rotate: false
+  xy: 460, 490
+  size: 60, 60
+  orig: 60, 60
   offset: 0, 0
   index: -1
 touch selec
   rotate: false
-  xy: 246, 295
+  xy: 524, 496
   size: 88, 46
   orig: 88, 46
   offset: 0, 0
   index: -1
-exit no selec 1
+frameplatform
   rotate: false
-  xy: 521, 667
-  size: 72, 51
-  orig: 72, 51
+  xy: 776, 905
+  size: 100, 20
+  orig: 100, 20
   offset: 0, 0
   index: -1
-exit selec 1
+platformframe
   rotate: false
-  xy: 603, 749
-  size: 72, 51
-  orig: 72, 51
+  xy: 776, 905
+  size: 100, 20
+  split: 1, 1, 1, 1
+  orig: 100, 20
+  offset: 0, 0
+  index: -1
+orangecandy
+  rotate: false
+  xy: 702, 840
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+redcandy
+  rotate: false
+  xy: 954, 962
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+zoomin
+  rotate: false
+  xy: 249, 230
+  size: 60, 60
+  orig: 60, 60
   offset: 0, 0
   index: -1
 zoomout
   rotate: false
-  xy: 455, 485
+  xy: 328, 313
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 off no selec
   rotate: false
-  xy: 115, 23
+  xy: 392, 388
   size: 56, 42
   orig: 56, 42
   offset: 0, 0
   index: -1
 off selec
   rotate: false
-  xy: 246, 251
+  xy: 392, 342
   size: 56, 42
   orig: 56, 42
   offset: 0, 0
   index: -1
-on no selec
-  rotate: false
-  xy: 336, 311
-  size: 45, 30
-  orig: 45, 30
-  offset: 0, 0
-  index: -1
 on selec
   rotate: false
-  xy: 521, 635
+  xy: 608, 716
   size: 45, 30
   orig: 45, 30
   offset: 0, 0

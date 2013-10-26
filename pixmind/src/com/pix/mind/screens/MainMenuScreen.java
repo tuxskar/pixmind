@@ -4,11 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
@@ -17,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
@@ -42,6 +45,7 @@ public class MainMenuScreen implements Screen {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		// we only need to draw and not to act because we always want to show exactly the same, and anything modify it along the time
 		mainMenuStage.draw();
+		mainMenuStage.act();
 
 	}
 
@@ -65,6 +69,7 @@ public class MainMenuScreen implements Screen {
 		//to move according to the resolutuion, we create a group to put inside all menu elements
 		Group menuGroup = new Group(); //to move according to the resolutuion
 		background = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
+		background.setColor(Color.valueOf("6fb2efAA"));
 		
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("personaje fondo"));
 		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play no selec"));
@@ -175,8 +180,29 @@ public class MainMenuScreen implements Screen {
 		titleImageS2D.setPosition((PixMindGame.w/2)-titleImageS2D.getWidth()/2, 350);
 		background.setPosition((PixMindGame.w/2)-background.getWidth()/2, 0);
 		backgroundImage.setPosition(PixMindGame.w-backgroundImage.getWidth(), 0);
+		playImageS2D.setScale(0.9f);
+		optionsImageS2D.setScale(0.9f);
+		exitImageS2D.setScale(0.9f);
+	/*	Interpolation interpolation = Interpolation.linear;
+		playImageS2D.setOrigin(playImageS2D.getWidth()/2, playImageS2D.getHeight()/2);
+		//playImageS2D.setRotation(-1);
+		playImageS2D.setScale(0.9f);
+		playImageS2D.addAction(Actions.forever(Actions.sequence(
+				Actions.scaleBy(0.05f, -0.05f, 1f, interpolation),			
+				Actions.scaleBy(-0.05f, 0.05f, 1f, interpolation))));
+		optionsImageS2D.setOrigin(optionsImageS2D.getWidth()/2, optionsImageS2D.getHeight()/2);
+		//optionsImageS2D.setRotation(-1);
+		optionsImageS2D.setScale(0.9f);
+		optionsImageS2D.addAction(Actions.forever(Actions.sequence(
+				Actions.scaleBy(0.05f, -0.05f, 1f, interpolation),			
+				Actions.scaleBy(-0.05f, 0.05f, 1f, interpolation))));
+		exitImageS2D.setOrigin(exitImageS2D.getWidth()/2, exitImageS2D.getHeight()/2);
+		//exitImageS2D.setRotation(-1);
+		exitImageS2D.setScale(0.9f);
+		exitImageS2D.addAction(Actions.forever(Actions.sequence(
+				Actions.scaleBy(0.05f, -0.05f, 1f, interpolation),			
+				Actions.scaleBy(-0.05f, 0.05f, 1f, interpolation))));*/
 
-		
 		// adding actors to the stage (to an stage group)
 		menuGroup.addActor(background);
 		menuGroup.addActor(backgroundImage);

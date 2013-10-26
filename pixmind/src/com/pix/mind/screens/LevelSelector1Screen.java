@@ -67,7 +67,8 @@ public class LevelSelector1Screen implements Screen {
 
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable(
 				"emptyscreen"));
-
+		backgroundImage.setColor(Color.valueOf("6fb2efAA"));
+		
 		levelGroup.addActor(backgroundImage);
 
 		int pantalla = 1; 

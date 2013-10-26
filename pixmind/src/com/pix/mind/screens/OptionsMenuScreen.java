@@ -3,6 +3,7 @@ package com.pix.mind.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -78,6 +79,7 @@ public class OptionsMenuScreen implements Screen {
 //		else
 //			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer"));
 		background = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
+		background.setColor(Color.valueOf("efae42AA"));
 		if (oP.getBoolean("mus", true)) {
 			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on selec"));
 			musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off no selec"));
