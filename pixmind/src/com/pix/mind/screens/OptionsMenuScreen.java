@@ -81,29 +81,29 @@ public class OptionsMenuScreen implements Screen {
 		background = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
 		background.setColor(Color.valueOf("efae42AA"));
 		if (oP.getBoolean("mus", true)) {
-			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on selec"));
-			musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off no selec"));
+			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on no selec"));
+			musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off selec"));
 		}
 		else{
-			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on no selec"));
-		musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off selec"));
+			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on selec"));
+		musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off no selec"));
 		}
 		
 		if (oP.getBoolean("acc", false)) {
-			accelerometerImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer selec"));
-			touchImageS2D =  new Image(PixMindGame.getSkin().getDrawable("touch no selec"));
-		}
-		else{			
 			accelerometerImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer no selec"));
 			touchImageS2D =  new Image(PixMindGame.getSkin().getDrawable("touch selec"));
 		}
-		if (oP.getBoolean("fx", true)) {
-			fxOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on selec"));
-			fxOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off no selec"));
+		else{			
+			accelerometerImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer selec"));
+			touchImageS2D =  new Image(PixMindGame.getSkin().getDrawable("touch no selec"));
 		}
-		else{
+		if (oP.getBoolean("fx", true)) {
 			fxOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on no selec"));
 			fxOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off selec"));
+		}
+		else{
+			fxOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on selec"));
+			fxOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off no selec"));
 		}
 
 	
@@ -121,8 +121,8 @@ public class OptionsMenuScreen implements Screen {
 					if(PixMindGame.infoFx)
 						PixMindGame.getMenuClick().play(0.3f);		
 					PixMindGame.infoController = true;
-					accelerometerImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("accelerometer selec"));				
-					touchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("touch no selec"));
+					accelerometerImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("accelerometer no selec"));				
+					touchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("touch selec"));
 					oP.putBoolean("acc", true);
 					
 					oP.flush();
@@ -138,8 +138,8 @@ public class OptionsMenuScreen implements Screen {
 					if(PixMindGame.infoFx)
 						PixMindGame.getMenuClick().play(0.3f);		
 					PixMindGame.infoController = false;
-					accelerometerImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("accelerometer no selec"));				
-					touchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("touch selec"));
+					accelerometerImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("accelerometer selec"));				
+					touchImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("touch no selec"));
 					oP.putBoolean("acc", false);
 					oP.flush();
 				}
@@ -185,8 +185,8 @@ public class OptionsMenuScreen implements Screen {
 						PixMindGame.getMenuClick().play(0.3f);	
 					PixMindGame.infoMusic = true;
 					System.out.println("---> music ON");
-					musicOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on selec"));
-					musicOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off no selec"));
+					musicOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on no selec"));
+					musicOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off selec"));
 					
 					PixMindGame.getMusic().play();
 					
@@ -206,8 +206,8 @@ public class OptionsMenuScreen implements Screen {
 						PixMindGame.getMenuClick().play(0.3f);		
 					PixMindGame.infoMusic = false;
 					System.out.println("---> music OFF");
-					musicOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on no selec"));
-					musicOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off selec"));
+					musicOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on selec"));
+					musicOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off no selec"));
 					PixMindGame.getMusic().stop();
 					oP.putBoolean("mus", false);
 					oP.flush();
@@ -225,8 +225,8 @@ public class OptionsMenuScreen implements Screen {
 					if(PixMindGame.infoFx)
 						PixMindGame.getMenuClick().play(0.3f);					
 					System.out.println("---> music ON");
-					fxOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on selec"));
-					fxOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off no selec"));
+					fxOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on no selec"));
+					fxOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off selec"));
 					//game.setMusicState("on");
 					oP.putBoolean("fx", true);
 					oP.flush();
@@ -242,8 +242,8 @@ public class OptionsMenuScreen implements Screen {
 					
 					PixMindGame.infoFx = false;
 					System.out.println("---> music OFF");
-					fxOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on no selec"));
-					fxOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off selec"));
+					fxOnImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("on selec"));
+					fxOffImageS2D.setDrawable(PixMindGame.getSkin().getDrawable("off no selec"));
 				//	game.setMusicState("off");
 					oP.putBoolean("fx", false);
 					oP.flush();
