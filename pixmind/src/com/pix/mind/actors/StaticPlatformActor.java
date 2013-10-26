@@ -68,9 +68,11 @@ public class StaticPlatformActor extends Group {
 			this.active = true;
 		} else {
 			staticPlatform.fixture.setSensor(true);
+
 			platformImage.setColor(255, 255, 255, 0.2f);
 			frame.setColor(color.r, color.g, color.b,1f);
 			
+
 			this.active = false;
 		}
 	}

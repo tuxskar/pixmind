@@ -103,7 +103,7 @@ public class PixMindGame extends Game {
 	private static BitmapFont font;
 	public static HashMap<Color,String> candyColorToTexture;
 	public static HashMap<Color,String> platformColorToTexture;
-	
+	public static float delta = 0.5f;
 	@Override
 	public void create() {
 		

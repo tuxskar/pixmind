@@ -19,6 +19,7 @@ public class PlatformActivatorActor extends Group {
 	Image platformActivatorImage;
 	Image frame;
 	
+	
 	public PlatformActivatorActor(PlatformActivator activator, Color color, boolean active){
 		//super(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));
 		platformActivatorImage = new Image(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));
@@ -32,6 +33,7 @@ public class PlatformActivatorActor extends Group {
 	}
 	
 	public PlatformActivatorActor(World world, float posX, float posY, Color color, boolean active){
+
 		//super(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));
 		
 		platformActivatorImage = new Image(PixMindGame.getSkin().getDrawable(PixMindGame.candyColorToTexture.get(color)));
@@ -42,6 +44,7 @@ public class PlatformActivatorActor extends Group {
 	
 		
 		platformActivator = new PlatformActivator(world, posX, posY, 0.2f);		
+
 		initialize(color, active);
 	}
 	
@@ -56,7 +59,9 @@ public class PlatformActivatorActor extends Group {
 		this.color = color;	
 		
 		platformActivator.fixture.setUserData(this);
+
 		this.setActive(active);
+
 	}
 
 	public boolean isActive() {
@@ -72,8 +77,10 @@ public class PlatformActivatorActor extends Group {
 			this.active = true;
 		} else {
 			
+
 			platformActivatorImage.setColor(255,255,255, 0.2f);
 			frame.setColor(color.r, color.g, color.b,1f);
+
 			this.active = false;
 		}
 	}
