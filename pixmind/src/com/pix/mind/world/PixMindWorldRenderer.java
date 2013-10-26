@@ -47,19 +47,11 @@ public class PixMindWorldRenderer {
 		// platforms and activator this number must be 13
 		// put a high vaulue if you are not sure.
 		box2D.getPixGuy().getPixGuySkin().setZIndex(200);
-
-		
-
-		 
-
 	
 	}
 
 	public void render(float delta) {
 		// debugRenderer.render(world, camera.combined);
-			
-	
-		
 		
 		scene2D.getStage().draw();
 		scene2D.getStageGui().draw();
