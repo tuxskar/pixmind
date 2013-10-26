@@ -56,9 +56,8 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setMenuClick(game.getAssetManager().get("data/sounds/menuclick.mp3", Sound.class));
 			PixMindGame.setFont(game.getAssetManager().get("data/fonts/sweetmindfont.fnt", BitmapFont.class));
 
-//            game.setScreen(game.getMainMenuScreen());
-//			game.setScreen(game.getLevel15());
-			game.setScreen(game.getLevel08());
+            game.setScreen(game.getMainMenuScreen());
+//			game.setScreen(game.getLevel11());
 		}
 		
 	}
