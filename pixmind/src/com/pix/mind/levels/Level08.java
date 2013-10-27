@@ -11,7 +11,7 @@ public class Level08 extends PixMindLevel {
 	PixMindGame game;
 	private static final int nActiveColors = 2;
 	public Level08(PixMindGame game) {
-        super(game, 1280, 1024, 600, 1, 6, nActiveColors);
+        super(game, 1280, 1024, 600, -2, 6, nActiveColors);
 		this.game = game;
 		levelNumber = 8;
 	}
@@ -26,43 +26,43 @@ public class Level08 extends PixMindLevel {
 		// Creating All Static Platforms
 		float platW = 1f;
 		float platH = 0.1f;
+        float deltaX = -3f;
 
 		// Active colors
 		// Box2D platforms
 		// Add to platform list
+		// Black StaticPlatforms
+		box2D.getPlatformList().add(
+                new StaticPlatformActor(box2D.getWorld(), 2 + deltaX, 5, platW, platH, Color.BLACK, true));
+		box2D.getPlatformList().add(
+                new StaticPlatformActor(box2D.getWorld(), 5 + deltaX, 6, platW, platH, Color.BLACK, true));
+		box2D.getPlatformList().add(
+                new StaticPlatformActor(box2D.getWorld(), 8 + deltaX, 7, platW, platH, Color.BLACK, true));
+		box2D.getPlatformList().add(
+                new StaticPlatformActor(box2D.getWorld(), 11 + deltaX, 8, platW, platH, Color.BLACK, true));
+		box2D.getPlatformList().add(
+                new StaticPlatformActor(box2D.getWorld(), 8 + deltaX, 5, platW, platH, Color.BLACK, true));
 
 		// Black StaticPlatforms
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 2, 5, platW, platH, Color.BLACK, true));
+                new StaticPlatformActor(box2D.getWorld(), 5 + deltaX, 4, platW, platH, Color.BLUE, false));
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 5, 6, platW, platH, Color.BLACK, true));
+                new StaticPlatformActor(box2D.getWorld(), 11+ deltaX, 4, platW, platH, Color.ORANGE, false));
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 8, 7, platW, platH, Color.BLACK, true));
+                new StaticPlatformActor(box2D.getWorld(), 14+ deltaX, 5, platW, platH, Color.RED, false));
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 11, 8, platW, platH, Color.BLACK, true));
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 8, 5, platW, platH, Color.BLACK, true));
-
-		// Black StaticPlatforms
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 5, 4, platW, platH, Color.BLUE, false));
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 11, 4, platW, platH, Color.ORANGE, false));
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 14, 5, platW, platH, Color.RED, false));
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 17, 6, platW, platH, Color.BLUE, false));
+                new StaticPlatformActor(box2D.getWorld(), 17+ deltaX, 6, platW, platH, Color.BLUE, false));
 
 		// Creating All Activator
 		// Box2D Activator adding to activator list
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 18, 7, Color.BLACK, true));
+            new PlatformActivatorActor(box2D.getWorld(), 18 + deltaX, 7, Color.BLACK, true));
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 8, 8, Color.BLUE, false));
+            new PlatformActivatorActor(box2D.getWorld(), 8 + deltaX, 8, Color.BLUE, false));
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 5, 5, Color.ORANGE, false));
+            new PlatformActivatorActor(box2D.getWorld(), 5 + deltaX, 5, Color.ORANGE, false));
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 11, 5, Color.RED, false));
+            new PlatformActivatorActor(box2D.getWorld(), 11 + deltaX, 5, Color.RED, false));
 
 		// Add activators to Stage
 		for (PlatformActivatorActor Sskin : box2D.getActivatorList()) {
@@ -74,16 +74,13 @@ public class Level08 extends PixMindLevel {
 			scene2D.getGroupStage().addActor(Sskin);
 		}
 
-
 		// Rendering the game
-//		box2D.addActivatedColor(Color.BLUE);
 		worldRenderer = new PixMindWorldRenderer(scene2D, box2D, gui);
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
 	}
 
 	@Override
