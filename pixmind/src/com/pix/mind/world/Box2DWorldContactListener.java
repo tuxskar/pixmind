@@ -222,6 +222,7 @@ public class Box2DWorldContactListener implements ContactListener {
 			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
 			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
 			
+			
 		}
 		else{
 			
