@@ -60,36 +60,40 @@ public class Box2DWorldContactListener implements ContactListener {
 		Fixture fixActivator = null;
 		Fixture fixWall = null;
 		Fixture otherContact = null;
+		
 		// get fixture pixguy
-		if (contact.getFixtureA().getUserData() instanceof PixGuyActor) {
-			fixGuy = contact.getFixtureA();
-			otherContact = contact.getFixtureB();
-		} else {
-			fixGuy = contact.getFixtureB();
-			otherContact = contact.getFixtureA();
-		}
+			if (contact.getFixtureA().getUserData() instanceof PixGuyActor) {
+				fixGuy = contact.getFixtureA();
+				otherContact = contact.getFixtureB();
+			} else {
+				fixGuy = contact.getFixtureB();
+				otherContact = contact.getFixtureA();
+			}
 
 		// get fixture Platform
-		if (otherContact.getUserData() instanceof StaticPlatformActor) {
-			fixPlatform = otherContact;
-			// jump only if collide with a platform and its not sensor
-			if (!fixPlatform.isSensor()){
-				collisionWithPlatform(fixPlatform, fixGuy);
-			}
-		} else
+			if (otherContact.getUserData() instanceof StaticPlatformActor) {
+				fixPlatform = otherContact;
+				// jump only if collide with a platform and its not sensor
+				if (!fixPlatform.isSensor()){
+					System.out.println("Colision PLATAFORMA");
+					collisionWithPlatform(fixPlatform, fixGuy);
+				}
+			} else
 		// get fixture PlatformActivator
-		if (otherContact.getUserData() instanceof PlatformActivatorActor) {
-			fixActivator = otherContact;
-			// collision with an Activator
-			collisionWithActivator(fixActivator);
-		} else
+			if (otherContact.getUserData() instanceof PlatformActivatorActor) {
+				fixActivator = otherContact;
+				// collision with an Activator
+				System.out.println("Colision ACTIVADOR");
+				collisionWithActivator(fixActivator);
+			} else
 		// get fixture WallActor
-		if (walls) {
-			if (otherContact.getUserData() instanceof StaticWallActor) {
-				fixWall = otherContact;
-				collisionWithWall(fixWall, fixGuy);
+//			if (walls) { para qué necesitas "walls"?
+				if (otherContact.getUserData() instanceof StaticWallActor) {
+					fixWall = otherContact;
+					System.out.println("Colision MURO");
+					collisionWithWall(fixWall, fixGuy);
+//				}
 			}
-		}
 		colliding = true;
 	}
 
@@ -190,21 +194,43 @@ public class Box2DWorldContactListener implements ContactListener {
 		}
 	}
 
+	
 	private void collisionWithWall(Fixture fixWall, Fixture fixGuy) {
-		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
-		float rightWallPos = fixWall.getBody().getPosition().x
-				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
-		float rightPixPos = fixGuy.getBody().getPosition().x
-				+ wallActor.getWidth() * PixMindGame.WORLD_TO_BOX / 2;
-		float impulse = 10f;
+		 // HAY QUE RETOCARLO, DEBERÍAMOS DESHABILITAR UN CIERTO TIEMPO EL CONTROLADOR O HACER MENOS CONTUNDENTE SU EFECTO
 		if(PixMindGame.infoFx)			
-			PixMindGame.getBoing().play(0.7f);
-		fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
-		if ((rightPixPos - rightWallPos) < 0){
-			impulse = -impulse;
+		PixMindGame.getBoing().play(0.7f);
+		
+		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
+		PixGuyActor pixActor = (PixGuyActor) fixGuy.getUserData();
+		
+		float rW = wallActor.getX() + (wallActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
+		float lW = wallActor.getX() - (wallActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
+		
+		float rP = pixActor.getX() + (pixActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
+		float lP = pixActor.getX() - (pixActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
+		
+		
+		//fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+		
+		fixGuy.getBody().setLinearVelocity(0, 0);
+		
+		float velActualX = fixGuy.getBody().getLinearVelocity().x;
+		float velActualY = fixGuy.getBody().getLinearVelocity().y;
+		
+		if (fixGuy.getBody().getPosition().x < fixWall.getBody().getPosition().x){
+			
+			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+			
+			
 		}
-		fixGuy.getBody().applyLinearImpulse(new Vector2(impulse, fixGuy.getBody().getLinearVelocity().y),
-				fixGuy.getBody().getWorldCenter(), true);
+		else{
+			
+			fixGuy.getBody().setLinearVelocity(- fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+			fixGuy.getBody().applyLinearImpulse(new Vector2(2.0f, 0.6f), fixGuy.getBody().getWorldCenter(), true);
+			
+		}
+		
 	}
 	
 	@Override
