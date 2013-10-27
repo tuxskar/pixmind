@@ -23,8 +23,8 @@ public class PixMindPixGuyInitialization {
 		if (PixMindGame.infoController){
 			controller = new AccController(pixGuy);			
 		}
-		else{
-			controller = new ArrowController(pixGuy, scene2D.getStageGui());			
+		else{			
+			controller = new ArrowController(pixGuy, scene2D.getStageGui(), box2D);			
 		}
 		
 		pixGuy.setController(controller);	

@@ -19,12 +19,15 @@ import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.actors.StaticWallActor;
 import com.pix.mind.box2d.bodies.PixGuy;
+import com.pix.mind.box2d.bodies.PlatformActivator;
+import com.pix.mind.box2d.bodies.StaticPlatform;
 
 public class Box2DWorldContactListener implements ContactListener {
 	PixMindGame game;
-	private ArrayList<StaticPlatformActor> platformList;
-	private ArrayList<PlatformActivatorActor> activatorList;
+	private ArrayList<StaticPlatform> platformList;
+	private ArrayList<PlatformActivator> activatorList;
 	private boolean colliding = false;
+	private boolean collidingWall = false;
 	private boolean walls = false;
 	private ActiveColors actColors;
 	private float lastPlatformHeight;
@@ -92,6 +95,7 @@ public class Box2DWorldContactListener implements ContactListener {
 					fixWall = otherContact;
 					System.out.println("Colision MURO");
 					collisionWithWall(fixWall, fixGuy);
+					
 //				}
 			}
 		colliding = true;
@@ -106,14 +110,16 @@ public class Box2DWorldContactListener implements ContactListener {
 				gui.getMenuInGame().showWin();
 			} else {
 				// get all platform of the same color and change state
-				for (StaticPlatformActor sp : platformList) {
-					if (platformActivatorActor.color.equals(sp.color))
-						sp.setActive(false);
+				for (StaticPlatform sp : platformList) {
+					StaticPlatformActor sp1 = (StaticPlatformActor) sp.fixture.getUserData();
+					if (platformActivatorActor.color.equals(sp1.color))
+						sp1.setActive(false);
 				}
 				// get all activator of the same color and change state
-				for (PlatformActivatorActor sp : activatorList) {
-					if (platformActivatorActor.color.equals(sp.color)) {
-						sp.setActive(false);
+				for (PlatformActivator sp : activatorList) {
+					PlatformActivatorActor sp1 = (PlatformActivatorActor) sp.fixture.getUserData();
+					if (platformActivatorActor.color.equals(sp1.color)) {
+						sp1.setActive(false);
 					}
 				}
 				actColors.removeActiveColor(actColors
@@ -124,13 +130,15 @@ public class Box2DWorldContactListener implements ContactListener {
 		} else {
 			if(PixMindGame.infoFx)				
 				PixMindGame.getGettingActivator().play(0.2f);
-			for (StaticPlatformActor sp : platformList) {
-				if (platformActivatorActor.color.equals(sp.color))
-					sp.setActive(true);
+			for (StaticPlatform sp : platformList) {
+				StaticPlatformActor sp1 = (StaticPlatformActor) sp.fixture.getUserData();
+				if (platformActivatorActor.color.equals(sp1.color))
+					sp1.setActive(true);
 			}
-			for (PlatformActivatorActor sp : activatorList) {
-				if (platformActivatorActor.color.equals(sp.color)) {
-					sp.setActive(true);
+			for (PlatformActivator sp : activatorList) {
+				PlatformActivatorActor sp1 = (PlatformActivatorActor) sp.fixture.getUserData();
+				if (platformActivatorActor.color.equals(sp1.color)) {
+					sp1.setActive(true);
 					// System.out.println("Activating the color: " + sp.color);
 				}
 			}
@@ -140,15 +148,18 @@ public class Box2DWorldContactListener implements ContactListener {
 			// remove older color, now with 0 position
 			for (int i = 0; i < actColors.activeColorActors.size(); i++) {
 				if (actColors.activeColorActors.get(i).position == 0) {
-					for (PlatformActivatorActor sp : activatorList) {
-						if (sp.color
+					for (PlatformActivator sp : activatorList) {
+						PlatformActivatorActor sp1 = (PlatformActivatorActor) sp.fixture.getUserData();
+						if (sp1.color
 								.equals(actColors.activeColorActors.get(i).c))
-							sp.setActive(false);
+							sp1.setActive(false);
 					}
-					for (StaticPlatformActor sp : platformList) {
-						if (sp.color
+					for (StaticPlatform sp : platformList) {
+						
+						StaticPlatformActor sp1 = (StaticPlatformActor) sp.fixture.getUserData();
+						if (sp1.color
 								.equals(actColors.activeColorActors.get(i).c))
-							sp.setActive(false);
+							sp1.setActive(false);
 					}
 				}
 			}
@@ -196,8 +207,9 @@ public class Box2DWorldContactListener implements ContactListener {
 
 	
 	private void collisionWithWall(Fixture fixWall, Fixture fixGuy) {
-		 // HAY QUE RETOCARLO, DEBERÍAMOS DESHABILITAR UN CIERTO TIEMPO EL CONTROLADOR O HACER MENOS CONTUNDENTE SU EFECTO
-		if(PixMindGame.infoFx)			
+		collidingWall = true;
+		// HAY QUE RETOCARLO, DEBERÍAMOS DESHABILITAR UN CIERTO TIEMPO EL CONTROLADOR O HACER MENOS CONTUNDENTE SU EFECTO
+	/*	if(PixMindGame.infoFx)			
 		PixMindGame.getBoing().play(0.7f);
 		
 		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
@@ -229,20 +241,22 @@ public class Box2DWorldContactListener implements ContactListener {
 			fixGuy.getBody().setLinearVelocity(- fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
 			fixGuy.getBody().applyLinearImpulse(new Vector2(2.0f, 0.6f), fixGuy.getBody().getWorldCenter(), true);
 			
-		}
+		}*/
 		
 	}
 	
 	@Override
 	public void endContact(Contact contact) {
 		colliding = false;
+		if (collidingWall)
+			collidingWall=false;
 	}
 
 	@Override
 	public void preSolve(Contact contact, Manifold oldManifold) {
-		// TODO Auto-generated method stub
 
-	}
+			}
+	
 
 	@Override
 	public void postSolve(Contact contact, ContactImpulse impulse) {
@@ -285,4 +299,9 @@ public class Box2DWorldContactListener implements ContactListener {
 	public void setGui(PixMindGuiInitialization gui) {
 		this.gui = gui;
 	}
+
+	public boolean isCollidingWall() {
+		return collidingWall;
+	}
+	
 }
