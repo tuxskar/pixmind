@@ -1,7 +1,7 @@
 
 PixmindTextureAtlas.png
 format: RGBA8888
-filter: MipMap,Linear
+filter: Linear,Linear
 repeat: none
 emptyscreen
   rotate: false
@@ -196,7 +196,7 @@ arrow
 
 PixmindTextureAtlas2.png
 format: RGBA8888
-filter: MipMap,Linear
+filter: Linear,Linear
 repeat: none
 panel opciones
   rotate: false
