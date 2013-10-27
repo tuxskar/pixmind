@@ -110,16 +110,16 @@ public class Level15 extends PixMindLevel {
 				scene2D.getGroupStage().addActor(sP23Skin);
 
 		// Add to platform list
-				box2D.getPlatformList().add(sPInitSkin);
-				box2D.getPlatformList().add(sPFix1Skin);
-				box2D.getPlatformList().add(sPFix2Skin);
-				box2D.getPlatformList().add(sP11Skin);
-				box2D.getPlatformList().add(sP12Skin);
-				box2D.getPlatformList().add(sP21Skin);
-				box2D.getPlatformList().add(sP22Skin);
-				box2D.getPlatformList().add(sPFix3Skin);
-				box2D.getPlatformList().add(sP13Skin);
-				box2D.getPlatformList().add(sP23Skin);
+				box2D.getPlatformList().add(sPInit);
+				box2D.getPlatformList().add(sPFix1);
+				box2D.getPlatformList().add(sPFix2);
+				box2D.getPlatformList().add(sP11);
+				box2D.getPlatformList().add(sP12);
+				box2D.getPlatformList().add(sP21);
+				box2D.getPlatformList().add(sP22);
+				box2D.getPlatformList().add(sPFix3);
+				box2D.getPlatformList().add(sP13);
+				box2D.getPlatformList().add(sP23);
 				
 
 		// Creating All ACTIVATORS
@@ -208,19 +208,19 @@ public class Level15 extends PixMindLevel {
 				scene2D.getGroupStage().addActor(pAEndSkin);
 
 			// Add to activator list
-				box2D.getActivatorList().add(pA11Skin);
-				box2D.getActivatorList().add(pA12Skin);
-				box2D.getActivatorList().add(pA13Skin);
-				box2D.getActivatorList().add(pA14Skin);
-				box2D.getActivatorList().add(pA15Skin);
+				box2D.getActivatorList().add(pA11);
+				box2D.getActivatorList().add(pA12);
+				box2D.getActivatorList().add(pA13);
+				box2D.getActivatorList().add(pA14);
+				box2D.getActivatorList().add(pA15);
 				
-				box2D.getActivatorList().add(pA21Skin);
-				box2D.getActivatorList().add(pA22Skin);
-				box2D.getActivatorList().add(pA23Skin);
-				box2D.getActivatorList().add(pA24Skin);
-				box2D.getActivatorList().add(pA25Skin);
+				box2D.getActivatorList().add(pA21);
+				box2D.getActivatorList().add(pA22);
+				box2D.getActivatorList().add(pA23);
+				box2D.getActivatorList().add(pA24);
+				box2D.getActivatorList().add(pA25);
 				
-				box2D.getActivatorList().add(pAEndSkin);
+				box2D.getActivatorList().add(pAEnd);
 
 		// add to stage the group of actors
 
