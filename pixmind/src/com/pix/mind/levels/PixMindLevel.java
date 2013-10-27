@@ -67,7 +67,7 @@ public class PixMindLevel implements Screen {
 	@Override
 	public void show(){
 		
-		scene2D = new PixMindScene2DInitialization(levelSizeWidth, levelSizeHeight);
+		scene2D = new PixMindScene2DInitialization(levelSizeWidth, levelSizeHeight, levelNumber);
 	//	scene2D.setLevelSize(levelSizeWidth, levelSizeHeight);
 		
 		

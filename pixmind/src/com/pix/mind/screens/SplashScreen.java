@@ -55,6 +55,7 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setLosing(game.getAssetManager().get("data/sounds/losing.wav", Sound.class));
 			PixMindGame.setMenuClick(game.getAssetManager().get("data/sounds/menuclick.mp3", Sound.class));
 			PixMindGame.setFont(game.getAssetManager().get("data/fonts/sweetmindfont.fnt", BitmapFont.class));
+			PixMindGame.setFontLevels(game.getAssetManager().get("data/fonts/sweetmindfont1.fnt", BitmapFont.class));
 
             game.setScreen(game.getMainMenuScreen());
 			//game.setScreen(game.getLevel08());
@@ -86,6 +87,7 @@ public class SplashScreen implements  Screen{
 		game.getAssetManager().load("data/sounds/losing.wav", Sound.class);
 		game.getAssetManager().load("data/sounds/menuclick.mp3", Sound.class);
 		game.getAssetManager().load("data/fonts/sweetmindfont.fnt", BitmapFont.class);
+		game.getAssetManager().load("data/fonts/sweetmindfont1.fnt", BitmapFont.class);
 		
 		
 		
