@@ -1,5 +1,7 @@
 package com.pix.mind.levels;
 
+import java.util.Iterator;
+
 import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;
@@ -14,7 +16,7 @@ public class Level12 extends PixMindLevel {
 	/* JUAN: LEVEL 12*/
 	public String levelTitle = "LevelTwelve";
 	PixMindGame game;
-	private static final int nActiveColors = 2;
+	private static final int nActiveColors = 1;
 	public Level12(PixMindGame game) {
 		super(game,1280, 1024, 250, 1.0f, 3.0f, nActiveColors);
 		this.game = game;
@@ -78,8 +80,8 @@ public class Level12 extends PixMindLevel {
 						2.0f, 0.12f);
 				
 				// plataforma sP31 (color 3, aparicion 1)
-				StaticPlatform sP31 = new StaticPlatform(box2D.getWorld(), 10.0f, 7.5f, 
-						1.5f, 0.12f);
+				StaticPlatform sP31 = new StaticPlatform(box2D.getWorld(), 6.0f, 6.5f, 
+						2.0f, 0.12f);
 				
 				
 				
@@ -220,6 +222,18 @@ public class Level12 extends PixMindLevel {
 				PlatformActivator pA21 = new PlatformActivator(box2D.getWorld(), 10.2f, 4.8f, 0.2f);
 				
 				
+				// activador 3
+				
+				// activador 3.1 (activador de plataforma 3, aparicion 1)
+				PlatformActivator pA31 = new PlatformActivator(box2D.getWorld(), 6.0f, 8.3f, 0.15f);
+				// activador 3.2 (activador de plataforma 3, aparicion 2)
+				PlatformActivator pA32 = new PlatformActivator(box2D.getWorld(), 7.0f, 9.5f, 0.15f);
+				// activador 3.3 (activador de plataforma 3, aparicion 3)
+				PlatformActivator pA33 = new PlatformActivator(box2D.getWorld(), 9.7f, 4.5f, 0.15f);
+				// activador 3.4 (activador de plataforma 3, aparicion 4)
+				PlatformActivator pA34 = new PlatformActivator(box2D.getWorld(), 11.2f, 4.4f, 0.15f);
+				
+				
 				// activador FIN DE FASE 12
 				PlatformActivator pAEnd = new PlatformActivator(box2D.getWorld(), 6.0f, 4.0f, 0.35f);
 	
@@ -230,6 +244,15 @@ public class Level12 extends PixMindLevel {
 				PlatformActivatorActor pA21Skin = new PlatformActivatorActor(pA21,
 						Color.RED, true);
 				
+				PlatformActivatorActor pA31Skin = new PlatformActivatorActor(pA31,
+						Color.ORANGE, false);
+				PlatformActivatorActor pA32Skin = new PlatformActivatorActor(pA32,
+						Color.ORANGE, false);
+				PlatformActivatorActor pA33Skin = new PlatformActivatorActor(pA33,
+						Color.ORANGE, false);
+				PlatformActivatorActor pA34Skin = new PlatformActivatorActor(pA34,
+						Color.ORANGE, false);
+				
 				PlatformActivatorActor pAEndSkin = new PlatformActivatorActor(pAEnd,
 						Color.BLACK, true);
 	
@@ -238,12 +261,22 @@ public class Level12 extends PixMindLevel {
 				scene2D.getGroupStage().addActor(pA11Skin);
 				scene2D.getGroupStage().addActor(pA21Skin);
 				
+				scene2D.getGroupStage().addActor(pA31Skin);
+				scene2D.getGroupStage().addActor(pA32Skin);
+				scene2D.getGroupStage().addActor(pA33Skin);
+				scene2D.getGroupStage().addActor(pA34Skin);
+				
 				scene2D.getGroupStage().addActor(pAEndSkin);
 	
 			// Add to activator list
 				
 				box2D.getActivatorList().add(pA11Skin);
 				box2D.getActivatorList().add(pA21Skin);
+				
+				box2D.getActivatorList().add(pA31Skin);
+				box2D.getActivatorList().add(pA32Skin);
+				box2D.getActivatorList().add(pA33Skin);
+				box2D.getActivatorList().add(pA34Skin);
 				
 				box2D.getActivatorList().add(pAEndSkin);
 		
@@ -254,6 +287,7 @@ public class Level12 extends PixMindLevel {
 		// Active colors
 
 		// Rendering the game
+		// para empezar el nivel como si ya hubiesemos pulsado el activador de la plataforma de color rojo
 		box2D.addActivatedColor(Color.RED);
 		worldRenderer = new PixMindWorldRenderer(scene2D, box2D, gui);
 
