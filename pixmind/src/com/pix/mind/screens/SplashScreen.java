@@ -57,8 +57,8 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setFont(game.getAssetManager().get("data/fonts/sweetmindfont.fnt", BitmapFont.class));
 			PixMindGame.setFontLevels(game.getAssetManager().get("data/fonts/sweetmindfont1.fnt", BitmapFont.class));
 
-            //game.setScreen(game.getMainMenuScreen());
-			game.setScreen(game.getLevel12());
+            game.setScreen(game.getMainMenuScreen());
+			//game.setScreen(game.getLevel12());
 		}
 		
 	}

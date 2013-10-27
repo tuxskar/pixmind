@@ -86,11 +86,11 @@ public class Level12 extends PixMindLevel {
 				
 				
 				// plataforma fija 6
-				StaticPlatform sPFix6 = new StaticPlatform(box2D.getWorld(), 11.4f, 3.9f, 
+				StaticPlatform sPFix6 = new StaticPlatform(box2D.getWorld(), 11.3f, 3.9f, 
 						0.4f, 0.08f);
 				
 				// plataforma fija 7
-				StaticPlatform sPFix7 = new StaticPlatform(box2D.getWorld(), 11.0f, 2.9f, 
+				StaticPlatform sPFix7 = new StaticPlatform(box2D.getWorld(), 11.0f, 2.1f, 
 						0.8f, 0.1f);
 				
 				
@@ -219,7 +219,7 @@ public class Level12 extends PixMindLevel {
 				// activador 2
 				
 				// activador 2.1 (activador de plataforma 2, aparicion 1)
-				PlatformActivator pA21 = new PlatformActivator(box2D.getWorld(), 10.2f, 4.8f, 0.2f);
+				PlatformActivator pA21 = new PlatformActivator(box2D.getWorld(), 10.2f, 5.4f, 0.2f);
 				
 				
 				// activador 3
@@ -227,7 +227,7 @@ public class Level12 extends PixMindLevel {
 				// activador 3.1 (activador de plataforma 3, aparicion 1)
 				PlatformActivator pA31 = new PlatformActivator(box2D.getWorld(), 6.0f, 8.3f, 0.15f);
 				// activador 3.2 (activador de plataforma 3, aparicion 2)
-				PlatformActivator pA32 = new PlatformActivator(box2D.getWorld(), 7.0f, 9.5f, 0.15f);
+				PlatformActivator pA32 = new PlatformActivator(box2D.getWorld(), 7.2f, 9.2f, 0.15f);
 				// activador 3.3 (activador de plataforma 3, aparicion 3)
 				PlatformActivator pA33 = new PlatformActivator(box2D.getWorld(), 9.7f, 4.5f, 0.15f);
 				// activador 3.4 (activador de plataforma 3, aparicion 4)
