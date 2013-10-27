@@ -52,8 +52,8 @@ public class PlatformActivatorActor extends Group {
 		this.radius = platformActivator.getRadius()*PixMindGame.BOX_TO_WORLD;
 		platformActivatorImage.setPosition(platformActivator.getPosX()-radius, platformActivator.getPosY()-radius);
 		platformActivatorImage.setSize(radius*2, radius*2);
-		frame.setSize(radius*2, radius*2);
-		frame.setPosition(platformActivator.getPosX()-radius, platformActivator.getPosY()-radius);
+		frame.setSize(radius*3, radius*3);
+		frame.setPosition(platformActivator.getPosX()-frame.getWidth()/2, platformActivator.getPosY()-frame.getWidth()/2);
 		frame.setColor(color);
 		
 		this.color = color;	
