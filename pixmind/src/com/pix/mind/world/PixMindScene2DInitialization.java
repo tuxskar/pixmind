@@ -2,9 +2,12 @@ package com.pix.mind.world;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.pix.mind.PixMindGame;
 
 public class PixMindScene2DInitialization {
@@ -15,7 +18,7 @@ public class PixMindScene2DInitialization {
 	float levelSizeWidth;
 	float levelSizeHeight;
 	
-	public PixMindScene2DInitialization(float levelSizeWidth, float levelSizeHeight) {
+	public PixMindScene2DInitialization(float levelSizeWidth, float levelSizeHeight, int levelNumber) {
 		stage = new Stage(PixMindGame.w, PixMindGame.h, true);
 		stageGui = new Stage(PixMindGame.w, PixMindGame.h, true);		
 		Gdx.input.setInputProcessor(stageGui);
@@ -27,7 +30,12 @@ public class PixMindScene2DInitialization {
 		this.levelSizeHeight = levelSizeHeight;
 		
 		
-	
+		//level number in screen
+		LabelStyle labelStyle = new LabelStyle(PixMindGame.getFontLevels(), Color.valueOf("785bc1"));
+		Label levelNum = new Label("Level - "+levelNumber,labelStyle);
+		levelNum.setPosition((PixMindGame.w - levelNum.getWidth())/2, 10);
+		stageGui.addActor(levelNum);
+		
 		//background dimensions
 		
 		float width = PixMindGame.getSkin().getSprite("fondoingame").getWidth();

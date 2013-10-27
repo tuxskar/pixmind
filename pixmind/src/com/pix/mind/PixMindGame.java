@@ -101,6 +101,7 @@ public class PixMindGame extends Game {
 	private static Sound losing;
 	private static Sound menuClick;
 	private static BitmapFont font;
+	private static BitmapFont fontLevels;
 	public static HashMap<Color,String> candyColorToTexture;
 	public static HashMap<Color,String> platformColorToTexture;
 	public static float delta = 0.5f;
@@ -536,6 +537,16 @@ public class PixMindGame extends Game {
 
 	public static void setFont(BitmapFont font) {
 		PixMindGame.font = font;
+	}
+
+
+	public static BitmapFont getFontLevels() {
+		return fontLevels;
+	}
+
+
+	public static void setFontLevels(BitmapFont fontLevels) {
+		PixMindGame.fontLevels = fontLevels;
 	}
 
 }

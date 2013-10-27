@@ -36,7 +36,7 @@ public class StaticPlatformActor extends Group {
 		//		PixMindGame.platformColorToTexture.get(color)));
 		platformImage = new Image(PixMindGame.getSkin().getDrawable(PixMindGame.platformColorToTexture.get(color)));
 		this.addActor(platformImage);
-		frame = new Image(PixMindGame.getSkin().getPatch("frame"));
+		frame = new Image(PixMindGame.getSkin().getPatch("platformframe"));
 		this.addActor(frame);
 		
 		staticPlatform = new StaticPlatform(world, posX, posY, width, height);
