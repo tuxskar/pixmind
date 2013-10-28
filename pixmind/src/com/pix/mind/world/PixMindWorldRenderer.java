@@ -1,7 +1,5 @@
 package com.pix.mind.world;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.MapZoom;
 import com.pix.mind.actors.MenuInGame;
-import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.PixGuy;
 
 public class PixMindWorldRenderer {
@@ -28,7 +25,6 @@ public class PixMindWorldRenderer {
 	private World world;
 	private MenuInGame menuInGame;
 	private Box2DDebugRenderer debugRenderer;
-	PixMindBox2DInitialization box2D;
 	
 	public PixMindWorldRenderer(PixMindScene2DInitialization scene2D,
 			PixMindBox2DInitialization box2D, PixMindGuiInitialization gui) {
@@ -39,7 +35,7 @@ public class PixMindWorldRenderer {
 		this.mapZoom = gui.getMapZoom();
 		this.menuInGame = gui.getMenuInGame();
 		this.world = box2D.getWorld();
-		this.box2D = box2D;
+
 		// set up camera for the debugRenderer
 		camera = new OrthographicCamera(PixMindGame.w
 				* PixMindGame.WORLD_TO_BOX, PixMindGame.h
@@ -53,30 +49,19 @@ public class PixMindWorldRenderer {
 		box2D.getPixGuy().getPixGuySkin().setZIndex(200);
 	
 	}
-boolean pixguyUp= false;
 
 	public void render(float delta) {
-	
+		// debugRenderer.render(world, camera.combined);
 		
 		scene2D.getStage().draw();
 		scene2D.getStageGui().draw();
 
-		System.out.println(contactListener.isCollidingWall());
-		
-	/*	if (pixGuy.body.getLinearVelocity().y > 0) {
+		if (pixGuy.body.getLinearVelocity().y > 0) {
 			pixGuy.body.getFixtureList().get(0).setSensor(true);
 		} else {
 			if (!contactListener.isColliding())
 				pixGuy.body.getFixtureList().get(0).setSensor(false);
-		}*/
-		//setsensor platform when pixguy go up
-		if(pixGuy.body.getLinearVelocity().y > 0){
-			pixguyUp = true;
-		} else{
-			pixguyUp = false;
 		}
-	//	setAllPlatformsToSensor(box2D.platformList);
-		
 
 		if (!mapZoom.isMapActive() && !menuInGame.isActive()) {
 			if (contactListener.getLastPlatformHeight() > pixGuy.getPosY()) {
@@ -167,16 +152,6 @@ boolean pixguyUp= false;
 		if(menuInGame.active){
 			scene2D.getStageGui().act();
 		}
-	//	 debugRenderer.render(world, camera.combined);
-	}
-
-	private void setAllPlatformsToSensor(
-			ArrayList<StaticPlatformActor> platformList) {
-/*	for(StaticPlatformActor staticPlatform : platformList){
-		
-		staticPlatform.
-	}*/
-		
 	}
 
 }

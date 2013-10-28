@@ -182,27 +182,27 @@ public class Level12 extends PixMindLevel {
 	
 			// Add to platform list
 				
-				box2D.getPlatformList().add(sPInit);
-				box2D.getPlatformList().add(sPEnd);
+				box2D.getPlatformList().add(sPInitSkin);
+				box2D.getPlatformList().add(sPEndSkin);
 				
-				box2D.getPlatformList().add(sPFix1);
-				box2D.getPlatformList().add(sPFix2);
-				box2D.getPlatformList().add(sPFix3);
-				box2D.getPlatformList().add(sPFix4);
-				box2D.getPlatformList().add(sPFix5);
+				box2D.getPlatformList().add(sPFix1Skin);
+				box2D.getPlatformList().add(sPFix2Skin);
+				box2D.getPlatformList().add(sPFix3Skin);
+				box2D.getPlatformList().add(sPFix4Skin);
+				box2D.getPlatformList().add(sPFix5Skin);
 				
-				box2D.getPlatformList().add(sP11);
-				box2D.getPlatformList().add(sP21);
-				box2D.getPlatformList().add(sP31);
+				box2D.getPlatformList().add(sP11Skin);
+				box2D.getPlatformList().add(sP21Skin);
+				box2D.getPlatformList().add(sP31Skin);
 				
-				box2D.getPlatformList().add(sPFix6);
-				box2D.getPlatformList().add(sPFix7);
+				box2D.getPlatformList().add(sPFix6Skin);
+				box2D.getPlatformList().add(sPFix7Skin);
 				
-				box2D.getPlatformList().add(sPFix8);
-				box2D.getPlatformList().add(sPFix9);
-				box2D.getPlatformList().add(sPFix10);
-				box2D.getPlatformList().add(sPFix11);
-				box2D.getPlatformList().add(sPFix12);
+				box2D.getPlatformList().add(sPFix8Skin);
+				box2D.getPlatformList().add(sPFix9Skin);
+				box2D.getPlatformList().add(sPFix10Skin);
+				box2D.getPlatformList().add(sPFix11Skin);
+				box2D.getPlatformList().add(sPFix12Skin);
 
 		
 		
@@ -270,15 +270,15 @@ public class Level12 extends PixMindLevel {
 	
 			// Add to activator list
 				
-				box2D.getActivatorList().add(pA11);
-				box2D.getActivatorList().add(pA21);
+				box2D.getActivatorList().add(pA11Skin);
+				box2D.getActivatorList().add(pA21Skin);
 				
-				box2D.getActivatorList().add(pA31);
-				box2D.getActivatorList().add(pA32);
-				box2D.getActivatorList().add(pA33);
-				box2D.getActivatorList().add(pA34);
+				box2D.getActivatorList().add(pA31Skin);
+				box2D.getActivatorList().add(pA32Skin);
+				box2D.getActivatorList().add(pA33Skin);
+				box2D.getActivatorList().add(pA34Skin);
 				
-				box2D.getActivatorList().add(pAEnd);
+				box2D.getActivatorList().add(pAEndSkin);
 		
 		
 

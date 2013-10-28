@@ -10,8 +10,6 @@ import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
-import com.pix.mind.box2d.bodies.PlatformActivator;
-import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixMindBox2DInitialization {
@@ -20,8 +18,8 @@ public class PixMindBox2DInitialization {
 	private Box2DWorldContactListener contactListener;
 	private ActiveColors actColors;
 	private PixMindPixGuyInitialization pixGuy;
-	ArrayList<StaticPlatform> platformList;
-	ArrayList<PlatformActivator> activatorList;
+	ArrayList<StaticPlatformActor> platformList;
+	ArrayList<PlatformActivatorActor> activatorList;
 	
 	public PixMindBox2DInitialization( PixMindScene2DInitialization scene2D, PixMindGame game, int nColors){
 	/** BOX2D SETTINGS **/
@@ -39,8 +37,8 @@ public class PixMindBox2DInitialization {
 		
 		pixGuy = new PixMindPixGuyInitialization(scene2D, game, this);
 		
-		platformList = new ArrayList<StaticPlatform>();
-		activatorList = new ArrayList<PlatformActivator>();
+		platformList = new ArrayList<StaticPlatformActor>();
+		activatorList = new ArrayList<PlatformActivatorActor>();
 		
 		actColors = new ActiveColors(scene2D.getStageGui(), nColors);
 		
@@ -96,29 +94,23 @@ public class PixMindBox2DInitialization {
 	}
 
 
-
-	
-	
-	public ArrayList<StaticPlatform> getPlatformList() {
+	public ArrayList<StaticPlatformActor> getPlatformList() {
 		return platformList;
 	}
 
-
-	public void setPlatformList(ArrayList<StaticPlatform> platformList) {
+	public void setPlatformList(ArrayList<StaticPlatformActor> platformList) {
 		this.platformList = platformList;
 	}
 
 
-	public ArrayList<PlatformActivator> getActivatorList() {
+	public ArrayList<PlatformActivatorActor> getActivatorList() {
 		return activatorList;
 	}
 
 
-	public void setActivatorList(ArrayList<PlatformActivator> activatorList) {
+	public void setActivatorList(ArrayList<PlatformActivatorActor> activatorList) {
 		this.activatorList = activatorList;
 	}
-
-
 	public void resetLists(){
 		platformList.clear();
 		activatorList.clear();

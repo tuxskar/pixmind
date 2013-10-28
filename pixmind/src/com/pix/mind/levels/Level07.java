@@ -90,8 +90,8 @@ public class Level07 extends PixMindLevel {
 		box2D.getPlatformList().add(s4Skin);
 		*//*box2D.getPlatformList().add(s5Skin);
 		box2D.getPlatformList().add(s6Skin);*/
-		box2D.getPlatformList().add( s7Platform);
-		box2D.getPlatformList().add( s8Platform);
+		box2D.getPlatformList().add(s7Skin);
+		box2D.getPlatformList().add(s8Skin);
 
 		// Creating All Activator
 
@@ -140,8 +140,8 @@ public class Level07 extends PixMindLevel {
 		*//*box2D.getActivatorList().add(a2Skin);
 		box2D.getActivatorList().add(a3Skin);
 		box2D.getActivatorList().add(a4Skin);*/
-		box2D.getActivatorList().add(p2Activator);
-		box2D.getActivatorList().add(p5Activator);
+		box2D.getActivatorList().add(a2Skin);
+		box2D.getActivatorList().add(a5Skin);
 
 		// add to stage the group of actors
 

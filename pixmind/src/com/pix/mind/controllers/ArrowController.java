@@ -8,14 +8,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.box2d.bodies.PixGuy;
-import com.pix.mind.world.PixMindBox2DInitialization;
 
 public class ArrowController extends PixGuyController {
 	private Stage stage;
 	boolean movingLeft = false;
 	boolean movingRight = false;
-	PixMindBox2DInitialization box2D;
-	public ArrowController(final PixGuy pixGuy, final Stage stage, PixMindBox2DInitialization box2D) {
+
+	public ArrowController(final PixGuy pixGuy, final Stage stage) {
 		super(pixGuy);
 		this.stage = stage;
 		Drawable arrowTexture = PixMindGame.getSkin().getDrawable("arrow");
@@ -34,7 +33,7 @@ public class ArrowController extends PixGuyController {
 				zoomMargin);
 		this.stage.addActor(leftArrow);
 		this.stage.addActor(rightArrow);
-		this.box2D = box2D;
+
 		stage.addListener(new ActorGestureListener() {
 
 			@Override
@@ -91,7 +90,7 @@ public class ArrowController extends PixGuyController {
 	@Override
 	public void movements() {
 
-		if (isActive() && !box2D.getContactListener().isCollidingWall() ) {
+		if (isActive()) {
 
 			if (movingLeft) {
 				pixGuy.moveLeft(Gdx.graphics.getDeltaTime());

@@ -112,16 +112,16 @@ public class Level06 extends PixMindLevel {
 				scene2D.getGroupStage().addActor(sPFix5Skin);
 
 			// Add to platform list
-				box2D.getPlatformList().add(sPInit);
-				box2D.getPlatformList().add(sPFix1);
-				box2D.getPlatformList().add(sPFix2);
-				box2D.getPlatformList().add(sPFix3);
-				box2D.getPlatformList().add( sP11);
-				box2D.getPlatformList().add( sP21);
-				box2D.getPlatformList().add( sPFix6);
-				box2D.getPlatformList().add(sP31);
-				box2D.getPlatformList().add( sPFix4);
-				box2D.getPlatformList().add(sPFix5);
+				box2D.getPlatformList().add(sPInitSkin);
+				box2D.getPlatformList().add(sPFix1Skin);
+				box2D.getPlatformList().add(sPFix2Skin);
+				box2D.getPlatformList().add(sPFix3Skin);
+				box2D.getPlatformList().add(sP11Skin);
+				box2D.getPlatformList().add(sP21Skin);
+				box2D.getPlatformList().add(sPFix6Skin);
+				box2D.getPlatformList().add(sP31Skin);
+				box2D.getPlatformList().add(sPFix4Skin);
+				box2D.getPlatformList().add(sPFix5Skin);
 
 		
 		// Creating All ACTIVATORS
@@ -161,10 +161,10 @@ public class Level06 extends PixMindLevel {
 				scene2D.getGroupStage().addActor(pAEndSkin);
 
 			// Add to activator list
-				box2D.getActivatorList().add(pA11);
-				box2D.getActivatorList().add(pA21);
-				box2D.getActivatorList().add(pA31);
-				box2D.getActivatorList().add(pAEnd);
+				box2D.getActivatorList().add(pA11Skin);
+				box2D.getActivatorList().add(pA21Skin);
+				box2D.getActivatorList().add(pA31Skin);
+				box2D.getActivatorList().add(pAEndSkin);
 
 		
 		// add to stage the group of actors
