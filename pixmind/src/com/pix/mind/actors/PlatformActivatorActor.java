@@ -78,7 +78,7 @@ public class PlatformActivatorActor extends Group {
 		} else {
 			
 
-			platformActivatorImage.setColor(255,255,255, 0.2f);
+			platformActivatorImage.setColor(255,255,255, PixMindGame.delta);
 			frame.setColor(color.r, color.g, color.b,1f);
 
 			this.active = false;

@@ -13,7 +13,7 @@ public class Level05 extends PixMindLevel {
 	private static final int nActiveColors = 1;
 
 	public Level05(PixMindGame game) {
-		super(game, 845, 650, 1600, 1, 10, nActiveColors);
+		super(game, 845, 650, 900, 1, 9, nActiveColors);
 		this.game = game;
 		levelNumber = 5;
 	}
@@ -40,11 +40,11 @@ public class Level05 extends PixMindLevel {
 
 		// Normal StaticPlatforms
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 1 + wallW / 2, 6, platW - wallW / 2, platH, Color.BLACK, true));
+                new StaticPlatformActor(box2D.getWorld(), 1 + wallW / 2, 5, platW - wallW / 2, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 3 - wallW / 2, 6, platW - wallW / 2, platH, Color.BLUE, true));
+                new StaticPlatformActor(box2D.getWorld(), 3 - wallW / 2, 5, platW - wallW / 2, platH, Color.BLUE, true));
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 2f, 4, platW - 0.2f, platH, Color.BLACK, true));
+                new StaticPlatformActor(box2D.getWorld(), 2f, 3, platW - 0.2f, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 4f, 1f, platW + 0.4f, platH, Color.ORANGE, false));
 		box2D.getPlatformList().add(
@@ -64,9 +64,9 @@ public class Level05 extends PixMindLevel {
 		box2D.getActivatorList().add(
             new PlatformActivatorActor(box2D.getWorld(), 6.5f, 5, Color.BLACK, true));
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 3.5f, 7, Color.BLUE, true));
+            new PlatformActivatorActor(box2D.getWorld(), 3.5f, 6, Color.BLUE, true));
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 1, 5, Color.ORANGE, false));
+            new PlatformActivatorActor(box2D.getWorld(), 1, 4, Color.ORANGE, false));
 
 
 		// Add activators to Stage
