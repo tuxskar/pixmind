@@ -6,10 +6,10 @@ import com.pix.mind.world.PixMindBox2DInitialization;
 
 public class AccController extends PixGuyController {
 	float limit = 0.5f;
-	PixMindBox2DInitialization box2D;
-	public AccController(PixGuy pixGuy, 	PixMindBox2DInitialization box2D) {
+	
+	public AccController(PixGuy pixGuy) {
 		super(pixGuy);
-		this.box2D = box2D;
+	
 	}
 
 	public void movements(){

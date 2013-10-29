@@ -14,11 +14,10 @@ public class ArrowController extends PixGuyController {
 	private Stage stage;
 	boolean movingLeft = false;
 	boolean movingRight = false;
-	PixMindBox2DInitialization box2D;
-	public ArrowController(final PixGuy pixGuy, final Stage stage,	PixMindBox2DInitialization box2D) {
+	
+	public ArrowController(final PixGuy pixGuy, final Stage stage) {
 		super(pixGuy);
 		this.stage = stage;
-		this.box2D = box2D;
 		Drawable arrowTexture = PixMindGame.getSkin().getDrawable("arrow");
 
 		Image leftArrow = new Image(arrowTexture);
