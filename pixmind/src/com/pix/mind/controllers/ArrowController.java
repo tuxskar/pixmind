@@ -8,15 +8,17 @@ import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.box2d.bodies.PixGuy;
+import com.pix.mind.world.PixMindBox2DInitialization;
 
 public class ArrowController extends PixGuyController {
 	private Stage stage;
 	boolean movingLeft = false;
 	boolean movingRight = false;
-
-	public ArrowController(final PixGuy pixGuy, final Stage stage) {
+	PixMindBox2DInitialization box2D;
+	public ArrowController(final PixGuy pixGuy, final Stage stage,	PixMindBox2DInitialization box2D) {
 		super(pixGuy);
 		this.stage = stage;
+		this.box2D = box2D;
 		Drawable arrowTexture = PixMindGame.getSkin().getDrawable("arrow");
 
 		Image leftArrow = new Image(arrowTexture);
@@ -90,7 +92,7 @@ public class ArrowController extends PixGuyController {
 	@Override
 	public void movements() {
 
-		if (isActive()) {
+		if (isActive() ) {
 
 			if (movingLeft) {
 				pixGuy.moveLeft(Gdx.graphics.getDeltaTime());

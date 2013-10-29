@@ -31,6 +31,7 @@ public class Box2DWorldContactListener implements ContactListener {
 	private float anteriorHeight;
 	private Screen nextLevel;
 	private PixMindGuiInitialization gui;
+	private boolean collidingWall= false;
 
 	public Box2DWorldContactListener(PixMindGame game,
 			PixMindBox2DInitialization box2D, ActiveColors actColors) {
@@ -53,12 +54,15 @@ public class Box2DWorldContactListener implements ContactListener {
 
 	}
 
+	
+	Fixture fixWall;
+	
 	@Override
 	public void beginContact(Contact contact) {
 		Fixture fixGuy = null;
 		Fixture fixPlatform = null;
 		Fixture fixActivator = null;
-		Fixture fixWall = null;
+		fixWall = null;
 		Fixture otherContact = null;
 		
 		// get fixture pixguy
@@ -196,8 +200,10 @@ public class Box2DWorldContactListener implements ContactListener {
 
 	
 	private void collisionWithWall(Fixture fixWall, Fixture fixGuy) {
-		 // HAY QUE RETOCARLO, DEBERÍAMOS DESHABILITAR UN CIERTO TIEMPO EL CONTROLADOR O HACER MENOS CONTUNDENTE SU EFECTO
-		if(PixMindGame.infoFx)			
+	collidingWall = true;
+		
+		// HAY QUE RETOCARLO, DEBERÍAMOS DESHABILITAR UN CIERTO TIEMPO EL CONTROLADOR O HACER MENOS CONTUNDENTE SU EFECTO
+	/*	if(PixMindGame.infoFx)			
 		PixMindGame.getBoing().play(0.7f);
 		
 		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
@@ -229,13 +235,32 @@ public class Box2DWorldContactListener implements ContactListener {
 			fixGuy.getBody().setLinearVelocity(- fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
 			fixGuy.getBody().applyLinearImpulse(new Vector2(2.0f, 0.6f), fixGuy.getBody().getWorldCenter(), true);
 			
-		}
+		}*/
 		
 	}
 	
 	@Override
 	public void endContact(Contact contact) {
 		colliding = false;
+		/*if(collidingWall && fixWall !=null)
+		collidingWall= false;*/
+		Fixture otherContact = null;
+		
+		// get fixture pixguy
+			if (contact.getFixtureA().getUserData() instanceof PixGuyActor) {
+				otherContact = contact.getFixtureB();
+			} else {
+				otherContact = contact.getFixtureA();
+			}
+
+		if (otherContact.getUserData() instanceof StaticWallActor) {
+			fixWall = otherContact;
+			System.out.println("Colision MURO");		
+//		}
+		}
+		if(fixWall!=null){
+			collidingWall = false;
+		}
 	}
 
 	@Override
@@ -285,4 +310,13 @@ public class Box2DWorldContactListener implements ContactListener {
 	public void setGui(PixMindGuiInitialization gui) {
 		this.gui = gui;
 	}
+
+	public boolean isCollidingWall() {
+		return collidingWall;
+	}
+
+	public void setCollidingWall(boolean collidingWall) {
+		this.collidingWall = collidingWall;
+	}
+	
 }

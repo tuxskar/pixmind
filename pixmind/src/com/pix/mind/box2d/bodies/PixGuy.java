@@ -47,7 +47,7 @@ public class PixGuy {
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = groundBox;
 		fixtureDef.density = 1f;
-		//fixtureDef.friction = 0.4f;
+		fixtureDef.friction = 0f;
 		//fixtureDef.restitution = 0.5f; // Make it bounce a little bit
 		// Create our fixture and attach it to the body
 		fixture = body.createFixture(fixtureDef);

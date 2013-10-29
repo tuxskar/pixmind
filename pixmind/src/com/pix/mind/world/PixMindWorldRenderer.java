@@ -25,7 +25,7 @@ public class PixMindWorldRenderer {
 	private World world;
 	private MenuInGame menuInGame;
 	private Box2DDebugRenderer debugRenderer;
-	
+	private PixMindBox2DInitialization box2D;
 	public PixMindWorldRenderer(PixMindScene2DInitialization scene2D,
 			PixMindBox2DInitialization box2D, PixMindGuiInitialization gui) {
 		this.scene2D = scene2D;
@@ -35,7 +35,7 @@ public class PixMindWorldRenderer {
 		this.mapZoom = gui.getMapZoom();
 		this.menuInGame = gui.getMenuInGame();
 		this.world = box2D.getWorld();
-
+		this.box2D = box2D;
 		// set up camera for the debugRenderer
 		camera = new OrthographicCamera(PixMindGame.w
 				* PixMindGame.WORLD_TO_BOX, PixMindGame.h
@@ -56,12 +56,14 @@ public class PixMindWorldRenderer {
 		scene2D.getStage().draw();
 		scene2D.getStageGui().draw();
 
-		if (pixGuy.body.getLinearVelocity().y > 0) {
+		/*if (pixGuy.body.getLinearVelocity().y > 0) {
 			pixGuy.body.getFixtureList().get(0).setSensor(true);
 		} else {
 			if (!contactListener.isColliding())
 				pixGuy.body.getFixtureList().get(0).setSensor(false);
-		}
+		}*/
+
+		System.out.println(box2D.getContactListener().isCollidingWall());
 
 		if (!mapZoom.isMapActive() && !menuInGame.isActive()) {
 			if (contactListener.getLastPlatformHeight() > pixGuy.getPosY()) {

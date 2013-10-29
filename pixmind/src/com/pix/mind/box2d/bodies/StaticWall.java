@@ -32,8 +32,8 @@ public class StaticWall {
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = groundBox;
 		fixtureDef.density = 1f;
-//		fixtureDef.friction = 0.4f;
-		fixtureDef.restitution = 0.4f; // Make it bounce a little bit
+		fixtureDef.friction = 0f;
+	//	fixtureDef.restitution = 0.4f; // Make it bounce a little bit
 		// Create our fixture and attach it to the body
 		fixture = groundBody.createFixture(fixtureDef);
 		// fixture.setUserData(PLATFORM_ID);
