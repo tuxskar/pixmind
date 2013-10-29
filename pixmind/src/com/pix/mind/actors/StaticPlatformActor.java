@@ -11,7 +11,7 @@ import com.pix.mind.box2d.bodies.StaticPlatform;
 public class StaticPlatformActor extends Group {
 	StaticPlatform staticPlatform;
 	public Color color;
-	boolean active;
+	public boolean active;
 	Image platformImage;
 	Image frame;
 	public StaticPlatformActor(StaticPlatform platform, Color color,
@@ -62,12 +62,12 @@ public class StaticPlatformActor extends Group {
 
 	public void setActive(boolean active) {
 		if (active) {
-			staticPlatform.fixture.setSensor(false);
+			//staticPlatform.fixture.setSensor(false);
 			platformImage.setColor(255, 255, 255, 1);
 			frame.setColor(Color.CLEAR);
 			this.active = true;
 		} else {
-			staticPlatform.fixture.setSensor(true);
+		//	staticPlatform.fixture.setSensor(true);
 
 			platformImage.setColor(255, 255, 255, PixMindGame.delta);
 			frame.setColor(color.r, color.g, color.b,1f);
