@@ -31,7 +31,7 @@ public class Box2DWorldContactListener implements ContactListener {
 	private float anteriorHeight;
 	private Screen nextLevel;
 	private PixMindGuiInitialization gui;
-	private boolean collidingWall= false;
+//	private boolean collidingWall= false;
 
 	public Box2DWorldContactListener(PixMindGame game,
 			PixMindBox2DInitialization box2D, ActiveColors actColors) {
@@ -200,7 +200,7 @@ public class Box2DWorldContactListener implements ContactListener {
 
 	
 	private void collisionWithWall(Fixture fixWall, Fixture fixGuy) {
-	collidingWall = true;
+//	collidingWall = true;
 		
 		// HAY QUE RETOCARLO, DEBERÍAMOS DESHABILITAR UN CIERTO TIEMPO EL CONTROLADOR O HACER MENOS CONTUNDENTE SU EFECTO
 	/*	if(PixMindGame.infoFx)			
@@ -244,7 +244,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		colliding = false;
 		/*if(collidingWall && fixWall !=null)
 		collidingWall= false;*/
-		Fixture otherContact = null;
+		/*Fixture otherContact = null;
 		
 		// get fixture pixguy
 			if (contact.getFixtureA().getUserData() instanceof PixGuyActor) {
@@ -260,7 +260,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		}
 		if(fixWall!=null){
 			collidingWall = false;
-		}
+		}*/
 	}
 
 	@Override
@@ -311,12 +311,6 @@ public class Box2DWorldContactListener implements ContactListener {
 		this.gui = gui;
 	}
 
-	public boolean isCollidingWall() {
-		return collidingWall;
-	}
 
-	public void setCollidingWall(boolean collidingWall) {
-		this.collidingWall = collidingWall;
-	}
 	
 }

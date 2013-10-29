@@ -63,8 +63,7 @@ public class PixMindWorldRenderer {
 				pixGuy.body.getFixtureList().get(0).setSensor(false);
 		}*/
 
-		System.out.println(box2D.getContactListener().isCollidingWall());
-
+	
 		if (!mapZoom.isMapActive() && !menuInGame.isActive()) {
 			if (contactListener.getLastPlatformHeight() > pixGuy.getPosY()) {
 
