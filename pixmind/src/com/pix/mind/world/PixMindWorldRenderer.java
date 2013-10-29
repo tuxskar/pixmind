@@ -56,7 +56,7 @@ public class PixMindWorldRenderer {
 		scene2D.getStage().draw();
 		scene2D.getStageGui().draw();
 
-		/*if (pixGuy.body.getLinearVelocity().y > 0) {
+	/*	if (pixGuy.body.getLinearVelocity().y > 0) {
 			pixGuy.body.getFixtureList().get(0).setSensor(true);
 		} else {
 			if (!contactListener.isColliding())
