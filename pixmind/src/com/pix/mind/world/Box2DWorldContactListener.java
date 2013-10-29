@@ -200,36 +200,38 @@ public class Box2DWorldContactListener implements ContactListener {
 		if(PixMindGame.infoFx)			
 		PixMindGame.getBoing().play(0.7f);
 		
-		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
-		PixGuyActor pixActor = (PixGuyActor) fixGuy.getUserData();
-		
-		float rW = wallActor.getX() + (wallActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
-		float lW = wallActor.getX() - (wallActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
-		
-		float rP = pixActor.getX() + (pixActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
-		float lP = pixActor.getX() - (pixActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
-		
+//		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
+//		PixGuyActor pixActor = (PixGuyActor) fixGuy.getUserData();
+//		
+//		float rW = wallActor.getX() + (wallActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
+//		float lW = wallActor.getX() - (wallActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
+//		
+//		float rP = pixActor.getX() + (pixActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
+//		float lP = pixActor.getX() - (pixActor.getWidth() * PixMindGame.WORLD_TO_BOX) / 2;
+//		
 		
 		//fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
-		
-		fixGuy.getBody().setLinearVelocity(0, 0);
 		
 		float velActualX = fixGuy.getBody().getLinearVelocity().x;
 		float velActualY = fixGuy.getBody().getLinearVelocity().y;
 		
-		if (fixGuy.getBody().getPosition().x < fixWall.getBody().getPosition().x){
-			
-			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
-			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
-			
-			
-		}
-		else{
-			
-			fixGuy.getBody().setLinearVelocity(- fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
-			fixGuy.getBody().applyLinearImpulse(new Vector2(2.0f, 0.6f), fixGuy.getBody().getWorldCenter(), true);
-			
-		}
+//		fixGuy.getBody().setLinearVelocity(0, 0);
+//		fixGuy.getBody().setTransform(fixGuy.getBody().getPosition().x, fixGuy.getBody().getPosition().y, 0);
+//		fixGuy.getBody().applyLinearImpulse(new Vector2(-velActualX, velActualY), fixGuy.getBody().getWorldCenter(), true);
+		
+//		if (fixGuy.getBody().getPosition().x < fixWall.getBody().getPosition().x){
+//			
+//			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+//			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+//			
+//			
+//		}
+//		else{
+//			
+//			fixGuy.getBody().setLinearVelocity(- fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+//			fixGuy.getBody().applyLinearImpulse(new Vector2(2.0f, 0.6f), fixGuy.getBody().getWorldCenter(), true);
+//			
+//		}
 		
 	}
 	
