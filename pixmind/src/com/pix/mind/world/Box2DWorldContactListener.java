@@ -77,9 +77,9 @@ public class Box2DWorldContactListener implements ContactListener {
 		// get fixture Platform
 			if (otherContact.getUserData() instanceof StaticPlatformActor) {
 				fixPlatform = otherContact;
-				 StaticPlatformActor staticplatformActor = (StaticPlatformActor) fixPlatform.getUserData();
+				// StaticPlatformActor staticplatformActor = (StaticPlatformActor) fixPlatform.getUserData();
 				// jump only if collide with a platform and its not sensor
-				if (staticplatformActor.active){
+				if (!fixPlatform.isSensor()){
 					System.out.println("Colision PLATAFORMA");
 					collisionWithPlatform(fixPlatform, fixGuy);
 				}
@@ -170,8 +170,8 @@ public class Box2DWorldContactListener implements ContactListener {
 		float bottomPosGuy = fixGuy.getBody().getPosition().y
 				- PixGuy.pixHeight * PixMindGame.WORLD_TO_BOX / 2;
 
-	//	if (bottomPosGuy >= topPosPlatform) {
-		if (fixGuy.getBody().getLinearVelocity().y<0) {
+		if (bottomPosGuy >= topPosPlatform) {
+		//if (fixGuy.getBody().getLinearVelocity().y<0) {
 			if(PixMindGame.infoFx)			
 				PixMindGame.getBoing().play(0.7f);
 			anteriorHeight = lastPlatformHeight;
