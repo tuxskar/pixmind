@@ -234,7 +234,7 @@ public class Level01 extends PixMindLevel {
 
             // Box2D platforms
             StaticPlatform sPlatform = new StaticPlatform(box2D.getWorld(), 1.7f, 0.1f,
-                            1f, 0.1f);
+                            1f, 1f);
             StaticPlatform s2Platform = new StaticPlatform(box2D.getWorld(), 4.7f, 0.1f,
                             1, 0.1f);
 

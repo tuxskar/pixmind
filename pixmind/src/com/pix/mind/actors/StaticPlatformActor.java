@@ -9,11 +9,12 @@ import com.pix.mind.PixMindGame;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 
 public class StaticPlatformActor extends Group {
-	StaticPlatform staticPlatform;
+	public StaticPlatform staticPlatform;
 	public Color color;
 	public boolean active;
 	Image platformImage;
 	Image frame;
+	public boolean sensor;
 	public StaticPlatformActor(StaticPlatform platform, Color color,
 			boolean active) {
 		//super(PixMindGame.getSkin().getDrawable(
@@ -58,6 +59,7 @@ public class StaticPlatformActor extends Group {
 		this.color = color;
 		this.active = active;
 		this.setActive(active);
+		
 	}
 
 	public void setActive(boolean active) {
@@ -76,5 +78,27 @@ public class StaticPlatformActor extends Group {
 			this.active = false;
 		}
 	}
+
+	@Override
+	public float getWidth() {
+		// TODO Auto-generated method stub
+	return platformImage.getWidth();
+	}
+
+	@Override
+	public float getHeight() {
+		// TODO Auto-generated method stub
+		return platformImage.getHeight();
+	}
+
+
+	public void setSensor(boolean sensor) {
+
+		staticPlatform.fixture.setSensor(sensor);
+		
+	}
+
+
+	
 
 }

@@ -1,5 +1,6 @@
 package com.pix.mind.world;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,7 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.MapZoom;
 import com.pix.mind.actors.MenuInGame;
+import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.PixGuy;
+import com.pix.mind.box2d.bodies.PlatformActivator;
 
 public class PixMindWorldRenderer {
 
@@ -63,6 +66,23 @@ public class PixMindWorldRenderer {
 				pixGuy.body.getFixtureList().get(0).setSensor(false);
 		}*/
 
+		//making all platforms sensor when pixguy go up
+		if (pixGuy.body.getLinearVelocity().y > 0) {
+			for(StaticPlatformActor sp : box2D.platformList ){
+				//if(!sp.color.equals(Color.BLACK)){
+				sp.setSensor(true);
+			
+			//	}
+			}
+		}
+		 else { //if go down and is not colliding set sensor to the active state
+			 if (!contactListener.isColliding())
+				 for(StaticPlatformActor sp : box2D.platformList ){
+						sp.setSensor(!sp.active);
+					}
+		}
+
+		
 	
 		if (!mapZoom.isMapActive() && !menuInGame.isActive()) {
 			if (contactListener.getLastPlatformHeight() > pixGuy.getPosY()) {
