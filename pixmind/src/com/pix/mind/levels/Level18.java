@@ -40,11 +40,11 @@ public class Level18 extends PixMindLevel {
 								
 								
 								// plataforma fija 1
-								StaticPlatform sPFix1 = new StaticPlatform(box2D.getWorld(), 2.8f, 6.0f, 
+								StaticPlatform sPFix1 = new StaticPlatform(box2D.getWorld(), 2.6f, 6.0f, 
 										1.4f, 0.12f);
 								
 								// plataforma fija 2
-								StaticPlatform sPFix2 = new StaticPlatform(box2D.getWorld(), 5.9f, 6.0f, 
+								StaticPlatform sPFix2 = new StaticPlatform(box2D.getWorld(), 6.1f, 6.0f, 
 										1.15f, 0.12f);
 
 								
