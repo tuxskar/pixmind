@@ -129,13 +129,15 @@ public class Level18 extends PixMindLevel {
 								// activador 2.2 (activador de plataforma 2, aparicion 2)
 								PlatformActivator pA22 = new PlatformActivator(box2D.getWorld(), 4.3f, 4.6f, 0.2f);
 								// activador 2.3 (activador de plataforma 2, aparicion 3)
-								PlatformActivator pA23 = new PlatformActivator(box2D.getWorld(), 2.5f, 1.1f, 0.2f);
+								PlatformActivator pA23 = new PlatformActivator(box2D.getWorld(), 2.5f, 1.2f, 0.2f);
 								
 								
 								// activador 3
 								
 								// activador 3.1 (activador de plataforma 3, aparicion 1)
 								PlatformActivator pA31 = new PlatformActivator(box2D.getWorld(), 5.1f, 7.5f, 0.2f);
+								// activador 3.2 (activador de plataforma 3, aparicion 2)
+								PlatformActivator pA32 = new PlatformActivator(box2D.getWorld(), 1.8f, 2.4f, 0.2f);
 								
 								
 								// activador FIN DE FASE 12
@@ -158,6 +160,8 @@ public class Level18 extends PixMindLevel {
 								
 								PlatformActivatorActor pA31Skin = new PlatformActivatorActor(pA31,
 										Color.ORANGE, false);
+								PlatformActivatorActor pA32Skin = new PlatformActivatorActor(pA32,
+										Color.ORANGE, false);
 
 								PlatformActivatorActor pAEndSkin = new PlatformActivatorActor(pAEnd,
 										Color.BLACK, true);
@@ -173,6 +177,7 @@ public class Level18 extends PixMindLevel {
 								scene2D.getGroupStage().addActor(pA23Skin);
 								
 								scene2D.getGroupStage().addActor(pA31Skin);
+								scene2D.getGroupStage().addActor(pA32Skin);
 								
 								scene2D.getGroupStage().addActor(pAEndSkin);
 					
@@ -186,6 +191,7 @@ public class Level18 extends PixMindLevel {
 								box2D.getActivatorList().add(pA23Skin);
 								
 								box2D.getActivatorList().add(pA31Skin);
+								box2D.getActivatorList().add(pA32Skin);
 								
 								box2D.getActivatorList().add(pAEndSkin);
 
