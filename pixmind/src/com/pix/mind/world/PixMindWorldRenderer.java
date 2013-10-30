@@ -1,5 +1,6 @@
 package com.pix.mind.world;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,7 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.MapZoom;
 import com.pix.mind.actors.MenuInGame;
+import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.PixGuy;
+import com.pix.mind.box2d.bodies.PlatformActivator;
 
 public class PixMindWorldRenderer {
 
@@ -25,7 +28,7 @@ public class PixMindWorldRenderer {
 	private World world;
 	private MenuInGame menuInGame;
 	private Box2DDebugRenderer debugRenderer;
-	
+	private PixMindBox2DInitialization box2D;
 	public PixMindWorldRenderer(PixMindScene2DInitialization scene2D,
 			PixMindBox2DInitialization box2D, PixMindGuiInitialization gui) {
 		this.scene2D = scene2D;
@@ -35,7 +38,7 @@ public class PixMindWorldRenderer {
 		this.mapZoom = gui.getMapZoom();
 		this.menuInGame = gui.getMenuInGame();
 		this.world = box2D.getWorld();
-
+		this.box2D = box2D;
 		// set up camera for the debugRenderer
 		camera = new OrthographicCamera(PixMindGame.w
 				* PixMindGame.WORLD_TO_BOX, PixMindGame.h
@@ -56,13 +59,31 @@ public class PixMindWorldRenderer {
 		scene2D.getStage().draw();
 		scene2D.getStageGui().draw();
 
-		if (pixGuy.body.getLinearVelocity().y > 0) {
+	/*	if (pixGuy.body.getLinearVelocity().y > 0) {
 			pixGuy.body.getFixtureList().get(0).setSensor(true);
 		} else {
 			if (!contactListener.isColliding())
 				pixGuy.body.getFixtureList().get(0).setSensor(false);
+		}*/
+
+		//making all platforms sensor when pixguy go up
+		if (pixGuy.body.getLinearVelocity().y > 0) {
+			for(StaticPlatformActor sp : box2D.platformList ){
+				//if(!sp.color.equals(Color.BLACK)){
+				sp.setSensor(true);
+			
+			//	}
+			}
+		}
+		 else { //if go down and is not colliding set sensor to the active state
+			 if (!contactListener.isColliding())
+				 for(StaticPlatformActor sp : box2D.platformList ){
+						sp.setSensor(!sp.active);
+					}
 		}
 
+		
+	
 		if (!mapZoom.isMapActive() && !menuInGame.isActive()) {
 			if (contactListener.getLastPlatformHeight() > pixGuy.getPosY()) {
 

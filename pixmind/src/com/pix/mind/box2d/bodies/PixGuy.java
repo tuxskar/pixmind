@@ -29,6 +29,7 @@ public class PixGuy {
 		// We set our body to dynamic, for something like ground which doesn't
 		// move we would set it to StaticBody
 		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.bullet = true;
 		// Set our body's starting position in the world
 		setPosition(posX, posY);
 		bodyDef.position.set(this.posX, this.posY);
@@ -47,7 +48,8 @@ public class PixGuy {
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = groundBox;
 		fixtureDef.density = 1f;
-		//fixtureDef.friction = 0.4f;
+		fixtureDef.friction = 0f;
+		
 		//fixtureDef.restitution = 0.5f; // Make it bounce a little bit
 		// Create our fixture and attach it to the body
 		fixture = body.createFixture(fixtureDef);

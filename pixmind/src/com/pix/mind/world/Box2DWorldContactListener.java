@@ -31,6 +31,7 @@ public class Box2DWorldContactListener implements ContactListener {
 	private float anteriorHeight;
 	private Screen nextLevel;
 	private PixMindGuiInitialization gui;
+//	private boolean collidingWall= false;
 
 	public Box2DWorldContactListener(PixMindGame game,
 			PixMindBox2DInitialization box2D, ActiveColors actColors) {
@@ -53,12 +54,15 @@ public class Box2DWorldContactListener implements ContactListener {
 
 	}
 
+	
+	Fixture fixWall;
+	
 	@Override
 	public void beginContact(Contact contact) {
 		Fixture fixGuy = null;
 		Fixture fixPlatform = null;
 		Fixture fixActivator = null;
-		Fixture fixWall = null;
+		fixWall = null;
 		Fixture otherContact = null;
 		
 		// get fixture pixguy
@@ -73,8 +77,9 @@ public class Box2DWorldContactListener implements ContactListener {
 		// get fixture Platform
 			if (otherContact.getUserData() instanceof StaticPlatformActor) {
 				fixPlatform = otherContact;
+				 StaticPlatformActor staticplatformActor = (StaticPlatformActor) fixPlatform.getUserData();
 				// jump only if collide with a platform and its not sensor
-				if (!fixPlatform.isSensor()){
+				if (staticplatformActor.active){
 					System.out.println("Colision PLATAFORMA");
 					collisionWithPlatform(fixPlatform, fixGuy);
 				}
@@ -94,7 +99,7 @@ public class Box2DWorldContactListener implements ContactListener {
 					collisionWithWall(fixWall, fixGuy);
 //				}
 			}
-		colliding = true;
+		
 	}
 
 	private void collisionWithActivator(Fixture fixActivator) {
@@ -158,14 +163,16 @@ public class Box2DWorldContactListener implements ContactListener {
 	private void collisionWithPlatform(Fixture fixPlatform, Fixture fixGuy) {
 		// only jump if bottom position of pixguy is equal or above of top
 		// position of the platform
+		colliding = true;
 		StaticPlatformActor platformActor = (StaticPlatformActor) fixPlatform
 				.getUserData();
 		float topPosPlatform = fixPlatform.getBody().getPosition().y
 				+ platformActor.getHeight() * PixMindGame.WORLD_TO_BOX / 2;
 		float bottomPosGuy = fixGuy.getBody().getPosition().y
 				- PixGuy.pixHeight * PixMindGame.WORLD_TO_BOX / 2;
-
+		System.out.println("bottom guy "+ bottomPosGuy + " top platform "+topPosPlatform);		
 		if (bottomPosGuy >= topPosPlatform) {
+	//	if (fixGuy.getBody().getLinearVelocity().y<0) {
 			if(PixMindGame.infoFx)			
 				PixMindGame.getBoing().play(0.7f);
 			anteriorHeight = lastPlatformHeight;
@@ -196,8 +203,10 @@ public class Box2DWorldContactListener implements ContactListener {
 
 	
 	private void collisionWithWall(Fixture fixWall, Fixture fixGuy) {
-		 // HAY QUE RETOCARLO, DEBERÍAMOS DESHABILITAR UN CIERTO TIEMPO EL CONTROLADOR O HACER MENOS CONTUNDENTE SU EFECTO
-		if(PixMindGame.infoFx)			
+//	collidingWall = true;
+		
+		// HAY QUE RETOCARLO, DEBERÍAMOS DESHABILITAR UN CIERTO TIEMPO EL CONTROLADOR O HACER MENOS CONTUNDENTE SU EFECTO
+	/*	if(PixMindGame.infoFx)			
 		PixMindGame.getBoing().play(0.7f);
 		
 //		StaticWallActor wallActor = (StaticWallActor) fixWall.getUserData();
@@ -215,6 +224,7 @@ public class Box2DWorldContactListener implements ContactListener {
 		float velActualX = fixGuy.getBody().getLinearVelocity().x;
 		float velActualY = fixGuy.getBody().getLinearVelocity().y;
 		
+<<<<<<< HEAD
 //		fixGuy.getBody().setLinearVelocity(0, 0);
 //		fixGuy.getBody().setTransform(fixGuy.getBody().getPosition().x, fixGuy.getBody().getPosition().y, 0);
 //		fixGuy.getBody().applyLinearImpulse(new Vector2(-velActualX, velActualY), fixGuy.getBody().getWorldCenter(), true);
@@ -232,12 +242,46 @@ public class Box2DWorldContactListener implements ContactListener {
 //			fixGuy.getBody().applyLinearImpulse(new Vector2(2.0f, 0.6f), fixGuy.getBody().getWorldCenter(), true);
 //			
 //		}
+=======
+		if (fixGuy.getBody().getPosition().x < fixWall.getBody().getPosition().x){
+			
+			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+			fixGuy.getBody().setLinearVelocity(fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+			
+			
+		}
+		else{
+			
+			fixGuy.getBody().setLinearVelocity(- fixGuy.getBody().getLinearVelocity().x, fixGuy.getBody().getLinearVelocity().y);
+			fixGuy.getBody().applyLinearImpulse(new Vector2(2.0f, 0.6f), fixGuy.getBody().getWorldCenter(), true);
+			
+		}*/
+
 		
 	}
 	
 	@Override
 	public void endContact(Contact contact) {
 		colliding = false;
+		/*if(collidingWall && fixWall !=null)
+		collidingWall= false;*/
+		/*Fixture otherContact = null;
+		
+		// get fixture pixguy
+			if (contact.getFixtureA().getUserData() instanceof PixGuyActor) {
+				otherContact = contact.getFixtureB();
+			} else {
+				otherContact = contact.getFixtureA();
+			}
+
+		if (otherContact.getUserData() instanceof StaticWallActor) {
+			fixWall = otherContact;
+			System.out.println("Colision MURO");		
+//		}
+		}
+		if(fixWall!=null){
+			collidingWall = false;
+		}*/
 	}
 
 	@Override
@@ -287,4 +331,7 @@ public class Box2DWorldContactListener implements ContactListener {
 	public void setGui(PixMindGuiInitialization gui) {
 		this.gui = gui;
 	}
+
+
+	
 }

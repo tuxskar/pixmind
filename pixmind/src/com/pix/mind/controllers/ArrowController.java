@@ -8,12 +8,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.box2d.bodies.PixGuy;
+import com.pix.mind.world.PixMindBox2DInitialization;
 
 public class ArrowController extends PixGuyController {
 	private Stage stage;
 	boolean movingLeft = false;
 	boolean movingRight = false;
-
+	
 	public ArrowController(final PixGuy pixGuy, final Stage stage) {
 		super(pixGuy);
 		this.stage = stage;
@@ -90,7 +91,7 @@ public class ArrowController extends PixGuyController {
 	@Override
 	public void movements() {
 
-		if (isActive()) {
+		if (isActive() ) {
 
 			if (movingLeft) {
 				pixGuy.moveLeft(Gdx.graphics.getDeltaTime());

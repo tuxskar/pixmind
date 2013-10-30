@@ -13,13 +13,15 @@ public class PixMindPixGuyInitialization {
 	private PixGuy pixGuy;
 	private PixGuyController controller;
 	private Image pixGuySkin;
-
+	PixMindBox2DInitialization box2D;
 	public PixMindPixGuyInitialization(PixMindScene2DInitialization scene2D, PixMindGame game,
 			PixMindBox2DInitialization box2D) {
 		// main character initialization
 		pixGuy = new PixGuy(box2D.getWorld(), 0.35f, 0.35f);
 		pixGuySkin = new PixGuyActor(pixGuy);
+		this.box2D = box2D;
 		// setting controller
+		
 		if (PixMindGame.infoController){
 			controller = new AccController(pixGuy);			
 		}
