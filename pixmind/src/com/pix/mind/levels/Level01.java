@@ -314,11 +314,11 @@ public class Level01 extends PixMindLevel {
     	
     	//System.out.println("y " + box2D.getPixGuy().getPixGuySkin().getY());
     	time = time +delta;    
-        if(time >0.65f && tutoState ==0){
+        if(box2D.getPixGuy().getPixGuySkin().getY() > 75 && box2D.getPixGuy().getPixGuySkin().getY() < 85 && tutoState ==0){
             	 showFirstStep();
             	 this.worldRenderer.render = false;	
         }
-        if(time >0.85f && tutoState ==1){
+        if(box2D.getPixGuy().getPixGuySkin().getY() > 75 && box2D.getPixGuy().getPixGuySkin().getY() < 85 && tutoState ==1){
        	 showSecondStep();
        	 this.worldRenderer.render = false;	
    }  
@@ -337,6 +337,10 @@ public class Level01 extends PixMindLevel {
 	Gdx.input.setInputProcessor(stageTutorial);
     	
 		// TODO Auto-generated method stub
+	bubble1.getColor().a = 0;
+	bubble2.getColor().a = 0;
+	bubble3.getColor().a = 0;   	
+	bubble4.getColor().a = 0;
       	bubble1.addAction(Actions.sequence(Actions.fadeIn( 0.3f)));
     	bubble2.addAction(Actions.sequence(Actions.fadeIn(0.6f)));	
     	bubble3.addAction(Actions.sequence(Actions.fadeIn(0.9f)));	
@@ -370,7 +374,14 @@ public class Level01 extends PixMindLevel {
 	private void showSecondStep() {
     	Gdx.input.setInputProcessor(stageTutorial);
     	
+    	
 		// TODO Auto-generated method stub
+    	
+    	bubble1.getColor().a = 0;
+    	bubble2.getColor().a = 0;
+    	bubble3.getColor().a = 0;   	
+    	bubble4.getColor().a = 0;
+    	
       	bubble1.addAction(Actions.sequence(Actions.fadeIn( 0.3f)));
     	bubble2.addAction(Actions.sequence(Actions.fadeIn(0.6f)));	
     	bubble3.addAction(Actions.sequence(Actions.fadeIn(0.9f)));	
@@ -405,12 +416,15 @@ public class Level01 extends PixMindLevel {
     
     private void showFirstStep() {
     	//delete pixguy actions
-    	if(box2D.getPixGuy().getPixGuySkin().getActions().size>0){
+    	/*if(box2D.getPixGuy().getPixGuySkin().getActions().size>0){
     		box2D.getPixGuy().getPixGuySkin().removeAction(box2D.getPixGuy().getPixGuySkin().getActions().get(0));    		
-    	}
+    	}*/
     	
     	Gdx.input.setInputProcessor(stageTutorial);    
- 	
+    	bubble1.getColor().a = 0;
+    	bubble2.getColor().a = 0;
+    	bubble3.getColor().a = 0;   	
+    	bubble4.getColor().a = 0;
     	bubble1.addAction(Actions.sequence(Actions.fadeIn( 0.3f)));
     	bubble2.addAction(Actions.sequence(Actions.fadeIn(0.6f)));	
     	bubble3.addAction(Actions.sequence(Actions.fadeIn(0.9f)));	
@@ -447,10 +461,7 @@ public class Level01 extends PixMindLevel {
     	bubble3 = new Image(PixMindGame.getSkin().getDrawable("bubble3"));
     	bubble4 = new Image(PixMindGame.getSkin().getDrawable("bubble4"));
     
-    	bubble1.getColor().a = 0;
-    	bubble2.getColor().a = 0;
-    	bubble3.getColor().a = 0;   	
-    	bubble4.getColor().a = 0;
+    
     	
     		
     	
@@ -471,9 +482,13 @@ public class Level01 extends PixMindLevel {
 			l2.remove();
 			tutoState++;	
 			bubble1.remove();
+			bubble1.clear();
 			bubble2.remove();
-			bubble3.remove();
+			bubble2.clear();
+			bubble3.remove();			
+			bubble3.clear();
 			bubble4.remove();
+			bubble4.clear();
 			time=0;
 			return super.touchDown(event, x, y, pointer, button);
 			
