@@ -14,7 +14,7 @@ public class PixMindLevel implements Screen {
 	
 	// VARIABLES COMUNES A TODOS LOS NIVELES ///////////
 	PixMindGame game;
-	PixMindWorldRenderer worldRenderer;
+	public PixMindWorldRenderer worldRenderer;
 	PixMindScene2DInitialization scene2D;
 	PixMindBox2DInitialization box2D;
 	PixMindGuiInitialization gui;

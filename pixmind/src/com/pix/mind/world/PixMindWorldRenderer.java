@@ -29,6 +29,13 @@ public class PixMindWorldRenderer {
 	private MenuInGame menuInGame;
 	private Box2DDebugRenderer debugRenderer;
 	private PixMindBox2DInitialization box2D;
+	public boolean render=true;
+	
+	
+	public OrthographicCamera getCamera() {
+		return camera;
+	}
+
 	public PixMindWorldRenderer(PixMindScene2DInitialization scene2D,
 			PixMindBox2DInitialization box2D, PixMindGuiInitialization gui) {
 		this.scene2D = scene2D;
@@ -65,7 +72,7 @@ public class PixMindWorldRenderer {
 			if (!contactListener.isColliding())
 				pixGuy.body.getFixtureList().get(0).setSensor(false);
 		}*/
-
+if(render){
 		//making all platforms sensor when pixguy go up
 		if (pixGuy.body.getLinearVelocity().y > 0) {
 			for(StaticPlatformActor sp : box2D.platformList ){
@@ -174,5 +181,5 @@ public class PixMindWorldRenderer {
 			scene2D.getStageGui().act();
 		}
 	}
-
+	}
 }
