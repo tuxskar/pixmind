@@ -76,15 +76,15 @@ public class MainMenuScreen implements Screen {
 			im.setRotation((float) (b.getAngle()*360/(2*Math.PI)));
 		}
 		time = time + delta;
-		if(time >0.4f  && randomTime ==0){
+		if(time >0.2f  && randomTime ==0){
 			randomTime = (float) Math.random();			
 		}
-		if(time>0.4f && randomTime!=0){
+		if(time>0.2f && randomTime!=0){
 			float randomPosition = (float) Math.random()*PixMindGame.w*PixMindGame.WORLD_TO_BOX;		
 			float randomRotation = (float) Math.random()*90;	
 			float randomCandy = (float) Math.random()*4;		
-			System.out.print(randomCandy+ " - ");
-			System.out.println((int) randomCandy);
+		//	System.out.print(randomCandy+ " - ");
+		//	System.out.println((int) randomCandy);
 			
 			generateCandy(world,randomPosition,6.8f,randomRotation, candiesDrawables[(int) randomCandy]);
 			time=0;
@@ -104,7 +104,7 @@ public class MainMenuScreen implements Screen {
 			im.setRotation((float) (b.getAngle()*360/(2*Math.PI)));*/
 		}
 		
-		System.out.print("size: " + candies.size());
+	//	System.out.print("size: " + candies.size());
 	}
 
 	@Override
@@ -371,6 +371,7 @@ public class MainMenuScreen implements Screen {
 		
 		candies.add(body);
 		
+		groundBox.dispose();
 		
 		
 		
@@ -414,7 +415,7 @@ public class MainMenuScreen implements Screen {
 		mainMenuStage.addActor(platformImage);
 		
 
-	
+		groundBox.dispose();
 		
 	
 	}
