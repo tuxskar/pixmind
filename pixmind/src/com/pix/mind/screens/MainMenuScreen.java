@@ -69,6 +69,7 @@ public class MainMenuScreen implements Screen {
 		mainMenuStage.act();
 		mainMenuStage.draw();
 		world.step(delta,  6, 2);
+		
 	//	debugRenderer.render(world, camera.combined);
 		for(Body b : candies){
 			Image im = (Image)b.getFixtureList().get(0).getUserData();
@@ -442,7 +443,9 @@ public class MainMenuScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 		mainMenuStage.dispose();		
-	   		
+	   	world.dispose();
+	   	candies.clear();
+	   	
 	}
 
 }
