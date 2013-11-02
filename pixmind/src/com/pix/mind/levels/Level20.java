@@ -9,7 +9,7 @@ import com.pix.mind.world.PixMindWorldRenderer;
 public class Level20 extends PixMindLevel {
 	public String levelTitle = "Level20";
 	PixMindGame game;
-	private static final int nActiveColors = 3;
+	private static final int nActiveColors = 2;
 	public Level20(PixMindGame game) {
         super(game, 1280, 1024, 600, 8, 5, nActiveColors);
 		this.game = game;
@@ -36,9 +36,9 @@ public class Level20 extends PixMindLevel {
 		box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 12 + deltaX, 6 + deltaY, platW, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 12 + deltaX, 5 + deltaY, platW, platH, Color.BLACK, true));
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 12 + deltaX, 4 + deltaY, platW/2, platH, Color.BLACK, true));
+                new StaticPlatformActor(box2D.getWorld(), 12 + deltaX, 5 + deltaY, platW/2, platH, Color.BLACK, true));
+//		box2D.getPlatformList().add(
+//                new StaticPlatformActor(box2D.getWorld(), 12 + deltaX, 4 + deltaY, platW/2, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 14 + deltaX, 7 + deltaY, platW/2, platH, Color.BLACK, true));
 		box2D.getPlatformList().add(
@@ -54,7 +54,7 @@ public class Level20 extends PixMindLevel {
 
 		// Coloured StaticPlatforms
         box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 12 + deltaX, 3 + deltaY, platW, platH, Color.BLUE, false));
+                new StaticPlatformActor(box2D.getWorld(), 12 + deltaX, 4 + deltaY, platW, platH, Color.BLUE, false));
         box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 14 + deltaX, 11 + deltaY, platW, platH, Color.ORANGE, false));
         box2D.getPlatformList().add(
@@ -67,7 +67,7 @@ public class Level20 extends PixMindLevel {
 		box2D.getActivatorList().add(
             new PlatformActivatorActor(box2D.getWorld(), 6 + deltaX, 12 + deltaY, Color.BLACK, true));
 		box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 12 + deltaX, 3.5f + deltaY, Color.ORANGE, false));
+            new PlatformActivatorActor(box2D.getWorld(), 12 + deltaX, 5.5f + deltaY, Color.ORANGE, false));
 		box2D.getActivatorList().add(
             new PlatformActivatorActor(box2D.getWorld(), 11 + deltaX, 9 + deltaY, Color.RED, false));
 		box2D.getActivatorList().add(
