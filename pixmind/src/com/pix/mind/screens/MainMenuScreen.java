@@ -96,9 +96,10 @@ public class MainMenuScreen implements Screen {
 		for(int i = 0; i<candies.size();i++){
 			if(candies.get(i).getFixtureList().get(0).getBody().getPosition().y < 0){
 				Image image = 	(Image) candies.get(i).getFixtureList().get(0).getUserData();
-				image.remove();
+				image.remove();				
+				world.destroyBody(candies.get(i));
 				candies.remove(i);
-				//candies.trimToSize();
+				
 			}
 		/*	Image im = (Image)b.getFixtureList().get(0).getUserData();
 			im.setPosition((b.getPosition().x - 0.2f)*PixMindGame.BOX_TO_WORLD, (b.getPosition().y-0.2f)*PixMindGame.BOX_TO_WORLD);					
