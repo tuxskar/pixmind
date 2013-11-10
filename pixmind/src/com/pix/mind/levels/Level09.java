@@ -201,7 +201,7 @@ public class Level09 extends PixMindLevel {
 						PlatformActivator pA34 = new PlatformActivator(box2D.getWorld(), 3.8f, 4.1f, 0.2f);
 						
 						
-						// activador FIN DE FASE 12
+						// activador FIN DE FASE 9
 						PlatformActivator pAEnd = new PlatformActivator(box2D.getWorld(), 6.0f, 1.7f, 0.35f);
 						
 						// activador FIN DE FASE 12 TROLL (imposible alcanzar)
