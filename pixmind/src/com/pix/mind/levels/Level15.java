@@ -9,6 +9,7 @@ import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
+
 public class Level15 extends PixMindLevel {
 
 	

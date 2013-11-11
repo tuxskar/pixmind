@@ -9,9 +9,11 @@ import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
+
 public class Level24 extends PixMindLevel {
 	
 
+	/* JUAN: LEVEL 24*/
 	public String levelTitle = "LevelTwentyfour";
 	PixMindGame game;
 	private static final int nActiveColors = 2;

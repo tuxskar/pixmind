@@ -6,7 +6,11 @@ import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.world.PixMindWorldRenderer;
 
+
 public class Level20 extends PixMindLevel {
+	
+	
+	/* JUAN: LEVEL 20*/
 	public String levelTitle = "Level20";
 	PixMindGame game;
 	private static final int nActiveColors = 1;
