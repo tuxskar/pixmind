@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
+import com.pix.mind.actors.StaticWallActor;
 import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
@@ -30,8 +31,13 @@ public class Level15 extends PixMindLevel {
 		super.setNextLevel(game.getLevel16());
 		super.setActiveLevel(this);
 		// CREANDO EL NIVEL
+		
+		// Creating All Statics Walls
+		
+			scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 5.4f, 6.1f, 0.02f, 1.2f));
 
 		// Creating All STATIC PLATFORMS
+		
 
 			// Box2D platforms
 
@@ -154,7 +160,7 @@ public class Level15 extends PixMindLevel {
 						3.8f, 0.2f);
 				// activador 2.3 (activador de plataforma 2, aparicion 3)
 				PlatformActivator pA23 = new PlatformActivator(box2D.getWorld(), 5.6f,
-						4.1f, 0.2f);
+						4.17f, 0.18f);
 				// activador 2.4 (activador de plataforma 2, aparicion 4)
 				PlatformActivator pA24 = new PlatformActivator(box2D.getWorld(), 6.6f,
 						3.4f, 0.2f);
