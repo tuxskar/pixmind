@@ -28,8 +28,9 @@ public class LevelSelector1Screen implements Screen {
 	private PixMindGame game;
 	private Stage levelStage;
 	private Image backgroundImage;
-	
+
 	Map<Integer, PixMindLevel> mapa;
+
 	public LevelSelector1Screen(PixMindGame game) {
 		super();
 		this.game = game;
@@ -53,27 +54,28 @@ public class LevelSelector1Screen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		
+
 		// Saving preferences: Levels that player have passed
-		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
-		int topLevel = prefs.getInteger("topLevel", 1);
-		System.out.println("Top Level is "+ topLevel);
-		
+		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");
+//		int topLevel = prefs.getInteger("topLevel", 1);
+		int topLevel = 12;
+		System.out.println("Top Level is " + topLevel);
+
 		levelStage = new Stage(PixMindGame.w, PixMindGame.h, true);
 
 		Gdx.input.setInputProcessor(levelStage);
 		Gdx.input.setCatchBackKey(true);
-		Group levelGroup = new Group(); // to move according to the resolutuion
+		Group levelGroup = new Group(); // to move according to the resolution
 
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable(
 				"emptyscreen"));
 		backgroundImage.setColor(Color.valueOf("6fb2efAA"));
-		
+
 		levelGroup.addActor(backgroundImage);
 
-		int pantalla = 1; 
-		
-		mapa =  new HashMap<Integer, PixMindLevel>();
+		int pantalla = 1;
+
+		mapa = new HashMap<Integer, PixMindLevel>();
 		mapa.put(1, game.getLevel01());
 		mapa.put(2, game.getLevel02());
 		mapa.put(3, game.getLevel03());
@@ -86,13 +88,12 @@ public class LevelSelector1Screen implements Screen {
 		mapa.put(10, game.getLevel10());
 		mapa.put(11, game.getLevel11());
 		mapa.put(12, game.getLevel12());
-		
-		
+
 		BitmapFont font = PixMindGame.getFont();
 		font.setScale(1);
-		
+
 		// frame must be square...
-		
+
 		float frameSize = 80;
 
 		float horizontalMargin = (640 - frameSize * 4) / 5;
@@ -104,108 +105,103 @@ public class LevelSelector1Screen implements Screen {
 		for (int fila = 1; fila <= 3; fila++) {
 			for (int columna = 1; columna <= 4; columna++) {
 				Image im = new Image(PixMindGame.getSkin().getDrawable(
-						"levelframe" ));
-						
-				if(topLevel>=pantalla)
-				im.addListener(new Listener(pantalla));
-				
-						
+						"levelframe"));
+
+				if (topLevel >= pantalla)
+					im.addListener(new Listener(pantalla));
+
 				im.setSize(frameSize, frameSize);
 				posicionFrame.add(horizontalMargin, 0);
 				im.setPosition(posicionFrame.x, posicionFrame.y);
 				levelGroup.addActor(im);
 				posicionFrame.add(frameSize, 0);
-					
-				if(topLevel<pantalla){
-					im.setColor(im.getColor().r, im.getColor().g, im.getColor().b, 0.3f);
-					Image lock = new Image(PixMindGame.getSkin().getDrawable("lock"));
-					
-					lock.setPosition(posicionFrame.x-frameSize/2 - lock.getWidth()/2, posicionFrame.y+(frameSize-lock.getHeight())/2);
-					levelGroup.addActor(lock);	
-				}else{
-					LabelStyle style = new LabelStyle(font, Color.WHITE) ; 
-					Label label = new Label(String.valueOf(pantalla), style);		
-					label.setTouchable(Touchable.disabled);	
-					label.setPosition(posicionFrame.x-frameSize/2 - label.getWidth()/2, posicionFrame.y+(frameSize-label.getHeight())/2);
-					levelGroup.addActor(label);		
-				
+
+				if (topLevel < pantalla) {
+					im.setColor(im.getColor().r, im.getColor().g,
+							im.getColor().b, 0.3f);
+					Image lock = new Image(PixMindGame.getSkin().getDrawable(
+							"lock"));
+
+					lock.setPosition(
+							posicionFrame.x - frameSize / 2 - lock.getWidth()
+									/ 2,
+							posicionFrame.y + (frameSize - lock.getHeight())
+									/ 2);
+					levelGroup.addActor(lock);
+				} else {
+					LabelStyle style = new LabelStyle(font, Color.WHITE);
+					Label label = new Label(String.valueOf(pantalla), style);
+					label.setTouchable(Touchable.disabled);
+					label.setPosition(
+							posicionFrame.x - frameSize / 2 - label.getWidth()
+									/ 2,
+							posicionFrame.y + (frameSize - label.getHeight())
+									/ 2);
+					levelGroup.addActor(label);
+
 				}
-				
-				pantalla ++;
+
+				pantalla++;
 			}
 			posicionFrame.set(107, 480 - (verticalMargin + frameSize)
 					* (fila + 1));
 		}
 
-		
-		
-		
 		levelGroup.setPosition(-(854 - PixMindGame.w) / 2, 0);
 		levelStage.addActor(levelGroup);
-		
-		
-		
+
 		Image next = new Image(PixMindGame.getSkin().getDrawable("arrow1"));
-		next.addListener(new ActorGestureListener(){
+		next.addListener(new ActorGestureListener() {
 
 			@Override
 			public void touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				super.touchDown(event, x, y, pointer, button);
-				if(PixMindGame.infoFx)
-					PixMindGame.getMenuClick().play(0.3f);		
+				if (PixMindGame.infoFx)
+					PixMindGame.getMenuClick().play(0.3f);
 				game.changeLevel(game.getLevelSelector2Screen());
 			}
-			
-			
-			
+
 		});
-		
+
 		Image previous = new Image(PixMindGame.getSkin().getDrawable("arrow"));
-		previous.addListener(new ActorGestureListener(){
+		previous.addListener(new ActorGestureListener() {
 
 			@Override
 			public void touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				super.touchDown(event, x, y, pointer, button);
-				if(PixMindGame.infoFx)
-					PixMindGame.getMenuClick().play(0.3f);		
+				if (PixMindGame.infoFx)
+					PixMindGame.getMenuClick().play(0.3f);
 				game.changeLevel(game.getMainMenuScreen());
 			}
-			
-			
-			
+
 		});
-		
-		
-		
-		
-		//next.setOrigin(next.getWidth()/2, next.getHeight()/2);
-	//	next.rotate(180);
-		
-		next.setPosition(PixMindGame.w - next.getWidth()-10, 10);
-		previous.setPosition(10,10);
+
+		// next.setOrigin(next.getWidth()/2, next.getHeight()/2);
+		// next.rotate(180);
+
+		next.setPosition(PixMindGame.w - next.getWidth() - 10, 10);
+		previous.setPosition(10, 10);
 		levelStage.addActor(next);
 		levelStage.addActor(previous);
-		
-		
-		levelStage.addListener(new InputListener(){
+
+		levelStage.addListener(new InputListener() {
 
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
 				// TODO Auto-generated method stub
-				
-				if(keycode == Keys.BACK){
-					if(PixMindGame.infoFx)
-						PixMindGame.getMenuClick().play(0.3f);		
+
+				if (keycode == Keys.BACK) {
+					if (PixMindGame.infoFx)
+						PixMindGame.getMenuClick().play(0.3f);
 					game.changeLevel(game.getMainMenuScreen());
 				}
 				return true;
 			}
-			
-			
+
 		});
 
 	}
@@ -233,24 +229,25 @@ public class LevelSelector1Screen implements Screen {
 		// TODO Auto-generated method stub
 		levelStage.dispose();
 	}
-	
-	class Listener extends ActorGestureListener{
-	int pantalla;
-	public Listener(int pantalla){
-	this.pantalla = pantalla;
-	}
-	@Override
-	public void touchDown(InputEvent event, float x, float y, int pointer,
-			int button) {
-		// TODO Auto-generated method stub
-		super.touchDown(event, x, y, pointer, button);
-		if(PixMindGame.infoFx)
-			PixMindGame.getMenuClick().play(0.3f);		
-		game.changeLevel(mapa.get(pantalla));
-		
-	}
-	
-	
+
+	class Listener extends ActorGestureListener {
+		int pantalla;
+
+		public Listener(int pantalla) {
+			this.pantalla = pantalla;
+		}
+
+		@Override
+		public void touchDown(InputEvent event, float x, float y, int pointer,
+				int button) {
+			// TODO Auto-generated method stub
+			super.touchDown(event, x, y, pointer, button);
+			if (PixMindGame.infoFx)
+				PixMindGame.getMenuClick().play(0.3f);
+			game.changeLevel(mapa.get(pantalla));
+
+		}
+
 	}
 
 }
