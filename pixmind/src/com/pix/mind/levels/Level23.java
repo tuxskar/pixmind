@@ -53,11 +53,13 @@ public class Level23 extends PixMindLevel {
 			
 			/* 08 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 9.6f, 7.6f, 0.03f, 0.3f));
 			
-			/* 09 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 14.0f, 13.1f, 0.03f, 1.0f));
+			/* 09 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 14.0f, 12.8f, 0.03f, 1.0f));
 			
-			/* 10 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 18.6f, 7.9f, 0.03f, 1.7f));
+			/* 10 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 18.6f, 7.65f, 0.03f, 1.5f));
 			
 			/* 11 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 18.8f, 5.7f, 0.03f, 0.17f));
+			
+			/* 12 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 10.1f, 7.6f, 0.03f, 0.3f));
 
 
 		// Creating All Static Platforms
@@ -68,27 +70,27 @@ public class Level23 extends PixMindLevel {
 				
 					// plataforma fija 1
 					StaticPlatform sPFix1 = new StaticPlatform(box2D.getWorld(), 5.0f, 6.95f, 
-						0.03f, 0.03f);
+						0.033f, 0.01f);
 					
 					// plataforma fija 2
-					StaticPlatform sPFix2 = new StaticPlatform(box2D.getWorld(), 7.0f, 7.0f, 
-						0.03f, 0.1f);
+					StaticPlatform sPFix2 = new StaticPlatform(box2D.getWorld(), 7.0f, 6.95f, 
+						0.033f, 0.01f);
 					
 					// plataforma fija 3
-					StaticPlatform sPFix3 = new StaticPlatform(box2D.getWorld(), 8.0f, 7.4f, 
-						0.03f, 0.1f);
+					StaticPlatform sPFix3 = new StaticPlatform(box2D.getWorld(), 8.0f, 7.35f, 
+						0.033f, 0.01f);
 					
 					// plataforma fija 4
-					StaticPlatform sPFix4 = new StaticPlatform(box2D.getWorld(), 7.0f, 8.6f, 
-						0.03f, 0.1f);
+					StaticPlatform sPFix4 = new StaticPlatform(box2D.getWorld(), 7.0f, 8.71f, 
+						0.033f, 0.01f);
 					
 					// plataforma fija 5
-					StaticPlatform sPFix5 = new StaticPlatform(box2D.getWorld(), 8.0f, 9.8f, 
-						0.03f, 0.1f);
+					StaticPlatform sPFix5 = new StaticPlatform(box2D.getWorld(), 8.0f, 9.71f, 
+						0.033f, 0.01f);
 					
 					// plataforma fija 6
-					StaticPlatform sPFix6 = new StaticPlatform(box2D.getWorld(), 8.6f, 9.8f, 
-						0.03f, 0.1f);
+					StaticPlatform sPFix6 = new StaticPlatform(box2D.getWorld(), 8.6f, 9.71f, 
+						0.033f, 0.01f);
 					
 					// plataforma fija 7
 					StaticPlatform sPFix7 = new StaticPlatform(box2D.getWorld(), 14.7f, 9.8f, 
@@ -99,15 +101,23 @@ public class Level23 extends PixMindLevel {
 						0.8f, 0.07f);
 					
 					// plataforma fija 9
-					StaticPlatform sPFix9 = new StaticPlatform(box2D.getWorld(), 18.65f, 7.4f, 
+					StaticPlatform sPFix9 = new StaticPlatform(box2D.getWorld(), 18.65f, 7.0f, 
 						0.05f, 0.05f);
 					
 					// plataforma fija 10
-					StaticPlatform sPFix10 = new StaticPlatform(box2D.getWorld(), 18.65f, 8.6f, 
+					StaticPlatform sPFix10 = new StaticPlatform(box2D.getWorld(), 18.65f, 8.0f, 
 						0.05f, 0.05f);
 					
 					// plataforma fija 11
 					StaticPlatform sPFix11 = new StaticPlatform(box2D.getWorld(), 9.6f, 7.8f, 
+						0.03f, 0.1f);
+					
+					// plataforma fija 12
+					StaticPlatform sPFix12 = new StaticPlatform(box2D.getWorld(), 18.6f, 9.15f, 
+						0.032f, 0.01f);
+					
+					// plataforma fija 13
+					StaticPlatform sPFix13 = new StaticPlatform(box2D.getWorld(), 10.1f, 7.8f, 
 						0.03f, 0.1f);
 					
 					
@@ -124,7 +134,7 @@ public class Level23 extends PixMindLevel {
 				//COLOR 2
 					
 					// plataforma sP21 (color 2, aparicion 1)
-					StaticPlatform sP21 = new StaticPlatform(box2D.getWorld(), 11.6f, 10.8f, 
+					StaticPlatform sP21 = new StaticPlatform(box2D.getWorld(), 11.9f, 10.9f, 
 							1.0f, 0.11f);
 					
 					// plataforma sP22 (color 2, aparicion 2)
@@ -148,7 +158,7 @@ public class Level23 extends PixMindLevel {
 				//COLOR 4
 					
 					// plataforma sP41 (color 4, aparicion 1)
-					StaticPlatform sP41 = new StaticPlatform(box2D.getWorld(), 12.6f, 11.9f, 
+					StaticPlatform sP41 = new StaticPlatform(box2D.getWorld(), 12.6f, 11.7f, 
 							1.5f, 0.11f);
 					
 					// plataforma sP42 (color 4, aparicion 2)
@@ -181,26 +191,30 @@ public class Level23 extends PixMindLevel {
 						Color.BLACK, true);
 				StaticPlatformActor sPFix11Skin = new StaticPlatformActor(sPFix11,
 						Color.BLACK, true);
+				StaticPlatformActor sPFix12Skin = new StaticPlatformActor(sPFix12,
+						Color.BLACK, true);
+				StaticPlatformActor sPFix13Skin = new StaticPlatformActor(sPFix13,
+						Color.BLACK, true);
 				
 				
 				StaticPlatformActor sP11Skin = new StaticPlatformActor(sP11,
-						Color.BLUE, true);
+						Color.BLUE, false);
 				StaticPlatformActor sP12Skin = new StaticPlatformActor(sP12,
-						Color.BLUE, true);
+						Color.BLUE, false);
 				
 				
 				StaticPlatformActor sP21Skin = new StaticPlatformActor(sP21,
-						Color.ORANGE, true);
+						Color.ORANGE, false);
 				StaticPlatformActor sP22Skin = new StaticPlatformActor(sP22,
-						Color.ORANGE, true);
+						Color.ORANGE, false);
 				StaticPlatformActor sP23Skin = new StaticPlatformActor(sP23,
-						Color.ORANGE, true);
+						Color.ORANGE, false);
 				
 				
 				StaticPlatformActor sP31Skin = new StaticPlatformActor(sP31,
-						Color.RED, true);
+						Color.RED, false);
 				StaticPlatformActor sP32Skin = new StaticPlatformActor(sP32,
-						Color.RED, true);
+						Color.RED, false);
 				
 				
 				StaticPlatformActor sP41Skin = new StaticPlatformActor(sP41,
@@ -223,6 +237,8 @@ public class Level23 extends PixMindLevel {
 				scene2D.getGroupStage().addActor(sPFix9Skin);
 				scene2D.getGroupStage().addActor(sPFix10Skin);
 				scene2D.getGroupStage().addActor(sPFix11Skin);
+				scene2D.getGroupStage().addActor(sPFix12Skin);
+				scene2D.getGroupStage().addActor(sPFix13Skin);
 				
 				
 				scene2D.getGroupStage().addActor(sP11Skin);
@@ -256,6 +272,8 @@ public class Level23 extends PixMindLevel {
 				box2D.getPlatformList().add(sPFix9Skin);
 				box2D.getPlatformList().add(sPFix10Skin);
 				box2D.getPlatformList().add(sPFix11Skin);
+				box2D.getPlatformList().add(sPFix12Skin);
+				box2D.getPlatformList().add(sPFix13Skin);
 				
 				
 				box2D.getPlatformList().add(sP11Skin);
@@ -284,7 +302,7 @@ public class Level23 extends PixMindLevel {
 			// Box2D Activator
 				
 				// activador 1.X (activador de plataforma 1, apariciones de la 1 a la 7)
-				PlatformActivator pA11 = new PlatformActivator(box2D.getWorld(),  5.5f, 6.5f, 0.2f);
+				PlatformActivator pA11 = new PlatformActivator(box2D.getWorld(),  5.5f, 6.4f, 0.13f);
 				
 				
 				// activador 2.X (activador de plataforma 2, apariciones de la 1 a la 3)
@@ -300,21 +318,23 @@ public class Level23 extends PixMindLevel {
 				
 				PlatformActivator pA32 = new PlatformActivator(box2D.getWorld(), 4.5f, 8.8f, 0.2f);
 				
-				PlatformActivator pA33 = new PlatformActivator(box2D.getWorld(), 5.6f, 7.0f, 0.18f);
+				PlatformActivator pA33 = new PlatformActivator(box2D.getWorld(), 5.46f, 6.77f, 0.185f);
 				
-				PlatformActivator pA34 = new PlatformActivator(box2D.getWorld(), 8.45f, 10.5f, 0.2f);
+				PlatformActivator pA34 = new PlatformActivator(box2D.getWorld(), 8.40f, 10.4f, 0.2f);
 				
 				PlatformActivator pA35 = new PlatformActivator(box2D.getWorld(), 9.3f, 7.6f, 0.20f);
 				
-				PlatformActivator pA36 = new PlatformActivator(box2D.getWorld(), 9.9f, 7.6f, 0.20f);
+				PlatformActivator pA36 = new PlatformActivator(box2D.getWorld(), 9.85f, 7.5f, 0.15f);
 				
 				PlatformActivator pA37 = new PlatformActivator(box2D.getWorld(), 17.6f, 7.0f, 0.30f);
 				
 				PlatformActivator pA38 = new PlatformActivator(box2D.getWorld(), 19.55f, 6.7f, 0.20f);
 				
+				PlatformActivator pA39 = new PlatformActivator(box2D.getWorld(), 10.4f, 7.6f, 0.20f);
+				
 				
 				// activador 4.X (activador de plataforma 4, apariciones 1 y 2)
-				PlatformActivator pA41 = new PlatformActivator(box2D.getWorld(), 12.9f, 13.1f, 0.25f);
+				PlatformActivator pA41 = new PlatformActivator(box2D.getWorld(), 12.9f, 12.5f, 0.25f);
 				
 				// activador FIN DE FASE 23
 				PlatformActivator pAEnd = new PlatformActivator(box2D.getWorld(), 25.5f, 10.8f, 1.0f);
@@ -349,6 +369,8 @@ public class Level23 extends PixMindLevel {
 						Color.RED, false);
 				PlatformActivatorActor pA38Skin = new PlatformActivatorActor(pA38,
 						Color.RED, false);
+				PlatformActivatorActor pA39Skin = new PlatformActivatorActor(pA39,
+						Color.RED, false);
 				
 				PlatformActivatorActor pA41Skin = new PlatformActivatorActor(pA41,
 						Color.GREEN, false);
@@ -374,6 +396,7 @@ public class Level23 extends PixMindLevel {
 				scene2D.getGroupStage().addActor(pA36Skin);
 				scene2D.getGroupStage().addActor(pA37Skin);
 				scene2D.getGroupStage().addActor(pA38Skin);
+				scene2D.getGroupStage().addActor(pA39Skin);
 				
 				scene2D.getGroupStage().addActor(pA41Skin);
 				
@@ -397,6 +420,7 @@ public class Level23 extends PixMindLevel {
 				box2D.getActivatorList().add(pA36Skin);
 				box2D.getActivatorList().add(pA37Skin);
 				box2D.getActivatorList().add(pA38Skin);
+				box2D.getActivatorList().add(pA39Skin);
 				
 				box2D.getActivatorList().add(pA41Skin);
 				
