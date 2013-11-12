@@ -22,18 +22,18 @@ public class SplashScreen implements  Screen{
 	public SplashScreen(PixMindGame game) {
 		this.game = game;
 	}
-	
+	float time =0;
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-
+		time = time + delta;
 		Gdx.gl.glClearColor(0, 0, 0, 1); 
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT); 
 
 		stageSplash.draw();
 		
 		// waiting for it to finish loading the game atlas
-		if (game.getAssetManager().update()) {
+		if (game.getAssetManager().update() && time>2) {
 	
 			PixMindGame.setSkin(new Skin(game.getAssetManager().get(
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));

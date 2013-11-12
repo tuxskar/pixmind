@@ -22,7 +22,7 @@ public class MapZoom {
 	private boolean hidingMap = false;
 	private Image zoomInActor, zoomOutActor;
 	private PixGuyController controller;
-
+	public boolean touchedOnce = false;
 	private Box2DWorldContactListener contactListener;
 	private float levelSizeWidth;
 	private float levelSizeHeight;
@@ -120,6 +120,7 @@ public class MapZoom {
 				controller.setActive(true);
 				zoomOutActor.remove();
 				scene2D.getStageGui().addActor(zoomInActor);
+				touchedOnce = true;
 				return true;
 			}
 			
@@ -139,6 +140,10 @@ public class MapZoom {
 		this.levelSizeWidth = levelSizeWidth;
 		this.levelSizeHeight = levelSizeHeight;		
 		scene2D.getGroupStage().setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
+	}
+
+	public void setMapActive(boolean mapActive) {
+		this.mapActive = mapActive;
 	}
 	
 	

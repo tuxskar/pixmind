@@ -35,6 +35,8 @@ public class StaticPlatform {
 			FixtureDef fixtureDef = new FixtureDef();
 			fixtureDef.shape = groundBox;
 			fixtureDef.density = 0.5f; 
+			fixtureDef.isSensor = true; //dont collide phisically but register collide information
+			
 			//fixtureDef.friction = 0.4f;
 			//fixtureDef.restitution = 0.6f; // Make it bounce a little bit
 			// Create our fixture and attach it to the body

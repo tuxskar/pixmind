@@ -4,9 +4,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
+import com.pix.mind.actors.StaticWallActor;
 import com.pix.mind.box2d.bodies.PlatformActivator;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
+
 
 public class Level15 extends PixMindLevel {
 
@@ -30,8 +32,13 @@ public class Level15 extends PixMindLevel {
 		super.setNextLevel(game.getLevel16());
 		super.setActiveLevel(this);
 		// CREANDO EL NIVEL
+		
+		// Creating All Statics Walls
+		
+			scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 5.4f, 6.1f, 0.02f, 1.2f));
 
 		// Creating All STATIC PLATFORMS
+		
 
 			// Box2D platforms
 
@@ -48,8 +55,8 @@ public class Level15 extends PixMindLevel {
 						7.0f, 0.4f, 0.1f);
 				
 				// plataforma sP11 (color 1, aparicion 1)
-				StaticPlatform sP11 = new StaticPlatform(box2D.getWorld(), 0.2f, 
-						2.4f, 1.0f, 0.1f);
+				StaticPlatform sP11 = new StaticPlatform(box2D.getWorld(), -0.1f, 
+						2.4f, 0.7f, 0.1f);
 				
 				// plataforma sP21 (color 2, aparicion 1)
 				StaticPlatform sP21 = new StaticPlatform(box2D.getWorld(), 2.8f, 
@@ -65,7 +72,7 @@ public class Level15 extends PixMindLevel {
 				
 				// plataforma fija 3
 				StaticPlatform sPFix3 = new StaticPlatform(box2D.getWorld(), 10.2f,
-						4.8f, 1.1f, 0.1f);
+						4.5f, 1.1f, 0.1f);
 				
 				// plataforma sP13 (color 1, aparicion 3)
 				StaticPlatform sP13 = new StaticPlatform(box2D.getWorld(), 9.5f, 
@@ -129,7 +136,7 @@ public class Level15 extends PixMindLevel {
 				// activador 1
 
 				// activador 1.1 (activador de plataforma 1, aparicion 1)
-				PlatformActivator pA11 = new PlatformActivator(box2D.getWorld(), 1.0f,
+				PlatformActivator pA11 = new PlatformActivator(box2D.getWorld(), 0.8f,
 						7.5f, 0.2f);
 				// activador 1.2 (activador de plataforma 1, aparicion 2)
 				PlatformActivator pA12 = new PlatformActivator(box2D.getWorld(), 0.5f,
@@ -154,7 +161,7 @@ public class Level15 extends PixMindLevel {
 						3.8f, 0.2f);
 				// activador 2.3 (activador de plataforma 2, aparicion 3)
 				PlatformActivator pA23 = new PlatformActivator(box2D.getWorld(), 5.6f,
-						4.1f, 0.2f);
+						4.17f, 0.18f);
 				// activador 2.4 (activador de plataforma 2, aparicion 4)
 				PlatformActivator pA24 = new PlatformActivator(box2D.getWorld(), 6.6f,
 						3.4f, 0.2f);
