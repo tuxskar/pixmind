@@ -38,15 +38,16 @@ import com.pix.mind.levels.Level22;
 import com.pix.mind.levels.Level23;
 import com.pix.mind.levels.Level24;
 import com.pix.mind.levels.SecondLevel;
+import com.pix.mind.screens.MainMenuScreen;
 import com.pix.mind.screens.LevelSelector1Screen;
 import com.pix.mind.screens.LevelSelector2Screen;
-import com.pix.mind.screens.MainMenuScreen;
+import com.pix.mind.screens.OldMainMenuScreen;
 import com.pix.mind.screens.OptionsMenuScreen;
 import com.pix.mind.screens.SplashScreen;
 
 public class PixMindGame extends Game {
 	
-	private MainMenuScreen mainMenu;
+	private OldMainMenuScreen mainMenu;
 	// for to know what controller create for playing the game (when the level is created, its check what controller have to create for pixGuy)
 	public static boolean infoController = true;
 	// for to know if we are playing with music or not, in each level we need to check this for to play or not the music
@@ -86,6 +87,8 @@ public class PixMindGame extends Game {
 	private SplashScreen splashScreen;
 	private LevelSelector1Screen levelSelector1Screen;
 	private LevelSelector2Screen levelSelector2Screen;
+	private MainMenuScreen mainMenuScreen;
+		
 	
 	public static final float WORLD_TO_BOX = 0.01f;
 	public static final float BOX_TO_WORLD = 100f;
@@ -118,7 +121,7 @@ public class PixMindGame extends Game {
 		
 		w = h * Gdx.graphics.getWidth()/Gdx.graphics.getHeight();	
 		assetManager = new AssetManager();	
-		mainMenu = new MainMenuScreen(this);
+		mainMenu = new OldMainMenuScreen(this);
 		
 		
 		level01 = new Level01(this);
@@ -164,6 +167,7 @@ public class PixMindGame extends Game {
 		platformColorToTexture.put(Color.BLACK, "blackplatform");					
 		
 		optionsMenu = new OptionsMenuScreen(this);
+		mainMenuScreen = new MainMenuScreen(this);
 		splashScreen = new SplashScreen(this);
 		
 		levelSelector1Screen = new LevelSelector1Screen(this);
@@ -202,9 +206,7 @@ public class PixMindGame extends Game {
 		return splashScreen;
 	}
 	
-	public MainMenuScreen getMainMenuScreen() {
-		return mainMenu;
-	}
+	
 	
 	public OptionsMenuScreen getOptionsMenuScreen() {
 		return optionsMenu;
@@ -549,4 +551,13 @@ public class PixMindGame extends Game {
 		PixMindGame.fontLevels = fontLevels;
 	}
 
+
+	public MainMenuScreen getMainMenuScreen() {
+		return mainMenuScreen;
+	}
+
+
+
+
+	
 }

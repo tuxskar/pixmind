@@ -22,7 +22,6 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.scenes.scene2d.Event;
@@ -36,24 +35,22 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.pix.mind.BodyEditorLoader;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.StaticPlatformActor;
 import com.pix.mind.box2d.bodies.StaticPlatform;
 
-public class MainMenuScreen implements Screen {
+public class OldMainMenuScreen implements Screen {
 	private Drawable[] candiesDrawables = new Drawable[4] ; 
 	
-	static final float candySize = 0.2f;
+	
 	private PixMindGame game;
 	Stage mainMenuStage;
 	Image playImageS2D, optionsImageS2D, exitImageS2D, titleImageS2D, backgroundImage, background;
 	World world;
-	Image sweet, mind, sweetes;
 	private OrthographicCamera camera;
 	private Box2DDebugRenderer debugRenderer;
 	private ArrayList<Body> candies;
-	public MainMenuScreen(PixMindGame game) {
+	public OldMainMenuScreen(PixMindGame game) {
 		super();
 		this.game = game;
 		
@@ -73,17 +70,17 @@ public class MainMenuScreen implements Screen {
 		mainMenuStage.draw();
 		world.step(delta,  6, 2);
 		
-		//debugRenderer.render(world, camera.combined);
+	//	debugRenderer.render(world, camera.combined);
 		for(Body b : candies){
 			Image im = (Image)b.getFixtureList().get(0).getUserData();
-			im.setPosition((b.getPosition().x - candySize)*PixMindGame.BOX_TO_WORLD, (b.getPosition().y-candySize)*PixMindGame.BOX_TO_WORLD);					
-			im.setRotation(-45+(float) (b.getAngle()*360/(2*Math.PI)));
+			im.setPosition((b.getPosition().x - 0.2f)*PixMindGame.BOX_TO_WORLD, (b.getPosition().y-0.2f)*PixMindGame.BOX_TO_WORLD);					
+			im.setRotation((float) (b.getAngle()*360/(2*Math.PI)));
 		}
 		time = time + delta;
-		if(time >0.7f  && randomTime ==0){
+		if(time >0.2f  && randomTime ==0){
 			randomTime = (float) Math.random();			
 		}
-		if(time>0.7f && randomTime!=0){
+		if(time>0.2f && randomTime!=0){
 			float randomPosition = (float) Math.random()*PixMindGame.w*PixMindGame.WORLD_TO_BOX;		
 			float randomRotation = (float) Math.random()*90;	
 			float randomCandy = (float) Math.random()*4;		
@@ -132,16 +129,13 @@ public class MainMenuScreen implements Screen {
 		//to move according to the resolutuion, we create a group to put inside all menu elements
 		Group menuGroup = new Group(); //to move according to the resolutuion
 		background = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
-		background.setColor(Color.valueOf("ff8000AA"));
+		background.setColor(Color.valueOf("6fb2efAA"));
 		
 		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("personaje fondo"));
 		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play no selec"));
 		optionsImageS2D = new Image(PixMindGame.getSkin().getDrawable("options no selec"));
 		exitImageS2D = new Image(PixMindGame.getSkin().getDrawable("exit no selec"));
 		titleImageS2D = new Image(PixMindGame.getSkin().getDrawable("sweetmind"));
-		sweet = new Image(PixMindGame.getSkin().getDrawable("sweet"));
-		mind = new Image(PixMindGame.getSkin().getDrawable("mind"));
-		sweetes = new Image(PixMindGame.getSkin().getDrawable("caramelos1"));
 		
 		
 		// adding actor listeners
@@ -240,17 +234,15 @@ public class MainMenuScreen implements Screen {
 		
 		
 		// setting actors positions
-		playImageS2D.setPosition((PixMindGame.w/2)-playImageS2D.getWidth()/2-200, 330);
-		optionsImageS2D.setPosition((PixMindGame.w/2)-optionsImageS2D.getWidth()/2, 330);
-		exitImageS2D.setPosition((PixMindGame.w/2)-exitImageS2D.getWidth()/2+200, 330);
+		playImageS2D.setPosition(50, 240);
+		optionsImageS2D.setPosition(50, 140);
+		exitImageS2D.setPosition(50, 40);
 		titleImageS2D.setPosition((PixMindGame.w/2)-titleImageS2D.getWidth()/2, 350);
 		background.setPosition((PixMindGame.w/2)-background.getWidth()/2, 0);
 		backgroundImage.setPosition(PixMindGame.w-backgroundImage.getWidth(), 0);
 		playImageS2D.setScale(0.9f);
 		optionsImageS2D.setScale(0.9f);
 		exitImageS2D.setScale(0.9f);
-		
-		
 	/*	Interpolation interpolation = Interpolation.linear;
 		playImageS2D.setOrigin(playImageS2D.getWidth()/2, playImageS2D.getHeight()/2);
 		//playImageS2D.setRotation(-1);
@@ -273,14 +265,11 @@ public class MainMenuScreen implements Screen {
 
 		// adding actors to the stage (to an stage group)
 		mainMenuStage.addActor(background);
-	//	mainMenuStage.addActor(backgroundImage);
+		mainMenuStage.addActor(backgroundImage);
 		mainMenuStage.addActor(playImageS2D);
 		mainMenuStage.addActor(optionsImageS2D);
 		mainMenuStage.addActor(exitImageS2D);
-		//mainMenuStage.addActor(titleImageS2D);
-		//mainMenuStage.addActor(sweet);
-		//mainMenuStage.addActor(mind);
-	//	mainMenuStage.addActor(sweetes);
+		mainMenuStage.addActor(titleImageS2D);
 
 	
 		
@@ -316,18 +305,13 @@ public class MainMenuScreen implements Screen {
 		camera.translate(PixMindGame.w / 2 * PixMindGame.WORLD_TO_BOX,
 				PixMindGame.h / 2 * PixMindGame.WORLD_TO_BOX);
 	
-	/*	generatePlatform(world,  +PixMindGame.w* PixMindGame.WORLD_TO_BOX*0.22f,  3, PixMindGame.w / 4.4f* PixMindGame.WORLD_TO_BOX,  0.1f,  - (float)Math.PI/5.4f);
+		generatePlatform(world,  +PixMindGame.w* PixMindGame.WORLD_TO_BOX*0.22f,  3, PixMindGame.w / 4.4f* PixMindGame.WORLD_TO_BOX,  0.1f,  - (float)Math.PI/5.4f);
 		generatePlatform(world,  PixMindGame.w* PixMindGame.WORLD_TO_BOX-PixMindGame.w* PixMindGame.WORLD_TO_BOX*0.22f,  3,   PixMindGame.w / 4.4f* PixMindGame.WORLD_TO_BOX,0.1f,   (float)Math.PI/5.4f);
 		generatePlatform(world, PixMindGame.w* PixMindGame.WORLD_TO_BOX/2,  0.1f,  1.5f, 0.1f,  0);
-       */
+       
 		//generateCandy(world,2,4,10, PixMindGame.getSkin().getDrawable("redcandy"));
-		generateSweet(world, (PixMindGame.w/2)-(sweet.getWidth())-20,110, sweet);
-		generateMind(world, (PixMindGame.w/2)+50,110, mind);
-		//generatePlatform(world, 3,0.3f,0.589f*4,0.138f*4,0);
-		sweetes.setPosition((PixMindGame.w/2)-sweetes.getWidth()/2, 0);
-		mainMenuStage.addActor(sweetes);
 		
-		
+	
 		titleImageS2D.setZIndex(200);
 		exitImageS2D.setZIndex(200);
 		optionsImageS2D.setZIndex(200);
@@ -342,57 +326,6 @@ public class MainMenuScreen implements Screen {
 		
 	}
 	
-	private void generateSweet(World world, float x, float y, Image image) {
-		
-		
-		// 0. Create a loader for the file saved from the editor.
-	    BodyEditorLoader loader = new BodyEditorLoader(Gdx.files.internal("gfx/sweet"));
-	 
-	    // 1. Create a BodyDef, as usual.
-	    BodyDef bd = new BodyDef();
-	    bd.position.set(x*PixMindGame.WORLD_TO_BOX, y*PixMindGame.WORLD_TO_BOX);
-	    bd.type = BodyType.StaticBody;
-	 
-	    // 2. Create a FixtureDef, as usual.
-	    FixtureDef fd = new FixtureDef();
-	    fd.density = 1;
-	    fd.friction = 0.9f;
-	    fd.restitution = 0.6f;
-	 
-	    // 3. Create a Body, as usual.
-	    Body  bottleModel = world.createBody(bd);
-	 
-	    // 4. Create the body fixture automatically by using the loader.
-	    loader.attachFixture(bottleModel, "sweet", fd, 2.85f);
-	    image.setPosition(x, y);
-	    mainMenuStage.addActor(image);
-	}
-	private void generateMind(World world, float x, float y, Image image) {
-		
-		
-		// 0. Create a loader for the file saved from the editor.
-	    BodyEditorLoader loader = new BodyEditorLoader(Gdx.files.internal("gfx/sweet"));
-	 
-	    // 1. Create a BodyDef, as usual.
-	    BodyDef bd = new BodyDef();
-	    bd.position.set(x*PixMindGame.WORLD_TO_BOX, y*PixMindGame.WORLD_TO_BOX);
-	    bd.type = BodyType.StaticBody;
-	 
-	    // 2. Create a FixtureDef, as usual.
-	    FixtureDef fd = new FixtureDef();
-	    fd.density = 1;
-	    fd.friction = 0.9f;
-	    fd.restitution = 0.6f;
-	 
-	    // 3. Create a Body, as usual.
-	    Body  bottleModel = world.createBody(bd);
-	 
-	    // 4. Create the body fixture automatically by using the loader.
-	    loader.attachFixture(bottleModel, "mind", fd, 2.35f);
-	    image.setPosition(x, y);
-	    mainMenuStage.addActor(image);
-	}
-
 	private void generateCandy(World world, float x, float y, float rotation, Drawable image) {
 	
 		BodyDef bodyDef = new BodyDef();
@@ -404,30 +337,17 @@ public class MainMenuScreen implements Screen {
 		// Set our body's starting position in the world
 		//setPosition(x, y);
 		bodyDef.position.set(x,y);
-		//bodyDef.angle = (float) (Math.PI/7);
+		bodyDef.angle = (float) (Math.PI/7);
 		// Create our body in the world using our body definition
 		Body body = world.createBody(bodyDef);
 
-		
 		// Create a polygon shape
-	
+		CircleShape groundBox = new CircleShape();
 		// Set the polygon shape as a box which is twice the size of our view
 		// port and 20 high
 		// (setAsBox takes half-width and half-height as arguments)
 		// groundBox.setAsBox(camera.viewportWidth, 10.0f);
-		Shape groundBox;
-		if(image.equals( PixMindGame.getSkin().getDrawable("bluecandy"))){
-			groundBox = new PolygonShape();
-			PolygonShape s = (PolygonShape) groundBox;
-			s.setAsBox(candySize,candySize/2.2f);
-		}else if (image.equals( PixMindGame.getSkin().getDrawable("greencandy"))){
-			groundBox = new CircleShape();
-			groundBox.setRadius(candySize/1.7f);
-			
-		}else{
-			groundBox = new CircleShape();
-			groundBox.setRadius(candySize);
-		}
+		groundBox.setRadius(0.2f);
 		// Create a fixture definition to apply our shape to
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = groundBox;
@@ -440,12 +360,11 @@ public class MainMenuScreen implements Screen {
 
 		Image candyImage = new Image(image);
 	
-		candyImage.setSize(candySize * PixMindGame.BOX_TO_WORLD
-				* 2, candySize * PixMindGame.BOX_TO_WORLD
+		candyImage.setSize(0.2f * PixMindGame.BOX_TO_WORLD
+				* 2, 0.2f * PixMindGame.BOX_TO_WORLD
 				* 2);
-		candyImage.setOrigin(candySize* PixMindGame.BOX_TO_WORLD, candySize * PixMindGame.BOX_TO_WORLD);
-		candyImage.setPosition((body.getPosition().x - candySize)*PixMindGame.BOX_TO_WORLD, (body.getPosition().y-candySize)*PixMindGame.BOX_TO_WORLD);					
-		
+		candyImage.setOrigin(0.2f* PixMindGame.BOX_TO_WORLD,  0.2f * PixMindGame.BOX_TO_WORLD);
+		candyImage.setPosition((body.getPosition().x - 0.2f)*PixMindGame.BOX_TO_WORLD, (body.getPosition().y-0.2f)*PixMindGame.BOX_TO_WORLD);					
 		candyImage.setRotation((float) (body.getAngle()*360/(2*Math.PI)));
 
 		
@@ -463,7 +382,6 @@ public class MainMenuScreen implements Screen {
 	public void generatePlatform(World world, float x, float y, float width, float height, float rotation){
 		BodyDef groundBodyDef =new BodyDef();  
 		// Set its world position
-		groundBodyDef.type = BodyType.StaticBody;
 		groundBodyDef.position.set(new Vector2(x, y));  
 		groundBodyDef.angle = rotation;
 		// Create a body from the defintion and add it to the world
@@ -488,7 +406,7 @@ public class MainMenuScreen implements Screen {
 		Fixture fixture = groundBody.createFixture(fixtureDef);
 	
 		
-		Image platformImage = new Image(PixMindGame.getSkin().getDrawable("caramelos1"));
+		Image platformImage = new Image(PixMindGame.getSkin().getDrawable(PixMindGame.platformColorToTexture.get(Color.RED)));
 	
 		platformImage.setSize(width * PixMindGame.BOX_TO_WORLD
 				* 2, height * PixMindGame.BOX_TO_WORLD
