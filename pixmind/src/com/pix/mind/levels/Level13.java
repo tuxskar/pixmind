@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;
 import com.pix.mind.actors.StaticPlatformActor;
-import com.pix.mind.box2d.bodies.PlatformActivator;
-import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
 public class Level13 extends PixMindLevel {
@@ -27,8 +25,6 @@ public class Level13 extends PixMindLevel {
 		super.setActiveLevel(this);
 		// platform Actors and Activator Actors List
 		// Creating All Static Platforms
-		float wallW = 0.1f;
-		float wallH = 5;
 		float platW = 1f;
 		float platH = 0.1f;
 
