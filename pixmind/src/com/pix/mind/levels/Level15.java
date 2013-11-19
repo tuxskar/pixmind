@@ -21,13 +21,10 @@ public class Level15 extends PixMindLevel {
 		super(game, 1280, 1024, 480, 4.2f, 5.0f, nActiveColors);
 		this.game = game;
 		levelNumber = 15;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-
 		super.show();
 		super.setNextLevel(game.getLevel16());
 		super.setActiveLevel(this);
