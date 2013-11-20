@@ -134,11 +134,11 @@ public class MainMenuScreen implements Screen {
 		background = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
 		background.setColor(Color.valueOf("ff8000AA"));
 		
-		backgroundImage = new Image(PixMindGame.getSkin().getDrawable("personaje fondo"));
+		//backgroundImage = new Image(PixMindGame.getSkin().getDrawable("personaje fondo"));
 		playImageS2D = new Image(PixMindGame.getSkin().getDrawable("play no selec"));
 		optionsImageS2D = new Image(PixMindGame.getSkin().getDrawable("options no selec"));
 		exitImageS2D = new Image(PixMindGame.getSkin().getDrawable("exit no selec"));
-		titleImageS2D = new Image(PixMindGame.getSkin().getDrawable("sweetmind"));
+		//titleImageS2D = new Image(PixMindGame.getSkin().getDrawable("sweetmind"));
 		sweet = new Image(PixMindGame.getSkin().getDrawable("sweet"));
 		mind = new Image(PixMindGame.getSkin().getDrawable("mind"));
 		sweetes = new Image(PixMindGame.getSkin().getDrawable("caramelos1"));
@@ -243,9 +243,9 @@ public class MainMenuScreen implements Screen {
 		playImageS2D.setPosition((PixMindGame.w/2)-playImageS2D.getWidth()/2-200, 330);
 		optionsImageS2D.setPosition((PixMindGame.w/2)-optionsImageS2D.getWidth()/2, 330);
 		exitImageS2D.setPosition((PixMindGame.w/2)-exitImageS2D.getWidth()/2+200, 330);
-		titleImageS2D.setPosition((PixMindGame.w/2)-titleImageS2D.getWidth()/2, 350);
+	//	titleImageS2D.setPosition((PixMindGame.w/2)-titleImageS2D.getWidth()/2, 350);
 		background.setPosition((PixMindGame.w/2)-background.getWidth()/2, 0);
-		backgroundImage.setPosition(PixMindGame.w-backgroundImage.getWidth(), 0);
+		//backgroundImage.setPosition(PixMindGame.w-backgroundImage.getWidth(), 0);
 		playImageS2D.setScale(0.9f);
 		optionsImageS2D.setScale(0.9f);
 		exitImageS2D.setScale(0.9f);
@@ -328,7 +328,7 @@ public class MainMenuScreen implements Screen {
 		mainMenuStage.addActor(sweetes);
 		
 		
-		titleImageS2D.setZIndex(200);
+	//	titleImageS2D.setZIndex(200);
 		exitImageS2D.setZIndex(200);
 		optionsImageS2D.setZIndex(200);
 		playImageS2D.setZIndex(200);

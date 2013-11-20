@@ -21,7 +21,7 @@ import com.pix.mind.box2d.bodies.StaticPlatform;
 import com.pix.mind.world.PixMindWorldRenderer;
 
 public class Level01 extends PixMindLevel {
-
+ 
 //<<<<<<< HEAD
 //	public String levelTitle = "LevelOne";
 //

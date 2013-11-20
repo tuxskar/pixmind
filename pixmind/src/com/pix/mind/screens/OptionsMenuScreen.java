@@ -108,8 +108,8 @@ public class OptionsMenuScreen implements Screen {
 
 	
 		
-		backToMainMenuImageS2D = new Image(PixMindGame.getSkin().getDrawable("arrow"));	
-		
+		backToMainMenuImageS2D = new Image(PixMindGame.getSkin().getDrawable("boton back options"));
+		backToMainMenuImageS2D.setScale(0.7f);
 		backgroundOptionsMenuImage = new Image(PixMindGame.getSkin().getDrawable("panel opciones"));
 		backgroundOptionsMenuImage.setPosition(PixMindGame.w/2-backgroundOptionsMenuImage.getWidth()/2-35, 0);
 
