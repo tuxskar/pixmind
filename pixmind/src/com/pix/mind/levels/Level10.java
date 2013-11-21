@@ -229,7 +229,7 @@ PlatformActivator p7Activator = new PlatformActivator(box2D.getWorld(),
 PlatformActivator p8Activator = new PlatformActivator(box2D.getWorld(),
 				4,2.5f, 0.2f);
 PlatformActivator p9Activator = new PlatformActivator(box2D.getWorld(),
-				7.8f,4.5f, 0.2f);
+				7.8f,4.7f, 0.2f);
 PlatformActivator p10Activator = new PlatformActivator(box2D.getWorld(),
 				7.2f,4.1f, 0.2f);
 
