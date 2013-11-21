@@ -79,7 +79,7 @@ public class OptionsMenuScreen implements Screen {
 //		else
 //			accelerometerOrTouchImageS2D = new Image(PixMindGame.getSkin().getDrawable("accelerometer"));
 		background = new Image(PixMindGame.getSkin().getDrawable("emptyscreen"));
-		background.setColor(Color.valueOf("efae42AA"));
+		background.setColor(Color.valueOf("ff8000AA"));
 		if (oP.getBoolean("mus", true)) {
 			musicOnImageS2D = new Image(PixMindGame.getSkin().getDrawable("on no selec"));
 			musicOffImageS2D = new Image(PixMindGame.getSkin().getDrawable("off selec"));
