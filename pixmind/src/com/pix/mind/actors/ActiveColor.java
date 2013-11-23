@@ -18,7 +18,6 @@ public class ActiveColor extends Image{
         stageGui.addActor(this);
 	}
 	
-	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
 	}

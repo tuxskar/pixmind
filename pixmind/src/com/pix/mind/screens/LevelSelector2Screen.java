@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Preferences;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -22,7 +21,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.levels.PixMindLevel;
-import com.pix.mind.screens.LevelSelector1Screen.Listener;
 
 public class LevelSelector2Screen implements Screen{
 
@@ -53,7 +51,7 @@ public class LevelSelector2Screen implements Screen{
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
+//		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
 //		int topLevel = prefs.getInteger("topLevel", 1);
 		int topLevel = 24;
 		System.out.println(topLevel);

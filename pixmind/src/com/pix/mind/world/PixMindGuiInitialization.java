@@ -1,8 +1,6 @@
 package com.pix.mind.world;
 
-import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.PixMindGame;
-import com.pix.mind.actors.ActiveColor;
 import com.pix.mind.actors.ActiveColors;
 import com.pix.mind.actors.MapZoom;
 import com.pix.mind.actors.MenuInGame;
