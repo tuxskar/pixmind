@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Preferences;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -56,7 +55,7 @@ public class LevelSelector1Screen implements Screen {
 		// TODO Auto-generated method stub
 
 		// Saving preferences: Levels that player have passed
-		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");
+//		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");
 //		int topLevel = prefs.getInteger("topLevel", 1);
 		int topLevel = 12;
 		System.out.println("Top Level is " + topLevel);

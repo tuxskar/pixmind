@@ -2,9 +2,7 @@ package com.pix.mind.actors;
 
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
@@ -24,9 +22,6 @@ public class MapZoom {
 	private PixGuyController controller;
 	public boolean touchedOnce = false;
 	private Box2DWorldContactListener contactListener;
-	private float levelSizeWidth;
-	private float levelSizeHeight;
-	
 	private Image pixGuySkin;
 	private PixMindScene2DInitialization scene2D;
 	public MapZoom(PixMindBox2DInitialization box2D, PixMindScene2DInitialization scene2D){
@@ -137,8 +132,6 @@ public class MapZoom {
 		return mapActive;
 	}
 	public void setLevelSize(float levelSizeWidth, float levelSizeHeight){
-		this.levelSizeWidth = levelSizeWidth;
-		this.levelSizeHeight = levelSizeHeight;		
 		scene2D.getGroupStage().setOrigin(levelSizeWidth / 2, levelSizeHeight / 2);
 	}
 

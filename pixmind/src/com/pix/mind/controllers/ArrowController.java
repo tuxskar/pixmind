@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.box2d.bodies.PixGuy;
-import com.pix.mind.world.PixMindBox2DInitialization;
 
 public class ArrowController extends PixGuyController {
 	private Stage stage;

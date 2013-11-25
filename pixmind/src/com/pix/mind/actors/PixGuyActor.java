@@ -14,9 +14,9 @@ public class PixGuyActor extends Image {
 		//Texture r = PixMindGame.getSkin().getRegion("box").getTexture();
 		
 		this.pixGuy = pixGuy;
-		this.setSize(pixGuy.pixWidth, pixGuy.pixHeight);
+		this.setSize(PixGuy.pixWidth, PixGuy.pixHeight);
 		this.setPosition(pixGuy.getPosX(), pixGuy.getPosY());
-		this.setOrigin(pixGuy.pixWidth/2,pixGuy.pixHeight/2);
+		this.setOrigin(PixGuy.pixWidth/2,PixGuy.pixHeight/2);
 		pixGuy.fixture.setUserData(this);
 	}
 

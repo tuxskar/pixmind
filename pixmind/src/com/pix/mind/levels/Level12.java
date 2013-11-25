@@ -1,7 +1,5 @@
 package com.pix.mind.levels;
 
-import java.util.Iterator;
-
 import com.badlogic.gdx.graphics.Color;
 import com.pix.mind.PixMindGame;
 import com.pix.mind.actors.PlatformActivatorActor;

@@ -85,7 +85,6 @@ public class PlatformActivatorActor extends Group {
 		}
 	}
 
-	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		// TODO Auto-generated method stub
 		super.draw(batch, parentAlpha);

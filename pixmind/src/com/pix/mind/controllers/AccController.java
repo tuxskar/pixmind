@@ -2,7 +2,6 @@ package com.pix.mind.controllers;
 
 import com.badlogic.gdx.Gdx;
 import com.pix.mind.box2d.bodies.PixGuy;
-import com.pix.mind.world.PixMindBox2DInitialization;
 
 public class AccController extends PixGuyController {
 	float limit = 0.5f;

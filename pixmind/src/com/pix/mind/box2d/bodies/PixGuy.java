@@ -1,6 +1,5 @@
 package com.pix.mind.box2d.bodies;
 
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -57,17 +56,17 @@ public class PixGuy {
 		
 		// Clean up after ourselves
 		groundBox.dispose();
-		this.pixHeight = height * PixMindGame.BOX_TO_WORLD;
-		this.pixWidth = width * PixMindGame.BOX_TO_WORLD;
+		PixGuy.pixHeight = height * PixMindGame.BOX_TO_WORLD;
+		PixGuy.pixWidth = width * PixMindGame.BOX_TO_WORLD;
 
 	}
 	
 	public float getPosX() {
-		return posX * PixMindGame.BOX_TO_WORLD - this.pixWidth/2;
+		return posX * PixMindGame.BOX_TO_WORLD - PixGuy.pixWidth/2;
 	}
 
 	public float getPosY() {
-		return posY * PixMindGame.BOX_TO_WORLD - this.pixHeight/2;
+		return posY * PixMindGame.BOX_TO_WORLD - PixGuy.pixHeight/2;
 	}
 
 	public void setController(PixGuyController controller){
