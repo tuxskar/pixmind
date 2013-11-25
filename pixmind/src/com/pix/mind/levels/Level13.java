@@ -12,7 +12,7 @@ public class Level13 extends PixMindLevel {
 	private static final int nActiveColors = 2;
 
 	public Level13(PixMindGame game) {
-		super(game, 1000, 1300, 900, 1, 6, nActiveColors);
+		super(game, 800, 1100, 900, 1, 6, nActiveColors);
 		this.game = game;
 		levelNumber = 13;
 	}

@@ -13,7 +13,7 @@ public class Level05 extends PixMindLevel {
 	private static final int nActiveColors = 1;
 
 	public Level05(PixMindGame game) {
-		super(game, 845, 650, 900, 1, 9, nActiveColors);
+		super(game, 1045, 850, 900, 1, 9, nActiveColors);
 		this.game = game;
 		levelNumber = 5;
 	}

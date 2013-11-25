@@ -21,7 +21,7 @@ public class Level16 extends PixMindLevel {
 	public void show() {
 
 		super.show();
-		super.setNextLevel(game.getLevel14());
+		super.setNextLevel(game.getLevel17());
 		super.setActiveLevel(this);
 		// platform Actors and Activator Actors List
 		// Creating All Static Platforms
