@@ -46,7 +46,7 @@ public class Level22 extends PixMindLevel {
 					
 					/* 05 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 5.5f, 8.4f, 0.03f, 0.30f));
 					
-					/* 06 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 4.7f, 8.4f, 0.03f, 0.30f));
+					/* 06 */ scene2D.getGroupStage().addActor(new StaticWallActor(box2D.getWorld(), 4.7f, 10.4f, 0.03f, 2.3f));
 				
 
 				// Creating All Static Platforms

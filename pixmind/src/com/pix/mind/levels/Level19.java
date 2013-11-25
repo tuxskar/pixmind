@@ -17,7 +17,7 @@ public class Level19 extends PixMindLevel {
 	PixMindGame game;
 	private static final int nActiveColors = 2;
 	public Level19(PixMindGame game) {
-		super(game, 1500, 1700, 1500, 8.0f, 14.0f, nActiveColors);
+		super(game, 1000, 1700, 1500, 8.0f, 14.0f, nActiveColors);
 		this.game = game;
 		levelNumber = 19;
 		// TODO Auto-generated constructor stub
