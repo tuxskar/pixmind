@@ -33,7 +33,7 @@ public class SplashScreen implements  Screen{
 		stageSplash.draw();
 		
 		// waiting for it to finish loading the game atlas
-		if (game.getAssetManager().update() && time>2) {
+		if (game.getAssetManager().update() && time>0) {
 	
 			PixMindGame.setSkin(new Skin(game.getAssetManager().get(
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
@@ -48,8 +48,8 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setFont(game.getAssetManager().get("data/fonts/sweetmindfont.fnt", BitmapFont.class));
 			PixMindGame.setFontLevels(game.getAssetManager().get("data/fonts/sweetmindfont1.fnt", BitmapFont.class));
 
-            game.setScreen(game.getMainMenuScreen());
-//			game.setScreen(game.getLevel16());
+//            game.setScreen(game.getMainMenuScreen());
+			game.setScreen(game.getLevel21());
 		}
 		
 	}
