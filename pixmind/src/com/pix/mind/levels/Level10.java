@@ -217,7 +217,7 @@ public class Level10 extends PixMindLevel {
 			 * PlatformActivator(box2D.getWorld(), 5.5f, 2.7f, 0.2f);
 			 */
 		PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(),
-				6.5f, 7f, 0.2f);
+				6.5f, 7.05f, 0.2f);
 		PlatformActivator p5Activator = new PlatformActivator(box2D.getWorld(),
 				9f,4.5f, 0.2f);
 PlatformActivator p6Activator = new PlatformActivator(box2D.getWorld(),
