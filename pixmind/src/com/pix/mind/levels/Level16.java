@@ -12,7 +12,7 @@ public class Level16 extends PixMindLevel {
 	private static final int nActiveColors = 3;
 
 	public Level16(PixMindGame game) {
-		super(game, 950, 1235, 1350, 5, 13.5f, nActiveColors);
+		super(game, 950, 1235, 1350, 6, 13.5f, nActiveColors);
 		this.game = game;
 		levelNumber = 16;
 	}
@@ -52,7 +52,7 @@ public class Level16 extends PixMindLevel {
                 new StaticPlatformActor(box2D.getWorld(), 5f + deltaX, 9.2f + deltaY, platW/4, platH, Color.RED, false));
         // middle big 3
         box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 6f + deltaX, 9 + deltaY, platW * 2, platH, Color.GREEN, false));
+                new StaticPlatformActor(box2D.getWorld(), 7f + deltaX, 9 + deltaY, platW * 2, platH, Color.GREEN, false));
         // middle small 1 first 
         box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 5f + deltaX, 8.2f + deltaY, platW/4, platH, Color.BLUE, false));
