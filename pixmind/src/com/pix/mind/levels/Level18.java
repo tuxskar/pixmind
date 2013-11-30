@@ -12,11 +12,11 @@ public class Level18 extends PixMindLevel {
 
 	
 
-	public String levelTitle = "LevelEighteen";
+	public String levelTitle = "LevelTwo";
 	PixMindGame game;
-	private static final int nActiveColors = 2;
+	private static final int nActiveColors = 1;
 	public Level18(PixMindGame game) {
-		super(game, 800, 1100, 800, 3.5f, 11.0f, nActiveColors);
+		super(game, 1533, 1200, 910, 1, 10f, nActiveColors);
 		this.game = game;
 		levelNumber = 18;
 		// TODO Auto-generated constructor stub
@@ -30,170 +30,162 @@ public class Level18 extends PixMindLevel {
 		super.setNextLevel(game.getLevel19());
 		super.setActiveLevel(this);
 		// CREANDO EL NIVEL
+
+		// platform Actors and Activator Actors List
+
+		// Creating All Static Platforms
+
+		// Box2D platforms
+		/*StaticPlatform sPlatform = new StaticPlatform(box2D.getWorld(), 8, 5,
+				1f, 0.1f);
+		StaticPlatform s2Platform = new StaticPlatform(box2D.getWorld(), 3, 2,
+				1, 0.1f);
+		StaticPlatform s3Platform = new StaticPlatform(box2D.getWorld(), 5, 3,
+				1, 0.1f);
+		StaticPlatform s4Platform = new StaticPlatform(box2D.getWorld(), 6, 4,
+				1, 0.1f);
+		*//*StaticPlatform s5Platform = new StaticPlatform(box2D.getWorld(), 10, 3f,
+				1, 0.1f);
+		StaticPlatform s6Platform = new StaticPlatform(box2D.getWorld(), 7, 2f,
+				1, 0.1f);*/
+	
 		
-					// platform Actors and Activator Actors List
-						
-						// Creating All Statics Platforms
+		StaticPlatform s7Platform = new StaticPlatform(box2D.getWorld(), 4f,
+				0.05f, 1, 0.1f);
+		StaticPlatform s8Platform = new StaticPlatform(box2D.getWorld(), 1f, 9f,
+				1, 0.1f);
+		
+		StaticPlatform s1Platform = new StaticPlatform(box2D.getWorld(), 6.5f, 1.3f,
+				1, 0.1f);
+		
+	//	StaticPlatform s2Platform = new StaticPlatform(box2D.getWorld(), 8f, 1.5f,
+	//			3, 0.1f);
+		
+		
+		// Actor Platforms
+		/*StaticPlatformActor s1Skin = new StaticPlatformActor(sPlatform,
+				Color.RED, false);
+		StaticPlatformActor s2Skin = new StaticPlatformActor(s2Platform,
+				Color.BLUE, true);
+		StaticPlatformActor s3Skin = new StaticPlatformActor(s3Platform,
+				Color.GREEN, false);
+		StaticPlatformActor s4Skin = new StaticPlatformActor(s4Platform,
+				Color.BLACK, true);
+		*//*StaticPlatformActor s5Skin = new StaticPlatformActor(s5Platform,
+				Color.MAGENTA, false);
+		StaticPlatformActor s6Skin = new StaticPlatformActor(s6Platform,
+				Color.BLUE, false);*/
+		StaticPlatformActor s7Skin = new StaticPlatformActor(s7Platform,
+				Color.RED, false);
+		StaticPlatformActor s8Skin = new StaticPlatformActor(s8Platform,
+				Color.BLACK, true);
+		StaticPlatformActor s1Skin = new StaticPlatformActor(s1Platform,
+				Color.RED, false);
+	//	StaticPlatformActor s2Skin = new StaticPlatformActor(s2Platform,
+	//			Color.BLACK, true);
 
-							// Box2D platforms
-								
-								
-								// plataforma fija 1
-								StaticPlatform sPFix1 = new StaticPlatform(box2D.getWorld(), 2.6f, 6.0f, 
-										1.4f, 0.12f);
-								
-								// plataforma fija 2
-								StaticPlatform sPFix2 = new StaticPlatform(box2D.getWorld(), 6.1f, 6.0f, 
-										1.15f, 0.12f);
+		// Add platforms to Stage
 
-								
-								
-								// plataforma sP11 (color 1, aparicion 1)
-								StaticPlatform sP11 = new StaticPlatform(box2D.getWorld(), 4.5f, 1.0f, 
-										0.8f, 0.12f);
-								
-								
-								
-								// plataforma sP21 (color 2, aparicion 1)
-								StaticPlatform sP21 = new StaticPlatform(box2D.getWorld(), 4.5f, 6.0f, 
-										0.3f, 0.12f);
-								
-								// plataforma sP22 (color 2, aparicion 2)
-								StaticPlatform sP22 = new StaticPlatform(box2D.getWorld(), 2.5f, 1.0f, 
-										0.2f, 0.12f);
-								
-								
-								
-								// plataforma sP31 (color 3, aparicion 1)
-								StaticPlatform sP31 = new StaticPlatform(box2D.getWorld(), 1.8f, 2.2f, 
-										0.6f, 0.12f);
-								
-							
-							// Actor Platforms
-								
-								StaticPlatformActor sPFix1Skin = new StaticPlatformActor(sPFix1,
-										Color.BLACK, true);
-								StaticPlatformActor sPFix2Skin = new StaticPlatformActor(sPFix2,
-										Color.BLACK, true);
+		/*scene2D.getGroupStage().addActor(s1Skin);
+		scene2D.getGroupStage().addActor(s2Skin);
+		scene2D.getGroupStage().addActor(s3Skin);
+		scene2D.getGroupStage().addActor(s4Skin);
+		*//*scene2D.getGroupStage().addActor(s5Skin);
+		scene2D.getGroupStage().addActor(s6Skin);*/
+		scene2D.getGroupStage().addActor(s7Skin);
+		scene2D.getGroupStage().addActor(s8Skin);
+		scene2D.getGroupStage().addActor(s1Skin);
+		//scene2D.getGroupStage().addActor(s2Skin);
+		// Add to platform list
 
-								
-								StaticPlatformActor sP11Skin = new StaticPlatformActor(sP11,
-										Color.BLUE, false);
-								StaticPlatformActor sP21Skin = new StaticPlatformActor(sP21,
-										Color.RED, false);
-								StaticPlatformActor sP22Skin = new StaticPlatformActor(sP22,
-										Color.RED, false);
-								StaticPlatformActor sP31Skin = new StaticPlatformActor(sP31,
-										Color.ORANGE, false);
+	/*	box2D.getPlatformList().add(s1Skin);
+		box2D.getPlatformList().add(s2Skin);
+		box2D.getPlatformList().add(s3Skin);
+		box2D.getPlatformList().add(s4Skin);
+		*//*box2D.getPlatformList().add(s5Skin);
+		box2D.getPlatformList().add(s6Skin);*/
+		box2D.getPlatformList().add(s7Skin);
+		box2D.getPlatformList().add(s8Skin);
+		box2D.getPlatformList().add(s1Skin);
+		//box2D.getPlatformList().add(s2Skin);
+		// Creating All Activator
 
-					
-							// Add platforms to Stage
-								
-								scene2D.getGroupStage().addActor(sPFix1Skin);
-								scene2D.getGroupStage().addActor(sPFix2Skin);
-								
-								scene2D.getGroupStage().addActor(sP11Skin);
-								scene2D.getGroupStage().addActor(sP21Skin);
-								scene2D.getGroupStage().addActor(sP22Skin);
-								scene2D.getGroupStage().addActor(sP31Skin);
+		// Box2D Activator
 
-								
-							// Add to platform list
-								
-								box2D.getPlatformList().add(sPFix1Skin);
-								box2D.getPlatformList().add(sPFix2Skin);
-								
-								box2D.getPlatformList().add(sP11Skin);
-								box2D.getPlatformList().add(sP21Skin);
-								box2D.getPlatformList().add(sP22Skin);
-								box2D.getPlatformList().add(sP31Skin);
-						
-						
-						// Creating All Activators
+		/*PlatformActivator pActivator = new PlatformActivator(box2D.getWorld(),
+				0, 5, 0.2f);
+		*//*PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(),
+				10, 4.7f, 0.2f);
+		PlatformActivator p3Activator = new PlatformActivator(box2D.getWorld(),
+				8.5f, 3.7f, 0.2f);
+		PlatformActivator p4Activator = new PlatformActivator(box2D.getWorld(),
+				5.5f, 2.7f, 0.2f);*/
+		PlatformActivator p2Activator = new PlatformActivator(box2D.getWorld(),
+				6.5f, 2.4f, 0.2f);
+		PlatformActivator p5Activator = new PlatformActivator(box2D.getWorld(),
+				1.7f,7f, 0.2f);
+		
+		PlatformActivator p6Activator = new PlatformActivator(box2D.getWorld(),
+				5f,1.3f, 0.2f);
+		PlatformActivator p7Activator = new PlatformActivator(box2D.getWorld(),
+				4.7f,0.5f, 0.2f);
+		PlatformActivator p8Activator = new PlatformActivator(box2D.getWorld(),
+				3.7f,1.0f, 0.2f);
+		PlatformActivator p9Activator = new PlatformActivator(box2D.getWorld(),
+				4.4f,1.3f, 0.2f);
+		PlatformActivator p10Activator = new PlatformActivator(box2D.getWorld(),
+				5.6f,1.8f, 0.2f);
+		// Actor Activator
 
-							// Box2D Activator
-								
-								// activador 1
+		/*PlatformActivatorActor a1Skin = new PlatformActivatorActor(pActivator,
+				Color.RED, false);
+		*//*PlatformActivatorActor a2Skin = new PlatformActivatorActor(p2Activator,
+				Color.BLACK, true);
+		PlatformActivatorActor a3Skin = new PlatformActivatorActor(p3Activator,
+				Color.MAGENTA, false);
+		PlatformActivatorActor a4Skin = new PlatformActivatorActor(p4Activator,
+				Color.BLUE, false);*/
+		PlatformActivatorActor a2Skin = new PlatformActivatorActor(p2Activator,
+				Color.BLACK, true);
+		PlatformActivatorActor a5Skin = new PlatformActivatorActor(p5Activator,
+				Color.RED, false);
 
-								// activador 1.1 (activador de plataforma 1, aparicion 1)
-								PlatformActivator pA11 = new PlatformActivator(box2D.getWorld(), 3.7f, 9.0f, 0.2f);
-								// activador 1.2 (activador de plataforma 1, aparicion 2)
-								PlatformActivator pA12 = new PlatformActivator(box2D.getWorld(), 5.0f, 2.8f, 0.2f);
-								
-								
-								// activador 2
-								
-								// activador 2.1 (activador de plataforma 2, aparicion 1)
-								PlatformActivator pA21 = new PlatformActivator(box2D.getWorld(), 4.2f, 7.0f, 0.2f);
-								// activador 2.2 (activador de plataforma 2, aparicion 2)
-								PlatformActivator pA22 = new PlatformActivator(box2D.getWorld(), 4.3f, 4.6f, 0.2f);
-								// activador 2.3 (activador de plataforma 2, aparicion 3)
-								PlatformActivator pA23 = new PlatformActivator(box2D.getWorld(), 2.5f, 1.2f, 0.2f);
-								
-								
-								// activador 3
-								
-								// activador 3.1 (activador de plataforma 3, aparicion 1)
-								PlatformActivator pA31 = new PlatformActivator(box2D.getWorld(), 5.1f, 7.5f, 0.2f);
-								// activador 3.2 (activador de plataforma 3, aparicion 2)
-								PlatformActivator pA32 = new PlatformActivator(box2D.getWorld(), 1.8f, 2.4f, 0.2f);
-								
-								
-								// activador FIN DE FASE 12
-								PlatformActivator pAEnd = new PlatformActivator(box2D.getWorld(), 3.0f, 3.6f, 0.3f);
-			
-					
-							// Actor Activator
-								
-								PlatformActivatorActor pA11Skin = new PlatformActivatorActor(pA11,
-										Color.BLUE, false);
-								PlatformActivatorActor pA12Skin = new PlatformActivatorActor(pA12,
-										Color.BLUE, false);
-								
-								PlatformActivatorActor pA21Skin = new PlatformActivatorActor(pA21,
-										Color.RED, false);
-								PlatformActivatorActor pA22Skin = new PlatformActivatorActor(pA22,
-										Color.RED, false);
-								PlatformActivatorActor pA23Skin = new PlatformActivatorActor(pA23,
-										Color.RED, false);
-								
-								PlatformActivatorActor pA31Skin = new PlatformActivatorActor(pA31,
-										Color.ORANGE, false);
-								PlatformActivatorActor pA32Skin = new PlatformActivatorActor(pA32,
-										Color.ORANGE, false);
+		PlatformActivatorActor a6Skin = new PlatformActivatorActor(p6Activator,
+				Color.RED, false);	
+		PlatformActivatorActor a7Skin = new PlatformActivatorActor(p7Activator,
+						Color.RED, false);	
+		PlatformActivatorActor a8Skin = new PlatformActivatorActor(p8Activator,
+								Color.RED, false);
+		PlatformActivatorActor a9Skin = new PlatformActivatorActor(p9Activator,
+				Color.RED, false);
+		PlatformActivatorActor a10Skin = new PlatformActivatorActor(p10Activator,
+				Color.RED, false);
+		// Add activators to Stage
 
-								PlatformActivatorActor pAEndSkin = new PlatformActivatorActor(pAEnd,
-										Color.BLACK, true);
+		/*scene2D.getGroupStage().addActor(a1Skin);
+		*//*scene2D.getGroupStage().addActor(a2Skin);
+		scene2D.getGroupStage().addActor(a3Skin);
+		scene2D.getGroupStage().addActor(a4Skin);*/
+		scene2D.getGroupStage().addActor(a2Skin);
+		scene2D.getGroupStage().addActor(a5Skin);
+		scene2D.getGroupStage().addActor(a6Skin);
+		scene2D.getGroupStage().addActor(a7Skin);
+		scene2D.getGroupStage().addActor(a8Skin);
+		scene2D.getGroupStage().addActor(a9Skin);
+		scene2D.getGroupStage().addActor(a10Skin);
+		// Add to activator list
 
-					
-							// Add activators to Stage
-								
-								scene2D.getGroupStage().addActor(pA11Skin);
-								scene2D.getGroupStage().addActor(pA12Skin);
-								
-								scene2D.getGroupStage().addActor(pA21Skin);
-								scene2D.getGroupStage().addActor(pA22Skin);
-								scene2D.getGroupStage().addActor(pA23Skin);
-								
-								scene2D.getGroupStage().addActor(pA31Skin);
-								scene2D.getGroupStage().addActor(pA32Skin);
-								
-								scene2D.getGroupStage().addActor(pAEndSkin);
-					
-							// Add to activator list
-								
-								box2D.getActivatorList().add(pA11Skin);
-								box2D.getActivatorList().add(pA12Skin);
-								
-								box2D.getActivatorList().add(pA21Skin);
-								box2D.getActivatorList().add(pA22Skin);
-								box2D.getActivatorList().add(pA23Skin);
-								
-								box2D.getActivatorList().add(pA31Skin);
-								box2D.getActivatorList().add(pA32Skin);
-								
-								box2D.getActivatorList().add(pAEndSkin);
-
+	/*	box2D.getActivatorList().add(a1Skin);
+		*//*box2D.getActivatorList().add(a2Skin);
+		box2D.getActivatorList().add(a3Skin);
+		box2D.getActivatorList().add(a4Skin);*/
+		box2D.getActivatorList().add(a2Skin);
+		box2D.getActivatorList().add(a5Skin);
+		box2D.getActivatorList().add(a6Skin);
+		box2D.getActivatorList().add(a7Skin);
+		box2D.getActivatorList().add(a8Skin);
+		box2D.getActivatorList().add(a9Skin);
+		box2D.getActivatorList().add(a10Skin);
 		// add to stage the group of actors
 
 		// Active colors
@@ -202,6 +194,8 @@ public class Level18 extends PixMindLevel {
 //		box2D.addActivatedColor(Color.BLUE);
 		worldRenderer = new PixMindWorldRenderer(scene2D, box2D, gui);
 
+		
+		
 
 	}
 

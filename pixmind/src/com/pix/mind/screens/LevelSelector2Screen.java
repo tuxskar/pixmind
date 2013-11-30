@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
@@ -51,9 +52,9 @@ public class LevelSelector2Screen implements Screen{
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-//		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
-//		int topLevel = prefs.getInteger("topLevel", 1);
-		int topLevel = 24;
+		Preferences prefs = Gdx.app.getPreferences("SweetMindPrefs");		
+		int topLevel = prefs.getInteger("topLevel", 1);
+		//int topLevel = 24;
 		System.out.println(topLevel);
 		
 		
