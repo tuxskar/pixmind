@@ -51,8 +51,8 @@ public class Level10 extends PixMindLevel {
                 new StaticPlatformActor(box2D.getWorld(), 4, 8, platW, platH, Color.RED, false));
 		box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 9, 8, platW, platH, Color.GREEN, false));
-		box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 15, 6, platW, platH, Color.GREEN, false));
+	//	box2D.getPlatformList().add(
+       //         new StaticPlatformActor(box2D.getWorld(), 15, 6, platW, platH, Color.GREEN, false));
 
 		// Creating All Activator
 		// Box2D Activator adding to activator list
