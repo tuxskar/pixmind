@@ -52,7 +52,7 @@ public class Level16 extends PixMindLevel {
                 new StaticPlatformActor(box2D.getWorld(), 5f + deltaX, 9.2f + deltaY, platW/4, platH, Color.RED, false));
         // middle big 3
         box2D.getPlatformList().add(
-                new StaticPlatformActor(box2D.getWorld(), 7f + deltaX, 9 + deltaY, platW * 2, platH, Color.GREEN, false));
+                new StaticPlatformActor(box2D.getWorld(), 6f + deltaX, 9 + deltaY, platW * 2, platH, Color.GREEN, false));
         // middle small 1 first 
         box2D.getPlatformList().add(
                 new StaticPlatformActor(box2D.getWorld(), 5f + deltaX, 8.2f + deltaY, platW/4, platH, Color.BLUE, false));
@@ -101,7 +101,7 @@ public class Level16 extends PixMindLevel {
             new PlatformActivatorActor(box2D.getWorld(), 4f + deltaX, 12.0f + deltaY, Color.BLACK, true));
         // 3 top
         box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 5f + deltaX, 12.0f + deltaY, Color.GREEN, false));
+            new PlatformActivatorActor(box2D.getWorld(), 6f + deltaX, 12.0f + deltaY, Color.GREEN, false));
         // 2 upper
         box2D.getActivatorList().add(
             new PlatformActivatorActor(box2D.getWorld(), 3f + deltaX, 9.2f + deltaY, Color.RED, false));
