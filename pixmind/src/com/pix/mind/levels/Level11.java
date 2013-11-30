@@ -79,7 +79,7 @@ public class Level11 extends PixMindLevel {
         box2D.getActivatorList().add(
             new PlatformActivatorActor(box2D.getWorld(), 7f + deltaX,  8 + deltaY, Color.RED, false));
         box2D.getActivatorList().add(
-            new PlatformActivatorActor(box2D.getWorld(), 7.7f + deltaX,  7.5f + deltaY, Color.GREEN, false));
+            new PlatformActivatorActor(box2D.getWorld(), 7.7f + deltaX,  7.8f + deltaY, Color.GREEN, false));
 
 		// Add platforms to Stage
 		for (StaticPlatformActor Sskin : box2D.getPlatformList()) {
