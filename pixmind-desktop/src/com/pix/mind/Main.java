@@ -9,7 +9,7 @@ public class Main {
 		cfg.title = "pixmind";
 		//For using images not only pow of 2 sizes
 		cfg.useGL20 = true;
-		cfg.width =854;
+		cfg.width = 854;
 		cfg.height = 480;
 		 
 		new LwjglApplication(new PixMindGame(), cfg);
