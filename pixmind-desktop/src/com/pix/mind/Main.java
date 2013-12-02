@@ -8,7 +8,7 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "pixmind";
 		//For using images not only pow of 2 sizes
-		cfg.useGL20 = true;
+		cfg.useGL20 = false;
 		cfg.width =854;
 		cfg.height = 480;
 		 

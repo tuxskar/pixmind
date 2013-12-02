@@ -6,6 +6,7 @@ import com.pix.mind.actors.PixGuyActor;
 import com.pix.mind.box2d.bodies.PixGuy;
 import com.pix.mind.controllers.AccController;
 import com.pix.mind.controllers.ArrowController;
+import com.pix.mind.controllers.KeyboardController;
 import com.pix.mind.controllers.PixGuyController;
 
 public class PixMindPixGuyInitialization {
@@ -22,12 +23,23 @@ public class PixMindPixGuyInitialization {
 		this.box2D = box2D;
 		// setting controller
 		
+		
+		/**MODELO PARA MOVIL
 		if (PixMindGame.infoController){
 			controller = new AccController(pixGuy);			
 		}
 		else{
 			controller = new ArrowController(pixGuy, scene2D.getStageGui());			
+		}*/
+		
+		//MODELO PARA PC
+		if (PixMindGame.infoController){
+			controller = new KeyboardController(pixGuy,  scene2D.getStageGui());			
 		}
+		else{
+			controller = new KeyboardController(pixGuy,  scene2D.getStageGui());			
+		}
+		
 		
 		pixGuy.setController(controller);	
 		scene2D.getGroupStage().addActor(pixGuySkin);

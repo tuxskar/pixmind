@@ -1,0 +1,19 @@
+
+SplashTextureAtlas.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+modelsheep
+  rotate: false
+  xy: 1, 166
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+g3
+  rotate: false
+  xy: 1, 1
+  size: 237, 163
+  orig: 237, 163
+  offset: 0, 0
+  index: -1
