@@ -37,7 +37,6 @@ public class SplashScreen implements  Screen{
 	
 			PixMindGame.setSkin(new Skin(game.getAssetManager().get(
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
-
 			PixMindGame.setMusic(game.getAssetManager().get("data/music/smlo.mp3", Music.class));
 			PixMindGame.setBoing(game.getAssetManager().get("data/sounds/boing.wav", Sound.class));
 			PixMindGame.setGettingActivator(game.getAssetManager().get("data/sounds/gettingactivator.wav", Sound.class));
@@ -47,11 +46,9 @@ public class SplashScreen implements  Screen{
 			PixMindGame.setMenuClick(game.getAssetManager().get("data/sounds/menuclick.mp3", Sound.class));
 			PixMindGame.setFont(game.getAssetManager().get("data/fonts/sweetmindfont.fnt", BitmapFont.class));
 			PixMindGame.setFontLevels(game.getAssetManager().get("data/fonts/sweetmindfont1.fnt", BitmapFont.class));
-
             game.setScreen(game.getMainMenuScreen());
-
-		}
 		
+		}		
 	}
 
 	@Override
