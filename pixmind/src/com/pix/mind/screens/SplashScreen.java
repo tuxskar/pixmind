@@ -33,7 +33,7 @@ public class SplashScreen implements  Screen{
 		stageSplash.draw();
 		
 		// waiting for it to finish loading the game atlas
-		if (game.getAssetManager().update() && time>0) {
+		if (game.getAssetManager().update() && time>3) {
 	
 			PixMindGame.setSkin(new Skin(game.getAssetManager().get(
 				"data/textureatlas/PixmindTextureAtlas.pack", TextureAtlas.class)));
