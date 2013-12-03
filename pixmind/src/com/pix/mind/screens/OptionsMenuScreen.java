@@ -29,13 +29,13 @@ public class OptionsMenuScreen implements Screen {
 		backgroundOptionsMenuImage,
 		background;
 	
-	Preferences oP = Gdx.app.getPreferences("OptionsPrefs");	
+	Preferences oP ;	
 	
 	
 	public OptionsMenuScreen(PixMindGame game) {
 		super();
 		this.game = game;
-		
+		oP = PixMindGame.oP;
 	}
 
 	@Override
@@ -201,7 +201,7 @@ public class OptionsMenuScreen implements Screen {
 			public void touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				System.out.println("MUSIC ON/OFF TOUCHED");
-				if (oP.getBoolean("mus")){
+				if (oP.getBoolean("mus", true)){
 					if(PixMindGame.infoFx)
 						PixMindGame.getMenuClick().play(0.3f);		
 					PixMindGame.infoMusic = false;
@@ -238,7 +238,7 @@ public class OptionsMenuScreen implements Screen {
 			public void touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				System.out.println("MUSIC ON/OFF TOUCHED");
-				if (oP.getBoolean("fx")){
+				if (oP.getBoolean("fx", true)){
 					
 					PixMindGame.infoFx = false;
 					System.out.println("---> music OFF");
