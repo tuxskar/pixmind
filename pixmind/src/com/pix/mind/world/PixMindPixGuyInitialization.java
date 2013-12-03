@@ -24,20 +24,24 @@ public class PixMindPixGuyInitialization {
 		// setting controller
 		
 		
-		/**MODELO PARA MOVIL
+		//MODELO PARA MOVIL
+		if(!PixMindGame.isHtml){
 		if (PixMindGame.infoController){
 			controller = new AccController(pixGuy);			
 		}
 		else{
 			controller = new ArrowController(pixGuy, scene2D.getStageGui());			
-		}*/
+		}
+		}else
 		
 		//MODELO PARA PC
-		if (PixMindGame.infoController){
+		{
+			if (PixMindGame.infoController){
 			controller = new KeyboardController(pixGuy,  scene2D.getStageGui());			
 		}
 		else{
 			controller = new KeyboardController(pixGuy,  scene2D.getStageGui());			
+		}
 		}
 		
 		

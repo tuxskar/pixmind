@@ -94,7 +94,8 @@ public class PixMindGame extends Game {
 	public static final float BOX_TO_WORLD = 100f;
 	public static float h = 480; 		
 	public static float w = 800;
-
+	public static boolean isHtml = false;
+	
 	private AssetManager assetManager;
 	private static Skin skin;
 	private static Music music;
